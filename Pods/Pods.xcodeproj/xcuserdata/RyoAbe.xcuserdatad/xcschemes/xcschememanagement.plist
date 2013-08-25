@@ -34,6 +34,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>Pods-Toast.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Pods-libffi.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -57,7 +62,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2134674619954869A611A30E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>46EF7AE35C274D2D8698D4F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>470B79F57D29477FAD8B3736</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4B7AB839A5D44BE5B0B131D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +92,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>767280D35CA946D5B3666274</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7EB0AA0A788647058A74BEE5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>853920EDA7F1446AB3F7516C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +113,26 @@
 			<true/>
 		</dict>
 		<key>BBA6C0F672E14AA6AC27A8CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0B08E10EAA94847989C2DCC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CB525C1A5E3B43C7AAEB03FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD59B3190F76449DB49B1130</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F25E82D4CDFC468E85233F41</key>
 		<dict>
 			<key>primary</key>
 			<true/>

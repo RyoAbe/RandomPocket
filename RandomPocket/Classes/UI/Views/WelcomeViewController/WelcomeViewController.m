@@ -10,7 +10,7 @@
 #import "RandomPocketUI.h"
 
 @interface WelcomeViewController ()
-- (IBAction)authenticationButtonTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -28,14 +28,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)authenticationButtonTapped:(id)sender
+- (IBAction)loginButtonTapped:(id)sender
 {
+    self.loginButton.enabled = NO;
+    self.loginButton.alpha = 0.5f;
+
     [[PocketAPI sharedAPI] loginWithHandler:^(PocketAPI *api, NSError *error) {
         if(error){
-            NSLog(@"error");
-        }else{
-            NSLog(@"success");
+            [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)];
+            return ;
         }
+        [self performSegueWithIdentifier:@"PocketListSegue" sender:self];
     }];
 }
 @end

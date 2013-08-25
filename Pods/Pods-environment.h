@@ -24,6 +24,12 @@
 #define COCOAPODS_VERSION_MINOR_Reachability 0
 #define COCOAPODS_VERSION_PATCH_Reachability 0
 
+// Toast
+#define COCOAPODS_POD_AVAILABLE_Toast
+#define COCOAPODS_VERSION_MAJOR_Toast 2
+#define COCOAPODS_VERSION_MINOR_Toast 0
+#define COCOAPODS_VERSION_PATCH_Toast 0
+
 // libffi
 #define COCOAPODS_POD_AVAILABLE_libffi
 #define COCOAPODS_VERSION_MAJOR_libffi 3

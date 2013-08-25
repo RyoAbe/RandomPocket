@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3268E42D17C9F92900E3D702 /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42C17C9F92900E3D702 /* Welcom.strings */; };
+		3268E42F17C9F93600E3D702 /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42E17C9F93600E3D702 /* Common.strings */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
 		32AF668F17C9EF9600EF34EC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AF668D17C9EF9600EF34EC /* WelcomeViewController.m */; };
+		32AF669417C9F5C000EF34EC /* PocketListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32AF669317C9F5C000EF34EC /* PocketListViewController.m */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
 		32D0885D17C9DE76007C50CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885C17C9DE76007C50CD /* CoreGraphics.framework */; };
@@ -41,11 +44,15 @@
 
 /* Begin PBXFileReference section */
 		0C6ED4897690439088DDDEE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		3268E42C17C9F92900E3D702 /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
+		3268E42E17C9F93600E3D702 /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32AF668617C9E97600EF34EC /* RandomPocketLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketLibrary.h; sourceTree = "<group>"; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
 		32AF668C17C9EF9600EF34EC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		32AF668D17C9EF9600EF34EC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		32AF669217C9F5C000EF34EC /* PocketListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListViewController.h; sourceTree = "<group>"; };
+		32AF669317C9F5C000EF34EC /* PocketListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListViewController.m; sourceTree = "<group>"; };
 		32D0885517C9DE76007C50CD /* RandomPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D0885817C9DE76007C50CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32D0885A17C9DE76007C50CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,13 +106,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3268E42917C9F90500E3D702 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3268E42A17C9F90500E3D702 /* Images */,
+				3268E42B17C9F90500E3D702 /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3268E42A17C9F90500E3D702 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		3268E42B17C9F90500E3D702 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				3268E42C17C9F92900E3D702 /* Welcom.strings */,
+				3268E42E17C9F93600E3D702 /* Common.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		32AF668117C9E8D200EF34EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				32AF668217C9E8D200EF34EC /* Frameworks */,
 				32AF668317C9E8D200EF34EC /* Library */,
-				32AF668417C9E8D200EF34EC /* Resources */,
 				32AF668517C9E8D200EF34EC /* UI */,
+				3268E42917C9F90500E3D702 /* Resources */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -123,13 +155,6 @@
 				32AF668617C9E97600EF34EC /* RandomPocketLibrary.h */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		32AF668417C9E8D200EF34EC /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		32AF668517C9E8D200EF34EC /* UI */ = {
@@ -162,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				32AF668B17C9EF9600EF34EC /* WelcomeViewController */,
+				32AF669117C9F5AB00EF34EC /* PocketListViewController */,
+				32AF669017C9F5AB00EF34EC /* PocketDetailViewController */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +207,22 @@
 			children = (
 			);
 			path = Wizards;
+			sourceTree = "<group>";
+		};
+		32AF669017C9F5AB00EF34EC /* PocketDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PocketDetailViewController;
+			sourceTree = "<group>";
+		};
+		32AF669117C9F5AB00EF34EC /* PocketListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32AF669217C9F5C000EF34EC /* PocketListViewController.h */,
+				32AF669317C9F5C000EF34EC /* PocketListViewController.m */,
+			);
+			path = PocketListViewController;
 			sourceTree = "<group>";
 		};
 		32D0884C17C9DE76007C50CD = {
@@ -344,6 +387,8 @@
 				32D0886F17C9DE76007C50CD /* Default-568h@2x.png in Resources */,
 				32D0887217C9DE76007C50CD /* MainStoryboard_iPhone.storyboard in Resources */,
 				32D0887517C9DE76007C50CD /* MainStoryboard_iPad.storyboard in Resources */,
+				3268E42D17C9F92900E3D702 /* Welcom.strings in Resources */,
+				3268E42F17C9F93600E3D702 /* Common.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +486,7 @@
 				32D0886517C9DE76007C50CD /* main.m in Sources */,
 				32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */,
 				32AF668F17C9EF9600EF34EC /* WelcomeViewController.m in Sources */,
+				32AF669417C9F5C000EF34EC /* PocketListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

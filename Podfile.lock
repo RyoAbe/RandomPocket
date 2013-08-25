@@ -10,6 +10,7 @@ PODS:
   - OCMock (2.2.1)
   - PocketAPI (1.0.2)
   - Reachability (3.0.0)
+  - Toast (2.0)
 
 DEPENDENCIES:
   - BlocksKit (~> 1.8.2)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - OCMock (~> 2.2.1)
   - PocketAPI (~> 1.0.2)
   - Reachability (~> 3.0.0)
+  - Toast (~> 2.0)
 
 SPEC CHECKSUMS:
   BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
@@ -25,5 +27,6 @@ SPEC CHECKSUMS:
   OCMock: 80e4cfbc71a0e1bd28caf10a9fda27da7c4c8402
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
   Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2
+  Toast: 05f46f9d48ddf6e29193f802b038e4fb41f806fa
 
 COCOAPODS: 0.23.0
