@@ -7,13 +7,26 @@
 //
 
 #import "AppDelegate.h"
+#import "RandomPocketLibrary.h"
+#import "RandomPocketUI.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[PocketAPI sharedAPI] setConsumerKey:@"17789-2ae60ad9c498ad18d6cc31dd"];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if([[PocketAPI sharedAPI] handleOpenURL:url]){
+        return YES;
+    }else{
+        return NO;
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
