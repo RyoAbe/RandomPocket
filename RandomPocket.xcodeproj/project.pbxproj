@@ -14,6 +14,9 @@
 		3268E4CC17CB940300E3D702 /* PocketList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CB17CB940300E3D702 /* PocketList.storyboard */; };
 		3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CD17CB947900E3D702 /* Welcom.storyboard */; };
 		3268E4D017CB96E600E3D702 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* MainStoryboard.storyboard */; };
+		3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D317CBA16E00E3D702 /* UIPocketList.m */; };
+		3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
+		3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4D817CBA8BD00E3D702 /* PocketList.strings */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
@@ -54,6 +57,11 @@
 		3268E4CB17CB940300E3D702 /* PocketList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PocketList.storyboard; sourceTree = "<group>"; };
 		3268E4CD17CB947900E3D702 /* Welcom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcom.storyboard; sourceTree = "<group>"; };
 		3268E4CF17CB96E600E3D702 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		3268E4D217CBA16E00E3D702 /* UIPocketList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocketList.h; sourceTree = "<group>"; };
+		3268E4D317CBA16E00E3D702 /* UIPocketList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketList.m; sourceTree = "<group>"; };
+		3268E4D517CBA23600E3D702 /* UIPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocket.h; sourceTree = "<group>"; };
+		3268E4D617CBA23600E3D702 /* UIPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocket.m; sourceTree = "<group>"; };
+		3268E4D817CBA8BD00E3D702 /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32AF668617C9E97600EF34EC /* RandomPocketLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketLibrary.h; sourceTree = "<group>"; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 			children = (
 				3268E42C17C9F92900E3D702 /* Welcom.strings */,
 				3268E42E17C9F93600E3D702 /* Common.strings */,
+				3268E4D817CBA8BD00E3D702 /* PocketList.strings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -158,6 +167,17 @@
 				3268E4C517CB936700E3D702 /* PocketListViewController.m */,
 			);
 			path = PocketList;
+			sourceTree = "<group>";
+		};
+		3268E4D117CBA13C00E3D702 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3268E4D217CBA16E00E3D702 /* UIPocketList.h */,
+				3268E4D317CBA16E00E3D702 /* UIPocketList.m */,
+				3268E4D517CBA23600E3D702 /* UIPocket.h */,
+				3268E4D617CBA23600E3D702 /* UIPocket.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		32AF668117C9E8D200EF34EC /* Classes */ = {
@@ -191,6 +211,7 @@
 			children = (
 				32AF668717C9E9F000EF34EC /* RandomPocketUI.h */,
 				3268E4CF17CB96E600E3D702 /* MainStoryboard.storyboard */,
+				3268E4D117CBA13C00E3D702 /* Model */,
 				32AF668817C9EF9600EF34EC /* Parts */,
 				32AF668917C9EF9600EF34EC /* Utils */,
 				32AF668A17C9EF9600EF34EC /* Views */,
@@ -393,6 +414,7 @@
 				3268E4CC17CB940300E3D702 /* PocketList.storyboard in Resources */,
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
 				3268E4D017CB96E600E3D702 /* MainStoryboard.storyboard in Resources */,
+				3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +513,8 @@
 				32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */,
 				3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */,
 				3268E4C617CB936700E3D702 /* PocketListViewController.m in Sources */,
+				3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */,
+				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

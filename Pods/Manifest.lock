@@ -7,6 +7,7 @@ PODS:
   - Kiwi/ARC (2.2.1)
   - Kiwi/NonARC (2.2.1)
   - libffi (3.0.13)
+  - MBProgressHUD (0.7)
   - OCMock (2.2.1)
   - PocketAPI (1.0.2)
   - Reachability (3.0.0)
@@ -15,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - BlocksKit (~> 1.8.2)
   - Kiwi (~> 2.2.1)
+  - MBProgressHUD (~> 0.5)
   - OCMock (~> 2.2.1)
   - PocketAPI (~> 1.0.2)
   - Reachability (~> 3.0.0)
@@ -24,6 +26,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7396526b0816734103f6133fbb1a520c8b04e80c
   Kiwi: e6524ba0eaa1b28af7af146bdee5314b32aa3edb
   libffi: 64ef39353e747bb2b25e1026afd96a157bf9231c
+  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   OCMock: 80e4cfbc71a0e1bd28caf10a9fda27da7c4c8402
   PocketAPI: 2ed51391e6ea7a48c707528f782f5a2cb0eab80e
   Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2

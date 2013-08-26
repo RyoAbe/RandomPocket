@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Pods-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>Pods-PocketAPI.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -52,6 +57,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>099B5947B93044FEB4B238A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1BF2D69138DB4086A1513468</key>
 		<dict>
 			<key>primary</key>
@@ -87,6 +97,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>56E3CF03A03447A7A948D4A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5DF76AC21A314BE4A7208D2C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6814835FCED34E87A54AD57F</key>
 		<dict>
 			<key>primary</key>
@@ -97,7 +117,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>77B9A923E3BA461289937798</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>7EB0AA0A788647058A74BEE5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84722254A4A34B53BF69DB59</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -108,6 +138,16 @@
 			<true/>
 		</dict>
 		<key>9F86B1B268B0419DBC0020EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A640424C3EE7405E9625DD88</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AF1C92B5BD6748C6BA66F928</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,7 +172,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D8CCB3EAB96C4AE69CEECAA6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E42DEEAABA89463FB6AC23B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F25E82D4CDFC468E85233F41</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FCB119197AA4430A99777D04</key>
 		<dict>
 			<key>primary</key>
 			<true/>

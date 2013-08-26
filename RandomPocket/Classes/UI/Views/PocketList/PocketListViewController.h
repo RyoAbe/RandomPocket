@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RandomPocketUI.h"
 
-@interface PocketListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface PocketListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate>
 
 @end

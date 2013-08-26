@@ -7,10 +7,12 @@
 //
 
 #import "PocketListViewController.h"
-#import "RandomPocketUI.h"
 
 @interface PocketListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) UIPocketList *pocketList;
+@property (nonatomic) MBProgressHUD *HUD;
+@property (nonatomic) UIRefreshControl *refreshController;
 @end
 
 static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
@@ -21,7 +23,6 @@ static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -29,15 +30,37 @@ static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // RefreshController
+    self.refreshController = [UIRefreshControl new];
+    [self.tableView addSubview:self.refreshController];
+    [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
+    
+    // DimmingView
+    self.HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.view addSubview:self.HUD];
+	self.HUD.labelText = NSLocalizedStringFromTable(@"Loading", @"Common", nil);
+
+    // リクエスト
+    [self reqestPocketList];
+}
+
+- (void)reqestPocketList
+{
+    [self.HUD show:YES];
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:PokcetListCellIdentifier];
+    self.pocketList = [[UIPocketList alloc] initWithSuccessBlock:^{
+        [self.HUD hide:YES];
+        [self.refreshController endRefreshing];
+        [self.tableView reloadData];
+    } errorBlock:^{
+        [self.HUD hide:YES];
+        [self.refreshController endRefreshing];
+        [self.view makeToast:NSLocalizedStringFromTable(@"FaildRequestPocketList", @"PocketList", nil)];
+    }];
     
-//    [[PocketAPI sharedAPI] callAPIMethod:@"get"
-//                          withHTTPMethod:PocketAPIHTTPMethodPOST
-//                               arguments:nil
-//                                 handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-//                                     NSLog(@"response : %@", [response description]);
-//    }];
+    [self.pocketList request];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,21 +71,27 @@ static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.pocketList.numberOfSections;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
-    cell.contentView.backgroundColor = [UIColor orangeColor];
+    UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
+    cell.textLabel.text = pocket.url;
 
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+        return [self.pocketList numberOfRowsInSection:section];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pocket.url]];
+}
 
 @end
