@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PocketListViewController : UIViewController
+@interface PocketListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @end

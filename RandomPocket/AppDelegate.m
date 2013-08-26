@@ -14,9 +14,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     [[PocketAPI sharedAPI] setConsumerKey:@"17789-2ae60ad9c498ad18d6cc31dd"];
-    
+
+    NSString *storyBoardName = @"Welcom";
+    if([PocketAPI sharedAPI].username){
+        storyBoardName = @"PocketList";
+    }
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyBoardName bundle:nil];
+    UIViewController *vc = [storyboard instantiateInitialViewController];
+    self.window.rootViewController = vc;
+
     return YES;
 }
 

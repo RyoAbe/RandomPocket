@@ -19,7 +19,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,9 +35,16 @@
     [[PocketAPI sharedAPI] loginWithHandler:^(PocketAPI *api, NSError *error) {
         if(error){
             [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)];
-            return ;
+            return;
         }
-        [self performSegueWithIdentifier:@"PocketListSegue" sender:self];
+
+#warning いらないかも？リストを表示しようとして認証が通ってなければ、ログイン画面がでるような、、
+        if(self.isModal){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [self performSegueWithIdentifier:@"PocketListSegue" sender:self];
+        }
     }];
 }
+
 @end
