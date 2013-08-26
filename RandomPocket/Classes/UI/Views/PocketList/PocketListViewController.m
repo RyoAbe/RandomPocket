@@ -15,7 +15,7 @@
 @property (nonatomic) UIRefreshControl *refreshController;
 @end
 
-static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
+static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
 
 @implementation PocketListViewController
 
@@ -31,7 +31,8 @@ static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
 {
     [super viewDidLoad];
     
-    // RefreshController
+    // TableView
+    [self.tableView registerClass:[PocketListCell class] forCellReuseIdentifier:PokcetListCellIdentifier];
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
     [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
@@ -48,8 +49,6 @@ static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
 - (void)reqestPocketList
 {
     [self.HUD show:YES];
-
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:PokcetListCellIdentifier];
     self.pocketList = [[UIPocketList alloc] initWithSuccessBlock:^{
         [self.HUD hide:YES];
         [self.refreshController endRefreshing];
@@ -74,22 +73,23 @@ static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
     return self.pocketList.numberOfSections;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(PocketListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
-    UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
-    cell.textLabel.text = pocket.url;
+    PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
+    cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
+//    cell.textLabel.text = cell.pocket.title;
 
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        return [self.pocketList numberOfRowsInSection:section];
+    return [self.pocketList numberOfRowsInSection:section];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pocket.url]];
 }

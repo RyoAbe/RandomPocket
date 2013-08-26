@@ -16,6 +16,9 @@
 #import "Toast+UIView.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
-// UI
+// UI Model
 #import "UIPocket.h"
 #import "UIPocketList.h"
+
+// UI
+#import "PocketListCell.h"

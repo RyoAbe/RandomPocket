@@ -17,6 +17,8 @@
 		3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D317CBA16E00E3D702 /* UIPocketList.m */; };
 		3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
 		3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4D817CBA8BD00E3D702 /* PocketList.strings */; };
+		3268E4DC17CBBF3100E3D702 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4DB17CBBF3000E3D702 /* PocketListCell.m */; };
+		3268E61B17CBC5BF00E3D702 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3268E61A17CBC5BE00E3D702 /* PocketListCell.xib */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
@@ -62,6 +64,9 @@
 		3268E4D517CBA23600E3D702 /* UIPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocket.h; sourceTree = "<group>"; };
 		3268E4D617CBA23600E3D702 /* UIPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocket.m; sourceTree = "<group>"; };
 		3268E4D817CBA8BD00E3D702 /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
+		3268E4DA17CBBF3000E3D702 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
+		3268E4DB17CBBF3000E3D702 /* PocketListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListCell.m; sourceTree = "<group>"; };
+		3268E61A17CBC5BE00E3D702 /* PocketListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PocketListCell.xib; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32AF668617C9E97600EF34EC /* RandomPocketLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketLibrary.h; sourceTree = "<group>"; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
@@ -152,10 +157,11 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
-		3268E4C217CB936700E3D702 /* PocketDetail */ = {
+		3268E4C217CB936700E3D702 /* PocketDetailSegue */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = PocketDetailSegue;
 			path = PocketDetail;
 			sourceTree = "<group>";
 		};
@@ -165,6 +171,9 @@
 				3268E4CB17CB940300E3D702 /* PocketList.storyboard */,
 				3268E4C417CB936700E3D702 /* PocketListViewController.h */,
 				3268E4C517CB936700E3D702 /* PocketListViewController.m */,
+				3268E4DA17CBBF3000E3D702 /* PocketListCell.h */,
+				3268E4DB17CBBF3000E3D702 /* PocketListCell.m */,
+				3268E61A17CBC5BE00E3D702 /* PocketListCell.xib */,
 			);
 			path = PocketList;
 			sourceTree = "<group>";
@@ -180,22 +189,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3268E57D17CBC48000E3D702 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		32AF668117C9E8D200EF34EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				32AF668217C9E8D200EF34EC /* Frameworks */,
+				3268E57D17CBC48000E3D702 /* Frameworks */,
 				32AF668317C9E8D200EF34EC /* Library */,
 				32AF668517C9E8D200EF34EC /* UI */,
 				3268E42917C9F90500E3D702 /* Resources */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		32AF668217C9E8D200EF34EC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		32AF668317C9E8D200EF34EC /* Library */ = {
@@ -239,7 +248,7 @@
 			children = (
 				3268E4BE17CB935100E3D702 /* Welcome */,
 				3268E4C317CB936700E3D702 /* PocketList */,
-				3268E4C217CB936700E3D702 /* PocketDetail */,
+				3268E4C217CB936700E3D702 /* PocketDetailSegue */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -415,6 +424,7 @@
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
 				3268E4D017CB96E600E3D702 /* MainStoryboard.storyboard in Resources */,
 				3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */,
+				3268E61B17CBC5BF00E3D702 /* PocketListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +525,7 @@
 				3268E4C617CB936700E3D702 /* PocketListViewController.m in Sources */,
 				3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
+				3268E4DC17CBBF3100E3D702 /* PocketListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,11 +629,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C6ED4897690439088DDDEE1 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
 				INFOPLIST_FILE = "RandomPocket/RandomPocket-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -631,11 +644,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0C6ED4897690439088DDDEE1 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
 				INFOPLIST_FILE = "RandomPocket/RandomPocket-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -12,7 +12,7 @@
 @interface UIPocketList()
 @property (nonatomic, copy) void (^successBlock)();
 @property (nonatomic, copy) void (^errorBlock)();
-@property (nonatomic) NSDictionary *response;
+@property (nonatomic) NSMutableArray *response;
 @end
 
 @implementation UIPocketList
@@ -23,6 +23,7 @@
     if (self) {
         self.successBlock = successBlock;
         self.errorBlock = errorBlock;
+        self.response = [NSMutableArray new];
     }
     return self;
 }
@@ -32,7 +33,7 @@
 
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"simple": @"detailType"}
+                               arguments:@{@"complete": @"detailType", @"count": @(10)}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      [self handlerWithResponse:response error:error];
                                  }];
@@ -40,7 +41,9 @@
 
 - (void)handlerWithResponse:(NSDictionary*)response error:(NSError*)error;
 {
-    self.response = response[@"list"];
+    for (NSString *key in response[@"list"]) {
+        [self.response addObject:response[@"list"][key]];
+    }
     
     if(!error){
         self.successBlock();
@@ -61,15 +64,13 @@
 
 - (UIPocket*)objectAtIndex:(NSUInteger)index
 {
-    UIPocket *pocket = [UIPocket new];
-    pocket.url = self.response[@"62944243"][@"given_url"];
+    UIPocket *pocket = [[UIPocket alloc] initWithData:self.response[index]];
     return pocket;
 }
 
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath
 {
-    UIPocket *pocket = [UIPocket new];
-    pocket.url = self.response[@"62944243"][@"given_url"];
+    UIPocket *pocket = [[UIPocket alloc] initWithData:self.response[indexPath.row]];
     return pocket;
 }
 

@@ -10,6 +10,8 @@
 
 @interface UIPocket : NSObject
 
+- (id)initWithData:(NSDictionary*)data;
 @property (nonatomic) NSString* url;
+@property (nonatomic) NSString* title;
 
 @end

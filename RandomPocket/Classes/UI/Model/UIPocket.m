@@ -10,4 +10,19 @@
 
 @implementation UIPocket
 
+- (id)initWithData:(NSDictionary*)data
+{
+    self = [super init];
+    if (self) {
+        self.url = data[@"resolved_url"];
+        NSLog(@"data : %@", [data description]);
+        NSString* title = data[@"resolved_title"];
+        if(title.length == 0){
+            title = data[@"given_title"];
+        }
+        self.title = title;
+    }
+    return self;
+}
+
 @end
