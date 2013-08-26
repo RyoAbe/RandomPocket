@@ -37,13 +37,9 @@
             [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)];
             return;
         }
-
-#warning いらないかも？リストを表示しようとして認証が通ってなければ、ログイン画面がでるような、、
-        if(self.isModal){
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }else{
-            [self performSegueWithIdentifier:@"PocketListSegue" sender:self];
-        }
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PocketList" bundle:nil];
+        UIViewController *vc = [storyboard instantiateInitialViewController];
+        [self presentViewController:vc animated:YES completion:nil];
     }];
 }
 

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WelcomeViewController : UIViewController
-@property (nonatomic) BOOL isModal;
+
 @end

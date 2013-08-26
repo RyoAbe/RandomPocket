@@ -32,22 +32,12 @@ static NSString* const PokcetListCellIdentifier = @"PokcetListCell";
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:PokcetListCellIdentifier];
     
-    [[PocketAPI sharedAPI] callAPIMethod:@"get"
-                          withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:nil
-                                 handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     NSLog(@"response : %@", [response description]);
-    }];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
-#warning いらないかも？リストを表示しようとして認証が通ってなければ、ログイン画面がでるような、、
-    if(![PocketAPI sharedAPI].username){
-        [self performSegueWithIdentifier:@"WelcomSegue" sender:nil];
-    }
+//    [[PocketAPI sharedAPI] callAPIMethod:@"get"
+//                          withHTTPMethod:PocketAPIHTTPMethodPOST
+//                               arguments:nil
+//                                 handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
+//                                     NSLog(@"response : %@", [response description]);
+//    }];
 }
 
 - (void)didReceiveMemoryWarning

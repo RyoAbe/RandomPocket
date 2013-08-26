@@ -26,9 +26,27 @@
                     <view key="view" contentMode="scaleToFill" id="reH-J0-NXW">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LWL-VX-Pq9">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nWC-KJ-AuU" id="mTY-zJ-jf0"/>
+                                    <outlet property="delegate" destination="nWC-KJ-AuU" id="vxO-uB-nju"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="leading" secondItem="reH-J0-NXW" secondAttribute="leading" type="default" id="Mne-Ex-iOz"/>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="trailing" secondItem="reH-J0-NXW" secondAttribute="trailing" type="default" id="PgH-DK-Efq"/>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="bottom" secondItem="reH-J0-NXW" secondAttribute="bottom" type="default" id="jCF-hm-LMe"/>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="top" secondItem="reH-J0-NXW" secondAttribute="top" type="default" id="qZd-US-soI"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ESW-t4-2oY"/>
+                    <connections>
+                        <outlet property="tableView" destination="LWL-VX-Pq9" id="yXl-Gn-Ml5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bun-dm-oh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,6 +54,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
         <class className="PocketListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PocketListViewController.h"/>
             <relationships>
