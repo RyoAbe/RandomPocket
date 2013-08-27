@@ -32,7 +32,8 @@ static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
     [super viewDidLoad];
     
     // TableView
-    [self.tableView registerClass:[PocketListCell class] forCellReuseIdentifier:PokcetListCellIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"PocketListCell" bundle:nil] forCellReuseIdentifier:PokcetListCellIdentifier];
+    
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
     [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
@@ -77,7 +78,6 @@ static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
 {
     PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
     cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
-//    cell.textLabel.text = cell.pocket.title;
 
     return cell;
 }
@@ -92,6 +92,12 @@ static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pocket.url]];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIPocket* pocket = [self.pocketList objectAtIndexPath:indexPath];
+    return [PocketListCell cellHeight:pocket];
 }
 
 @end
