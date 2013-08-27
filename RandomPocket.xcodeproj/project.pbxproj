@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		3268E42D17C9F92900E3D702 /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42C17C9F92900E3D702 /* Welcom.strings */; };
 		3268E42F17C9F93600E3D702 /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42E17C9F93600E3D702 /* Common.strings */; };
 		3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4C017CB935100E3D702 /* WelcomeViewController.m */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		0C6ED4897690439088DDDEE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
+		324FEFFA17CCEB2B005B08F4 /* RPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPColor.m; sourceTree = "<group>"; };
 		3268E42C17C9F92900E3D702 /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
 		3268E42E17C9F93600E3D702 /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		3268E4BF17CB935100E3D702 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				32AF668717C9E9F000EF34EC /* RandomPocketUI.h */,
+				324FEFF917CCEB2B005B08F4 /* RPColor.h */,
+				324FEFFA17CCEB2B005B08F4 /* RPColor.m */,
 				3268E4CF17CB96E600E3D702 /* MainStoryboard.storyboard */,
 				3268E4D117CBA13C00E3D702 /* Model */,
 				32AF668817C9EF9600EF34EC /* Parts */,
@@ -526,6 +531,7 @@
 				3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
 				3268E4DC17CBBF3100E3D702 /* PocketListCell.m in Sources */,
+				324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

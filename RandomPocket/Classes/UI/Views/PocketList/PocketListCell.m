@@ -9,11 +9,9 @@
 #import "PocketListCell.h"
 
 static CGFloat DefaultCellHeight;
-
 static CGRect DefaultTitleRect;
 static UIFont *DefaultTitleFont;
 static NSLineBreakMode DefaultTitleBreakMode;
-
 static CGRect DefaultURLRect;
 
 @implementation PocketListCell
@@ -37,6 +35,7 @@ static CGRect DefaultURLRect;
     return self;
 }
 
+#warning こんな方法したくない
 - (void)prepare
 {
     DefaultCellHeight = self.frame.size.height;
@@ -58,19 +57,22 @@ static CGRect DefaultURLRect;
     if (!pocket || !pocket.title || pocket.title.length == 0){
         return DefaultCellHeight;
     }
-
     CGSize size = [pocket.title sizeWithFont:DefaultTitleFont
                            constrainedToSize:CGSizeMake(DefaultTitleRect.size.width, INT_MAX)
                                lineBreakMode:DefaultTitleBreakMode];
-
     CGFloat margin = fabs(DefaultCellHeight - DefaultTitleRect.size.height - DefaultURLRect.size.height);
     CGFloat cellHeight = size.height + margin + DefaultURLRect.size.height;
-    
+
 //    if (cellHeight < DefaultCellHeight) {
-//        return DefaultCellHeight; // まずないだろ？
+//        return DefaultCellHeight; // いらないかな、、？
 //    }
     
     return cellHeight;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
 }
 
 @end

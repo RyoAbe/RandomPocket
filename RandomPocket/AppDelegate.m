@@ -23,8 +23,26 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyBoardName bundle:nil];
     UIViewController *vc = [storyboard instantiateInitialViewController];
     self.window.rootViewController = vc;
+    
+    [self appearance];
 
     return YES;
+}
+
+- (void)appearance
+{
+    [[UINavigationBar appearance] setTintColor:[RPColor NavigationBarColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+     
+                                UITextAttributeTextColor:[RPColor NavigationBarTitleColor],
+     
+                          UITextAttributeTextShadowColor:[UIColor clearColor],
+     
+                         UITextAttributeTextShadowOffset:[NSValue valueWithUIOffset:UIOffsetZero],
+     
+                                     UITextAttributeFont:[UIFont boldSystemFontOfSize:20],
+     
+     }];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url

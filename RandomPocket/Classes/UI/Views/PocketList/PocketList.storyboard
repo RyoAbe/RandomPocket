@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="-303" y="188"/>
         </scene>
-        <!--Pocket List View Controller-->
+        <!--Pocket List View Controller - List-->
         <scene sceneID="Iza-tM-8qZ">
             <objects>
-                <viewController id="nWC-KJ-AuU" customClass="PocketListViewController" sceneMemberID="viewController">
+                <viewController title="List" id="nWC-KJ-AuU" customClass="PocketListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="reH-J0-NXW">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -43,7 +43,7 @@
                             <constraint firstItem="LWL-VX-Pq9" firstAttribute="top" secondItem="reH-J0-NXW" secondAttribute="top" type="default" id="qZd-US-soI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ESW-t4-2oY"/>
+                    <navigationItem key="navigationItem" title="List" id="ESW-t4-2oY"/>
                     <connections>
                         <outlet property="tableView" destination="LWL-VX-Pq9" id="yXl-Gn-Ml5"/>
                         <segue destination="kRR-vD-ebS" kind="push" identifier="PocketDetailSegue" id="Pbf-iI-Fyc"/>
