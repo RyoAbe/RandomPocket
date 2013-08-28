@@ -7,7 +7,6 @@
 //
 
 #import "PocketListViewController.h"
-#import "PocketDetailViewController.h"
 
 @interface PocketListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -18,7 +17,7 @@
 @end
 
 static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
-static NSString* const PocketDetailSegueIdentifier = @"PocketDetailSegue";
+static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 @implementation PocketListViewController
 
@@ -36,7 +35,7 @@ static NSString* const PocketDetailSegueIdentifier = @"PocketDetailSegue";
     
     // TableView
     [self.tableView registerNib:[UINib nibWithNibName:@"PocketListCell" bundle:nil] forCellReuseIdentifier:PokcetListCellIdentifier];
-    
+
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
     [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
@@ -77,15 +76,15 @@ static NSString* const PocketDetailSegueIdentifier = @"PocketDetailSegue";
     return self.pocketList.numberOfSections;
 }
 
--(PocketListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - UITableViewDelegate
+
+- (PocketListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
     cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
-
+    
     return cell;
 }
-
-#pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -96,7 +95,7 @@ static NSString* const PocketDetailSegueIdentifier = @"PocketDetailSegue";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selectedIndexPath = indexPath;
-    [self performSegueWithIdentifier:PocketDetailSegueIdentifier sender:self];
+    [self performSegueWithIdentifier:ToPocketSwipeSegue sender:self];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,9 +108,9 @@ static NSString* const PocketDetailSegueIdentifier = @"PocketDetailSegue";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:PocketDetailSegueIdentifier]){
-        PocketDetailViewController *vc = segue.destinationViewController;
-        vc.pocket = [self.pocketList objectAtIndexPath:self.selectedIndexPath];
+    if([segue.identifier isEqualToString:ToPocketSwipeSegue]){
+        PocketSwipeViewController *vc = segue.destinationViewController;
+        vc.currentPocket = [self.pocketList objectAtIndexPath:self.selectedIndexPath];
         vc.pocketList = self.pocketList;
     }
 }

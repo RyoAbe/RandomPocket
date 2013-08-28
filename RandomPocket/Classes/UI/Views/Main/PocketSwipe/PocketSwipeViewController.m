@@ -9,8 +9,10 @@
 #import "PocketSwipeViewController.h"
 
 @interface PocketSwipeViewController ()
-
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
+
+static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 @implementation PocketSwipeViewController
 
@@ -26,13 +28,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
 }
 
-- (void)didReceiveMemoryWarning
+
+- (void)changeTitle
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSInteger index = [self.pocketList indexForObject:self.currentPocket];
+    self.title = [NSString stringWithFormat:NSLocalizedStringFromTable(@"NavigationTitleFormat", @"PocketDetail", nil), index, self.pocketList.numberOfItems];
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.pocketList.numberOfSections;
+}
+
+- (PocketDetailCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PocketDetailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PocketDetailCellIdentifier forIndexPath:indexPath];
+    cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
+
+    return cell;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.pocketList numberOfItemsInSection:section];
 }
 
 @end

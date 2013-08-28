@@ -12,14 +12,18 @@
 #import "AppDelegate.h"
 #import "RandomPocketLibrary.h"
 
-// Library
+// Core
 #import "Toast+UIView.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+
+// UI Constants
+#import "RPColor.h"
 
 // UI Model
 #import "UIPocket.h"
 #import "UIPocketList.h"
 
-// UI
-#import "RPColor.h"
+// Views
 #import "PocketListCell.h"
+#import "PocketSwipeViewController.h"
+#import "PocketDetailCell.h"

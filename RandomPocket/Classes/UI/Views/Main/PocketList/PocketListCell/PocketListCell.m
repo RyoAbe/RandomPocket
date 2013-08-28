@@ -14,6 +14,11 @@ static UIFont *DefaultTitleFont;
 static NSLineBreakMode DefaultTitleBreakMode;
 static CGRect DefaultURLRect;
 
+@interface PocketListCell()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *urlLabel;
+@end
+
 @implementation PocketListCell
 
 + (void)initialize
@@ -66,13 +71,7 @@ static CGRect DefaultURLRect;
 //    if (cellHeight < DefaultCellHeight) {
 //        return DefaultCellHeight; // いらないかな、、？
 //    }
-    
     return cellHeight;
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
 }
 
 @end

@@ -11,7 +11,5 @@
 
 @interface PocketListCell : UITableViewCell
 @property (nonatomic) UIPocket *pocket;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 + (CGFloat)cellHeight:(UIPocket*)pocket;
 @end

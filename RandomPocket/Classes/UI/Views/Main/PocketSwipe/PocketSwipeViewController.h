@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RandomPocketUI.h"
 
-@interface PocketSwipeViewController : UIViewController
-
+@interface PocketSwipeViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@property (nonatomic) UIPocketList *pocketList;
 @end
