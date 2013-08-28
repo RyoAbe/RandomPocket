@@ -16,9 +16,9 @@
 {
     [[PocketAPI sharedAPI] setConsumerKey:@"17789-2ae60ad9c498ad18d6cc31dd"];
 
-    NSString *storyBoardName = @"Welcom";
-    if([PocketAPI sharedAPI].username){
-        storyBoardName = @"PocketList";
+    NSString *storyBoardName = @"Main";
+    if(![PocketAPI sharedAPI].username){
+        storyBoardName = @"Welcom";
     }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyBoardName bundle:nil];
     UIViewController *vc = [storyboard instantiateInitialViewController];

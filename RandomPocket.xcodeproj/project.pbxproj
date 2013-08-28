@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
-		324FEFFE17CCEF0C005B08F4 /* PocketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFD17CCEF0C005B08F4 /* PocketDetailViewController.m */; };
-		324FF00317CCF6E7005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF00117CCF6E7005B08F4 /* PocketListCell.m */; };
-		324FF00417CCF6E7005B08F4 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF00217CCF6E7005B08F4 /* PocketListCell.xib */; };
 		324FF00617CCFBA3005B08F4 /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 324FF00517CCFBA3005B08F4 /* PocketDetail.strings */; };
+		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
+		324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF01717CE14EF005B08F4 /* PocketListCell.xib */; };
+		324FF01F17CE14EF005B08F4 /* PocketListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01917CE14EF005B08F4 /* PocketListViewController.m */; };
+		324FF02117CE1516005B08F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 324FF02017CE1516005B08F4 /* Main.storyboard */; };
+		324FF02417CE15A3005B08F4 /* PocketSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF02317CE15A3005B08F4 /* PocketSwipeViewController.m */; };
+		324FF02817CE15BE005B08F4 /* PocketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF02717CE15BE005B08F4 /* PocketDetailViewController.m */; };
 		3268E42D17C9F92900E3D702 /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42C17C9F92900E3D702 /* Welcom.strings */; };
 		3268E42F17C9F93600E3D702 /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42E17C9F93600E3D702 /* Common.strings */; };
 		3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4C017CB935100E3D702 /* WelcomeViewController.m */; };
-		3268E4C617CB936700E3D702 /* PocketListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4C517CB936700E3D702 /* PocketListViewController.m */; };
-		3268E4CC17CB940300E3D702 /* PocketList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CB17CB940300E3D702 /* PocketList.storyboard */; };
 		3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CD17CB947900E3D702 /* Welcom.storyboard */; };
-		3268E4D017CB96E600E3D702 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* MainStoryboard.storyboard */; };
+		3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */; };
 		3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D317CBA16E00E3D702 /* UIPocketList.m */; };
 		3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
 		3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4D817CBA8BD00E3D702 /* PocketList.strings */; };
@@ -55,22 +56,24 @@
 		0C6ED4897690439088DDDEE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
 		324FEFFA17CCEB2B005B08F4 /* RPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPColor.m; sourceTree = "<group>"; };
-		324FEFFC17CCEF0C005B08F4 /* PocketDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketDetailViewController.h; sourceTree = "<group>"; };
-		324FEFFD17CCEF0C005B08F4 /* PocketDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketDetailViewController.m; sourceTree = "<group>"; };
-		324FF00017CCF6E7005B08F4 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
-		324FF00117CCF6E7005B08F4 /* PocketListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListCell.m; sourceTree = "<group>"; };
-		324FF00217CCF6E7005B08F4 /* PocketListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PocketListCell.xib; sourceTree = "<group>"; };
 		324FF00517CCFBA3005B08F4 /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
 		324FF00D17CD77DC005B08F4 /* RandomPocketLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketLibrary.h; sourceTree = "<group>"; };
+		324FF01517CE14EF005B08F4 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
+		324FF01617CE14EF005B08F4 /* PocketListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListCell.m; sourceTree = "<group>"; };
+		324FF01717CE14EF005B08F4 /* PocketListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PocketListCell.xib; sourceTree = "<group>"; };
+		324FF01817CE14EF005B08F4 /* PocketListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListViewController.h; sourceTree = "<group>"; };
+		324FF01917CE14EF005B08F4 /* PocketListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListViewController.m; sourceTree = "<group>"; };
+		324FF02017CE1516005B08F4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		324FF02217CE15A3005B08F4 /* PocketSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketSwipeViewController.h; sourceTree = "<group>"; };
+		324FF02317CE15A3005B08F4 /* PocketSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketSwipeViewController.m; sourceTree = "<group>"; };
+		324FF02617CE15BE005B08F4 /* PocketDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketDetailViewController.h; sourceTree = "<group>"; };
+		324FF02717CE15BE005B08F4 /* PocketDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketDetailViewController.m; sourceTree = "<group>"; };
 		3268E42C17C9F92900E3D702 /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
 		3268E42E17C9F93600E3D702 /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		3268E4BF17CB935100E3D702 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		3268E4C017CB935100E3D702 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
-		3268E4C417CB936700E3D702 /* PocketListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListViewController.h; sourceTree = "<group>"; };
-		3268E4C517CB936700E3D702 /* PocketListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListViewController.m; sourceTree = "<group>"; };
-		3268E4CB17CB940300E3D702 /* PocketList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PocketList.storyboard; sourceTree = "<group>"; };
 		3268E4CD17CB947900E3D702 /* Welcom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcom.storyboard; sourceTree = "<group>"; };
-		3268E4CF17CB96E600E3D702 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialStoryboard.storyboard; sourceTree = "<group>"; };
 		3268E4D217CBA16E00E3D702 /* UIPocketList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocketList.h; sourceTree = "<group>"; };
 		3268E4D317CBA16E00E3D702 /* UIPocketList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketList.m; sourceTree = "<group>"; };
 		3268E4D517CBA23600E3D702 /* UIPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocket.h; sourceTree = "<group>"; };
@@ -129,16 +132,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		324FEFFF17CCF6E7005B08F4 /* PocketListCell */ = {
-			isa = PBXGroup;
-			children = (
-				324FF00017CCF6E7005B08F4 /* PocketListCell.h */,
-				324FF00117CCF6E7005B08F4 /* PocketListCell.m */,
-				324FF00217CCF6E7005B08F4 /* PocketListCell.xib */,
-			);
-			path = PocketListCell;
-			sourceTree = "<group>";
-		};
 		324FF00917CD77DC005B08F4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +162,55 @@
 			children = (
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		324FF00E17CE14EF005B08F4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				324FF02017CE1516005B08F4 /* Main.storyboard */,
+				324FF01217CE14EF005B08F4 /* PocketList */,
+				324FF01A17CE14EF005B08F4 /* PocketSwipe */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		324FF01217CE14EF005B08F4 /* PocketList */ = {
+			isa = PBXGroup;
+			children = (
+				324FF01417CE14EF005B08F4 /* PocketListCell */,
+				324FF01817CE14EF005B08F4 /* PocketListViewController.h */,
+				324FF01917CE14EF005B08F4 /* PocketListViewController.m */,
+			);
+			path = PocketList;
+			sourceTree = "<group>";
+		};
+		324FF01417CE14EF005B08F4 /* PocketListCell */ = {
+			isa = PBXGroup;
+			children = (
+				324FF01517CE14EF005B08F4 /* PocketListCell.h */,
+				324FF01617CE14EF005B08F4 /* PocketListCell.m */,
+				324FF01717CE14EF005B08F4 /* PocketListCell.xib */,
+			);
+			path = PocketListCell;
+			sourceTree = "<group>";
+		};
+		324FF01A17CE14EF005B08F4 /* PocketSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				324FF02217CE15A3005B08F4 /* PocketSwipeViewController.h */,
+				324FF02317CE15A3005B08F4 /* PocketSwipeViewController.m */,
+				324FF02517CE15BE005B08F4 /* PocketDetail */,
+			);
+			path = PocketSwipe;
+			sourceTree = "<group>";
+		};
+		324FF02517CE15BE005B08F4 /* PocketDetail */ = {
+			isa = PBXGroup;
+			children = (
+				324FF02617CE15BE005B08F4 /* PocketDetailViewController.h */,
+				324FF02717CE15BE005B08F4 /* PocketDetailViewController.m */,
+			);
+			path = PocketDetail;
 			sourceTree = "<group>";
 		};
 		3268E42917C9F90500E3D702 /* Resources */ = {
@@ -208,26 +250,6 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
-		3268E4C217CB936700E3D702 /* PocketDetail */ = {
-			isa = PBXGroup;
-			children = (
-				324FEFFC17CCEF0C005B08F4 /* PocketDetailViewController.h */,
-				324FEFFD17CCEF0C005B08F4 /* PocketDetailViewController.m */,
-			);
-			path = PocketDetail;
-			sourceTree = "<group>";
-		};
-		3268E4C317CB936700E3D702 /* PocketList */ = {
-			isa = PBXGroup;
-			children = (
-				3268E4CB17CB940300E3D702 /* PocketList.storyboard */,
-				3268E4C417CB936700E3D702 /* PocketListViewController.h */,
-				3268E4C517CB936700E3D702 /* PocketListViewController.m */,
-				324FEFFF17CCF6E7005B08F4 /* PocketListCell */,
-			);
-			path = PocketList;
-			sourceTree = "<group>";
-		};
 		3268E4D117CBA13C00E3D702 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,10 +282,10 @@
 		32AF668517C9E8D200EF34EC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */,
 				32AF668717C9E9F000EF34EC /* RandomPocketUI.h */,
 				324FEFF917CCEB2B005B08F4 /* RPColor.h */,
 				324FEFFA17CCEB2B005B08F4 /* RPColor.m */,
-				3268E4CF17CB96E600E3D702 /* MainStoryboard.storyboard */,
 				3268E4D117CBA13C00E3D702 /* Model */,
 				32AF668817C9EF9600EF34EC /* Parts */,
 				32AF668917C9EF9600EF34EC /* Utils */,
@@ -290,9 +312,8 @@
 		32AF668A17C9EF9600EF34EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				324FF00E17CE14EF005B08F4 /* Main */,
 				3268E4BE17CB935100E3D702 /* Welcome */,
-				3268E4C317CB936700E3D702 /* PocketList */,
-				3268E4C217CB936700E3D702 /* PocketDetail */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -464,12 +485,12 @@
 				32D0886F17C9DE76007C50CD /* Default-568h@2x.png in Resources */,
 				3268E42D17C9F92900E3D702 /* Welcom.strings in Resources */,
 				3268E42F17C9F93600E3D702 /* Common.strings in Resources */,
-				3268E4CC17CB940300E3D702 /* PocketList.storyboard in Resources */,
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
-				3268E4D017CB96E600E3D702 /* MainStoryboard.storyboard in Resources */,
+				3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */,
 				3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */,
-				324FF00417CCF6E7005B08F4 /* PocketListCell.xib in Resources */,
 				324FF00617CCFBA3005B08F4 /* PocketDetail.strings in Resources */,
+				324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */,
+				324FF02117CE1516005B08F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,12 +588,13 @@
 				32D0886517C9DE76007C50CD /* main.m in Sources */,
 				32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */,
 				3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */,
-				3268E4C617CB936700E3D702 /* PocketListViewController.m in Sources */,
 				3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
 				324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */,
-				324FEFFE17CCEF0C005B08F4 /* PocketDetailViewController.m in Sources */,
-				324FF00317CCF6E7005B08F4 /* PocketListCell.m in Sources */,
+				324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */,
+				324FF01F17CE14EF005B08F4 /* PocketListViewController.m in Sources */,
+				324FF02417CE15A3005B08F4 /* PocketSwipeViewController.m in Sources */,
+				324FF02817CE15BE005B08F4 /* PocketDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
