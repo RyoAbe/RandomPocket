@@ -7,15 +7,18 @@
 //
 
 #import "PocketListViewController.h"
+#import "PocketDetailViewController.h"
 
 @interface PocketListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) UIPocketList *pocketList;
 @property (nonatomic) MBProgressHUD *HUD;
 @property (nonatomic) UIRefreshControl *refreshController;
+@property (nonatomic) NSIndexPath *selectedIndexPath;
 @end
 
 static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
+static NSString* const PocketDetailSegueIdentifier = @"PocketDetailSegue";
 
 @implementation PocketListViewController
 
@@ -82,22 +85,35 @@ static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.pocketList numberOfRowsInSection:section];
+    return [self.pocketList numberOfItemsInSection:section];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pocket.url]];
+    self.selectedIndexPath = indexPath;
+    [self performSegueWithIdentifier:PocketDetailSegueIdentifier sender:self];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIPocket* pocket = [self.pocketList objectAtIndexPath:indexPath];
     return [PocketListCell cellHeight:pocket];
+}
+
+#pragma mark - 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:PocketDetailSegueIdentifier]){
+        PocketDetailViewController *vc = segue.destinationViewController;
+        vc.pocket = [self.pocketList objectAtIndexPath:self.selectedIndexPath];
+        vc.pocketList = self.pocketList;
+    }
 }
 
 @end

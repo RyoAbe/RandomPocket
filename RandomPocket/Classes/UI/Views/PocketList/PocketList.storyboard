@@ -37,10 +37,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="leading" secondItem="reH-J0-NXW" secondAttribute="leading" type="default" id="Mne-Ex-iOz"/>
-                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="trailing" secondItem="reH-J0-NXW" secondAttribute="trailing" type="default" id="PgH-DK-Efq"/>
-                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="bottom" secondItem="reH-J0-NXW" secondAttribute="bottom" type="default" id="jCF-hm-LMe"/>
-                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="top" secondItem="reH-J0-NXW" secondAttribute="top" type="default" id="qZd-US-soI"/>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="top" secondItem="reH-J0-NXW" secondAttribute="top" type="default" id="A8S-tC-Hu6"/>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="bottom" secondItem="reH-J0-NXW" secondAttribute="bottom" type="default" id="MNu-Al-uSk"/>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="trailing" secondItem="reH-J0-NXW" secondAttribute="trailing" type="default" id="mKa-bm-eMN"/>
+                            <constraint firstItem="LWL-VX-Pq9" firstAttribute="leading" secondItem="reH-J0-NXW" secondAttribute="leading" type="default" id="qeJ-AT-GsD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="List" id="ESW-t4-2oY"/>
@@ -53,25 +53,70 @@
             </objects>
             <point key="canvasLocation" x="250" y="188"/>
         </scene>
-        <!--View Controller-->
+        <!--Pocket Detail View Controller-->
         <scene sceneID="auG-c6-Ofs">
             <objects>
-                <viewController id="kRR-vD-ebS" sceneMemberID="viewController">
+                <viewController id="kRR-vD-ebS" customClass="PocketDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lKG-1Z-tJY">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="これで１０文字です。これで２０文字です。これで３０文字です。これで４０文字です。これで５０文字です。これで６０文字です。これで７０文字です。" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Psz-In-9rU">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="1" constant="76" type="user" id="UFN-WJ-jsP"/>
+                                    <constraint firstAttribute="width" constant="300" id="yKb-43-M5O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuS-KN-lj2">
+                                <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" type="user" id="ETh-1s-oxU"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="google.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiT-xt-k7A">
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.57528023100000003" green="0.57528023100000003" blue="0.57528023100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hiT-xt-k7A" firstAttribute="centerX" secondItem="lKG-1Z-tJY" secondAttribute="centerX" type="default" id="3vw-4S-oxx"/>
+                            <constraint firstItem="Psz-In-9rU" firstAttribute="trailing" secondItem="fuS-KN-lj2" secondAttribute="trailing" type="default" id="AaG-94-5vA"/>
+                            <constraint firstItem="hiT-xt-k7A" firstAttribute="top" secondItem="fuS-KN-lj2" secondAttribute="bottom" constant="3" type="user" id="Rbm-YA-7iV"/>
+                            <constraint firstItem="fuS-KN-lj2" firstAttribute="trailing" secondItem="hiT-xt-k7A" secondAttribute="trailing" type="default" id="U26-sm-nIz"/>
+                            <constraint firstItem="fuS-KN-lj2" firstAttribute="top" secondItem="Psz-In-9rU" secondAttribute="bottom" constant="8" type="user" id="hEF-Ky-ttb"/>
+                            <constraint firstItem="Psz-In-9rU" firstAttribute="top" secondItem="lKG-1Z-tJY" secondAttribute="top" constant="15" type="user" id="jco-PD-Pqb"/>
+                            <constraint firstItem="hiT-xt-k7A" firstAttribute="leading" secondItem="fuS-KN-lj2" secondAttribute="leading" type="default" id="ohN-GJ-IFn"/>
+                            <constraint firstItem="fuS-KN-lj2" firstAttribute="leading" secondItem="Psz-In-9rU" secondAttribute="leading" type="default" id="qo1-lB-bHm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Sq-6T-zJI"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="Psz-In-9rU" id="8eX-bL-RYj"/>
+                        <outlet property="urlLabel" destination="hiT-xt-k7A" id="S0J-ey-Cjw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hft-M3-bE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="187"/>
+            <point key="canvasLocation" x="767" y="188"/>
         </scene>
     </scenes>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PocketDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PocketDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="separator" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="urlLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="PocketListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PocketListViewController.h"/>

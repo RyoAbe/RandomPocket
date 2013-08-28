@@ -23,7 +23,10 @@ typedef enum UIPocketListChangeType_ {
 - (id)initWithSuccessBlock:(void(^)())successBlock errorBlock:(void(^)())errorBlock;
 - (void)request;
 - (NSInteger)numberOfSections;
-- (NSInteger)numberOfRowsInSection:(NSInteger)section;
+- (NSInteger)numberOfItemsInSection:(NSInteger)section;
+- (NSUInteger)numberOfItems;
+- (NSIndexPath*)indexPathForObject:(UIPocket*)pocket;
+- (NSInteger)indexForObject:(UIPocket*)pocket;
 - (UIPocket*)objectAtIndex:(NSUInteger)index;
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath;
 

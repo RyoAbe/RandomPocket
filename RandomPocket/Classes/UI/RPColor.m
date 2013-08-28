@@ -10,14 +10,22 @@
 
 @implementation RPColor
 
-+(UIColor*)NavigationBarColor
++ (UIColor*)NavigationBarColor
 {
     return [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.f];
+//    return [UIColor colorWithRed:0.4f green:0.4f blue:0.4f alpha:1.f];
 }
 
-+(UIColor*)NavigationBarTitleColor
++ (UIColor*)NavigationBarTitleColor
 {
     return [UIColor colorWithRed:0.4f green:0.4f blue:0.4f alpha:1.f];
+//    return [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.f];
+}
+
++ (UIColor*)BarButtonItemColor
+{
+    return [UIColor colorWithRed:0.5f green:0.5f blue:0.5f alpha:1.f];
+//    return [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.f];
 }
 
 @end

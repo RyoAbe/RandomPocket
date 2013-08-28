@@ -13,5 +13,6 @@
 - (id)initWithData:(NSDictionary*)data;
 @property (nonatomic) NSString* url;
 @property (nonatomic) NSString* title;
+@property (nonatomic) NSDictionary* data;
 
 @end

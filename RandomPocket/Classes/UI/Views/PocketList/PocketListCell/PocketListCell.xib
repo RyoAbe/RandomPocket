@@ -107,7 +107,7 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 79}</string>
+						<string key="NSFrameSize">{300, 79}</string>
 						<reference key="NSSuperview" ref="132701324"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="435438760"/>
@@ -129,6 +129,7 @@
 				<reference key="NSNextKeyView" ref="261226892"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="261226892"/>
 				<string key="IBUIReuseIdentifier">pokcetListCell</string>
 				<integer value="80" key="IBUIRowHeight"/>
@@ -176,7 +177,7 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="132701324"/>
 						<array class="NSMutableArray" key="children">
-							<object class="IBNSLayoutConstraint" id="568583276">
+							<object class="IBNSLayoutConstraint" id="814085653">
 								<reference key="firstItem" ref="132701324"/>
 								<int key="firstAttribute">4</int>
 								<int key="relation">0</int>
@@ -208,7 +209,7 @@
 								<float key="scoringTypeFloat">22</float>
 								<int key="contentType">2</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="954282833">
+							<object class="IBNSLayoutConstraint" id="929288193">
 								<reference key="firstItem" ref="435438760"/>
 								<int key="firstAttribute">3</int>
 								<int key="relation">0</int>
@@ -312,12 +313,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">88</int>
-						<reference key="object" ref="568583276"/>
+						<reference key="object" ref="814085653"/>
 						<reference key="parent" ref="132701324"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">89</int>
-						<reference key="object" ref="954282833"/>
+						<reference key="object" ref="929288193"/>
 						<reference key="parent" ref="132701324"/>
 					</object>
 				</array>
@@ -339,9 +340,9 @@
 				<array class="NSMutableArray" key="2.IBViewMetadataConstraints">
 					<reference ref="894522993"/>
 					<reference ref="1040819433"/>
-					<reference ref="954282833"/>
+					<reference ref="929288193"/>
 					<reference ref="360161872"/>
-					<reference ref="568583276"/>
+					<reference ref="814085653"/>
 				</array>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="20.IBUserGuides" ref="0"/>

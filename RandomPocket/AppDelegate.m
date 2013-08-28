@@ -33,16 +33,13 @@
 {
     [[UINavigationBar appearance] setTintColor:[RPColor NavigationBarColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-     
                                 UITextAttributeTextColor:[RPColor NavigationBarTitleColor],
-     
                           UITextAttributeTextShadowColor:[UIColor clearColor],
-     
                          UITextAttributeTextShadowOffset:[NSValue valueWithUIOffset:UIOffsetZero],
-     
                                      UITextAttributeFont:[UIFont boldSystemFontOfSize:20],
      
      }];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[RPColor BarButtonItemColor]];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url

@@ -14,6 +14,7 @@
 {
     self = [super init];
     if (self) {
+        self.data = data;
         self.url = data[@"resolved_url"];
         NSLog(@"data : %@", [data description]);
         NSString* title = data[@"resolved_title"];

@@ -15,6 +15,8 @@
 @property (nonatomic) NSMutableArray *response;
 @end
 
+static NSInteger const NumberOfSections = 1;
+
 @implementation UIPocketList
 
 - (id)initWithSuccessBlock:(void(^)())successBlock errorBlock:(void(^)())errorBlock
@@ -42,7 +44,9 @@
 - (void)handlerWithResponse:(NSDictionary*)response error:(NSError*)error;
 {
     for (NSString *key in response[@"list"]) {
-        [self.response addObject:response[@"list"][key]];
+        NSDictionary *data = response[@"list"][key];
+        UIPocket *pocket = [[UIPocket alloc] initWithData:data];
+        [self.response addObject:pocket];
     }
     
     if(!error){
@@ -54,24 +58,40 @@
 
 - (NSInteger)numberOfSections
 {
-    return 1;
+    return NumberOfSections;
 }
 
-- (NSInteger)numberOfRowsInSection:(NSInteger)section
+- (NSUInteger)numberOfItems
 {
     return self.response.count;
 }
 
+- (NSInteger)numberOfItemsInSection:(NSInteger)section
+{
+    return self.response.count;
+}
+
+- (NSIndexPath*)indexPathForObject:(UIPocket*)pocket
+{
+    NSInteger index = [self.response indexOfObject:pocket];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:NumberOfSections];
+    return indexPath;
+}
+
+- (NSInteger)indexForObject:(UIPocket*)pocket
+{
+    NSInteger index = [self.response indexOfObject:pocket];
+    return index;
+}
+
 - (UIPocket*)objectAtIndex:(NSUInteger)index
 {
-    UIPocket *pocket = [[UIPocket alloc] initWithData:self.response[index]];
-    return pocket;
+    return self.response[index];
 }
 
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath
 {
-    UIPocket *pocket = [[UIPocket alloc] initWithData:self.response[indexPath.row]];
-    return pocket;
+    return self.response[indexPath.row];
 }
 
 @end
