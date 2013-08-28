@@ -61,6 +61,7 @@
 		324FF00117CCF6E7005B08F4 /* PocketListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListCell.m; sourceTree = "<group>"; };
 		324FF00217CCF6E7005B08F4 /* PocketListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PocketListCell.xib; sourceTree = "<group>"; };
 		324FF00517CCFBA3005B08F4 /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
+		324FF00D17CD77DC005B08F4 /* RandomPocketLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketLibrary.h; sourceTree = "<group>"; };
 		3268E42C17C9F92900E3D702 /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
 		3268E42E17C9F93600E3D702 /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		3268E4BF17CB935100E3D702 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		3268E4D617CBA23600E3D702 /* UIPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocket.m; sourceTree = "<group>"; };
 		3268E4D817CBA8BD00E3D702 /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		32AF668617C9E97600EF34EC /* RandomPocketLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketLibrary.h; sourceTree = "<group>"; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
 		32D0885517C9DE76007C50CD /* RandomPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D0885817C9DE76007C50CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -137,6 +137,38 @@
 				324FF00217CCF6E7005B08F4 /* PocketListCell.xib */,
 			);
 			path = PocketListCell;
+			sourceTree = "<group>";
+		};
+		324FF00917CD77DC005B08F4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				324FF00A17CD77DC005B08F4 /* Model */,
+				324FF00C17CD77DC005B08F4 /* Operations */,
+				324FF00D17CD77DC005B08F4 /* RandomPocketLibrary.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		324FF00A17CD77DC005B08F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				324FF00B17CD77DC005B08F4 /* Entity */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		324FF00B17CD77DC005B08F4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		324FF00C17CD77DC005B08F4 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		3268E42917C9F90500E3D702 /* Resources */ = {
@@ -217,20 +249,12 @@
 		32AF668117C9E8D200EF34EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3268E57D17CBC48000E3D702 /* Frameworks */,
-				32AF668317C9E8D200EF34EC /* Library */,
+				324FF00917CD77DC005B08F4 /* Core */,
 				32AF668517C9E8D200EF34EC /* UI */,
 				3268E42917C9F90500E3D702 /* Resources */,
+				3268E57D17CBC48000E3D702 /* Frameworks */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		32AF668317C9E8D200EF34EC /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				32AF668617C9E97600EF34EC /* RandomPocketLibrary.h */,
-			);
-			path = Library;
 			sourceTree = "<group>";
 		};
 		32AF668517C9E8D200EF34EC /* UI */ = {
