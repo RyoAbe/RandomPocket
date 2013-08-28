@@ -12,7 +12,6 @@
 @interface UIPocketList()
 @property (nonatomic, copy) void (^successBlock)();
 @property (nonatomic, copy) void (^errorBlock)();
-@property (nonatomic) NSMutableArray *response;
 @end
 
 static NSInteger const NumberOfSections = 1;
@@ -49,7 +48,7 @@ static NSInteger const NumberOfSections = 1;
         [self.response addObject:pocket];
     }
     
-    if(!error){
+    if(!error && response.count != 0){
         self.successBlock();
         return ;
     }

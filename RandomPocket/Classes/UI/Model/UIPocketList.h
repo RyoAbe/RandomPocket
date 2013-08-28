@@ -20,6 +20,7 @@ typedef enum UIPocketListChangeType_ {
 
 
 @interface UIPocketList : NSObject
+
 - (id)initWithSuccessBlock:(void(^)())successBlock errorBlock:(void(^)())errorBlock;
 - (void)request;
 - (NSInteger)numberOfSections;
@@ -29,5 +30,6 @@ typedef enum UIPocketListChangeType_ {
 - (NSInteger)indexForObject:(UIPocket*)pocket;
 - (UIPocket*)objectAtIndex:(NSUInteger)index;
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath;
+@property (nonatomic) NSMutableArray *response;
 
 @end

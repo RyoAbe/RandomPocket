@@ -65,22 +65,19 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.pocketList request];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.pocketList.numberOfSections;
 }
 
-#pragma mark - UITableViewDelegate
-
 - (PocketListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
+    if (self.pocketList.response.count == 0) {
+        return cell;
+    }
     cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
     
     return cell;
@@ -104,7 +101,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     return [PocketListCell cellHeight:pocket];
 }
 
-#pragma mark - 
+#pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
