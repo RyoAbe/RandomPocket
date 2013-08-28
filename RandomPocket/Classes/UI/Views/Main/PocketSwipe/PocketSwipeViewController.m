@@ -31,11 +31,10 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
 }
 
-
-- (void)changeTitle
+- (void)viewWillLayoutSubviews
 {
-    NSInteger index = [self.pocketList indexForObject:self.currentPocket];
-    self.title = [NSString stringWithFormat:NSLocalizedStringFromTable(@"NavigationTitleFormat", @"PocketDetail", nil), index, self.pocketList.numberOfItems];
+    [super viewWillLayoutSubviews];
+    self.collectionView.contentOffset = CGPointMake(self.view.frame.size.width * [self.pocketList indexForObject:self.selectedPocket], 0);
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -49,6 +48,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 {
     PocketDetailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PocketDetailCellIdentifier forIndexPath:indexPath];
     cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
+    self.title = [NSString stringWithFormat:NSLocalizedStringFromTable(@"NavigationTitleFormat", @"PocketDetail", nil), indexPath.row + 1, self.pocketList.numberOfItems];
 
     return cell;
 }

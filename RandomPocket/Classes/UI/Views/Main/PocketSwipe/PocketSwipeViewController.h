@@ -10,5 +10,6 @@
 #import "RandomPocketUI.h"
 
 @interface PocketSwipeViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@property (nonatomic) UIPocket *selectedPocket;
 @property (nonatomic) UIPocketList *pocketList;
 @end

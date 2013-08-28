@@ -41,8 +41,8 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
     
     // DimmingView
-    self.HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.view addSubview:self.HUD];
+    self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
+	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
 	self.HUD.labelText = NSLocalizedStringFromTable(@"Loading", @"Common", nil);
 
     // リクエスト
@@ -110,7 +110,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     if([segue.identifier isEqualToString:ToPocketSwipeSegue]){
         PocketSwipeViewController *vc = segue.destinationViewController;
-        vc.currentPocket = [self.pocketList objectAtIndexPath:self.selectedIndexPath];
+        vc.selectedPocket = [self.pocketList objectAtIndexPath:self.selectedIndexPath];
         vc.pocketList = self.pocketList;
     }
 }

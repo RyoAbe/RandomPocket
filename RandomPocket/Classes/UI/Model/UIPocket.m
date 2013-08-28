@@ -8,6 +8,8 @@
 
 #import "UIPocket.h"
 
+static NSString* const UNKNOWN_TITLE = @"Unknown Title";
+
 @implementation UIPocket
 
 - (id)initWithData:(NSDictionary*)data
@@ -16,14 +18,20 @@
     if (self) {
         self.data = data;
         self.url = data[@"resolved_url"];
-        NSLog(@"data : %@", [data description]);
-        NSString* title = data[@"resolved_title"];
-        if(title.length == 0){
-            title = data[@"given_title"];
-        }
-        self.title = title;
+        self.title = data[@"resolved_title"];
     }
     return self;
+}
+
+- (void)setTitle:(NSString *)title
+{
+    if(title.length == 0){
+        title = self.data[@"given_title"];
+    }
+    if(title.length == 0){
+        title = UNKNOWN_TITLE;
+    }
+    _title = title;
 }
 
 @end

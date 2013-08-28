@@ -35,7 +35,7 @@ static NSInteger const NumberOfSections = 1;
 
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"complete": @"detailType", @"count": @(5)}
+                               arguments:@{@"complete": @"detailType", @"count": @(30)}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      [self handlerWithResponse:response error:error];
                                  }];
