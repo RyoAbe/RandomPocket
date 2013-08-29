@@ -11,6 +11,7 @@
 @interface PocketSwipeViewController ()
 - (IBAction)actionButtonTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) UICollectionViewFlowLayout *flowLayout;
 @end
 
 static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
@@ -30,24 +31,29 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 {
     [super viewDidLoad];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
- }
+}
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    [self collectionViewLayout];
+    self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
 }
 
-- (void)collectionViewLayout
+- (void)viewWillAppear:(BOOL)animated
 {
-    self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
+    [super viewWillAppear:animated];
+    [self layoutForCollectionView];
+}
+
+- (void)layoutForCollectionView
+{
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    CGSize size = self.view.frame.size;
-    size.height = size.height - self.navigationController.navigationBar.frame.size.height;
-    flowLayout.itemSize = size;
     flowLayout.minimumLineSpacing = 0.0f;
     flowLayout.minimumInteritemSpacing = 0.0f;
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    CGSize size = self.view.frame.size;
+    size.height = size.height - self.navigationController.navigationBar.frame.size.height;
+    flowLayout.itemSize = size;
     self.collectionView.collectionViewLayout = flowLayout;
 }
 
