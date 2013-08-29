@@ -12,6 +12,7 @@
 @interface PocketDetailCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
+@property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
 @end
 
 @implementation PocketDetailCell
@@ -20,7 +21,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
     }
     return self;
 }
@@ -30,6 +30,11 @@
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
+    self.bodyTextView.text = nil;
+    HTMLParser *htmlParser = [[HTMLParser alloc] initWithURL:_pocket.url];
+    [htmlParser parseWithCompletionBlock:^(NSString *body) {
+        self.bodyTextView.text = body;
+    }];
 }
 
 @end
