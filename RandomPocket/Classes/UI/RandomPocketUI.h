@@ -16,6 +16,9 @@
 #import "Toast+UIView.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 
+// Operations
+#import "UIGetPocketsOperation.h"
+
 // UI Constants
 #import "RPColor.h"
 

@@ -83,7 +83,6 @@
 								<string key="NSFrame">{{13, 60}, {287, 14}}</string>
 								<reference key="NSSuperview" ref="261226892"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -97,7 +96,9 @@
 								<reference key="IBUIHighlightedColor" ref="847943168"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<int key="type">1</int>
+									<string key="name">Helvetica</string>
+									<string key="family">Helvetica</string>
+									<int key="traits">0</int>
 									<double key="pointSize">11</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
@@ -178,7 +179,7 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="132701324"/>
 						<array class="NSMutableArray" key="children">
-							<object class="IBNSLayoutConstraint" id="228257008">
+							<object class="IBNSLayoutConstraint" id="883390422">
 								<reference key="firstItem" ref="132701324"/>
 								<int key="firstAttribute">6</int>
 								<int key="relation">0</int>
@@ -210,7 +211,7 @@
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="285589553">
+							<object class="IBNSLayoutConstraint" id="43367912">
 								<reference key="firstItem" ref="132701324"/>
 								<int key="firstAttribute">6</int>
 								<int key="relation">0</int>
@@ -267,7 +268,7 @@
 						<int key="objectID">19</int>
 						<reference key="object" ref="435438760"/>
 						<array class="NSMutableArray" key="children">
-							<object class="IBNSLayoutConstraint" id="126162882">
+							<object class="IBNSLayoutConstraint" id="263523722">
 								<reference key="firstItem" ref="435438760"/>
 								<int key="firstAttribute">7</int>
 								<int key="relation">0</int>
@@ -309,17 +310,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">90</int>
-						<reference key="object" ref="285589553"/>
+						<reference key="object" ref="43367912"/>
 						<reference key="parent" ref="132701324"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">94</int>
-						<reference key="object" ref="228257008"/>
+						<reference key="object" ref="883390422"/>
 						<reference key="parent" ref="132701324"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">95</int>
-						<reference key="object" ref="126162882"/>
+						<reference key="object" ref="263523722"/>
 						<reference key="parent" ref="435438760"/>
 					</object>
 				</array>
@@ -332,7 +333,7 @@
 				<real value="292" key="19.IBUILabelPreferredMaxLayoutWidthAtFirstLayout"/>
 				<reference key="19.IBUserGuides" ref="0"/>
 				<array key="19.IBViewMetadataConstraints">
-					<reference ref="126162882"/>
+					<reference ref="263523722"/>
 				</array>
 				<boolean value="NO" key="19.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<boolean value="NO" key="19.showNotes"/>
@@ -341,9 +342,9 @@
 				<array class="NSMutableArray" key="2.IBViewMetadataConstraints">
 					<reference ref="894522993"/>
 					<reference ref="929288193"/>
-					<reference ref="285589553"/>
+					<reference ref="43367912"/>
 					<reference ref="814085653"/>
-					<reference ref="228257008"/>
+					<reference ref="883390422"/>
 				</array>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="20.IBUserGuides" ref="0"/>

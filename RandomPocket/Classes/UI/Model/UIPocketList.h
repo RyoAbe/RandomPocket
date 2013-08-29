@@ -21,8 +21,6 @@ typedef enum UIPocketListChangeType_ {
 
 @interface UIPocketList : NSObject
 
-- (id)initWithSuccessBlock:(void(^)())successBlock errorBlock:(void(^)())errorBlock;
-- (void)request;
 - (NSInteger)numberOfSections;
 - (NSInteger)numberOfItemsInSection:(NSInteger)section;
 - (NSUInteger)numberOfItems;

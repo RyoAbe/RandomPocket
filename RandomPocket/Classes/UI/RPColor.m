@@ -10,10 +10,9 @@
 
 @implementation RPColor
 
-+ (UIColor*)NavigationBarColor { return [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.f]; }
-
++ (UIColor*)NavigationBarColor      { return [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.f]; }
 + (UIColor*)NavigationBarTitleColor { return [UIColor colorWithRed:0.4f green:0.4f blue:0.4f alpha:1.f]; }
-
-+ (UIColor*)BarButtonItemColor { return [UIColor colorWithRed:0.45f green:0.45f blue:0.45f alpha:1.f]; }
++ (UIColor*)BarButtonItemColor      { return [UIColor colorWithRed:0.6f green:0.6f blue:0.6f alpha:1.f]; }
++ (UIColor*)ToolButtonItemColor     { return [UIColor colorWithRed:0.6f green:0.6f blue:0.6f alpha:1.f]; }
 
 @end

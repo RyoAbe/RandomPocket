@@ -9,51 +9,9 @@
 #import "UIPocketList.h"
 #import "RandomPocketUI.h"
 
-@interface UIPocketList()
-@property (nonatomic, copy) void (^successBlock)();
-@property (nonatomic, copy) void (^errorBlock)();
-@end
-
 static NSInteger const NumberOfSections = 1;
 
 @implementation UIPocketList
-
-- (id)initWithSuccessBlock:(void(^)())successBlock errorBlock:(void(^)())errorBlock
-{
-    self = [super init];
-    if (self) {
-        self.successBlock = successBlock;
-        self.errorBlock = errorBlock;
-        self.response = [NSMutableArray new];
-    }
-    return self;
-}
-
-- (void)request
-{
-
-    [[PocketAPI sharedAPI] callAPIMethod:@"get"
-                          withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"complete": @"detailType", @"count": @(30)}
-                                 handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     [self handlerWithResponse:response error:error];
-                                 }];
-}
-
-- (void)handlerWithResponse:(NSDictionary*)response error:(NSError*)error;
-{
-    for (NSString *key in response[@"list"]) {
-        NSDictionary *data = response[@"list"][key];
-        UIPocket *pocket = [[UIPocket alloc] initWithData:data];
-        [self.response addObject:pocket];
-    }
-    
-    if(!error && response.count != 0){
-        self.successBlock();
-        return ;
-    }
-    self.errorBlock();
-}
 
 - (NSInteger)numberOfSections
 {

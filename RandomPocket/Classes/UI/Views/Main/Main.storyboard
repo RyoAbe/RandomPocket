@@ -64,7 +64,7 @@
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tLE-hD-QIm">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Elg-5e-mvz">
-                                    <size key="itemSize" width="320" height="504"/>
+                                    <size key="itemSize" width="320" height="460"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -75,12 +75,25 @@
                                     <outlet property="delegate" destination="Cq8-PV-hpG" id="xPP-Qv-gYg"/>
                                 </connections>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5a2-W4-PDO">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lnC-He-gQa"/>
+                                    <barButtonItem style="plain" systemItem="action" id="GeG-c9-G40">
+                                        <connections>
+                                            <action selector="actionButtonTapped:" destination="Cq8-PV-hpG" id="5Jj-Mm-DUf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tLE-hD-QIm" firstAttribute="bottom" secondItem="GwP-gY-XkF" secondAttribute="bottom" type="default" id="5ah-pw-wYo"/>
+                            <constraint firstItem="5a2-W4-PDO" firstAttribute="bottom" secondItem="GwP-gY-XkF" secondAttribute="bottom" type="default" id="Fxz-Kf-H5d"/>
+                            <constraint firstItem="5a2-W4-PDO" firstAttribute="top" secondItem="tLE-hD-QIm" secondAttribute="bottom" type="default" id="Hst-vm-fLn"/>
+                            <constraint firstItem="5a2-W4-PDO" firstAttribute="trailing" secondItem="GwP-gY-XkF" secondAttribute="trailing" type="default" id="IyF-Dr-kVY"/>
                             <constraint firstItem="tLE-hD-QIm" firstAttribute="top" secondItem="GwP-gY-XkF" secondAttribute="top" type="default" id="KRv-dT-tyW"/>
                             <constraint firstItem="tLE-hD-QIm" firstAttribute="leading" secondItem="GwP-gY-XkF" secondAttribute="leading" type="default" id="fUy-3I-UZA"/>
+                            <constraint firstItem="5a2-W4-PDO" firstAttribute="leading" secondItem="GwP-gY-XkF" secondAttribute="leading" type="default" id="kYc-VJ-zBP"/>
                             <constraint firstItem="tLE-hD-QIm" firstAttribute="trailing" secondItem="GwP-gY-XkF" secondAttribute="trailing" type="default" id="wL2-Of-uNW"/>
                         </constraints>
                     </view>
@@ -112,6 +125,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

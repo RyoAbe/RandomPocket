@@ -40,6 +40,8 @@
      
      }];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[RPColor BarButtonItemColor]];
+    [[UIToolbar appearance] setTintColor:[RPColor NavigationBarColor]];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil] setTintColor:[RPColor ToolButtonItemColor]];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url

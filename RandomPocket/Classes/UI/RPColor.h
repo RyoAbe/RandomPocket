@@ -13,5 +13,6 @@
 + (UIColor*)NavigationBarColor;
 + (UIColor*)NavigationBarTitleColor;
 + (UIColor*)BarButtonItemColor;
++ (UIColor*)ToolButtonItemColor;
 
 @end

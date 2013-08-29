@@ -9,6 +9,7 @@
 #import "PocketSwipeViewController.h"
 
 @interface PocketSwipeViewController ()
+- (IBAction)actionButtonTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end
 
@@ -34,7 +35,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    self.collectionView.contentOffset = CGPointMake(self.view.frame.size.width * [self.pocketList indexForObject:self.selectedPocket], 0);
+    self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * [self.pocketList indexForObject:self.selectedPocket], 0);
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -58,4 +59,11 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     return [self.pocketList numberOfItemsInSection:section];
 }
 
+- (IBAction)actionButtonTapped:(id)sender
+{
+    PocketDetailCell *cell = self.collectionView.visibleCells[0];
+    NSArray *items = @[cell.pocket.title, cell.pocket.url];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:nil];
+}
 @end

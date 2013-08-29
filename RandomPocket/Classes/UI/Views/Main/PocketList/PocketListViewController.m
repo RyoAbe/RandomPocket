@@ -52,17 +52,17 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (void)reqestPocketList
 {
     [self.HUD show:YES];
-    self.pocketList = [[UIPocketList alloc] initWithSuccessBlock:^{
+    UIGetPocketsOperation *op = [[UIGetPocketsOperation alloc] initWithSuccessBlock:^(UIPocketList *pocketList) {
         [self.HUD hide:YES];
         [self.refreshController endRefreshing];
+        self.pocketList = pocketList;
         [self.tableView reloadData];
-    } errorBlock:^{
+    } errorBlock:^(NSError *error) {
         [self.HUD hide:YES];
         [self.refreshController endRefreshing];
         [self.view makeToast:NSLocalizedStringFromTable(@"FaildRequestPocketList", @"PocketList", nil)];
     }];
-    
-    [self.pocketList request];
+    [op request];
 }
 
 #pragma mark - UITableViewDelegate
