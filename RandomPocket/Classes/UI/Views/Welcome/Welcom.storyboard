@@ -31,8 +31,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1Ey-B7-3So" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="H5v-jh-L2O"/>
-                            <constraint firstItem="1Ey-B7-3So" firstAttribute="top" secondItem="3" secondAttribute="top" constant="252" id="zCi-L5-xcz"/>
+                            <constraint firstAttribute="centerY" secondItem="1Ey-B7-3So" secondAttribute="centerY" type="user" id="YCr-Bu-KLD"/>
+                            <constraint firstAttribute="centerX" secondItem="1Ey-B7-3So" secondAttribute="centerX" type="user" id="dWH-7l-pwA"/>
                         </constraints>
                     </view>
                     <connections>

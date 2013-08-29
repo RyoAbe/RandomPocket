@@ -107,7 +107,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     if([segue.identifier isEqualToString:ToPocketSwipeSegue]){
         PocketSwipeViewController *vc = segue.destinationViewController;
-        vc.selectedPocket = [self.pocketList objectAtIndexPath:self.selectedIndexPath];
+        vc.selectedPocketIndex = self.selectedIndexPath.row;
         vc.pocketList = self.pocketList;
     }
 }

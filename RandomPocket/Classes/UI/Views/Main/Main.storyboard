@@ -86,7 +86,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5a2-W4-PDO" firstAttribute="bottom" secondItem="GwP-gY-XkF" secondAttribute="bottom" type="default" id="Fxz-Kf-H5d"/>
                             <constraint firstItem="5a2-W4-PDO" firstAttribute="top" secondItem="tLE-hD-QIm" secondAttribute="bottom" type="default" id="Hst-vm-fLn"/>
@@ -120,14 +120,12 @@
         <class className="PocketSwipeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PocketSwipeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="actionButtonTapped:"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
             </relationships>
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

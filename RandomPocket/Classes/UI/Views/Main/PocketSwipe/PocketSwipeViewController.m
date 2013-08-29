@@ -30,12 +30,25 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 {
     [super viewDidLoad];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
-}
+ }
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * [self.pocketList indexForObject:self.selectedPocket], 0);
+    [self collectionViewLayout];
+}
+
+- (void)collectionViewLayout
+{
+    self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    CGSize size = self.view.frame.size;
+    size.height = size.height - self.navigationController.navigationBar.frame.size.height;
+    flowLayout.itemSize = size;
+    flowLayout.minimumLineSpacing = 0.0f;
+    flowLayout.minimumInteritemSpacing = 0.0f;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.collectionView.collectionViewLayout = flowLayout;
 }
 
 #pragma mark - UICollectionViewDelegate

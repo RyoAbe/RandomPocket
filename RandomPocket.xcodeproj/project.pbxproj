@@ -329,8 +329,8 @@
 		32AF668A17C9EF9600EF34EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				324FF00E17CE14EF005B08F4 /* Main */,
 				3268E4BE17CB935100E3D702 /* Welcome */,
+				324FF00E17CE14EF005B08F4 /* Main */,
 			);
 			path = Views;
 			sourceTree = "<group>";
