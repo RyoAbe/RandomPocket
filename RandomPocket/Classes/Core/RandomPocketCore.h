@@ -1,5 +1,5 @@
 //
-//  RandomPocketLibrary.h
+//  RandomPocketLCore.h
 //  RandomPocket
 //
 //  Created by RyoAbe on 2013/08/25.

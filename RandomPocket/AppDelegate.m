@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "RandomPocketLibrary.h"
+#import "RandomPocketCore.h"
 #import "RandomPocketUI.h"
 
 @implementation AppDelegate

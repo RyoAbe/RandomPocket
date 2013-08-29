@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17291EC817CF9A6400B44BBE /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC417CF9A6400B44BBE /* Common.strings */; };
+		17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC517CF9A6400B44BBE /* PocketDetail.strings */; };
+		17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC617CF9A6400B44BBE /* PocketList.strings */; };
+		17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC717CF9A6400B44BBE /* Welcom.strings */; };
 		322EC04317CE600100977356 /* UIGetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 322EC04217CE600100977356 /* UIGetPocketsOperation.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
-		324FF00617CCFBA3005B08F4 /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 324FF00517CCFBA3005B08F4 /* PocketDetail.strings */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
 		324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF01717CE14EF005B08F4 /* PocketListCell.xib */; };
 		324FF01F17CE14EF005B08F4 /* PocketListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01917CE14EF005B08F4 /* PocketListViewController.m */; };
@@ -17,14 +20,11 @@
 		324FF02417CE15A3005B08F4 /* PocketSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF02317CE15A3005B08F4 /* PocketSwipeViewController.m */; };
 		324FF03717CE3E69005B08F4 /* PocketDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF03517CE3E69005B08F4 /* PocketDetailCell.m */; };
 		324FF03817CE3E69005B08F4 /* PocketDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF03617CE3E69005B08F4 /* PocketDetailCell.xib */; };
-		3268E42D17C9F92900E3D702 /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42C17C9F92900E3D702 /* Welcom.strings */; };
-		3268E42F17C9F93600E3D702 /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E42E17C9F93600E3D702 /* Common.strings */; };
 		3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4C017CB935100E3D702 /* WelcomeViewController.m */; };
 		3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CD17CB947900E3D702 /* Welcom.storyboard */; };
 		3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */; };
 		3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D317CBA16E00E3D702 /* UIPocketList.m */; };
 		3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
-		3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4D817CBA8BD00E3D702 /* PocketList.strings */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
@@ -56,12 +56,15 @@
 
 /* Begin PBXFileReference section */
 		0C6ED4897690439088DDDEE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		17291EC417CF9A6400B44BBE /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
+		17291EC517CF9A6400B44BBE /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
+		17291EC617CF9A6400B44BBE /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
+		17291EC717CF9A6400B44BBE /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
+		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomPocketCore.h; path = Operations/RandomPocketCore.h; sourceTree = "<group>"; };
 		322EC04117CE600100977356 /* UIGetPocketsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGetPocketsOperation.h; sourceTree = "<group>"; };
 		322EC04217CE600100977356 /* UIGetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGetPocketsOperation.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
 		324FEFFA17CCEB2B005B08F4 /* RPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPColor.m; sourceTree = "<group>"; };
-		324FF00517CCFBA3005B08F4 /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
-		324FF00D17CD77DC005B08F4 /* RandomPocketLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketLibrary.h; sourceTree = "<group>"; };
 		324FF01517CE14EF005B08F4 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
 		324FF01617CE14EF005B08F4 /* PocketListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketListCell.m; sourceTree = "<group>"; };
 		324FF01717CE14EF005B08F4 /* PocketListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PocketListCell.xib; sourceTree = "<group>"; };
@@ -73,8 +76,6 @@
 		324FF03417CE3E69005B08F4 /* PocketDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketDetailCell.h; sourceTree = "<group>"; };
 		324FF03517CE3E69005B08F4 /* PocketDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketDetailCell.m; sourceTree = "<group>"; };
 		324FF03617CE3E69005B08F4 /* PocketDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PocketDetailCell.xib; sourceTree = "<group>"; };
-		3268E42C17C9F92900E3D702 /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
-		3268E42E17C9F93600E3D702 /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		3268E4BF17CB935100E3D702 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		3268E4C017CB935100E3D702 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		3268E4CD17CB947900E3D702 /* Welcom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcom.storyboard; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		3268E4D317CBA16E00E3D702 /* UIPocketList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketList.m; sourceTree = "<group>"; };
 		3268E4D517CBA23600E3D702 /* UIPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocket.h; sourceTree = "<group>"; };
 		3268E4D617CBA23600E3D702 /* UIPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocket.m; sourceTree = "<group>"; };
-		3268E4D817CBA8BD00E3D702 /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
 		32D0885517C9DE76007C50CD /* RandomPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +137,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17291EC117CF9A6400B44BBE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				17291EC217CF9A6400B44BBE /* Images */,
+				17291EC317CF9A6400B44BBE /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		17291EC217CF9A6400B44BBE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		17291EC317CF9A6400B44BBE /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				17291EC417CF9A6400B44BBE /* Common.strings */,
+				17291EC517CF9A6400B44BBE /* PocketDetail.strings */,
+				17291EC617CF9A6400B44BBE /* PocketList.strings */,
+				17291EC717CF9A6400B44BBE /* Welcom.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		322EC04017CE5F3600977356 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,9 +177,9 @@
 		324FF00917CD77DC005B08F4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */,
 				324FF00A17CD77DC005B08F4 /* Model */,
 				324FF00C17CD77DC005B08F4 /* Operations */,
-				324FF00D17CD77DC005B08F4 /* RandomPocketLibrary.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -229,33 +256,6 @@
 			path = PocketDetailCell;
 			sourceTree = "<group>";
 		};
-		3268E42917C9F90500E3D702 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				3268E42A17C9F90500E3D702 /* Images */,
-				3268E42B17C9F90500E3D702 /* Strings */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		3268E42A17C9F90500E3D702 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		3268E42B17C9F90500E3D702 /* Strings */ = {
-			isa = PBXGroup;
-			children = (
-				3268E42C17C9F92900E3D702 /* Welcom.strings */,
-				3268E42E17C9F93600E3D702 /* Common.strings */,
-				3268E4D817CBA8BD00E3D702 /* PocketList.strings */,
-				324FF00517CCFBA3005B08F4 /* PocketDetail.strings */,
-			);
-			path = Strings;
-			sourceTree = "<group>";
-		};
 		3268E4BE17CB935100E3D702 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,7 +289,6 @@
 			children = (
 				324FF00917CD77DC005B08F4 /* Core */,
 				32AF668517C9E8D200EF34EC /* UI */,
-				3268E42917C9F90500E3D702 /* Resources */,
 				3268E57D17CBC48000E3D702 /* Frameworks */,
 			);
 			path = Classes;
@@ -383,6 +382,7 @@
 				32D0886717C9DE76007C50CD /* AppDelegate.h */,
 				32D0886817C9DE76007C50CD /* AppDelegate.m */,
 				32AF668117C9E8D200EF34EC /* Classes */,
+				17291EC117CF9A6400B44BBE /* Resources */,
 				32D0885F17C9DE76007C50CD /* Supporting Files */,
 			);
 			path = RandomPocket;
@@ -500,15 +500,15 @@
 				32D0886B17C9DE76007C50CD /* Default.png in Resources */,
 				32D0886D17C9DE76007C50CD /* Default@2x.png in Resources */,
 				32D0886F17C9DE76007C50CD /* Default-568h@2x.png in Resources */,
-				3268E42D17C9F92900E3D702 /* Welcom.strings in Resources */,
-				3268E42F17C9F93600E3D702 /* Common.strings in Resources */,
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
 				3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */,
-				3268E4D917CBA8BD00E3D702 /* PocketList.strings in Resources */,
-				324FF00617CCFBA3005B08F4 /* PocketDetail.strings in Resources */,
 				324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */,
 				324FF02117CE1516005B08F4 /* Main.storyboard in Resources */,
 				324FF03817CE3E69005B08F4 /* PocketDetailCell.xib in Resources */,
+				17291EC817CF9A6400B44BBE /* Common.strings in Resources */,
+				17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */,
+				17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */,
+				17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
