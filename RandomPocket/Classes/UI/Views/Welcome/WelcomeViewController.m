@@ -37,7 +37,7 @@
             [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)];
             return;
         }
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PocketList" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *vc = [storyboard instantiateInitialViewController];
         [self presentViewController:vc animated:YES completion:nil];
     }];
