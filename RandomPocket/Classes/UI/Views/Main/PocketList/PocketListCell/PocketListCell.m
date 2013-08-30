@@ -40,7 +40,7 @@ static CGRect DefaultURLRect;
     return self;
 }
 
-#warning こんな方法したくない
+#warning Anti Pattern
 - (void)prepare
 {
     DefaultCellHeight = self.frame.size.height;

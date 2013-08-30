@@ -49,9 +49,6 @@
         line = [line stringByReplacingOccurrencesOfString:@"　" withString:@""];
         line = [line stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         line = [line stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-        NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"( .+)"
-                                                  options:0
-                                                    error:nil];
         if(line != nil &&line.length != 0){
             [body appendString:line];
         }
