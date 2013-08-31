@@ -1,5 +1,5 @@
 RandomPocket
 ============
-Pocket ( http://getpocket.com )の記事をランダムに表示するアプリ
+Pocket（ http://getpocket.com/ ）に追加されている記事をランダムに表示するアプリ
 
-※ 開発途中
+※ まだ開発途中
