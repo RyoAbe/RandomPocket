@@ -198,8 +198,7 @@
 			children = (
 				178F268317D3081800993DF9 /* HTMLParser */,
 			);
-			name = Frameworks;
-			path = Core/Frameworks;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		178F268317D3081800993DF9 /* HTMLParser */ = {
