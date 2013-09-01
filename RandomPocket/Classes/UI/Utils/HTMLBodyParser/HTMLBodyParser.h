@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HTMLParser : NSObject
+@interface HTMLBodyParser : NSObject
 - (id)initWithURL:(NSString*)url;
 - (void)parseWithCompletionBlock:(void(^)(NSString* body))completionBlock;
 @end

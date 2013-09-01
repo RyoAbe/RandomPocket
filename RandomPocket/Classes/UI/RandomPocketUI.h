@@ -13,7 +13,7 @@
 #import "RandomPocketCore.h"
 
 // Utils
-#import "HTMLParser.h"
+#import "HTMLBodyParser.h"
 
 // Operations
 #import "UIGetPocketsOperation.h"

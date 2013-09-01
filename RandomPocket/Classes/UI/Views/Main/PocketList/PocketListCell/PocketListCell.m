@@ -26,6 +26,7 @@ static CGRect DefaultURLRect;
     [super initialize];
     if (self == [PocketListCell class])
     {
+        // セルの高さやラベルの高さを取得するために一度nibファイルを読み込んでいる（がもう少しいい方法はないだろうか、、）
         PocketListCell *cell = [[[UINib nibWithNibName:@"PocketListCell" bundle:nil] instantiateWithOwner:nil options:nil] objectAtIndex:0];
         [cell prepare];
     }
@@ -35,12 +36,10 @@ static CGRect DefaultURLRect;
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self prepare];
     }
     return self;
 }
 
-#warning Anti Pattern
 - (void)prepare
 {
     DefaultCellHeight = self.frame.size.height;

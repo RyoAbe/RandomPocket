@@ -31,7 +31,7 @@
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
     self.bodyTextView.text = nil;
-    HTMLParser *htmlParser = [[HTMLParser alloc] initWithURL:_pocket.url];
+    HTMLBodyParser *htmlParser = [[HTMLBodyParser alloc] initWithURL:_pocket.url];
     [htmlParser parseWithCompletionBlock:^(NSString *body) {
         self.bodyTextView.text = body;
     }];

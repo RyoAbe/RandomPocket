@@ -11,7 +11,10 @@
 		17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC517CF9A6400B44BBE /* PocketDetail.strings */; };
 		17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC617CF9A6400B44BBE /* PocketList.strings */; };
 		17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC717CF9A6400B44BBE /* Welcom.strings */; };
-		17291EE317CFA01000B44BBE /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17291EE217CFA01000B44BBE /* HTMLParser.m */; };
+		17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17291EE217CFA01000B44BBE /* HTMLBodyParser.m */; };
+		178F267A17D307A400993DF9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 178F267917D307A400993DF9 /* libxml2.dylib */; };
+		178F268817D3081800993DF9 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268517D3081800993DF9 /* HTMLNode.m */; };
+		178F268917D3081800993DF9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268717D3081800993DF9 /* HTMLParser.m */; };
 		322EC04317CE600100977356 /* UIGetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 322EC04217CE600100977356 /* UIGetPocketsOperation.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
@@ -62,8 +65,13 @@
 		17291EC617CF9A6400B44BBE /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
 		17291EC717CF9A6400B44BBE /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
 		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomPocketCore.h; path = Operations/RandomPocketCore.h; sourceTree = "<group>"; };
-		17291EE117CFA01000B44BBE /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
-		17291EE217CFA01000B44BBE /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		17291EE117CFA01000B44BBE /* HTMLBodyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLBodyParser.h; sourceTree = "<group>"; };
+		17291EE217CFA01000B44BBE /* HTMLBodyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLBodyParser.m; sourceTree = "<group>"; };
+		178F267917D307A400993DF9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		178F268417D3081800993DF9 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		178F268517D3081800993DF9 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		178F268617D3081800993DF9 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		178F268717D3081800993DF9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		322EC04117CE600100977356 /* UIGetPocketsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGetPocketsOperation.h; sourceTree = "<group>"; };
 		322EC04217CE600100977356 /* UIGetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGetPocketsOperation.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
@@ -118,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				178F267A17D307A400993DF9 /* libxml2.dylib in Frameworks */,
 				32AF668017C9E63600EF34EC /* Security.framework in Frameworks */,
 				32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */,
 				32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */,
@@ -170,16 +179,36 @@
 		17291EDF17CF9FFD00B44BBE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				17291EE017CF9FFD00B44BBE /* HTMLParser */,
+				17291EE017CF9FFD00B44BBE /* HTMLBodyParser */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		17291EE017CF9FFD00B44BBE /* HTMLParser */ = {
+		17291EE017CF9FFD00B44BBE /* HTMLBodyParser */ = {
 			isa = PBXGroup;
 			children = (
-				17291EE117CFA01000B44BBE /* HTMLParser.h */,
-				17291EE217CFA01000B44BBE /* HTMLParser.m */,
+				17291EE117CFA01000B44BBE /* HTMLBodyParser.h */,
+				17291EE217CFA01000B44BBE /* HTMLBodyParser.m */,
+			);
+			path = HTMLBodyParser;
+			sourceTree = "<group>";
+		};
+		178F268217D3081800993DF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				178F268317D3081800993DF9 /* HTMLParser */,
+			);
+			name = Frameworks;
+			path = Core/Frameworks;
+			sourceTree = "<group>";
+		};
+		178F268317D3081800993DF9 /* HTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				178F268417D3081800993DF9 /* HTMLNode.h */,
+				178F268517D3081800993DF9 /* HTMLNode.m */,
+				178F268617D3081800993DF9 /* HTMLParser.h */,
+				178F268717D3081800993DF9 /* HTMLParser.m */,
 			);
 			path = HTMLParser;
 			sourceTree = "<group>";
@@ -297,19 +326,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3268E57D17CBC48000E3D702 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		32AF668117C9E8D200EF34EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				324FF00917CD77DC005B08F4 /* Core */,
 				32AF668517C9E8D200EF34EC /* UI */,
-				3268E57D17CBC48000E3D702 /* Frameworks */,
+				178F268217D3081800993DF9 /* Frameworks */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -357,6 +379,7 @@
 		32D0884C17C9DE76007C50CD = {
 			isa = PBXGroup;
 			children = (
+				178F267917D307A400993DF9 /* libxml2.dylib */,
 				32AF667F17C9E63600EF34EC /* Security.framework */,
 				32D0885E17C9DE76007C50CD /* RandomPocket */,
 				32D0888517C9DE76007C50CD /* RandomPocketTests */,
@@ -627,7 +650,9 @@
 				324FF02417CE15A3005B08F4 /* PocketSwipeViewController.m in Sources */,
 				324FF03717CE3E69005B08F4 /* PocketDetailCell.m in Sources */,
 				322EC04317CE600100977356 /* UIGetPocketsOperation.m in Sources */,
-				17291EE317CFA01000B44BBE /* HTMLParser.m in Sources */,
+				17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */,
+				178F268817D3081800993DF9 /* HTMLNode.m in Sources */,
+				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
