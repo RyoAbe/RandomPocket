@@ -15,6 +15,7 @@
 		178F267A17D307A400993DF9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 178F267917D307A400993DF9 /* libxml2.dylib */; };
 		178F268817D3081800993DF9 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268517D3081800993DF9 /* HTMLNode.m */; };
 		178F268917D3081800993DF9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268717D3081800993DF9 /* HTMLParser.m */; };
+		17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 17922AAC17D3226200AF2FD3 /* UIPocketList.m */; };
 		322EC04317CE600100977356 /* UIGetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 322EC04217CE600100977356 /* UIGetPocketsOperation.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
@@ -27,7 +28,6 @@
 		3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4C017CB935100E3D702 /* WelcomeViewController.m */; };
 		3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CD17CB947900E3D702 /* Welcom.storyboard */; };
 		3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */; };
-		3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D317CBA16E00E3D702 /* UIPocketList.m */; };
 		3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
@@ -64,7 +64,7 @@
 		17291EC517CF9A6400B44BBE /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
 		17291EC617CF9A6400B44BBE /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
 		17291EC717CF9A6400B44BBE /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
-		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomPocketCore.h; path = Operations/RandomPocketCore.h; sourceTree = "<group>"; };
+		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketCore.h; sourceTree = "<group>"; };
 		17291EE117CFA01000B44BBE /* HTMLBodyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLBodyParser.h; sourceTree = "<group>"; };
 		17291EE217CFA01000B44BBE /* HTMLBodyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLBodyParser.m; sourceTree = "<group>"; };
 		178F267917D307A400993DF9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -72,6 +72,7 @@
 		178F268517D3081800993DF9 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		178F268617D3081800993DF9 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		178F268717D3081800993DF9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		17922AAC17D3226200AF2FD3 /* UIPocketList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketList.m; sourceTree = "<group>"; };
 		322EC04117CE600100977356 /* UIGetPocketsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGetPocketsOperation.h; sourceTree = "<group>"; };
 		322EC04217CE600100977356 /* UIGetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGetPocketsOperation.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		3268E4CD17CB947900E3D702 /* Welcom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcom.storyboard; sourceTree = "<group>"; };
 		3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialStoryboard.storyboard; sourceTree = "<group>"; };
 		3268E4D217CBA16E00E3D702 /* UIPocketList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocketList.h; sourceTree = "<group>"; };
-		3268E4D317CBA16E00E3D702 /* UIPocketList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketList.m; sourceTree = "<group>"; };
 		3268E4D517CBA23600E3D702 /* UIPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocket.h; sourceTree = "<group>"; };
 		3268E4D617CBA23600E3D702 /* UIPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocket.m; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -318,7 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				3268E4D217CBA16E00E3D702 /* UIPocketList.h */,
-				3268E4D317CBA16E00E3D702 /* UIPocketList.m */,
+				17922AAC17D3226200AF2FD3 /* UIPocketList.m */,
 				3268E4D517CBA23600E3D702 /* UIPocket.h */,
 				3268E4D617CBA23600E3D702 /* UIPocket.m */,
 			);
@@ -641,7 +641,6 @@
 				32D0886517C9DE76007C50CD /* main.m in Sources */,
 				32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */,
 				3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */,
-				3268E4D417CBA16E00E3D702 /* UIPocketList.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
 				324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */,
 				324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */,
@@ -652,6 +651,7 @@
 				17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */,
 				178F268817D3081800993DF9 /* HTMLNode.m in Sources */,
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
+				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
