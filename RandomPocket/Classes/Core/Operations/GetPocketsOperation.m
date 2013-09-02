@@ -6,17 +6,17 @@
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
-#import "UIGetPocketsOperation.h"
+#import "GetPocketsOperation.h"
 #import "RandomPocketUI.h"
 #import "UIPocketList.h"
 
-@interface UIGetPocketsOperation()
+@interface GetPocketsOperation()
 @property (nonatomic, copy) void (^successBlock)();
 @property (nonatomic, copy) void (^errorBlock)();
 @property (nonatomic) NSMutableArray *response;
 @end
 
-@implementation UIGetPocketsOperation
+@implementation GetPocketsOperation
 
 - (id)initWithSuccessBlock:(void(^)(UIPocketList* pocketList))successBlock errorBlock:(void (^)(NSError *error))errorBlock
 {

@@ -16,7 +16,7 @@
 #import "HTMLBodyParser.h"
 
 // Operations
-#import "UIGetPocketsOperation.h"
+#import "GetPocketsOperation.h"
 
 // Constants
 #import "RPColor.h"

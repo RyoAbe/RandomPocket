@@ -10,7 +10,7 @@
 
 @class UIPocketList;
 
-@interface UIGetPocketsOperation : NSObject
+@interface GetPocketsOperation : NSObject
 - (id)initWithSuccessBlock:(void(^)(UIPocketList* pocketList))successBlock errorBlock:(void (^)(NSError *error))errorBlock;
 - (void)request;
 @end

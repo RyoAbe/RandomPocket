@@ -16,7 +16,6 @@
 		178F268817D3081800993DF9 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268517D3081800993DF9 /* HTMLNode.m */; };
 		178F268917D3081800993DF9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268717D3081800993DF9 /* HTMLParser.m */; };
 		17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 17922AAC17D3226200AF2FD3 /* UIPocketList.m */; };
-		322EC04317CE600100977356 /* UIGetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 322EC04217CE600100977356 /* UIGetPocketsOperation.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
 		324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF01717CE14EF005B08F4 /* PocketListCell.xib */; };
@@ -44,6 +43,7 @@
 		32D0888217C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
 		32D0888A17C9DE76007C50CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32D0888817C9DE76007C50CD /* InfoPlist.strings */; };
 		32D0888D17C9DE76007C50CD /* RandomPocketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D0888C17C9DE76007C50CD /* RandomPocketTests.m */; };
+		32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */; };
 		4E10A81F0CBD460F918B067C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5141E4EB3CC44EA19F7FE6C3 /* libPods.a */; };
 		FE4F926C2F114460AA6FDC6C /* libPods-RandomPocketTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FE2D5431F34E21BDB33DEE /* libPods-RandomPocketTests.a */; };
 /* End PBXBuildFile section */
@@ -73,8 +73,6 @@
 		178F268617D3081800993DF9 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
 		178F268717D3081800993DF9 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		17922AAC17D3226200AF2FD3 /* UIPocketList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketList.m; sourceTree = "<group>"; };
-		322EC04117CE600100977356 /* UIGetPocketsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGetPocketsOperation.h; sourceTree = "<group>"; };
-		322EC04217CE600100977356 /* UIGetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGetPocketsOperation.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
 		324FEFFA17CCEB2B005B08F4 /* RPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPColor.m; sourceTree = "<group>"; };
 		324FF01517CE14EF005B08F4 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
@@ -116,6 +114,8 @@
 		32D0888917C9DE76007C50CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32D0888B17C9DE76007C50CD /* RandomPocketTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketTests.h; sourceTree = "<group>"; };
 		32D0888C17C9DE76007C50CD /* RandomPocketTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomPocketTests.m; sourceTree = "<group>"; };
+		32D2FB6717D4B85100BD33DF /* GetPocketsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPocketsOperation.h; sourceTree = "<group>"; };
+		32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPocketsOperation.m; sourceTree = "<group>"; };
 		3E8066FFAFFF4DA9A5DFBF7A /* Pods-RandomPocketTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomPocketTests.xcconfig"; path = "Pods/Pods-RandomPocketTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		5141E4EB3CC44EA19F7FE6C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FE2D5431F34E21BDB33DEE /* libPods-RandomPocketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomPocketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,16 +212,6 @@
 			path = HTMLParser;
 			sourceTree = "<group>";
 		};
-		322EC04017CE5F3600977356 /* Operations */ = {
-			isa = PBXGroup;
-			children = (
-				322EC04117CE600100977356 /* UIGetPocketsOperation.h */,
-				322EC04217CE600100977356 /* UIGetPocketsOperation.m */,
-			);
-			name = Operations;
-			path = Model/Operations;
-			sourceTree = "<group>";
-		};
 		324FF00917CD77DC005B08F4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +240,8 @@
 		324FF00C17CD77DC005B08F4 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				32D2FB6717D4B85100BD33DF /* GetPocketsOperation.h */,
+				32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -343,7 +335,6 @@
 				324FEFF917CCEB2B005B08F4 /* RPColor.h */,
 				324FEFFA17CCEB2B005B08F4 /* RPColor.m */,
 				17291EDF17CF9FFD00B44BBE /* Utils */,
-				322EC04017CE5F3600977356 /* Operations */,
 				3268E4D117CBA13C00E3D702 /* Model */,
 				32AF668817C9EF9600EF34EC /* Parts */,
 				32AF668A17C9EF9600EF34EC /* Views */,
@@ -647,11 +638,11 @@
 				324FF01F17CE14EF005B08F4 /* PocketListViewController.m in Sources */,
 				324FF02417CE15A3005B08F4 /* PocketSwipeViewController.m in Sources */,
 				324FF03717CE3E69005B08F4 /* PocketDetailCell.m in Sources */,
-				322EC04317CE600100977356 /* UIGetPocketsOperation.m in Sources */,
 				17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */,
 				178F268817D3081800993DF9 /* HTMLNode.m in Sources */,
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
+				32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

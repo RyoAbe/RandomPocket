@@ -52,7 +52,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (void)reqestPocketList
 {
     [self.HUD show:YES];
-    UIGetPocketsOperation *op = [[UIGetPocketsOperation alloc] initWithSuccessBlock:^(UIPocketList *pocketList) {
+    GetPocketsOperation *op = [[GetPocketsOperation alloc] initWithSuccessBlock:^(UIPocketList *pocketList) {
         [self.HUD hide:YES];
         [self.refreshController endRefreshing];
         self.pocketList = pocketList;
