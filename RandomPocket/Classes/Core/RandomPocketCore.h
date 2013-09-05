@@ -12,3 +12,13 @@
 #import <BlocksKit/BlocksKit.h>
 #import "Toast+UIView.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+
+// Entity
+#import "CPocket.h"
+
+// Core
+#import "NSManagedObjectContext+RandomPocket.h"
+
+// Operation
+#import "SavePocketOperation.h"
+#import "GetPocketsOperation.h"

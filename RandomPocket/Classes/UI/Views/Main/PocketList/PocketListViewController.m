@@ -47,6 +47,9 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
     // リクエスト
     [self reqestPocketList];
+    
+    SavePocketOperation *op = [[SavePocketOperation alloc] init];
+    [op save];
 }
 
 - (void)reqestPocketList

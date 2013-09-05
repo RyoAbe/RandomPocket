@@ -15,9 +15,6 @@
 // Utils
 #import "HTMLBodyParser.h"
 
-// Operations
-#import "GetPocketsOperation.h"
-
 // Constants
 #import "RPColor.h"
 

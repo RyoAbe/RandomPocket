@@ -14,6 +14,8 @@
 @property (nonatomic, copy) void (^successBlock)();
 @property (nonatomic, copy) void (^errorBlock)();
 @property (nonatomic) NSMutableArray *response;
+@property (nonatomic) UIPocketList *pocketList;
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @end
 
 @implementation GetPocketsOperation
@@ -25,7 +27,8 @@
         self.successBlock = successBlock;
         self.errorBlock = errorBlock;
         self.response = [NSMutableArray new];
-
+        self.pocketList = [[UIPocketList alloc] init];
+        self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     }
     return self;
 }
@@ -44,14 +47,20 @@
 {
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
+        
+        CPocket *cPocket = [self.managedObjectContext createEntity:@"CPocket"];
+        cPocket.url = data[@"resolved_url"];
+        cPocket.title = data[@"resolved_title"];
+        SavePocketOperation *op = [[SavePocketOperation alloc] initWithCPocket:cPocket];
+        [op save];
+        
         UIPocket *pocket = [[UIPocket alloc] initWithData:data];
         [self.response addObject:pocket];
     }
-    UIPocketList *pocketList = [[UIPocketList alloc] init];
-    pocketList.response = self.response;
+    self.pocketList.response = self.response;
     
     if(!error && response.count != 0){
-        self.successBlock(pocketList);
+        self.successBlock(self.pocketList);
         return ;
     }
     self.errorBlock(error);
