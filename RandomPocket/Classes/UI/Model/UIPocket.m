@@ -7,10 +7,28 @@
 //
 
 #import "UIPocket.h"
+#import "RandomPocketUI.h"
 
 static NSString* const UNKNOWN_TITLE = @"Unknown Title";
 
+@interface UIPocket()
+@property (nonatomic) CPocket *cPocket;
+@end
+
 @implementation UIPocket
+
+- (id)initWithCPocket:(CPocket*)cPocket
+{
+    self = [super init];
+    if (self) {
+        self.title = cPocket.title;
+        self.body = cPocket.body;
+        self.entryDate = cPocket.entryDate;
+        self.cPocket = cPocket;
+        self.objectID = cPocket.objectID;
+    }
+    return self;
+}
 
 - (id)initWithData:(NSDictionary*)data
 {

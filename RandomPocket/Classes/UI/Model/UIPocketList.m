@@ -11,44 +11,129 @@
 
 static NSInteger const NumberOfSections = 1;
 
+@interface UIPocketList()
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
+@end
+
 @implementation UIPocketList
+
+#pragma mark - Fetched results controller
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+    }
+    return self;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CPocket" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+
+    [fetchRequest setFetchBatchSize:20];
+
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"entryDate" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+#warning TODO: エラー処理
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+    
+    return _fetchedResultsController;
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.delegate pocketListWillChange:self];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.delegate pocketListDidChange:self];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type
+{
+    [self.delegate pocketList:self didChangeSection:sectionInfo indexPath:[NSIndexPath indexPathWithIndex:sectionIndex] changeType:type];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UIPocket *uiPocket = [[UIPocket alloc] initWithCPocket:(CPocket*)anObject];
+    [self.delegate pocketList:self didChangeItem:uiPocket newIndexPath:newIndexPath oldIndexPath:indexPath changeType:type];
+}
+
+#pragma mark -
 
 - (NSInteger)numberOfSections
 {
-    return NumberOfSections;
+    return self.fetchedResultsController.sections.count;
 }
 
 - (NSUInteger)numberOfItems
 {
-    return self.response.count;
+    return self.fetchedResultsController.fetchedObjects.count;
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section
 {
-    return self.response.count;
+    id<NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
+    return [sectionInfo numberOfObjects];
 }
 
-- (NSIndexPath*)indexPathForObject:(UIPocket*)pocket
+- (NSIndexPath*)indexPathForObject:(UIPocket*)uiPocket
 {
-    NSInteger index = [self.response indexOfObject:pocket];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:NumberOfSections];
-    return indexPath;
+    CPocket* cPocket = [self.fetchedResultsController.managedObjectContext entityWithID:uiPocket.objectID];
+    return [self.fetchedResultsController indexPathForObject:cPocket];
 }
 
-- (NSInteger)indexForObject:(UIPocket*)pocket
+- (NSInteger)indexForObject:(UIPocket*)uiPocket
 {
-    NSInteger index = [self.response indexOfObject:pocket];
-    return index;
+    __block NSUInteger i = 0;
+    [self.fetchedResultsController.fetchedObjects match:^BOOL(CPocket *cPocket) {
+        return [cPocket.objectID isEqual:uiPocket.objectID] ? YES : i++; NO;
+    }];
+    return i;
 }
 
 - (UIPocket*)objectAtIndex:(NSUInteger)index
 {
-    return self.response[index];
+    CPocket *cPocket = self.fetchedResultsController.fetchedObjects[index];
+    return [[UIPocket alloc] initWithCPocket:cPocket];
 }
 
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath
 {
-    return self.response[indexPath.row];
+//    for (CPocket *p in self.fetchedResultsController.fetchedObjects) {
+//        NSLog(@"p : %@", p.title);
+//    }
+    
+    return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 @end

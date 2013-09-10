@@ -14,6 +14,7 @@
 @property (nonatomic) MBProgressHUD *HUD;
 @property (nonatomic) UIRefreshControl *refreshController;
 @property (nonatomic) NSIndexPath *selectedIndexPath;
+@property (nonatomic) GetPocketsOperation *getPocketsOperation;
 @end
 
 static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
@@ -44,29 +45,60 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
 	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
 	self.HUD.labelText = NSLocalizedStringFromTable(@"Loading", @"Common", nil);
-
-    // リクエスト
-    [self reqestPocketList];
     
-    SavePocketOperation *op = [[SavePocketOperation alloc] init];
-    [op save];
+    // リクエスト
+    self.getPocketsOperation = [GetPocketsOperation new];
+    [self reqestPocketList];
+
+    // PocketList
+    self.pocketList = [[UIPocketList alloc] init];
+    self.pocketList.delegate = self;
 }
 
 - (void)reqestPocketList
 {
-    [self.HUD show:YES];
-    GetPocketsOperation *op = [[GetPocketsOperation alloc] initWithSuccessBlock:^(UIPocketList *pocketList) {
-        [self.HUD hide:YES];
-        [self.refreshController endRefreshing];
-        self.pocketList = pocketList;
-        [self.tableView reloadData];
-    } errorBlock:^(NSError *error) {
-        [self.HUD hide:YES];
-        [self.refreshController endRefreshing];
-        [self.view makeToast:NSLocalizedStringFromTable(@"FaildRequestPocketList", @"PocketList", nil)];
-    }];
-    [op request];
+    [self.getPocketsOperation request];
 }
+
+#pragma mark - UIPocketListDelegate
+
+- (void)pocketList:(UIPocketList *)pocketList didChangeItem:(UIPocket *)uiPocket newIndexPath:(NSIndexPath *)newIndexPath oldIndexPath:(NSIndexPath *)oldIndexPath changeType:(UIPocketListChangeType)type
+{
+    switch (type) {
+        case UIPocketListChangeType_Insert:
+        {
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
+        }
+            break;
+        case UIPocketListChangeType_Update:
+        {
+            PocketListCell *cell = (PocketListCell*)[self.tableView cellForRowAtIndexPath:oldIndexPath];
+            cell.pocket = uiPocket;
+        }
+            break;
+        case UIPocketListChangeType_Delete:
+        {
+            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:YES];
+        }
+            break;
+        case UIPocketListChangeType_Move:
+        {
+            [self.tableView moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)pocketList:(UIPocketList *)pocketList
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+         indexPath:(NSIndexPath *)newIndexPath
+        changeType:(UIPocketListChangeType)type
+{}
+- (void)pocketListDidChange:(UIPocketList *)pocketList {}
+- (void)pocketListWillChange:(UIPocketList *)pocketList {}
 
 #pragma mark - UITableViewDelegate
 
@@ -78,11 +110,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (PocketListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
-    if (self.pocketList.response.count == 0) {
-        return cell;
-    }
     cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
-    
     return cell;
 }
 

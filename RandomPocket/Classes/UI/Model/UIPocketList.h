@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RandomPocketUI.h"
 
 @class UIPocketList;
 @class UIPocket;
@@ -18,16 +19,34 @@ typedef enum UIPocketListChangeType_ {
     UIPocketListChangeType_Update = 4,
 } UIPocketListChangeType;
 
+@protocol UIPocketListDelegate <NSObject>
+-(void)pocketListWillChange:(UIPocketList*)pocketList;
+-(void)pocketListDidChange:(UIPocketList*)pocketList;
 
-@interface UIPocketList : NSObject
+-(void)pocketList:(UIPocketList*)pocketList
+ didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+        indexPath:(NSIndexPath*)newIndexPath
+       changeType:(UIPocketListChangeType)type;
+
+-(void)pocketList:(UIPocketList*)pocketList
+   didChangeItem:(UIPocket*)uiPocket
+    newIndexPath:(NSIndexPath*)newIndexPath
+    oldIndexPath:(NSIndexPath*)oldIndexPath
+      changeType:(UIPocketListChangeType)type;
+@end
+
+
+@interface UIPocketList : NSObject<NSFetchedResultsControllerDelegate>
 
 - (NSInteger)numberOfSections;
 - (NSInteger)numberOfItemsInSection:(NSInteger)section;
 - (NSUInteger)numberOfItems;
-- (NSIndexPath*)indexPathForObject:(UIPocket*)pocket;
-- (NSInteger)indexForObject:(UIPocket*)pocket;
+- (NSIndexPath*)indexPathForObject:(UIPocket*)uiPocket;
+- (NSInteger)indexForObject:(UIPocket*)uiPocket;
 - (UIPocket*)objectAtIndex:(NSUInteger)index;
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath;
 @property (nonatomic) NSMutableArray *response;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (weak, nonatomic) id<UIPocketListDelegate> delegate;
 
 @end

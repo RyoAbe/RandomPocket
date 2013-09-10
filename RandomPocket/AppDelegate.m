@@ -28,7 +28,6 @@
     UIViewController *vc = [storyboard instantiateInitialViewController];
     self.window.rootViewController = vc;
     
-#warning これで良いのか？
     _managedObjectContext = [self createManagedObjectContext];
     
     [self appearance];
@@ -99,7 +98,7 @@
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-#warning エラー処理
+#warning TODO: エラー処理
     }
     return _persistentStoreCoordinator;
 }
@@ -111,7 +110,7 @@
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-#warning エラー処理
+#warning TODO: エラー処理
         }
     }
 }

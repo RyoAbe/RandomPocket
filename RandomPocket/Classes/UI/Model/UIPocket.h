@@ -7,12 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RandomPocketUI.h"
 
 @interface UIPocket : NSObject
 
 - (id)initWithData:(NSDictionary*)data;
-@property (nonatomic) NSString* url;
-@property (nonatomic) NSString* title;
+- (id)initWithCPocket:(CPocket*)cPocket;
+
+@property (nonatomic) NSManagedObjectID *objectID;
+@property (nonatomic) NSString *url;
+@property (nonatomic) NSString *title;
+@property (nonatomic) NSString *body;
+@property (nonatomic) NSDate *entryDate;
 @property (nonatomic) NSDictionary* data;
 
 @end

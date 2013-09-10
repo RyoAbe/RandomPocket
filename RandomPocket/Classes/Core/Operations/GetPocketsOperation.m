@@ -20,14 +20,10 @@
 
 @implementation GetPocketsOperation
 
-- (id)initWithSuccessBlock:(void(^)(UIPocketList* pocketList))successBlock errorBlock:(void (^)(NSError *error))errorBlock
+- (id)init
 {
     self = [super init];
     if (self) {
-        self.successBlock = successBlock;
-        self.errorBlock = errorBlock;
-        self.response = [NSMutableArray new];
-        self.pocketList = [[UIPocketList alloc] init];
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
     }
     return self;
@@ -49,21 +45,15 @@
         NSDictionary *data = response[@"list"][key];
         
         CPocket *cPocket = [self.managedObjectContext createEntity:@"CPocket"];
-        cPocket.url = data[@"resolved_url"];
         cPocket.title = data[@"resolved_title"];
-        SavePocketOperation *op = [[SavePocketOperation alloc] initWithCPocket:cPocket];
-        [op save];
-        
-        UIPocket *pocket = [[UIPocket alloc] initWithData:data];
-        [self.response addObject:pocket];
+        cPocket.url = data[@"resolved_url"];
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+#warning TODO: エラー処理
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        }
     }
-    self.pocketList.response = self.response;
-    
-    if(!error && response.count != 0){
-        self.successBlock(self.pocketList);
-        return ;
-    }
-    self.errorBlock(error);
+#warning TODO: delegate経由で進捗状況をViewに伝える（＋エラー処理）
 }
 
 @end

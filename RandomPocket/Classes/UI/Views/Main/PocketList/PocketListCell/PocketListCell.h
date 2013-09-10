@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RandomPocketUI.h"
+#import "UIPocket.h"
 
 @interface PocketListCell : UITableViewCell
 @property (nonatomic) UIPocket *pocket;

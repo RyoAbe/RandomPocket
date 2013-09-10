@@ -49,7 +49,7 @@ static CGRect DefaultURLRect;
     DefaultURLRect = self.urlLabel.frame;
 }
 
-- (void)setPocket:(UIPocket *)pocket
+- (void)setPocket:(UIPocket*)pocket
 {
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;

@@ -11,6 +11,6 @@
 @class UIPocketList;
 
 @interface GetPocketsOperation : NSObject
-- (id)initWithSuccessBlock:(void(^)(UIPocketList* pocketList))successBlock errorBlock:(void (^)(NSError *error))errorBlock;
+- (id)init;
 - (void)request;
 @end

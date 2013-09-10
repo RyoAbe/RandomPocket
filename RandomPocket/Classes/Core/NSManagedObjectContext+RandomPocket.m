@@ -15,4 +15,11 @@
     return [NSEntityDescription insertNewObjectForEntityForName:name inManagedObjectContext:self];
 }
 
+- (id)entityWithID:(NSManagedObjectID*)objectID
+{
+    NSError *error;
+    NSManagedObject* obj = [self existingObjectWithID:objectID error:&error];
+    return obj;
+}
+
 @end
