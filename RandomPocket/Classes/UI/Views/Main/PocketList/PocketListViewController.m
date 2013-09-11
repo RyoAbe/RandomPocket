@@ -48,6 +48,15 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     
     // リクエスト
     self.getPocketsOperation = [GetPocketsOperation new];
+    __weak PocketListViewController *weakSelf = self;
+    [self.getPocketsOperation setCompletionHandler:^{
+        [weakSelf.refreshController endRefreshing];
+    }];
+    [self.getPocketsOperation setErrorHandler:^(NSError *error) {
+        [weakSelf.refreshController endRefreshing];
+        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
+    }];
+
     [self reqestPocketList];
 
     // PocketList
@@ -64,32 +73,33 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (void)pocketList:(UIPocketList *)pocketList didChangeItem:(UIPocket *)uiPocket newIndexPath:(NSIndexPath *)newIndexPath oldIndexPath:(NSIndexPath *)oldIndexPath changeType:(UIPocketListChangeType)type
 {
-    switch (type) {
-        case UIPocketListChangeType_Insert:
-        {
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
-        }
-            break;
-        case UIPocketListChangeType_Update:
-        {
-            PocketListCell *cell = (PocketListCell*)[self.tableView cellForRowAtIndexPath:oldIndexPath];
-            cell.pocket = uiPocket;
-        }
-            break;
-        case UIPocketListChangeType_Delete:
-        {
-            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:YES];
-        }
-            break;
-        case UIPocketListChangeType_Move:
-        {
-            [self.tableView moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
-            
-        }
-            break;
-        default:
-            break;
-    }
+//    switch (type) {
+//        case UIPocketListChangeType_Insert:
+//        {
+//            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
+//        }
+//            break;
+//        case UIPocketListChangeType_Update:
+//        {
+//            PocketListCell *cell = (PocketListCell*)[self.tableView cellForRowAtIndexPath:oldIndexPath];
+//            cell.pocket = uiPocket;
+//        }
+//            break;
+//        case UIPocketListChangeType_Delete:
+//        {
+//            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:YES];
+//        }
+//            break;
+//        case UIPocketListChangeType_Move:
+//        {
+//            [self.tableView moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
+//            
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+    [self.tableView reloadData];
 }
 
 - (void)pocketList:(UIPocketList *)pocketList

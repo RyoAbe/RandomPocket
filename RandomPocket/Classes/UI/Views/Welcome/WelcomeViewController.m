@@ -34,6 +34,8 @@
 
     [[PocketAPI sharedAPI] loginWithHandler:^(PocketAPI *api, NSError *error) {
         if(error){
+            self.loginButton.enabled = YES;
+            self.loginButton.alpha = 1.f;
             [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)];
             return;
         }

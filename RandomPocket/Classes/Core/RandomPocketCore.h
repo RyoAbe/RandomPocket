@@ -20,4 +20,5 @@
 #import "NSManagedObjectContext+RandomPocket.h"
 
 // Operation
+#import "AsyncOperation.h"
 #import "GetPocketsOperation.h"

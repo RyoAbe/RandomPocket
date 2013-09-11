@@ -11,8 +11,6 @@
 #import "UIPocketList.h"
 
 @interface GetPocketsOperation()
-@property (nonatomic, copy) void (^successBlock)();
-@property (nonatomic, copy) void (^errorBlock)();
 @property (nonatomic) NSMutableArray *response;
 @property (nonatomic) UIPocketList *pocketList;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -41,19 +39,25 @@
 
 - (void)handlerWithResponse:(NSDictionary*)response error:(NSError*)error;
 {
+    if(error){
+        self.errorHandler(error);
+        return;
+    }
+    
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
-        
         CPocket *cPocket = [self.managedObjectContext createEntity:@"CPocket"];
         cPocket.title = data[@"resolved_title"];
         cPocket.url = data[@"resolved_url"];
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-#warning TODO: エラー処理
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        }
     }
-#warning TODO: delegate経由で進捗状況をViewに伝える（＋エラー処理）
+
+    error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        self.errorHandler(error);
+        return;
+    }
+    self.completionHandler();
 }
 
 @end

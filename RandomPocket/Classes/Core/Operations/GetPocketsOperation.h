@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RandomPocketCore.h"
 
 @class UIPocketList;
 
-@interface GetPocketsOperation : NSObject
+@interface GetPocketsOperation : AsyncOperation
 - (id)init;
 - (void)request;
 @end

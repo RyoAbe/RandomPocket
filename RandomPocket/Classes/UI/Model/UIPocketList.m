@@ -9,8 +9,6 @@
 #import "UIPocketList.h"
 #import "RandomPocketUI.h"
 
-static NSInteger const NumberOfSections = 1;
-
 @interface UIPocketList()
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @end
@@ -36,23 +34,22 @@ static NSInteger const NumberOfSections = 1;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"CPocket" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-
-    [fetchRequest setFetchBatchSize:20];
+    fetchRequest.entity = entity;
+    fetchRequest.fetchBatchSize = 20;
 
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"entryDate" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
 
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                                managedObjectContext:self.managedObjectContext
+                                                                                                  sectionNameKeyPath:nil cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error]) {
 #warning TODO: エラー処理
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
+	    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
 	}
     
     return _fetchedResultsController;
