@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
+#import "AppDelegate.h"
+
 // CocoaPods
 #import <Foundation/Foundation.h>
 #import <PocketAPI/PocketAPI.h>
@@ -22,3 +24,4 @@
 // Operation
 #import "AsyncOperation.h"
 #import "GetPocketsOperation.h"
+#import "ArchivePocketOperation.h"

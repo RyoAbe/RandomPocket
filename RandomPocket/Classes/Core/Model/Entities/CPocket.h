@@ -2,7 +2,7 @@
 //  CPocket.h
 //  RandomPocket
 //
-//  Created by RyoAbe on 2013/09/03.
+//  Created by RyoAbe on 2013/09/12.
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
@@ -13,10 +13,11 @@
 @interface CPocket : NSManagedObject
 
 @property (nonatomic, retain) NSString * body;
+@property (nonatomic) NSDate * entryDate;
+@property (nonatomic) BOOL archive;
+@property (nonatomic) BOOL favorite;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
-@property (nonatomic) NSDate *entryDate;
-@property (nonatomic) BOOL isArchive;
-@property (nonatomic) BOOL isFavorite;
+@property (nonatomic, retain) NSString * itemId;
 
 @end

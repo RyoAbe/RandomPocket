@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 // Common
-#import "AppDelegate.h"
 #import "RandomPocketCore.h"
 
 // Utils

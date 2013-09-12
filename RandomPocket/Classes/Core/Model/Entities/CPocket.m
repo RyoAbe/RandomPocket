@@ -2,7 +2,7 @@
 //  CPocket.m
 //  RandomPocket
 //
-//  Created by RyoAbe on 2013/09/03.
+//  Created by RyoAbe on 2013/09/12.
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
@@ -13,9 +13,10 @@
 
 @dynamic body;
 @dynamic entryDate;
-@dynamic isArchive;
-@dynamic isFavorite;
+@dynamic archive;
+@dynamic favorite;
 @dynamic title;
 @dynamic url;
+@dynamic itemId;
 
 @end
