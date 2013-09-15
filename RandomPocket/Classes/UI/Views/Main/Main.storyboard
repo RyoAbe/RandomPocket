@@ -110,7 +110,13 @@
                             <constraint firstItem="tLE-hD-QIm" firstAttribute="trailing" secondItem="GwP-gY-XkF" secondAttribute="trailing" id="wL2-Of-uNW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="puE-1R-xdf"/>
+                    <navigationItem key="navigationItem" id="puE-1R-xdf">
+                        <barButtonItem key="rightBarButtonItem" title="Mark as read" style="plain" id="pYx-r1-fZd">
+                            <connections>
+                                <action selector="readedTapped:" destination="Cq8-PV-hpG" id="2gL-9h-Jf0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="tLE-hD-QIm" id="uYh-so-V0U"/>
                     </connections>

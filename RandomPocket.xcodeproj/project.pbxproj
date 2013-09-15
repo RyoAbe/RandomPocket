@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171B41D317E5501F00C03A22 /* CPocket+Method.m in Sources */ = {isa = PBXBuildFile; fileRef = 171B41D217E5501F00C03A22 /* CPocket+Method.m */; };
 		17291EC817CF9A6400B44BBE /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC417CF9A6400B44BBE /* Common.strings */; };
 		17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC517CF9A6400B44BBE /* PocketDetail.strings */; };
 		17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC617CF9A6400B44BBE /* PocketList.strings */; };
 		17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC717CF9A6400B44BBE /* Welcom.strings */; };
 		17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17291EE217CFA01000B44BBE /* HTMLBodyParser.m */; };
-		175CFECE17E1F8E100EFF718 /* CPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 175CFECD17E1F8E100EFF718 /* CPocket.m */; };
+		1763865E17E45E7700135AD8 /* RequestActionToPocketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1763865D17E45E7700135AD8 /* RequestActionToPocketOperation.m */; };
+		1763866417E545DB00135AD8 /* CPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1763866317E545DB00135AD8 /* CPocket.m */; };
 		1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */; };
 		178F267A17D307A400993DF9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 178F267917D307A400993DF9 /* libxml2.dylib */; };
 		178F268817D3081800993DF9 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268517D3081800993DF9 /* HTMLNode.m */; };
@@ -33,7 +35,6 @@
 		3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CD17CB947900E3D702 /* Welcom.storyboard */; };
 		3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */; };
 		3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
-		32A66D8917E1E07500B88D4B /* ArchivePocketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A66D8817E1E07500B88D4B /* ArchivePocketOperation.m */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
@@ -66,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		0C6ED4897690439088DDDEE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		171B41D117E5501F00C03A22 /* CPocket+Method.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPocket+Method.h"; sourceTree = "<group>"; };
+		171B41D217E5501F00C03A22 /* CPocket+Method.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CPocket+Method.m"; sourceTree = "<group>"; };
 		17291EC417CF9A6400B44BBE /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		17291EC517CF9A6400B44BBE /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
 		17291EC617CF9A6400B44BBE /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
@@ -73,8 +76,10 @@
 		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketCore.h; sourceTree = "<group>"; };
 		17291EE117CFA01000B44BBE /* HTMLBodyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLBodyParser.h; sourceTree = "<group>"; };
 		17291EE217CFA01000B44BBE /* HTMLBodyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLBodyParser.m; sourceTree = "<group>"; };
-		175CFECC17E1F8E100EFF718 /* CPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPocket.h; sourceTree = "<group>"; };
-		175CFECD17E1F8E100EFF718 /* CPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPocket.m; sourceTree = "<group>"; };
+		1763865C17E45E7700135AD8 /* RequestActionToPocketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestActionToPocketOperation.h; sourceTree = "<group>"; };
+		1763865D17E45E7700135AD8 /* RequestActionToPocketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestActionToPocketOperation.m; sourceTree = "<group>"; };
+		1763866217E545DB00135AD8 /* CPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPocket.h; sourceTree = "<group>"; };
+		1763866317E545DB00135AD8 /* CPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPocket.m; sourceTree = "<group>"; };
 		1778CFAD17D8B5A900A20E4B /* NSManagedObjectContext+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+RandomPocket.h"; sourceTree = "<group>"; };
 		1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+RandomPocket.m"; sourceTree = "<group>"; };
 		178F267917D307A400993DF9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -107,8 +112,6 @@
 		3268E4D217CBA16E00E3D702 /* UIPocketList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocketList.h; sourceTree = "<group>"; };
 		3268E4D517CBA23600E3D702 /* UIPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPocket.h; sourceTree = "<group>"; };
 		3268E4D617CBA23600E3D702 /* UIPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocket.m; sourceTree = "<group>"; };
-		32A66D8717E1E07500B88D4B /* ArchivePocketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivePocketOperation.h; sourceTree = "<group>"; };
-		32A66D8817E1E07500B88D4B /* ArchivePocketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivePocketOperation.m; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
 		32D0885517C9DE76007C50CD /* RandomPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,8 +235,10 @@
 		17E552D417D4D0A4004E10BE /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				175CFECC17E1F8E100EFF718 /* CPocket.h */,
-				175CFECD17E1F8E100EFF718 /* CPocket.m */,
+				1763866217E545DB00135AD8 /* CPocket.h */,
+				1763866317E545DB00135AD8 /* CPocket.m */,
+				171B41D117E5501F00C03A22 /* CPocket+Method.h */,
+				171B41D217E5501F00C03A22 /* CPocket+Method.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -266,8 +271,8 @@
 				17E552D917D4DA4D004E10BE /* AsyncOperation.m */,
 				32D2FB6717D4B85100BD33DF /* GetPocketsOperation.h */,
 				32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */,
-				32A66D8717E1E07500B88D4B /* ArchivePocketOperation.h */,
-				32A66D8817E1E07500B88D4B /* ArchivePocketOperation.m */,
+				1763865C17E45E7700135AD8 /* RequestActionToPocketOperation.h */,
+				1763865D17E45E7700135AD8 /* RequestActionToPocketOperation.m */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -665,19 +670,20 @@
 				32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */,
 				3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
-				32A66D8917E1E07500B88D4B /* ArchivePocketOperation.m in Sources */,
 				324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */,
 				324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */,
 				324FF01F17CE14EF005B08F4 /* PocketListViewController.m in Sources */,
 				324FF02417CE15A3005B08F4 /* PocketSwipeViewController.m in Sources */,
+				171B41D317E5501F00C03A22 /* CPocket+Method.m in Sources */,
 				324FF03717CE3E69005B08F4 /* PocketDetailCell.m in Sources */,
+				1763865E17E45E7700135AD8 /* RequestActionToPocketOperation.m in Sources */,
 				17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */,
 				178F268817D3081800993DF9 /* HTMLNode.m in Sources */,
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
 				32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */,
 				17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */,
-				175CFECE17E1F8E100EFF718 /* CPocket.m in Sources */,
+				1763866417E545DB00135AD8 /* CPocket.m in Sources */,
 				17E552DA17D4DA4D004E10BE /* AsyncOperation.m in Sources */,
 				1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */,
 			);

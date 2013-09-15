@@ -67,9 +67,6 @@ static CGRect DefaultURLRect;
     CGFloat margin = fabs(DefaultCellHeight - DefaultTitleRect.size.height - DefaultURLRect.size.height);
     CGFloat cellHeight = size.height + margin + DefaultURLRect.size.height;
 
-//    if (cellHeight < DefaultCellHeight) {
-//        return DefaultCellHeight; // いらないかな、、？
-//    }
     return cellHeight;
 }
 

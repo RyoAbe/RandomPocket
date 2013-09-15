@@ -28,7 +28,7 @@
 {
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"complete": @"detailType", @"count": @(20)}
+                               arguments:@{@"detailType": @"complete", @"count": @(20)}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      if(error){
                                          self.errorHandler(error);
@@ -42,16 +42,26 @@
 {
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
-        CPocket *cPocket = [self.managedObjectContext createEntity:@"CPocket"];
+
+        NSString* itemID = data[@"item_id"];
+        CPocket *cPocket = [self.managedObjectContext pocketWithItemID:itemID];
+        if(!cPocket){
+            cPocket = [self.managedObjectContext createEntity:@"CPocket"];
+        }
         cPocket.title = data[@"resolved_title"];
         cPocket.url = data[@"resolved_url"];
-    }
+        cPocket.itemId = data[@"item_id"];
+        cPocket.status = [data[@"status"] integerValue];
+        cPocket.sortId = [data[@"sort_id"] integerValue];
+        cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
+        cPocket.favorite = [data[@"favorite"] integerValue];
 
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        self.errorHandler(error);
-        return;
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            self.errorHandler(error);
+            return;
+        }
     }
     self.completionHandler();
 }

@@ -23,7 +23,7 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
     if (self) {
         self.title = cPocket.title;
         self.body = cPocket.body;
-        self.entryDate = cPocket.entryDate;
+        self.timeAdded = cPocket.timeAdded;
         self.cPocket = cPocket;
         self.objectID = cPocket.objectID;
     }

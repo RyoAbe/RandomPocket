@@ -7,6 +7,7 @@
 //
 
 #import "NSManagedObjectContext+RandomPocket.h"
+#import "RandomPocketCore.h"
 
 @implementation NSManagedObjectContext (RandomPocket)
 
@@ -19,7 +20,39 @@
 {
     NSError *error;
     NSManagedObject* obj = [self existingObjectWithID:objectID error:&error];
+    if(error){
+        NSAssert(NO, [[error userInfo] description]);
+    }
     return obj;
+}
+
+
+- (CPocket*)pocketWithItemID:(NSString*)itemID
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+#warning itemId -> itemID
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"itemId == %@", itemID];
+    CPocket *cPocket = [self existEntityWithName:@"CPocket" fetchRequest:fetchRequest];
+
+    return cPocket;
+}
+
+- (id)existEntityWithName:(NSString*)entyryName fetchRequest:(NSFetchRequest*)fetchRequest
+{
+    fetchRequest.entity = [NSEntityDescription entityForName:@"CPocket" inManagedObjectContext:self];
+   
+    NSError *error = nil;
+    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
+    if(error){
+        NSAssert(NO, error.userInfo.description);
+    }
+
+    if(results.count > 1){
+        NSAssert(NO, @"should be result count is 0 or 1.");
+    }else if(results.count == 0){
+        return nil;
+    }
+    return results[0];
 }
 
 @end

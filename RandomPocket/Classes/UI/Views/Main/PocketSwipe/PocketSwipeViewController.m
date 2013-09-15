@@ -80,9 +80,27 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (IBAction)actionButtonTapped:(id)sender
 {
-    PocketDetailCell *cell = self.collectionView.visibleCells[0];
-    NSArray *items = @[cell.pocket.title, cell.pocket.url];
+    NSArray *items = @[self.currentPocket.title, self.currentPocket.url];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
+
+- (IBAction)readedTapped:(id)sender
+{
+    RequestActionToPocketOperation *op = [[RequestActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:RequestActionToPocketType_Archive];
+    __weak PocketSwipeViewController *weakSelf = self;
+    [op setCompletionHandler:^{
+        [weakSelf.view makeToast:@"Arcived"];
+    }];
+    [op setErrorHandler:^(NSError *error) {
+        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
+    }];
+    [op request];
+}
+
+- (UIPocket*)currentPocket
+{
+    return ((PocketDetailCell*) self.collectionView.visibleCells[0]).pocket;
+}
+
 @end

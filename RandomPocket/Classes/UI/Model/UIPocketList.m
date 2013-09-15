@@ -37,8 +37,9 @@
     fetchRequest.entity = entity;
     fetchRequest.fetchBatchSize = 20;
 
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"entryDate" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortId" ascending:YES];
     fetchRequest.sortDescriptors = @[sortDescriptor];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"status == %d", PocketStatus_Unread];
 
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                                                 managedObjectContext:self.managedObjectContext

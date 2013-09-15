@@ -18,7 +18,7 @@
 @property (nonatomic) NSString *url;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *body;
-@property (nonatomic) NSDate *entryDate;
+@property (nonatomic) NSDate *timeAdded;
 @property (nonatomic) NSDictionary* data;
 
 @end

@@ -25,6 +25,7 @@
 
 - (void)execute
 {
+#warning impl 非同期処理
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         id result/* = self.executeHandler()*/;
