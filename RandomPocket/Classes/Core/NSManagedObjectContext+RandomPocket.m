@@ -30,8 +30,7 @@
 - (CPocket*)pocketWithItemID:(NSString*)itemID
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-#warning itemId -> itemID
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"itemId == %@", itemID];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"itemID == %@", itemID];
     CPocket *cPocket = [self existEntityWithName:@"CPocket" fetchRequest:fetchRequest];
 
     return cPocket;

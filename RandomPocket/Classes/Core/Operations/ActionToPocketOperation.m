@@ -6,19 +6,19 @@
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
-#import "RequestActionToPocketOperation.h"
+#import "ActionToPocketOperation.h"
 #import "RandomPocketUI.h"
 
-@interface RequestActionToPocketOperation()
+@interface ActionToPocketOperation()
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) NSManagedObjectID *pocketID;
 @property (nonatomic) CPocket *cPocket;
-@property (nonatomic) RequestActionToPocketType actionType;
+@property (nonatomic) ActionToPocketType actionType;
 @end
 
-@implementation RequestActionToPocketOperation
+@implementation ActionToPocketOperation
 
-- (id)initWithPocketID:(NSManagedObjectID*)pocketID actionType:(RequestActionToPocketType)actionType
+- (id)initWithPocketID:(NSManagedObjectID*)pocketID actionType:(ActionToPocketType)actionType
 {
     self = [super init];
     if (self) {
@@ -34,7 +34,7 @@
     self.cPocket = [self.managedObjectContext entityWithID:self.pocketID];
 
 #warning JBJson入れる
-    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, self.cPocket.itemId];
+    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, self.cPocket.itemID];
 
     [[PocketAPI sharedAPI] callAPIMethod:@"send"
                           withHTTPMethod:PocketAPIHTTPMethodGET
@@ -66,22 +66,23 @@
 {
     NSString *action = nil;
     switch (self.actionType) {
-        case RequestActionToPocketType_Readd:
+        case ActionToPocketType_Readd:
             action = @"readd";
             break;
-        case RequestActionToPocketType_Archive:
+        case ActionToPocketType_Archive:
             action = @"archive";
             break;
-        case RequestActionToPocketType_Delete:
+        case ActionToPocketType_Delete:
             action = @"delete";
             break;
-        case RequestActionToPocketType_Favorite:
+        case ActionToPocketType_Favorite:
             action = @"favorite";
             break;
-        case RequestActionToPocketType_Unfavorite:
+        case ActionToPocketType_Unfavorite:
             action = @"unfavorite";
             break;
         default:
+#warning imple NSAssert Ex
             NSAssert(NO, nil);
             break;
     }
@@ -90,16 +91,12 @@
 
 - (PocketStatus)pocketStatus:(NSString*)statusStr
 {
-    if([statusStr isEqualToString:@"0"]){
-        return PocketStatus_Unread;
-    }else if ([statusStr isEqualToString:@"1"]){
+    if ([statusStr isEqualToString:@"1"]){
         return PocketStatus_Archived;
     }else if ([statusStr isEqualToString:@"2"]){
         return PocketStatus_Deleted;
-    }else{
-#warning NSAssert拡張ラッパー作成
-        NSAssert(NO, nil);
     }
+    return PocketStatus_Unread;
 }
 
 @end

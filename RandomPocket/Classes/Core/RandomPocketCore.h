@@ -24,4 +24,4 @@
 // Operation
 #import "AsyncOperation.h"
 #import "GetPocketsOperation.h"
-#import "RequestActionToPocketOperation.h"
+#import "ActionToPocketOperation.h"

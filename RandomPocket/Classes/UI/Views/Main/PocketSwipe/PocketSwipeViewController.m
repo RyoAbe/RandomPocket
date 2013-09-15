@@ -87,7 +87,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (IBAction)readedTapped:(id)sender
 {
-    RequestActionToPocketOperation *op = [[RequestActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:RequestActionToPocketType_Archive];
+    ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:ActionToPocketType_Archive];
     __weak PocketSwipeViewController *weakSelf = self;
     [op setCompletionHandler:^{
         [weakSelf.view makeToast:@"Arcived"];

@@ -37,7 +37,7 @@
     fetchRequest.entity = entity;
     fetchRequest.fetchBatchSize = 20;
 
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortId" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sortID" ascending:YES];
     fetchRequest.sortDescriptors = @[sortDescriptor];
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"status == %d", PocketStatus_Unread];
 
@@ -49,8 +49,7 @@
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error]) {
-#warning TODO: エラー処理
-	    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+        NSAssert(NO, error.userInfo.description);
 	}
     
     return _fetchedResultsController;

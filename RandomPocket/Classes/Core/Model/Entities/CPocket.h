@@ -17,13 +17,13 @@ typedef NS_ENUM(NSUInteger, PocketStatus) {
 
 @interface CPocket : NSManagedObject
 
-@property (nonatomic) int16_t status;
 @property (nonatomic, retain) NSString * body;
-@property (nonatomic) NSDate * timeAdded;
 @property (nonatomic) BOOL favorite;
-@property (nonatomic, retain) NSString * itemId;
+@property (nonatomic, retain) NSString * itemID;
+@property (nonatomic) int16_t sortID;
+@property (nonatomic) int16_t status;
+@property (nonatomic) NSDate * timeAdded;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
-@property (nonatomic) int16_t sortId;
 
 @end

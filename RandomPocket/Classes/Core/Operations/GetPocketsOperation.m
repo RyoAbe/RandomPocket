@@ -50,9 +50,9 @@
         }
         cPocket.title = data[@"resolved_title"];
         cPocket.url = data[@"resolved_url"];
-        cPocket.itemId = data[@"item_id"];
+        cPocket.itemID = data[@"item_id"];
         cPocket.status = [data[@"status"] integerValue];
-        cPocket.sortId = [data[@"sort_id"] integerValue];
+        cPocket.sortID = [data[@"sort_id"] integerValue];
         cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
         cPocket.favorite = [data[@"favorite"] integerValue];
 

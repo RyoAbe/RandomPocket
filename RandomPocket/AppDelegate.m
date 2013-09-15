@@ -97,8 +97,7 @@
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-#warning TODO: エラー処理
+        NSAssert(NO, error.userInfo.description);
     }
     return _persistentStoreCoordinator;
 }
@@ -109,8 +108,7 @@
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-#warning TODO: エラー処理
+            NSAssert(NO, error.userInfo.description);
         }
     }
 }

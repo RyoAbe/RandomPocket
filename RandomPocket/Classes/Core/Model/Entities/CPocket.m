@@ -11,13 +11,13 @@
 
 @implementation CPocket
 
-@dynamic status;
 @dynamic body;
-@dynamic timeAdded;
 @dynamic favorite;
-@dynamic itemId;
+@dynamic itemID;
+@dynamic sortID;
+@dynamic status;
+@dynamic timeAdded;
 @dynamic title;
 @dynamic url;
-@dynamic sortId;
 
 @end
