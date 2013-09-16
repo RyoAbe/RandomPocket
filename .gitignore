@@ -112,6 +112,7 @@ build/
 #         xcschememanagement.plist
 #
 #
+xcschemes/
 
 ####
 # Xcode 4 - Deprecated classes
