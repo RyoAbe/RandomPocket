@@ -82,7 +82,6 @@
             action = @"unfavorite";
             break;
         default:
-#warning imple NSAssert Ex
             NSAssert(NO, nil);
             break;
     }

@@ -14,6 +14,7 @@
 #import <BlocksKit/BlocksKit.h>
 #import "Toast+UIView.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <iOSCommon/iOSCommon.h>
 
 // Entity
 #import "CPocket.h"

@@ -11,6 +11,5 @@ inhibit_all_warnings!
 
 # Testing framework for Test target.
 target :RandomPocketTests, :exclusive => true do
-  pod 'Kiwi'
   pod 'OCMock', '~> 2.2.1'
 end
