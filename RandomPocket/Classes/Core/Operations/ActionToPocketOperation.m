@@ -50,7 +50,7 @@
 
 - (void)saveWithResponse:(NSDictionary*)response
 {
-    self.cPocket.status = [self pocketStatus:response[@"status"]];
+    self.cPocket.status = (int)response[@"status"] ; //[self pocketStatus:response[@"status"]];
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

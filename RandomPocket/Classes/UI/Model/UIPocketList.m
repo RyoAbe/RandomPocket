@@ -11,6 +11,7 @@
 
 @interface UIPocketList()
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) NSMutableArray *addedPocketForRandomSort;
 @end
 
 @implementation UIPocketList
@@ -22,6 +23,7 @@
     self = [super init];
     if (self) {
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+        self.addedPocketForRandomSort = [NSMutableArray new];
     }
     return self;
 }
@@ -126,11 +128,33 @@
 
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath
 {
-//    for (CPocket *p in self.fetchedResultsController.fetchedObjects) {
-//        NSLog(@"p : %@", p.title);
-//    }
-    
+    if(self.isRandom){
+        indexPath = [self generateRandomIndexPath:indexPath];
+    }
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
+}
+
+- (NSIndexPath*)generateRandomIndexPath:(NSIndexPath*)indexPath
+{
+    NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];
+
+    NSIndexPath *randomIndexPath = nil;
+    while (YES) {
+        NSUInteger randomRow = rand() % numberOfItemsInSection;
+        randomIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
+        if(![self isAddedIndexPath:randomIndexPath]){
+            break;
+        }
+    }
+    return randomIndexPath;
+}
+
+- (BOOL)isAddedIndexPath:(NSIndexPath*)indexPath
+{
+    NSIndexPath *isAddedIndexPath = [self.addedPocketForRandomSort match:^BOOL(NSIndexPath *ip) {
+        return [indexPath isEqual:ip] ? YES : NO;
+    }];
+    return isAddedIndexPath ? YES : NO;
 }
 
 @end

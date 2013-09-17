@@ -48,5 +48,6 @@ typedef enum UIPocketListChangeType_ {
 @property (nonatomic) NSMutableArray *response;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) id<UIPocketListDelegate> delegate;
+@property (nonatomic) BOOL isRandom;
 
 @end

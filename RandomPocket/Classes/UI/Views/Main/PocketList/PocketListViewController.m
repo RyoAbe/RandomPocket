@@ -142,6 +142,16 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     return [PocketListCell cellHeight:pocket];
 }
 
+#pragma mark - IBAction
+
+- (IBAction)toRandomSortTapped:(id)sender
+{
+    self.pocketList.isRandom = !self.pocketList.isRandom;
+    NSString *title = self.pocketList.isRandom ? NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil) : NSLocalizedStringFromTable(@"ToRandomSort", @"PocketList", nil);
+    [(UITabBarItem*)sender setTitle:title];    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

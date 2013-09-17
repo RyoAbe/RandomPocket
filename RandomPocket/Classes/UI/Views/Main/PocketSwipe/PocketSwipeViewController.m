@@ -78,6 +78,8 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     return [self.pocketList numberOfItemsInSection:section];
 }
 
+#pragma mark - IBAction
+
 - (IBAction)actionButtonTapped:(id)sender
 {
     NSArray *items = @[self.currentPocket.title, self.currentPocket.url];
@@ -96,6 +98,12 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
     [op request];
+}
+
+
+- (IBAction)openInSafariTapped:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.currentPocket.url]];
 }
 
 - (UIPocket*)currentPocket

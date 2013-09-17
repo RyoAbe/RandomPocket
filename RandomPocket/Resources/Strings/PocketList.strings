@@ -6,3 +6,5 @@
   Copyright (c) 2013年 RyoAbe. All rights reserved.
 */
 "FaildRequestPocketList" = "取得に失敗しました";
+"ToRandomSort" = "To random sort";
+"ToNormalSort" = "To normal sort";
