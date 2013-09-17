@@ -210,12 +210,12 @@
 			path = HTMLBodyParser;
 			sourceTree = "<group>";
 		};
-		178F268217D3081800993DF9 /* Frameworks */ = {
+		178F268217D3081800993DF9 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				178F268317D3081800993DF9 /* HTMLParser */,
 			);
-			path = Frameworks;
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		178F268317D3081800993DF9 /* HTMLParser */ = {
@@ -348,7 +348,7 @@
 			children = (
 				324FF00917CD77DC005B08F4 /* Core */,
 				32AF668517C9E8D200EF34EC /* UI */,
-				178F268217D3081800993DF9 /* Frameworks */,
+				178F268217D3081800993DF9 /* Libraries */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -395,9 +395,6 @@
 		32D0884C17C9DE76007C50CD = {
 			isa = PBXGroup;
 			children = (
-				17E552CC17D4CF45004E10BE /* CoreData.framework */,
-				178F267917D307A400993DF9 /* libxml2.dylib */,
-				32AF667F17C9E63600EF34EC /* Security.framework */,
 				32D0885E17C9DE76007C50CD /* RandomPocket */,
 				32D0888517C9DE76007C50CD /* RandomPocketTests */,
 				32D0885717C9DE76007C50CD /* Frameworks */,
@@ -419,6 +416,9 @@
 		32D0885717C9DE76007C50CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17E552CC17D4CF45004E10BE /* CoreData.framework */,
+				178F267917D307A400993DF9 /* libxml2.dylib */,
+				32AF667F17C9E63600EF34EC /* Security.framework */,
 				32D0885817C9DE76007C50CD /* UIKit.framework */,
 				32D0885A17C9DE76007C50CD /* Foundation.framework */,
 				32D0885C17C9DE76007C50CD /* CoreGraphics.framework */,
