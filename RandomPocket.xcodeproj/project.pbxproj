@@ -51,7 +51,6 @@
 		32D0888D17C9DE76007C50CD /* RandomPocketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D0888C17C9DE76007C50CD /* RandomPocketTests.m */; };
 		32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */; };
 		4E10A81F0CBD460F918B067C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5141E4EB3CC44EA19F7FE6C3 /* libPods.a */; };
-		FE4F926C2F114460AA6FDC6C /* libPods-RandomPocketTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FE2D5431F34E21BDB33DEE /* libPods-RandomPocketTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +133,6 @@
 		32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPocketsOperation.m; sourceTree = "<group>"; };
 		3E8066FFAFFF4DA9A5DFBF7A /* Pods-RandomPocketTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomPocketTests.xcconfig"; path = "Pods/Pods-RandomPocketTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		5141E4EB3CC44EA19F7FE6C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		56FE2D5431F34E21BDB33DEE /* libPods-RandomPocketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomPocketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +157,6 @@
 				32D0888017C9DE76007C50CD /* SenTestingKit.framework in Frameworks */,
 				32D0888117C9DE76007C50CD /* UIKit.framework in Frameworks */,
 				32D0888217C9DE76007C50CD /* Foundation.framework in Frameworks */,
-				FE4F926C2F114460AA6FDC6C /* libPods-RandomPocketTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +421,6 @@
 				32D0885C17C9DE76007C50CD /* CoreGraphics.framework */,
 				32D0887F17C9DE76007C50CD /* SenTestingKit.framework */,
 				5141E4EB3CC44EA19F7FE6C3 /* libPods.a */,
-				56FE2D5431F34E21BDB33DEE /* libPods-RandomPocketTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
