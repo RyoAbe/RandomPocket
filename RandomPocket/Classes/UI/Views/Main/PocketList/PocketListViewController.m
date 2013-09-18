@@ -50,9 +50,11 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.getPocketsOperation = [GetPocketsOperation new];
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^{
+        [weakSelf.HUD hide:YES];
         [weakSelf.refreshController endRefreshing];
     }];
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
+        [weakSelf.HUD hide:YES];
         [weakSelf.refreshController endRefreshing];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
@@ -66,6 +68,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (void)reqestPocketList
 {
+    [self.HUD show:YES];
     [self.getPocketsOperation request];
 }
 
@@ -73,32 +76,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (void)pocketList:(UIPocketList *)pocketList didChangeItem:(UIPocket *)uiPocket newIndexPath:(NSIndexPath *)newIndexPath oldIndexPath:(NSIndexPath *)oldIndexPath changeType:(UIPocketListChangeType)type
 {
-//    switch (type) {
-//        case UIPocketListChangeType_Insert:
-//        {
-//            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
-//        }
-//            break;
-//        case UIPocketListChangeType_Update:
-//        {
-//            PocketListCell *cell = (PocketListCell*)[self.tableView cellForRowAtIndexPath:oldIndexPath];
-//            cell.pocket = uiPocket;
-//        }
-//            break;
-//        case UIPocketListChangeType_Delete:
-//        {
-//            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:YES];
-//        }
-//            break;
-//        case UIPocketListChangeType_Move:
-//        {
-//            [self.tableView moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
-//            
-//        }
-//            break;
-//        default:
-//            break;
-//    }
     [self.tableView reloadData];
 }
 
@@ -146,8 +123,19 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (IBAction)toRandomSortTapped:(id)sender
 {
-    self.pocketList.isRandom = !self.pocketList.isRandom;
-    NSString *title = self.pocketList.isRandom ? NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil) : NSLocalizedStringFromTable(@"ToRandomSort", @"PocketList", nil);
+    NSString *title = nil;
+    switch (self.pocketList.displayMode) {
+        case UIPocketListMode_DisplayNormal:
+            title = NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil);
+            self.pocketList.displayMode = UIPocketListMode_DisplayRandom;
+            break;
+        case UIPocketListMode_DisplayRandom:
+            title = NSLocalizedStringFromTable(@"ToRandomSort", @"PocketList", nil);
+            self.pocketList.displayMode = UIPocketListMode_DisplayNormal;
+            break;
+        default:
+            break;
+    }
     [(UITabBarItem*)sender setTitle:title];    
     [self.tableView reloadData];
 }

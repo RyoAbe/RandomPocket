@@ -11,7 +11,7 @@
 
 @interface UIPocketList()
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic) NSMutableArray *addedPocketForRandomSort;
+@property (nonatomic) NSMutableDictionary *indexPaths;
 @end
 
 @implementation UIPocketList
@@ -23,7 +23,7 @@
     self = [super init];
     if (self) {
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
-        self.addedPocketForRandomSort = [NSMutableArray new];
+        self.indexPaths = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -128,8 +128,12 @@
 
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath
 {
-    if(self.isRandom){
-        indexPath = [self generateRandomIndexPath:indexPath];
+    switch (self.displayMode) {
+        case UIPocketListMode_DisplayNormal:
+            break;
+        case UIPocketListMode_DisplayRandom:
+            indexPath = [self generateRandomIndexPath:indexPath];
+            break;
     }
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
@@ -137,24 +141,29 @@
 - (NSIndexPath*)generateRandomIndexPath:(NSIndexPath*)indexPath
 {
     NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];
+    if(self.indexPaths.count == numberOfItemsInSection){
+        return self.indexPaths[indexPath];
+    }
 
-    NSIndexPath *randomIndexPath = nil;
+    NSIndexPath *retIndexPath = nil;
+    srand(time(nil));
     while (YES) {
         NSUInteger randomRow = rand() % numberOfItemsInSection;
-        randomIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
-        if(![self isAddedIndexPath:randomIndexPath]){
+        retIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
+        if(![self isAddedIndexPath:retIndexPath]){
+            self.indexPaths[indexPath] = retIndexPath;
             break;
         }
     }
-    return randomIndexPath;
+    return retIndexPath;
 }
 
-- (BOOL)isAddedIndexPath:(NSIndexPath*)indexPath
+- (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath
 {
-    NSIndexPath *isAddedIndexPath = [self.addedPocketForRandomSort match:^BOOL(NSIndexPath *ip) {
-        return [indexPath isEqual:ip] ? YES : NO;
+    NSIndexPath *matchIndexPath  = [self.indexPaths match:^BOOL(NSIndexPath *indexPathKey, NSIndexPath *indexPathValue) {
+        return [randomIndexPath isEqual:indexPathValue] ? YES : NO;
     }];
-    return isAddedIndexPath ? YES : NO;
+    return matchIndexPath ? YES : NO;
 }
 
 @end

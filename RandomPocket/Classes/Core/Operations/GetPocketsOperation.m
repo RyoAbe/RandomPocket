@@ -28,7 +28,7 @@
 {
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"detailType": @"complete", @"count": @(20)}
+                               arguments:@{@"detailType": @"complete", /*@"count": @(5)*/}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      if(error){
                                          self.errorHandler(error);

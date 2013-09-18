@@ -19,6 +19,11 @@ typedef enum UIPocketListChangeType_ {
     UIPocketListChangeType_Update = 4,
 } UIPocketListChangeType;
 
+typedef NS_ENUM(NSUInteger, UIPocketListMode) {
+    UIPocketListMode_DisplayNormal = 0,
+    UIPocketListMode_DisplayRandom,
+};
+
 @protocol UIPocketListDelegate <NSObject>
 -(void)pocketListWillChange:(UIPocketList*)pocketList;
 -(void)pocketListDidChange:(UIPocketList*)pocketList;
@@ -48,6 +53,6 @@ typedef enum UIPocketListChangeType_ {
 @property (nonatomic) NSMutableArray *response;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) id<UIPocketListDelegate> delegate;
-@property (nonatomic) BOOL isRandom;
+@property (nonatomic) UIPocketListMode displayMode;
 
 @end
