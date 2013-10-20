@@ -13,5 +13,5 @@
 
 @interface GetPocketsOperation : AsyncOperation
 - (id)init;
-- (void)request;
+//- (void)request;
 @end

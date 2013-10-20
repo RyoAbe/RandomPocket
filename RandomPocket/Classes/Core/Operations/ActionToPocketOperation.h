@@ -19,5 +19,4 @@ typedef NS_ENUM(NSUInteger, ActionToPocketType) {
 
 @interface ActionToPocketOperation : AsyncOperation
 - (id)initWithPocketID:(NSManagedObjectID*)pocketID actionType:(ActionToPocketType)actionType;
-- (void)request;
 @end

@@ -25,39 +25,49 @@
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
         self.pocketID = pocketID;
         self.actionType = actionType;
+
+        __weak ActionToPocketOperation *weakSelf = self;
+        [self setExecuteHandler:^{
+            [weakSelf request];
+        }];
+        
     }
     return self;
 }
 
-- (void)request
+- (id)request
 {
     self.cPocket = [self.managedObjectContext entityWithID:self.pocketID];
 
-#warning JBJson入れる
     NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, self.cPocket.itemID];
 
     [[PocketAPI sharedAPI] callAPIMethod:@"send"
                           withHTTPMethod:PocketAPIHTTPMethodGET
                                arguments:@{@"actions":arguments}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     if(error){
-                                         self.errorHandler(error);
-                                         return;
-                                     }
-                                     [self saveWithResponse:response];
+                                     
+                                     __weak ActionToPocketOperation *weakSelf = self;
+                                     [self setDispatchHandler:^id{
+                                         if(error){
+                                             return error;
+                                         }
+                                         return [weakSelf saveWithResponse:response];
+                                     }];
                                  }];
+    
+    return nil;
 }
 
-- (void)saveWithResponse:(NSDictionary*)response
+- (id)saveWithResponse:(NSDictionary*)response
 {
-    self.cPocket.status = (int)response[@"status"] ; //[self pocketStatus:response[@"status"]];
+    self.cPocket.status = (int)response[@"status"];
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        self.errorHandler(error);
-        return;
+        NSAssert(NO, error.userInfo.description);
+        return error;
     }
-    self.completionHandler();
+//    self.completionHandler();
+    return nil;
 }
 
 #pragma mark -
@@ -86,16 +96,6 @@
             break;
     }
     return action;
-}
-
-- (PocketStatus)pocketStatus:(NSString*)statusStr
-{
-    if ([statusStr isEqualToString:@"1"]){
-        return PocketStatus_Archived;
-    }else if ([statusStr isEqualToString:@"2"]){
-        return PocketStatus_Deleted;
-    }
-    return PocketStatus_Unread;
 }
 
 @end

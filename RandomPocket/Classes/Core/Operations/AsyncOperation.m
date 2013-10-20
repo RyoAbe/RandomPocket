@@ -25,10 +25,20 @@
 
 - (void)execute
 {
-#warning impl 非同期処理
+    self.executeHandler();
+}
+
+- (void)setDispatchHandler:(id (^)())dispatchHandler
+{
+    _dispatchHandler = dispatchHandler;
+    [self dispatch];
+}
+
+- (void)dispatch
+{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        id result/* = self.executeHandler()*/;
+        id result = self.dispatchHandler();
         dispatch_async(dispatch_get_main_queue(), ^{
             if([result isKindOfClass:[NSError class]]){
                 self.errorHandler((NSError*)result);

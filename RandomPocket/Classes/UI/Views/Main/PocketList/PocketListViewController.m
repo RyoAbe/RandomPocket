@@ -69,7 +69,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (void)reqestPocketList
 {
     [self.HUD show:YES];
-    [self.getPocketsOperation request];
+    [self.getPocketsOperation execute];
 }
 
 #pragma mark - UIPocketListDelegate

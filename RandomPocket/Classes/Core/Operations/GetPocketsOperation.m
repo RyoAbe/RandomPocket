@@ -20,25 +20,31 @@
     self = [super init];
     if (self) {
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+        __weak GetPocketsOperation *weakSelf = self;
+        [self setExecuteHandler:^{
+            [weakSelf callAPI];
+        }];
     }
     return self;
 }
 
-- (void)request
+- (void)callAPI
 {
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"detailType": @"complete", /*@"count": @(5)*/}
+                               arguments:@{@"detailType": @"complete", @"count": @(20)}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     if(error){
-                                         self.errorHandler(error);
-                                         return;
-                                     }
-                                     [self saveWithResponse:response];
+                                     __weak GetPocketsOperation *weakSelf = self;
+                                     [self setDispatchHandler:^id{
+                                         if(error){
+                                             return error;
+                                         }
+                                         return [weakSelf saveWithResponse:response];
+                                     }];
                                  }];
 }
 
-- (void)saveWithResponse:(NSDictionary*)response;
+- (id)saveWithResponse:(NSDictionary*)response;
 {
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
@@ -59,11 +65,10 @@
         NSError *error = nil;
         if (![self.managedObjectContext save:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            self.errorHandler(error);
-            return;
+            return error;
         }
     }
-    self.completionHandler();
+    return nil;
 }
 
 @end
