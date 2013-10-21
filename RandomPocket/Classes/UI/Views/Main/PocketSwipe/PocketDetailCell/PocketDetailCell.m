@@ -27,6 +27,7 @@
 
 - (void)setPocket:(UIPocket *)pocket
 {
+    self.bodyTextView.layoutManager.delegate = self;
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
@@ -35,6 +36,11 @@
     [htmlParser parseWithCompletionBlock:^(NSString *body) {
         self.bodyTextView.text = body;
     }];
+}
+
+- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect
+{
+    return 5.f;
 }
 
 @end

@@ -109,7 +109,7 @@
             return NO;
         }
         _isInsideHeadTag =  [self matchString:@"<head" line:line];
-    }    
+    }
     
     return _isInsideHeadTag;
 }

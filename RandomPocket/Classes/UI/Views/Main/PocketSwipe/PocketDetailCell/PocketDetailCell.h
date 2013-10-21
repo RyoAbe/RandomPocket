@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @class UIPocket;
 
-@interface PocketDetailCell : UICollectionViewCell
+@interface PocketDetailCell : UICollectionViewCell<NSLayoutManagerDelegate>
 @property (nonatomic) UIPocket* pocket;
 @end
