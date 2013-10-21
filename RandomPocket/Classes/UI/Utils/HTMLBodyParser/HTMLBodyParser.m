@@ -11,6 +11,9 @@
 
 @interface HTMLBodyParser()
 @property (nonatomic) NSString *url;
+@property (nonatomic) BOOL isInsideHeadTag;
+@property (nonatomic) BOOL isInsideScriptTag;
+@property (nonatomic) BOOL isInsideStyleTag;
 @end
 
 @implementation HTMLBodyParser
@@ -58,7 +61,7 @@
 {
     NSError *error;
     NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:self.url] encoding:NSUTF8StringEncoding error:&error];
-    NSString *pattern = @"<style(.*?)style>|/\\*(.*?)\\*/|(?is)<(script|style).*?>.*?(</\1>)|(?s)<!--(.*?)-->[\n]?|<[^>]*?>|\n|\r| |　";
+    NSString *pattern = @"<head(.*?)head>|<style(.*?)style>|/\\*(.*?)\\*/|(?is)<(script|style).*?>.*?(</\1>)|(?s)<!--(.*?)-->[\n]?|<.*?>.*?>|<[^>]*?>|\n|\r|\t| |　";
     NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern
                                                                             options:0
                                                                               error:nil];
@@ -68,6 +71,13 @@
     {
         NSRange subrange = [html lineRangeForRange:NSMakeRange( range.location, 0 )];
         NSString *line = [html substringWithRange:subrange];
+
+        if([self isInsideHeadTag:line] || [self isInsideScriptTag:line] || [self isInsideStypeTag:line]){
+            range.location = NSMaxRange( subrange );
+            range.length -= subrange.length;
+            continue;
+        }
+
         line = [regexp stringByReplacingMatchesInString:line
                                                 options:0
                                                   range:NSMakeRange(0, line.length)
@@ -75,12 +85,73 @@
         
         if(line != nil && line.length != 0){
             [body appendString:line];
-            NSLog(@"%@", line);
+            NSLog(@"===%@===", line);
         }
         range.location = NSMaxRange( subrange );
         range.length -= subrange.length;
     }
+    
     return body;
+}
+
+#warning FIXME もうちょい綺麗にならんかな
+- (BOOL)isInsideHeadTag:(NSString*)line
+{
+    if([self isTag1LineBeginEnd:@"head" line:line]){
+        return YES;
+    }
+//    _isInsideHeadTag = _isInsideHeadTag ? ![self matchString:@"/head>" line:line] : [self matchString:@"<head" line:line];
+    
+    if(_isInsideHeadTag){
+        _isInsideHeadTag =  ![self matchString:@"/head>" line:line];
+    }else{
+        if([self matchString:@"<header" line:line]){
+            return NO;
+        }
+        _isInsideHeadTag =  [self matchString:@"<head" line:line];
+    }    
+    
+    return _isInsideHeadTag;
+}
+
+- (BOOL)isInsideScriptTag:(NSString*)line
+{
+    if([self isTag1LineBeginEnd:@"script" line:line]){
+        return YES;
+    }
+    _isInsideScriptTag = _isInsideScriptTag ? ![self matchString:@"/script>" line:line] : [self matchString:@"<script" line:line];
+    
+    return _isInsideScriptTag;
+}
+
+- (BOOL)isInsideStypeTag:(NSString*)line
+{
+    if([self isTag1LineBeginEnd:@"style" line:line]){
+        return YES;
+    }
+    _isInsideStyleTag = _isInsideStyleTag ? ![self matchString:@"/style>" line:line] : [self matchString:@"<style" line:line];
+    
+    return _isInsideStyleTag;
+}
+
+- (BOOL)isTag1LineBeginEnd:(NSString*)tag line:(NSString*)line
+{
+    BOOL beginTag = [self matchString:[NSString stringWithFormat:@"<%@", tag] line:line];
+    BOOL endTag = [self matchString:[NSString stringWithFormat:@"/%@>", tag] line:line];
+    if(beginTag && endTag){
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)matchString:(NSString*)string line:(NSString*)line
+{
+    NSRange range = [line rangeOfString:string];
+    BOOL isMatch = NO;
+    if(range.location != NSNotFound){
+        isMatch = YES;
+    }
+    return isMatch;
 }
 
 @end
