@@ -17,17 +17,14 @@
 
 @implementation PocketDetailCell
 
-- (id)initWithFrame:(CGRect)frame
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-    }
-    return self;
+    [super awakeFromNib];
+    self.bodyTextView.layoutManager.delegate = self;
 }
 
 - (void)setPocket:(UIPocket *)pocket
 {
-    self.bodyTextView.layoutManager.delegate = self;
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
