@@ -11,7 +11,6 @@
 @interface PocketListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) UIPocketList *pocketList;
-@property (nonatomic) MBProgressHUD *HUD;
 @property (nonatomic) UIRefreshControl *refreshController;
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic) GetPocketsOperation *getPocketsOperation;
@@ -40,21 +39,14 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
     [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
-    
-    // DimmingView
-    self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
-	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
-	self.HUD.labelText = NSLocalizedStringFromTable(@"Loading", @"Common", nil);
-    
+   
     // リクエスト
     self.getPocketsOperation = [GetPocketsOperation new];
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^{
-        [weakSelf.HUD hide:YES];
         [weakSelf.refreshController endRefreshing];
     }];
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
-        [weakSelf.HUD hide:YES];
         [weakSelf.refreshController endRefreshing];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
@@ -68,7 +60,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (void)reqestPocketList
 {
-    [self.HUD show:YES];
     [self.getPocketsOperation execute];
 }
 
