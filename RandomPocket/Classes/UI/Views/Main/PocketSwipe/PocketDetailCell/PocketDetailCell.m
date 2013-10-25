@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
+@property (weak, nonatomic) IBOutlet UITextView *urlTextView;
 @end
 
 @implementation PocketDetailCell
@@ -28,6 +29,7 @@
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
+    self.urlTextView.text = _pocket.url;
     self.bodyTextView.text = nil;
     HTMLBodyParser *htmlParser = [[HTMLBodyParser alloc] initWithURL:_pocket.url];
     [htmlParser parseWithCompletionBlock:^(NSString *body) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -23,37 +23,43 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="300" id="239"/>
-                            <constraint firstAttribute="height" priority="1" constant="105" id="240"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <color key="textColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234">
-                        <rect key="frame" x="10" y="169" width="300" height="291"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="1" constant="260" id="238"/>
-                        </constraints>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <color key="textColor" white="0.099167427010000003" alpha="1" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="google.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="235">
-                        <rect key="frame" x="10" y="148" width="300" height="15"/>
-                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="13"/>
-                        <color key="textColor" red="0.57528023100000003" green="0.57528023100000003" blue="0.57528023100000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="236">
-                        <rect key="frame" x="10" y="141" width="300" height="2"/>
-                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="10" y="133" width="300" height="2"/>
+                        <color key="backgroundColor" red="0.89285411010000004" green="0.89285411010000004" blue="0.89285411010000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="237"/>
                         </constraints>
                     </view>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoE-vz-m1N">
+                        <rect key="frame" x="5" y="135" width="310" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="310" id="gBd-jH-DAn"/>
+                            <constraint firstAttribute="height" constant="30" id="iWm-s1-nF1"/>
+                        </constraints>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" red="0.57528023100000003" green="0.57528023100000003" blue="0.57528023100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234">
+                        <rect key="frame" x="10" y="170" width="300" height="270"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="300" id="bvy-Hj-d0C"/>
+                        </constraints>
+                        <color key="textColor" white="0.099167427010000003" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -63,23 +69,22 @@
                 <constraint firstItem="208" firstAttribute="top" secondItem="164" secondAttribute="top" id="210"/>
                 <constraint firstItem="208" firstAttribute="trailing" secondItem="164" secondAttribute="trailing" id="211"/>
                 <constraint firstItem="208" firstAttribute="bottom" secondItem="164" secondAttribute="bottom" id="212"/>
-                <constraint firstItem="235" firstAttribute="top" secondItem="236" secondAttribute="bottom" constant="5" id="241"/>
-                <constraint firstItem="236" firstAttribute="top" secondItem="233" secondAttribute="bottom" constant="13" id="242"/>
-                <constraint firstItem="234" firstAttribute="top" secondItem="235" secondAttribute="bottom" constant="8" id="243"/>
+                <constraint firstItem="236" firstAttribute="top" secondItem="233" secondAttribute="bottom" constant="5" id="242"/>
                 <constraint firstItem="233" firstAttribute="trailing" secondItem="236" secondAttribute="trailing" id="245"/>
                 <constraint firstItem="233" firstAttribute="top" secondItem="164" secondAttribute="top" constant="20" id="246"/>
-                <constraint firstItem="234" firstAttribute="leading" secondItem="235" secondAttribute="leading" id="247"/>
-                <constraint firstItem="235" firstAttribute="trailing" secondItem="234" secondAttribute="trailing" id="248"/>
                 <constraint firstItem="236" firstAttribute="leading" secondItem="233" secondAttribute="leading" id="249"/>
-                <constraint firstItem="236" firstAttribute="leading" secondItem="235" secondAttribute="leading" id="250"/>
-                <constraint firstItem="236" firstAttribute="trailing" secondItem="235" secondAttribute="trailing" id="251"/>
-                <constraint firstItem="235" firstAttribute="centerX" secondItem="208" secondAttribute="centerX" id="254"/>
-                <constraint firstItem="234" firstAttribute="bottom" secondItem="164" secondAttribute="bottom" id="255"/>
+                <constraint firstItem="234" firstAttribute="top" secondItem="XoE-vz-m1N" secondAttribute="bottom" constant="5" id="5Q1-h6-BG3"/>
+                <constraint firstItem="233" firstAttribute="top" relation="greaterThanOrEqual" secondItem="164" secondAttribute="top" constant="20" id="WfJ-FQ-0H5"/>
+                <constraint firstAttribute="centerX" secondItem="XoE-vz-m1N" secondAttribute="centerX" id="Xnp-16-cMc"/>
+                <constraint firstAttribute="centerX" secondItem="233" secondAttribute="centerX" id="Z9X-DO-sZu"/>
+                <constraint firstAttribute="bottom" secondItem="234" secondAttribute="bottom" constant="20" id="e1X-Zw-vTI"/>
+                <constraint firstAttribute="centerX" secondItem="234" secondAttribute="centerX" id="hkQ-g8-6FN"/>
+                <constraint firstItem="XoE-vz-m1N" firstAttribute="top" secondItem="236" secondAttribute="bottom" id="k2q-Sx-Dys"/>
             </constraints>
             <connections>
                 <outlet property="bodyTextView" destination="234" id="256"/>
                 <outlet property="titleLabel" destination="233" id="257"/>
-                <outlet property="urlLabel" destination="235" id="258"/>
+                <outlet property="urlTextView" destination="XoE-vz-m1N" id="ot2-jO-1do"/>
             </connections>
         </collectionViewCell>
     </objects>
