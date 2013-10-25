@@ -38,25 +38,6 @@
     });
 }
 
-//- (NSString*)body
-//{
-//    NSError *error;
-//    NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:self.url] encoding:NSUTF8StringEncoding error:&error];
-//    HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:&error];
-//
-//    NSAssert(!error, nil);
-//    
-//    HTMLNode *bodyNode = [parser body];
-//    NSArray *inputNodes = [bodyNode findChildTags:@"div"];
-//    NSMutableString *body = [NSMutableString new];
-//    for (HTMLNode *inputNode in inputNodes) {
-//        if([inputNode contents]){
-//            [body appendString:[inputNode contents]];
-//        }
-//    }
-//    return body;
-//}
-
 - (NSString*)body
 {
     NSError *error;
@@ -85,7 +66,6 @@
         
         if(line != nil && line.length != 0){
             [body appendString:line];
-            NSLog(@"===%@===", line);
         }
         range.location = NSMaxRange( subrange );
         range.length -= subrange.length;
@@ -94,13 +74,11 @@
     return body;
 }
 
-#warning FIXME もうちょい綺麗にならんかな
 - (BOOL)isInsideHeadTag:(NSString*)line
 {
     if([self isTag1LineBeginEnd:@"head" line:line]){
         return YES;
     }
-//    _isInsideHeadTag = _isInsideHeadTag ? ![self matchString:@"/head>" line:line] : [self matchString:@"<head" line:line];
     
     if(_isInsideHeadTag){
         _isInsideHeadTag =  ![self matchString:@"/head>" line:line];

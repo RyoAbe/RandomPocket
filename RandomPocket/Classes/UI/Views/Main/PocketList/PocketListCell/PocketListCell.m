@@ -59,7 +59,7 @@ static CGRect DefaultURLRect;
 + (CGFloat)cellHeight:(UIPocket*)pocket
 {
     if (!pocket || !pocket.title || pocket.title.length == 0){
-        return DefaultCellHeight;
+        pocket.title = pocket.url;
     }
     CGSize size = [pocket.title sizeWithFont:DefaultTitleFont
                            constrainedToSize:CGSizeMake(DefaultTitleRect.size.width, INT_MAX)

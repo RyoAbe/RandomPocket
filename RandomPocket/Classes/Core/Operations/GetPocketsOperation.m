@@ -64,7 +64,6 @@
 
         NSError *error = nil;
         if (![self.managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             return error;
         }
     }
