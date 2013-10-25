@@ -15,6 +15,7 @@
 #import "Toast+UIView.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <iOSCommon/iOSCommon.h>
+#import <Appirater/Appirater.h>
 
 // Entity
 #import "CPocket.h"

@@ -18,8 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Pocket
     [[PocketAPI sharedAPI] setConsumerKey:@"17789-2ae60ad9c498ad18d6cc31dd"];
 
+    // Appirater
+    [self appirater];
+    
     NSString *storyBoardName = @"Main";
     if(![PocketAPI sharedAPI].username){
         storyBoardName = @"Welcom";
@@ -33,6 +37,16 @@
     [self appearance];
 
     return YES;
+}
+
+- (void)appirater
+{
+    [Appirater setAppId:@"yourAppleId"];
+    [Appirater appLaunched:YES];
+    [Appirater setDaysUntilPrompt:30];
+    [Appirater setUsesUntilPrompt:20];
+    [Appirater setTimeBeforeReminding:1];
+    [Appirater setDebug:NO];
 }
 
 - (void)appearance
