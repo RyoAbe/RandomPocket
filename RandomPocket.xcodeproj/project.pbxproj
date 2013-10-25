@@ -13,6 +13,9 @@
 		17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC717CF9A6400B44BBE /* Welcom.strings */; };
 		17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17291EE217CFA01000B44BBE /* HTMLBodyParser.m */; };
 		1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */; };
+		178290E1181AD1600093718E /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178290E0181AD1600093718E /* Reveal.framework */; };
+		178290E3181AD1770093718E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178290E2181AD1770093718E /* QuartzCore.framework */; };
+		178290E5181AD1830093718E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178290E4181AD1830093718E /* CFNetwork.framework */; };
 		17889F181813B46200E09CC0 /* welcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17889F171813B46200E09CC0 /* welcome.jpg */; };
 		178F267A17D307A400993DF9 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 178F267917D307A400993DF9 /* libxml2.dylib */; };
 		178F268817D3081800993DF9 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268517D3081800993DF9 /* HTMLNode.m */; };
@@ -75,6 +78,9 @@
 		17291EE217CFA01000B44BBE /* HTMLBodyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLBodyParser.m; sourceTree = "<group>"; };
 		1778CFAD17D8B5A900A20E4B /* NSManagedObjectContext+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+RandomPocket.h"; sourceTree = "<group>"; };
 		1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+RandomPocket.m"; sourceTree = "<group>"; };
+		178290E0181AD1600093718E /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
+		178290E2181AD1770093718E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		178290E4181AD1830093718E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		17889F171813B46200E09CC0 /* welcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome.jpg; sourceTree = "<group>"; };
 		178F267917D307A400993DF9 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		178F268417D3081800993DF9 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
@@ -142,9 +148,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				178290E5181AD1830093718E /* CFNetwork.framework in Frameworks */,
+				178290E3181AD1770093718E /* QuartzCore.framework in Frameworks */,
 				17E552CD17D4CF45004E10BE /* CoreData.framework in Frameworks */,
 				178F267A17D307A400993DF9 /* libxml2.dylib in Frameworks */,
 				32AF668017C9E63600EF34EC /* Security.framework in Frameworks */,
+				178290E1181AD1600093718E /* Reveal.framework in Frameworks */,
 				32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */,
 				32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */,
 				32D0885D17C9DE76007C50CD /* CoreGraphics.framework in Frameworks */,
@@ -416,6 +425,9 @@
 		32D0885717C9DE76007C50CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				178290E4181AD1830093718E /* CFNetwork.framework */,
+				178290E2181AD1770093718E /* QuartzCore.framework */,
+				178290E0181AD1600093718E /* Reveal.framework */,
 				17E552CC17D4CF45004E10BE /* CoreData.framework */,
 				178F267917D307A400993DF9 /* libxml2.dylib */,
 				32AF667F17C9E63600EF34EC /* Security.framework */,
@@ -785,6 +797,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -816,6 +832,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
