@@ -112,7 +112,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 #pragma mark - IBAction
 
-- (IBAction)toRandomSortTapped:(id)sender
+- (IBAction)toRandomSortTapped:(UITabBarItem*)tabBarItem
 {
     NSString *title = nil;
     switch (self.pocketList.displayMode) {
@@ -127,7 +127,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         default:
             break;
     }
-    [(UITabBarItem*)sender setTitle:title];    
+    [tabBarItem setTitle:title];
     [self.tableView reloadData];
 }
 

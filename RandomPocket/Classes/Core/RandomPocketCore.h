@@ -16,6 +16,8 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <iOSCommon/iOSCommon.h>
 #import <Appirater/Appirater.h>
+#import <Kiwi/Kiwi.h>
+#import <OCMock/OCMock.h>
 
 // Entity
 #import "CPocket.h"

@@ -160,10 +160,10 @@
 
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath
 {
-    NSIndexPath *matchIndexPath  = [self.indexPaths match:^BOOL(NSIndexPath *indexPathKey, NSIndexPath *indexPathValue) {
-        return [randomIndexPath isEqual:indexPathValue] ? YES : NO;
+    NSIndexPath *matchIndexPath  = [self.indexPaths match:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+        return (randomIndexPath.section == addedRandomIndexPath.section && randomIndexPath.row == addedRandomIndexPath.row);
     }];
-    return matchIndexPath ? YES : NO;
+    return matchIndexPath != nil;
 }
 
 @end
