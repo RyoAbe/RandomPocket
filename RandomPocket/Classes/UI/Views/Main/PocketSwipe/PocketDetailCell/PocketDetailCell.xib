@@ -50,11 +50,11 @@
                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                     </textView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234">
-                        <rect key="frame" x="10" y="170" width="300" height="270"/>
+                        <rect key="frame" x="5" y="170" width="310" height="270"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="300" id="bvy-Hj-d0C"/>
+                            <constraint firstAttribute="width" constant="310" id="bvy-Hj-d0C"/>
                         </constraints>
                         <color key="textColor" white="0.099167427010000003" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
