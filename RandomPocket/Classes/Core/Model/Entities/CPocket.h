@@ -2,7 +2,7 @@
 //  CPocket.h
 //  RandomPocket
 //
-//  Created by RyoAbe on 2013/09/15.
+//  Created by RyoAbe on 2013/10/31.
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
@@ -25,5 +25,7 @@ typedef NS_ENUM(NSUInteger, PocketStatus) {
 @property (nonatomic) NSDate * timeAdded;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
+@property (nonatomic, retain) NSString * imageUrl;
+@property (nonatomic, retain) NSString * excerpt;
 
 @end

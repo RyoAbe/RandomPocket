@@ -24,6 +24,8 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
         self.title = cPocket.title;
         self.body = cPocket.body;
         self.timeAdded = cPocket.timeAdded;
+        self.excerpt = cPocket.excerpt;
+        self.imageUrl = cPocket.imageUrl;
         self.cPocket = cPocket;
         self.objectID = cPocket.objectID;
     }

@@ -13,6 +13,7 @@
 		17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC617CF9A6400B44BBE /* PocketList.strings */; };
 		17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC717CF9A6400B44BBE /* Welcom.strings */; };
 		17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17291EE217CFA01000B44BBE /* HTMLBodyParser.m */; };
+		175264051821597D00D7FFB8 /* CPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 175264041821597D00D7FFB8 /* CPocket.m */; };
 		1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */; };
 		178290E1181AD1600093718E /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178290E0181AD1600093718E /* Reveal.framework */; };
 		178290E3181AD1770093718E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178290E2181AD1770093718E /* QuartzCore.framework */; };
@@ -27,7 +28,6 @@
 		17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17E552D117D4D096004E10BE /* RandomPocket.xcdatamodeld */; };
 		17E552DA17D4DA4D004E10BE /* AsyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E552D917D4DA4D004E10BE /* AsyncOperation.m */; };
 		17FF532117E572C300FF3098 /* ActionToPocketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FF532017E572C300FF3098 /* ActionToPocketOperation.m */; };
-		17FF532717E5742000FF3098 /* CPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FF532617E5742000FF3098 /* CPocket.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
 		324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF01717CE14EF005B08F4 /* PocketListCell.xib */; };
@@ -78,6 +78,8 @@
 		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketCore.h; sourceTree = "<group>"; };
 		17291EE117CFA01000B44BBE /* HTMLBodyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLBodyParser.h; sourceTree = "<group>"; };
 		17291EE217CFA01000B44BBE /* HTMLBodyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLBodyParser.m; sourceTree = "<group>"; };
+		175264031821597D00D7FFB8 /* CPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPocket.h; sourceTree = "<group>"; };
+		175264041821597D00D7FFB8 /* CPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPocket.m; sourceTree = "<group>"; };
 		1778CFAD17D8B5A900A20E4B /* NSManagedObjectContext+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+RandomPocket.h"; sourceTree = "<group>"; };
 		1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+RandomPocket.m"; sourceTree = "<group>"; };
 		178290E0181AD1600093718E /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
@@ -97,8 +99,6 @@
 		17E552D917D4DA4D004E10BE /* AsyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncOperation.m; sourceTree = "<group>"; };
 		17FF531F17E572C300FF3098 /* ActionToPocketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionToPocketOperation.h; sourceTree = "<group>"; };
 		17FF532017E572C300FF3098 /* ActionToPocketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionToPocketOperation.m; sourceTree = "<group>"; };
-		17FF532517E5742000FF3098 /* CPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPocket.h; sourceTree = "<group>"; };
-		17FF532617E5742000FF3098 /* CPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPocket.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
 		324FEFFA17CCEB2B005B08F4 /* RPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPColor.m; sourceTree = "<group>"; };
 		324FF01517CE14EF005B08F4 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
@@ -269,8 +269,8 @@
 		17E552D417D4D0A4004E10BE /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				17FF532517E5742000FF3098 /* CPocket.h */,
-				17FF532617E5742000FF3098 /* CPocket.m */,
+				175264031821597D00D7FFB8 /* CPocket.h */,
+				175264041821597D00D7FFB8 /* CPocket.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -705,7 +705,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32D0886517C9DE76007C50CD /* main.m in Sources */,
-				17FF532717E5742000FF3098 /* CPocket.m in Sources */,
 				32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */,
 				3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
@@ -721,6 +720,7 @@
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
 				32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */,
 				17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */,
+				175264051821597D00D7FFB8 /* CPocket.m in Sources */,
 				17E552DA17D4DA4D004E10BE /* AsyncOperation.m in Sources */,
 				1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */,
 			);

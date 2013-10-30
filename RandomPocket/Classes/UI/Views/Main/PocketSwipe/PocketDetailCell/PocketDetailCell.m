@@ -28,7 +28,7 @@
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlTextView.text = _pocket.url;
-    self.bodyTextView.text = _pocket.body;
+    self.bodyTextView.text = _pocket.excerpt;
 }
 
 - (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect

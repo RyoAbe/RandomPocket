@@ -89,15 +89,22 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (IBAction)readedTapped:(id)sender
 {
-    ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:ActionToPocketType_Archive];
-    __weak PocketSwipeViewController *weakSelf = self;
-    [op setCompletionHandler:^{
-        [weakSelf.view makeToast:@"Arcived"];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
+    [actionSheet addButtonWithTitle:@"Mark as readed" handler:^{
+        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:ActionToPocketType_Archive];
+        __weak PocketSwipeViewController *weakSelf = self;
+        [op setCompletionHandler:^{
+            [weakSelf.view makeToast:@"Arcived"];
+        }];
+        [op setErrorHandler:^(NSError *error) {
+            [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
+        }];
+        [op execute];
     }];
-    [op setErrorHandler:^(NSError *error) {
-        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
-    }];
-    [op execute];
+    [actionSheet addButtonWithTitle:@"Cancel" handler:nil];
+    actionSheet.destructiveButtonIndex = 0;
+    actionSheet.cancelButtonIndex = 1;
+    [actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
 

@@ -57,14 +57,17 @@
         if(!cPocket){
             cPocket = [self.managedObjectContext createEntity:@"CPocket"];
         }
-        cPocket.title = data[@"resolved_title"];
+        cPocket.title = data[@"given_title"];
         cPocket.url = data[@"resolved_url"];
         cPocket.itemID = data[@"item_id"];
         cPocket.status = [data[@"status"] integerValue];
         cPocket.sortID = [data[@"sort_id"] integerValue];
         cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
         cPocket.favorite = [data[@"favorite"] integerValue];
-        cPocket.body = [self.htmlParser parseBodyWithURL:cPocket.url];
+//        cPocket.body = [self.htmlParser parseBodyWithURL:cPocket.url];
+        cPocket.excerpt = data[@"excerpt"];
+        NSDictionary *image = data[@"image"];
+        cPocket.imageUrl = image[@"src"];
 
         NSError *error = nil;
         if (![self.managedObjectContext save:&error]) {

@@ -19,6 +19,8 @@
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *body;
 @property (nonatomic) NSDate *timeAdded;
+@property (nonatomic) NSString *excerpt;
+@property (nonatomic) NSString *imageUrl;
 @property (nonatomic) NSDictionary* data;
 
 @end
