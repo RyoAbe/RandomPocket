@@ -16,6 +16,7 @@ static CGRect DefaultURLRect;
 
 @interface PocketListCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 @end
 
@@ -32,14 +33,6 @@ static CGRect DefaultURLRect;
     }
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-    }
-    return self;
-}
-
 - (void)prepare
 {
     DefaultCellHeight = self.frame.size.height;
@@ -51,9 +44,33 @@ static CGRect DefaultURLRect;
 
 - (void)setPocket:(UIPocket*)pocket
 {
+    self.thumbnail.image = nil;
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
+
+    if(!_pocket.imageUrl){
+        return;
+    }
+
+    AsyncOperation *op = [[AsyncOperation alloc] init];
+    [op setDispatchHandler:^id{
+        return [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_pocket.imageUrl]]];
+    }];
+    [op setErrorHandler:^(NSError *error) {
+        [self makeToast:[NSString stringWithFormat:@"error: %@", error]];
+    }];
+    [op setCompletionHandler:^(id result) {
+        self.thumbnail.image = result;
+    }];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if(!_pocket.imageUrl){
+        self.thumbnail.frame = CGRectZero;
+    }
 }
 
 + (CGFloat)cellHeight:(UIPocket*)pocket

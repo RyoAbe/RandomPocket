@@ -60,7 +60,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     BOOL isShowDimminingView = [self shouldBeShowDimminingView];
     
     __weak PocketListViewController *weakSelf = self;
-    [self.getPocketsOperation setCompletionHandler:^{
+    [self.getPocketsOperation setCompletionHandler:^(id result) {
         if(isShowDimminingView) [weakSelf.HUD hide:YES];
         [weakSelf.refreshController endRefreshing];
     }];
@@ -71,7 +71,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     }];
 
     if(isShowDimminingView) [self.HUD show:YES];
-    [self.getPocketsOperation execute];
+//    [self.getPocketsOperation execute];
 }
 
 - (BOOL)shouldBeShowDimminingView

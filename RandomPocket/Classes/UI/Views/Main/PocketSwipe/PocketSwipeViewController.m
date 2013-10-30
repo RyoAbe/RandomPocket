@@ -93,7 +93,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [actionSheet addButtonWithTitle:@"Mark as readed" handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:ActionToPocketType_Archive];
         __weak PocketSwipeViewController *weakSelf = self;
-        [op setCompletionHandler:^{
+        [op setCompletionHandler:^(id result) {
             [weakSelf.view makeToast:@"Arcived"];
         }];
         [op setErrorHandler:^(NSError *error) {
