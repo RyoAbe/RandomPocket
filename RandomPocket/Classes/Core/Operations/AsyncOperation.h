@@ -14,7 +14,6 @@
            completionHandler:(void(^)(id result))completionHandler
                 errorHandler:(void(^)(NSError *error))errorHandler;
 - (void)execute;
-- (void)dispatch;
 @property (nonatomic, copy) id (^dispatchHandler)();
 @property (nonatomic, copy) void (^executeHandler)();
 @property (nonatomic, copy) void (^completionHandler)();

@@ -142,7 +142,8 @@
 {
     NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];
     if(self.indexPaths.count == numberOfItemsInSection){
-        return self.indexPaths[indexPath];
+        NSIndexPath *retIndexPath = self.indexPaths[[self indexPathKey:indexPath]];
+        return retIndexPath;
     }
 
     NSIndexPath *retIndexPath = nil;
@@ -150,12 +151,18 @@
     while (YES) {
         NSUInteger randomRow = rand() % numberOfItemsInSection;
         retIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
-        if(![self isAddedIndexPath:retIndexPath]){
-            self.indexPaths[indexPath] = retIndexPath;
+        NSAssert(retIndexPath, @"should be not nil indexPath");
+        if(![self isAddedIndexPath:retIndexPath] || !retIndexPath){
+            self.indexPaths[[self indexPathKey:indexPath]] = retIndexPath;
             break;
         }
     }
     return retIndexPath;
+}
+
+- (NSString*)indexPathKey:(NSIndexPath*)indexPath
+{
+   return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
 }
 
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath

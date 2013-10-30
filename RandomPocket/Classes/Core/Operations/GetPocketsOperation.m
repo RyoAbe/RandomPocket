@@ -33,6 +33,7 @@
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
                                arguments:@{@"detailType": @"complete", @"count": @(20)}
+//                               arguments:@{@"detailType": @"complete"}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      __weak GetPocketsOperation *weakSelf = self;
                                      [self setDispatchHandler:^id{

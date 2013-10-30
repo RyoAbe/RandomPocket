@@ -11,6 +11,7 @@
 @interface PocketListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) UIPocketList *pocketList;
+@property (nonatomic) MBProgressHUD *HUD;
 @property (nonatomic) UIRefreshControl *refreshController;
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic) GetPocketsOperation *getPocketsOperation;
@@ -39,28 +40,51 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
     [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
-   
+    
+    // DimmingView
+    self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
+	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
+	self.HUD.labelText = NSLocalizedStringFromTable(@"Loading", @"Common", nil);
+
     // リクエスト
     self.getPocketsOperation = [GetPocketsOperation new];
-    __weak PocketListViewController *weakSelf = self;
-    [self.getPocketsOperation setCompletionHandler:^{
-        [weakSelf.refreshController endRefreshing];
-    }];
-    [self.getPocketsOperation setErrorHandler:^(NSError *error) {
-        [weakSelf.refreshController endRefreshing];
-        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
-    }];
-
-    [self reqestPocketList];
+    [self reqestGetPocketList];
 
     // PocketList
     self.pocketList = [[UIPocketList alloc] init];
     self.pocketList.delegate = self;
 }
 
-- (void)reqestPocketList
+- (void)reqestGetPocketList
 {
+    BOOL isShowDimminingView = [self shouldBeShowDimminingView];
+    
+    __weak PocketListViewController *weakSelf = self;
+    [self.getPocketsOperation setCompletionHandler:^{
+        if(isShowDimminingView) [weakSelf.HUD hide:YES];
+        [weakSelf.refreshController endRefreshing];
+    }];
+    [self.getPocketsOperation setErrorHandler:^(NSError *error) {
+        if(isShowDimminingView) [weakSelf.HUD hide:YES];
+        [weakSelf.refreshController endRefreshing];
+        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
+    }];
+
+    if(isShowDimminingView) [self.HUD show:YES];
     [self.getPocketsOperation execute];
+}
+
+- (BOOL)shouldBeShowDimminingView
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if([defaults boolForKey:@"NotFirstLaunch"]){
+        return NO;
+    }
+
+    [defaults setBool:YES forKey:@"NotFirstLaunch"];
+    [defaults synchronize];
+    return YES;
 }
 
 #pragma mark - UIPocketListDelegate
