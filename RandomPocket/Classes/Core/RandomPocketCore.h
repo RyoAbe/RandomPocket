@@ -29,3 +29,6 @@
 #import "AsyncOperation.h"
 #import "GetPocketsOperation.h"
 #import "ActionToPocketOperation.h"
+
+// Utils
+#import "HTMLBodyParser.h"

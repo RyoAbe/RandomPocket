@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface HTMLBodyParser : NSObject
+@property (nonatomic) NSString *url;
 - (id)initWithURL:(NSString*)url;
-- (void)parseWithCompletionBlock:(void(^)(NSString* body))completionBlock;
+- (NSString*)parseBody;
+- (NSString*)parseBodyWithURL:(NSString*)url;
+- (void)parseBodyWithCompletionBlock:(void(^)(NSString* body))completionBlock;
 @end

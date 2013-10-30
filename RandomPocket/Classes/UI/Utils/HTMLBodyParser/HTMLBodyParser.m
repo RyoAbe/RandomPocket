@@ -10,7 +10,6 @@
 #import "HTMLParser.h"
 
 @interface HTMLBodyParser()
-@property (nonatomic) NSString *url;
 @property (nonatomic) BOOL isInsideHeadTag;
 @property (nonatomic) BOOL isInsideScriptTag;
 @property (nonatomic) BOOL isInsideStyleTag;
@@ -27,19 +26,27 @@
     return self;
 }
 
-- (void)parseWithCompletionBlock:(void(^)(NSString* body))completionBlock
+- (void)parseBodyWithCompletionBlock:(void(^)(NSString* body))completionBlock
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        NSString *body = self.body;
+        NSString *body = self.parseBody;
         dispatch_async(dispatch_get_main_queue(), ^{
             completionBlock(body);
         });
     });
 }
 
-- (NSString*)body
+- (NSString*)parseBodyWithURL:(NSString*)url
 {
+    self.url = url;
+    return self.parseBody;
+}
+
+- (NSString*)parseBody
+{
+    NSAssert(self.url, nil);
+    
     NSError *error;
     NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:self.url] encoding:NSUTF8StringEncoding error:&error];
     NSString *pattern = @"<head(.*?)head>|<style(.*?)style>|/\\*(.*?)\\*/|(?is)<(script|style).*?>.*?(</\1>)|(?s)<!--(.*?)-->[\n]?|<.*?>.*?>|<[^>]*?>|\n|\r|\t| |　";

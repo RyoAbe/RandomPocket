@@ -28,11 +28,7 @@
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlTextView.text = _pocket.url;
-    self.bodyTextView.text = nil;
-    HTMLBodyParser *htmlParser = [[HTMLBodyParser alloc] initWithURL:_pocket.url];
-    [htmlParser parseWithCompletionBlock:^(NSString *body) {
-        self.bodyTextView.text = body;
-    }];
+    self.bodyTextView.text = _pocket.body;
 }
 
 - (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect

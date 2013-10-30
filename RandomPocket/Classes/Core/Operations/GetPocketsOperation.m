@@ -11,6 +11,7 @@
 @interface GetPocketsOperation()
 @property (nonatomic) NSMutableArray *response;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) HTMLBodyParser *htmlParser;
 @end
 
 @implementation GetPocketsOperation
@@ -20,6 +21,7 @@
     self = [super init];
     if (self) {
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+        self.htmlParser = [[HTMLBodyParser alloc] init];
         __weak GetPocketsOperation *weakSelf = self;
         [self setExecuteHandler:^{
             [weakSelf callAPI];
@@ -62,6 +64,7 @@
         cPocket.sortID = [data[@"sort_id"] integerValue];
         cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
         cPocket.favorite = [data[@"favorite"] integerValue];
+        cPocket.body = [self.htmlParser parseBodyWithURL:cPocket.url];
 
         NSError *error = nil;
         if (![self.managedObjectContext save:&error]) {

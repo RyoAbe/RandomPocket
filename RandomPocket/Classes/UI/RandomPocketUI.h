@@ -11,9 +11,6 @@
 // Common
 #import "RandomPocketCore.h"
 
-// Utils
-#import "HTMLBodyParser.h"
-
 // Constants
 #import "RPColor.h"
 
