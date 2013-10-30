@@ -39,7 +39,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
-    [self.refreshController addTarget:self action:@selector(reqestPocketList) forControlEvents:UIControlEventValueChanged];
+    [self.refreshController addTarget:self action:@selector(reqestGetPocketList) forControlEvents:UIControlEventValueChanged];
     
     // DimmingView
     self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];

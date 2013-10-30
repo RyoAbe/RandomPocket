@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CQB-TQ-f42">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CQB-TQ-f42">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -96,15 +96,15 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5a2-W4-PDO">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Open in Safari" id="W7U-MN-JQH">
+                                    <barButtonItem title="Mark as read" id="W7U-MN-JQH">
                                         <connections>
-                                            <action selector="openInSafariTapped:" destination="Cq8-PV-hpG" id="mkZ-ri-sLY"/>
+                                            <action selector="readedTapped:" destination="Cq8-PV-hpG" id="DLU-dh-h9N"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lnC-He-gQa"/>
                                     <barButtonItem style="plain" systemItem="action" id="GeG-c9-G40">
                                         <connections>
-                                            <action selector="actionButtonTapped:" destination="Cq8-PV-hpG" id="5Jj-Mm-DUf"/>
+                                            <action selector="actionButtonTapped:" destination="Cq8-PV-hpG" id="iYh-JK-fx5"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -121,13 +121,7 @@
                             <constraint firstItem="tLE-hD-QIm" firstAttribute="trailing" secondItem="GwP-gY-XkF" secondAttribute="trailing" id="wL2-Of-uNW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="puE-1R-xdf">
-                        <barButtonItem key="rightBarButtonItem" title="Mark as read" style="plain" id="pYx-r1-fZd">
-                            <connections>
-                                <action selector="readedTapped:" destination="Cq8-PV-hpG" id="2gL-9h-Jf0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="puE-1R-xdf"/>
                     <connections>
                         <outlet property="collectionView" destination="tLE-hD-QIm" id="uYh-so-V0U"/>
                     </connections>
