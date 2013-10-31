@@ -12,7 +12,10 @@
 @interface PocketDetailCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UITextView *urlTextView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailTopSpace;
 @end
 
 @implementation PocketDetailCell
@@ -29,6 +32,26 @@
     self.titleLabel.text = _pocket.title;
     self.urlTextView.text = _pocket.url;
     self.bodyTextView.text = _pocket.excerpt;
+    self.thumbnail.image = nil;
+    self.thumbnailHeight.constant = self.thumbnailTopSpace.constant = 0;
+
+    if(!_pocket.imageUrl){
+        return;
+    }    
+    
+    AsyncOperation *op = [[AsyncOperation alloc] init];
+    [op setDispatchHandler:^id{
+        return [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_pocket.imageUrl]]];
+    }];
+    [op setErrorHandler:^(NSError *error) {
+        [self makeToast:[NSString stringWithFormat:@"error: %@", error]];
+    }];
+    [op setCompletionHandler:^(id result) {
+        if(!result) return ;
+        self.thumbnailHeight.constant = 90;
+        self.thumbnailTopSpace.constant = 5;
+        self.thumbnail.image = result;
+    }];
 }
 
 - (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect

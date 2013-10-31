@@ -17,6 +17,7 @@ static CGRect DefaultURLRect;
 @interface PocketListCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailWidth;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 @end
 
@@ -44,10 +45,11 @@ static CGRect DefaultURLRect;
 
 - (void)setPocket:(UIPocket*)pocket
 {
-    self.thumbnail.image = nil;
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
+    self.thumbnail.image = nil;
+    self.thumbnailWidth.constant = 0;
 
     if(!_pocket.imageUrl){
         return;
@@ -61,16 +63,10 @@ static CGRect DefaultURLRect;
         [self makeToast:[NSString stringWithFormat:@"error: %@", error]];
     }];
     [op setCompletionHandler:^(id result) {
+        if(!result) return ;
         self.thumbnail.image = result;
+        self.thumbnailWidth.constant = 80;
     }];
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    if(!_pocket.imageUrl){
-        self.thumbnail.frame = CGRectZero;
-    }
 }
 
 + (CGFloat)cellHeight:(UIPocket*)pocket

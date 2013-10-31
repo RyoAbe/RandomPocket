@@ -71,7 +71,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     }];
 
     if(isShowDimminingView) [self.HUD show:YES];
-//    [self.getPocketsOperation execute];
+    [self.getPocketsOperation execute];
 }
 
 - (BOOL)shouldBeShowDimminingView

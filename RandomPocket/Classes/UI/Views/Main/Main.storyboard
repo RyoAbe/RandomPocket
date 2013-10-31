@@ -51,11 +51,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="List" id="ESW-t4-2oY">
-                        <barButtonItem key="rightBarButtonItem" title="To random sort" style="plain" id="bRQ-zn-fN8">
+                        <barButtonItem key="leftBarButtonItem" title="To random sort" style="plain" id="bRQ-zn-fN8">
                             <connections>
                                 <action selector="toRandomSortTapped:" destination="nWC-KJ-AuU" id="Pol-Z0-ybB"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="yjC-qB-Tue"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="LWL-VX-Pq9" id="yXl-Gn-Ml5"/>
