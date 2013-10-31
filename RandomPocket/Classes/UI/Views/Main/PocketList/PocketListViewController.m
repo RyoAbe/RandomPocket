@@ -155,6 +155,11 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.tableView reloadData];
 }
 
+- (IBAction)searchButtonTapped:(id)sender
+{
+    [self.view makeToast:@"unimplemented"];
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

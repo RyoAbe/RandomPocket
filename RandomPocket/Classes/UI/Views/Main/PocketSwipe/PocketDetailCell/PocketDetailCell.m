@@ -54,6 +54,12 @@
     }];
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.titleLabel sizeToFit];
+}
+
 - (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect
 {
     return 5.f;
