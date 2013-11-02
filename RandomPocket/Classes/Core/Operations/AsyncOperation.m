@@ -16,22 +16,10 @@
 {
     self = [super init];
     if (self) {
-        self.executeHandler = executeHandler;
         self.completionHandler = completionHandler;
         self.errorHandler = errorHandler;
     }
     return self;
-}
-
-- (void)execute
-{
-    self.executeHandler();
-}
-
-- (void)setDispatchHandler:(id (^)())dispatchHandler
-{
-    _dispatchHandler = dispatchHandler;
-    [self dispatch];
 }
 
 - (void)dispatch

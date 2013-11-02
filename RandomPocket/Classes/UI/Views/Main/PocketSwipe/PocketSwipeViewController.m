@@ -99,7 +99,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
         }];
-        [op execute];
+        [op dispatch];
     }];
     [actionSheet addButtonWithTitle:@"Cancel" handler:nil];
     actionSheet.destructiveButtonIndex = 0;

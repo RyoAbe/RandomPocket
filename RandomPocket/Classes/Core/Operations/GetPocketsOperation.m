@@ -22,15 +22,11 @@
     if (self) {
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
         self.htmlParser = [[HTMLBodyParser alloc] init];
-        __weak GetPocketsOperation *weakSelf = self;
-        [self setExecuteHandler:^{
-            [weakSelf callAPI];
-        }];
     }
     return self;
 }
 
-- (void)callAPI
+- (void)dispatch
 {
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
@@ -42,6 +38,7 @@
                                      [self setDispatchHandler:^id{
                                          return [weakSelf saveWithResponse:response];
                                      }];
+                                     [super dispatch];
                                  }];
 }
 

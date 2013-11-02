@@ -25,22 +25,14 @@
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
         self.pocketID = pocketID;
         self.actionType = actionType;
-
-        __weak ActionToPocketOperation *weakSelf = self;
-        [self setExecuteHandler:^{
-            [weakSelf request];
-        }];
-        
     }
     return self;
 }
 
-- (id)request
+- (void)dispatch
 {
     self.cPocket = [self.managedObjectContext entityWithID:self.pocketID];
-
     NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, self.cPocket.itemID];
-
     [[PocketAPI sharedAPI] callAPIMethod:@"send"
                           withHTTPMethod:PocketAPIHTTPMethodGET
                                arguments:@{@"actions":arguments}
@@ -53,9 +45,8 @@
                                          }
                                          return [weakSelf saveWithResponse:response];
                                      }];
+                                     [super dispatch];
                                  }];
-    
-    return nil;
 }
 
 - (id)saveWithResponse:(NSDictionary*)response

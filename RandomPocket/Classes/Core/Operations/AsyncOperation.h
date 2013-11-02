@@ -13,9 +13,10 @@
 - (id)initWithExecuteHandler:(void(^)())executeHandler
            completionHandler:(void(^)(id result))completionHandler
                 errorHandler:(void(^)(NSError *error))errorHandler;
-- (void)execute;
+//- (void)execute;
+- (void)dispatch;
 @property (nonatomic, copy) id (^dispatchHandler)();
-@property (nonatomic, copy) void (^executeHandler)();
+//@property (nonatomic, copy) void (^executeHandler)();
 @property (nonatomic, copy) void (^completionHandler)(id result);
 @property (nonatomic, copy) void (^errorHandler)(NSError *error);
 @end
