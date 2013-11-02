@@ -67,6 +67,7 @@ static CGRect DefaultURLRect;
         self.thumbnail.image = result;
         self.thumbnailWidth.constant = 80;
     }];
+    [op dispatch];
 }
 
 + (CGFloat)cellHeight:(UIPocket*)pocket

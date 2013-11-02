@@ -52,6 +52,7 @@
         self.thumbnailTopSpace.constant = 5;
         self.thumbnail.image = result;
     }];
+    [op dispatch];
 }
 
 - (void)layoutSubviews

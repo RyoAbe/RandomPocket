@@ -57,7 +57,6 @@
         NSAssert(NO, error.userInfo.description);
         return error;
     }
-//    self.completionHandler();
     return nil;
 }
 
