@@ -13,9 +13,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *bodyTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
-@property (weak, nonatomic) IBOutlet UITextView *urlTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;
+@property (weak, nonatomic) IBOutlet UIButton *urlButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailTopSpace;
+@property (nonatomic) PBWebViewController *webViewController;
 @end
 
 @implementation PocketDetailCell
@@ -24,13 +25,19 @@
 {
     [super awakeFromNib];
     self.bodyTextView.layoutManager.delegate = self;
+    self.webViewController = [[PBWebViewController alloc] init];
+    self.webViewController.excludedActivityTypes = @[UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePostToWeibo];
+    self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop handler:^(id sender) {
+        [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)setPocket:(UIPocket *)pocket
 {
     _pocket = pocket;
+    self.webViewController.URL = [NSURL URLWithString:_pocket.url];
     self.titleLabel.text = _pocket.title;
-    self.urlTextView.text = _pocket.url;
+    [self.urlButton setTitle:_pocket.url forState:UIControlStateNormal];
     self.bodyTextView.text = _pocket.excerpt;
     self.thumbnail.image = nil;
     self.thumbnailHeight.constant = self.thumbnailTopSpace.constant = 0;
@@ -53,6 +60,12 @@
         self.thumbnail.image = result;
     }];
     [op dispatch];
+
+}
+- (IBAction)linkTapped:(id)sender
+{
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.webViewController];
+    [self.vc.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)layoutSubviews

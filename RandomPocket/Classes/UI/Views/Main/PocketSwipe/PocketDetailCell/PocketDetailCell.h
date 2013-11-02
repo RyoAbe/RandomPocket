@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class UIPocket;
+@class PocketSwipeViewController;
 
 @interface PocketDetailCell : UICollectionViewCell<NSLayoutManagerDelegate>
 @property (nonatomic) UIPocket* pocket;
+@property (nonatomic, weak) PocketSwipeViewController* vc;
 @end

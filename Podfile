@@ -7,6 +7,7 @@ inhibit_all_warnings!
 	pod 'Toast', '~> 2.0'
 	pod 'MBProgressHUD', '~> 0.5'
 	pod "Appirater"
+	pod 'PBWebViewController', '~> 0.0.1'
 	pod 'iOSCommon', :path => '../iOSCommon'
 #end
 

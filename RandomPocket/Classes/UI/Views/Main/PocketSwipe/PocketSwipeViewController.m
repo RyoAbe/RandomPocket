@@ -68,6 +68,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 {
     PocketDetailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PocketDetailCellIdentifier forIndexPath:indexPath];
     cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
+    cell.vc = self;
     self.title = [NSString stringWithFormat:NSLocalizedStringFromTable(@"NavigationTitleFormat", @"PocketDetail", nil), indexPath.row + 1, self.pocketList.numberOfItems];
 
     return cell;

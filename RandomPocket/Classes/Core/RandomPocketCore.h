@@ -18,6 +18,7 @@
 #import <Appirater/Appirater.h>
 #import <Kiwi/Kiwi.h>
 #import <OCMock/OCMock.h>
+#import <PBWebViewController/PBWebViewController.h>
 
 // Entity
 #import "CPocket.h"
