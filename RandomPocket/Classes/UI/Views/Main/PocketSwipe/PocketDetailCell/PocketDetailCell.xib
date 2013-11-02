@@ -85,6 +85,7 @@
                 <outlet property="bodyTextView" destination="234" id="256"/>
                 <outlet property="thumbnail" destination="Nhm-FH-Njb" id="ceB-eK-jKv"/>
                 <outlet property="thumbnailHeight" destination="crX-TX-Sn6" id="hb8-a7-3ac"/>
+                <outlet property="thumbnailTopSpace" destination="Czv-jc-ioo" id="KVU-pb-SfO"/>
                 <outlet property="titleLabel" destination="233" id="257"/>
                 <outlet property="urlTextView" destination="XoE-vz-m1N" id="ot2-jO-1do"/>
             </connections>

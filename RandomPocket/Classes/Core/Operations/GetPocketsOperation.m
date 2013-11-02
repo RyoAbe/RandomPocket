@@ -37,11 +37,9 @@
                                arguments:@{@"detailType": @"complete", @"count": @(20)}
 //                               arguments:@{@"detailType": @"complete"}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
+                                     NSAssert(!error, error.localizedDescription);
                                      __weak GetPocketsOperation *weakSelf = self;
                                      [self setDispatchHandler:^id{
-                                         if(error){
-                                             return error;
-                                         }
                                          return [weakSelf saveWithResponse:response];
                                      }];
                                  }];

@@ -48,7 +48,7 @@
     }];
     [op setCompletionHandler:^(id result) {
         if(!result) return ;
-        self.thumbnailHeight.constant = 90;
+        self.thumbnailHeight.constant = 150;
         self.thumbnailTopSpace.constant = 5;
         self.thumbnail.image = result;
     }];

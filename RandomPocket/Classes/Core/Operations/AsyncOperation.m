@@ -41,6 +41,7 @@
         id result = self.dispatchHandler();
         dispatch_async(dispatch_get_main_queue(), ^{
             if([result isKindOfClass:[NSError class]]){
+                NSAssert(NO, ((NSError*)result).localizedDescription);
                 self.errorHandler((NSError*)result);
             }else{
                 self.completionHandler(result);
