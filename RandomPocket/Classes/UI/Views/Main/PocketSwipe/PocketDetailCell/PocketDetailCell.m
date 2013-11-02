@@ -25,6 +25,7 @@
 {
     [super awakeFromNib];
     self.bodyTextView.layoutManager.delegate = self;
+    [self.titleLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkTapped:)]];
     self.webViewController = [[PBWebViewController alloc] init];
     self.webViewController.excludedActivityTypes = @[UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePostToWeibo];
     self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop handler:^(id sender) {
@@ -44,7 +45,7 @@
 
     if(!_pocket.imageUrl){
         return;
-    }    
+    }
     
     AsyncOperation *op = [[AsyncOperation alloc] init];
     [op setDispatchHandler:^id{
