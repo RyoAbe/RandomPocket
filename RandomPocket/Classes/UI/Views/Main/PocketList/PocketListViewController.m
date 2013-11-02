@@ -39,7 +39,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
-    [self.refreshController addTarget:self action:@selector(reqestGetPocketList) forControlEvents:UIControlEventValueChanged];
+    [self.refreshController addTarget:self action:@selector(reqestGetPockets) forControlEvents:UIControlEventValueChanged];
     
     // DimmingView
     self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
@@ -123,8 +123,8 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIPocket* pocket = [self.pocketList objectAtIndexPath:indexPath];
-    return [PocketListCell cellHeight:pocket];
+    PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier];
+    return [cell cellHeight:[self.pocketList objectAtIndexPath:indexPath]];
 }
 
 #pragma mark - IBAction

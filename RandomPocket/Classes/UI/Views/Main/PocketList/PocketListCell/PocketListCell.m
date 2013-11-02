@@ -8,12 +8,6 @@
 
 #import "PocketListCell.h"
 
-static CGFloat DefaultCellHeight;
-static CGRect DefaultTitleRect;
-static UIFont *DefaultTitleFont;
-static NSLineBreakMode DefaultTitleBreakMode;
-static CGRect DefaultURLRect;
-
 @interface PocketListCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
@@ -22,26 +16,6 @@ static CGRect DefaultURLRect;
 @end
 
 @implementation PocketListCell
-
-+ (void)initialize
-{
-    [super initialize];
-    if (self == [PocketListCell class])
-    {
-        // セルの高さやラベルの高さを取得するために一度nibファイルを読み込んでいる（がもう少しいい方法はないだろうか、、）
-        PocketListCell *cell = [[[UINib nibWithNibName:@"PocketListCell" bundle:nil] instantiateWithOwner:nil options:nil] objectAtIndex:0];
-        [cell prepare];
-    }
-}
-
-- (void)prepare
-{
-    DefaultCellHeight = self.frame.size.height;
-    DefaultTitleRect = self.titleLabel.frame;
-    DefaultTitleBreakMode = self.titleLabel.lineBreakMode;
-    DefaultTitleFont = self.titleLabel.font;
-    DefaultURLRect = self.urlLabel.frame;
-}
 
 - (void)setPocket:(UIPocket*)pocket
 {
@@ -70,17 +44,17 @@ static CGRect DefaultURLRect;
     [op dispatch];
 }
 
-+ (CGFloat)cellHeight:(UIPocket*)pocket
+- (CGFloat)cellHeight:(UIPocket*)pocket
 {
     if (!pocket || !pocket.title || pocket.title.length == 0){
         pocket.title = pocket.url;
     }
-    CGSize size = [pocket.title sizeWithFont:DefaultTitleFont
-                           constrainedToSize:CGSizeMake(DefaultTitleRect.size.width, INT_MAX)
-                               lineBreakMode:DefaultTitleBreakMode];
-    CGFloat margin = fabs(DefaultCellHeight - DefaultTitleRect.size.height - DefaultURLRect.size.height);
-    CGFloat cellHeight = size.height + margin + DefaultURLRect.size.height;
-
+    CGSize size = [pocket.title sizeWithFont:self.titleLabel.font
+                           constrainedToSize:CGSizeMake(self.titleLabel.frame.size.width, INT_MAX)
+                               lineBreakMode:self.titleLabel.lineBreakMode];
+    CGFloat margin = fabs(self.frame.size.height - self.titleLabel.frame.size.height - self.urlLabel.frame.size.height);
+    CGFloat cellHeight = size.height + margin + self.urlLabel.frame.size.height;
+    
     return cellHeight;
 }
 

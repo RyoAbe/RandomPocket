@@ -12,5 +12,5 @@
 
 @interface PocketListCell : UITableViewCell
 @property (nonatomic) UIPocket *pocket;
-+ (CGFloat)cellHeight:(UIPocket*)pocket;
+- (CGFloat)cellHeight:(UIPocket*)pocket;
 @end
