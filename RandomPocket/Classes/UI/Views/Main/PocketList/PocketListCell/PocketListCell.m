@@ -23,7 +23,6 @@
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
     self.thumbnail.image = nil;
-    self.thumbnailWidth.constant = 0;
 
     if(!_pocket.imageUrl){
         return;
@@ -39,7 +38,6 @@
     [op setCompletionHandler:^(id result) {
         if(!result) return ;
         self.thumbnail.image = result;
-        self.thumbnailWidth.constant = 80;
     }];
     [op dispatch];
 }
