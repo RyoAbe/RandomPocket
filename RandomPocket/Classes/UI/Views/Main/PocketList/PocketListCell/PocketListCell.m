@@ -11,7 +11,6 @@
 @interface PocketListCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailWidth;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 @end
 

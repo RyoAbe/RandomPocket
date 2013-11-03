@@ -127,6 +127,8 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     return [cell cellHeight:[self.pocketList objectAtIndexPath:indexPath]];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {}
+
 #pragma mark - IBAction
 
 - (IBAction)toRandomSortTapped:(UITabBarItem*)tabBarItem
