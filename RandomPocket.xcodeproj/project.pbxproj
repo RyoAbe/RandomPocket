@@ -27,6 +27,7 @@
 		17DE538A181B903600AB1E8E /* UIPocketListSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DE5389181B903600AB1E8E /* UIPocketListSpec.m */; };
 		17E552CD17D4CF45004E10BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E552CC17D4CF45004E10BE /* CoreData.framework */; };
 		17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17E552D117D4D096004E10BE /* RandomPocket.xcdatamodeld */; };
+		17E7BC3A1825DF3B00DC0B70 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E7BC391825DF3B00DC0B70 /* Reveal.framework */; };
 		17FF532117E572C300FF3098 /* ActionToPocketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FF532017E572C300FF3098 /* ActionToPocketOperation.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
@@ -94,6 +95,7 @@
 		17DE5389181B903600AB1E8E /* UIPocketListSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketListSpec.m; sourceTree = "<group>"; };
 		17E552CC17D4CF45004E10BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		17E552D217D4D096004E10BE /* RandomPocket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RandomPocket.xcdatamodel; sourceTree = "<group>"; };
+		17E7BC391825DF3B00DC0B70 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		17FF531F17E572C300FF3098 /* ActionToPocketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionToPocketOperation.h; sourceTree = "<group>"; };
 		17FF532017E572C300FF3098 /* ActionToPocketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionToPocketOperation.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				32AF668017C9E63600EF34EC /* Security.framework in Frameworks */,
 				32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */,
 				32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */,
+				17E7BC3A1825DF3B00DC0B70 /* Reveal.framework in Frameworks */,
 				32D0885D17C9DE76007C50CD /* CoreGraphics.framework in Frameworks */,
 				4E10A81F0CBD460F918B067C /* libPods.a in Frameworks */,
 			);
@@ -447,6 +450,7 @@
 		32D0885717C9DE76007C50CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17E7BC391825DF3B00DC0B70 /* Reveal.framework */,
 				178290E4181AD1830093718E /* CFNetwork.framework */,
 				178290E2181AD1770093718E /* QuartzCore.framework */,
 				17E552CC17D4CF45004E10BE /* CoreData.framework */,
