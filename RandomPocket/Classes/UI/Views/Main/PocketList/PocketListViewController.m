@@ -107,8 +107,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier];
-    CGFloat height = [cell cellHeight:[self.pocketList objectAtIndexPath:indexPath]];
-    return height;
+    return [cell cellHeight:[self.pocketList objectAtIndexPath:indexPath]];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -137,10 +136,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Archive];
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
-        [weakSelf.view makeToast:@"Arcived"];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }];
     [op setErrorHandler:^(NSError *error) {
-        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
+        [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
     }];
     [op dispatch];
 }
@@ -151,14 +150,37 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
-    [actionSheet addButtonWithTitle:@"Add Tag" handler:^{}];
-    [actionSheet addButtonWithTitle:@"Favorite" handler:^{}];
-    [actionSheet addButtonWithTitle:@"Delete" handler:^{}];
-    [actionSheet addButtonWithTitle:@"Open in Browser" handler:^{
+    __weak PocketListViewController *weakSelf = self;
+
+#warning impl add tag
+//    [actionSheet addButtonWithTitle:@"Add Tag" handler:^{}];
+
+    [actionSheet addButtonWithTitle:@"Favorite" handler:^{
+        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Favorite];
+        [op setCompletionHandler:^(id result) {
+            [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
+        }];
+        [op setErrorHandler:^(NSError *error) {
+            [weakSelf.view makeToast:[NSString stringWithFormat:@"add to favorite error: %@", error]];
+        }];
+        [op dispatch];
+    }];
+    [actionSheet addButtonWithTitle:@"Delete" handler:^{
+        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Delete];
+        [op setErrorHandler:^(NSError *error) {
+            [weakSelf.view makeToast:[NSString stringWithFormat:@"delete error: %@", error]];
+        }];
+        [op setCompletionHandler:^(id result) {
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        }];
+        [op dispatch];
+    }];
+    [actionSheet addButtonWithTitle:@"Open " handler:^{
         UINavigationController *webViewController = [self webViewControllerWithURL:pocket.url];
         [self.navigationController presentViewController:webViewController animated:YES completion:nil];
     }];
     [actionSheet addButtonWithTitle:@"Cancel" handler:nil];
+
     actionSheet.destructiveButtonIndex = 2;
     actionSheet.cancelButtonIndex = 4;
     [actionSheet showFromToolbar:self.navigationController.toolbar];
