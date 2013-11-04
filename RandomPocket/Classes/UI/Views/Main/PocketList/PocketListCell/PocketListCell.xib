@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="222" translatesAutoresizingMaskIntoConstraints="NO" id="oNB-tg-8nW" userLabel="Title">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="222" translatesAutoresizingMaskIntoConstraints="NO" id="oNB-tg-8nW" userLabel="Title">
                         <rect key="frame" x="13" y="6" width="222" height="54"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="222" id="Zmr-aw-PTD"/>
@@ -46,6 +46,7 @@
                 <constraints>
                     <constraint firstItem="P40-u7-l0B" firstAttribute="top" secondItem="JKL-Ay-Kdk" secondAttribute="top" constant="6" id="1BQ-F2-Jup"/>
                     <constraint firstItem="G7V-Lw-KSH" firstAttribute="trailing" secondItem="oNB-tg-8nW" secondAttribute="trailing" id="Gt9-Ac-nJ5"/>
+                    <constraint firstItem="G7V-Lw-KSH" firstAttribute="bottom" secondItem="P40-u7-l0B" secondAttribute="bottom" id="IWI-g4-QSo"/>
                     <constraint firstAttribute="trailing" secondItem="P40-u7-l0B" secondAttribute="trailing" id="MdU-oh-tQt"/>
                     <constraint firstItem="oNB-tg-8nW" firstAttribute="top" secondItem="JKL-Ay-Kdk" secondAttribute="top" constant="6" id="NO0-sF-EUS"/>
                     <constraint firstAttribute="centerY" secondItem="P40-u7-l0B" secondAttribute="centerY" id="Sda-3F-GyS"/>

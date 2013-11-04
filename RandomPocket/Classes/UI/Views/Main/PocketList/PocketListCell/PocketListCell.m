@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 @end
 
+static const CGFloat AdjustmentHeight = 1;
+
 @implementation PocketListCell
 
 - (void)setPocket:(UIPocket*)pocket
@@ -46,13 +48,15 @@
     if (!pocket || !pocket.title || pocket.title.length == 0){
         pocket.title = pocket.url;
     }
-    CGSize size = [pocket.title sizeWithFont:self.titleLabel.font
-                           constrainedToSize:CGSizeMake(self.titleLabel.frame.size.width, INT_MAX)
-                               lineBreakMode:self.titleLabel.lineBreakMode];
-    CGFloat margin = fabs(self.frame.size.height - self.titleLabel.frame.size.height - self.urlLabel.frame.size.height);
+	NSAttributedString *attString = [[NSAttributedString alloc] initWithString:pocket.title
+                                                                    attributes:@{NSFontAttributeName : self.titleLabel.font}];
+    CGSize size = [attString boundingRectWithSize:CGSizeMake(self.titleLabel.frame.size.width, INT_MAX)
+                                          options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+    CGFloat margin = fabsf(self.frame.size.height - self.titleLabel.frame.size.height - self.urlLabel.frame.size.height);
     CGFloat cellHeight = size.height + margin + self.urlLabel.frame.size.height;
-    
-    return cellHeight;
+
+    // boundingRectWithSizeの結果が少し小さくなってしまうので調整用に高さを足す
+    return cellHeight + AdjustmentHeight;
 }
 
 @end
