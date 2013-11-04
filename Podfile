@@ -9,6 +9,7 @@ inhibit_all_warnings!
 	pod 'MRProgress', '~> 0.2'
 	pod "Appirater"
 	pod 'PBWebViewController', '~> 0.0.1'
+	pod 'MSCMoreOptionTableViewCell', '~> 1.1'
 	pod 'iOSCommon', :path => '../iOSCommon'
 #end
 

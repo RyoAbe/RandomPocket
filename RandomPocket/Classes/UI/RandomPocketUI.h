@@ -22,3 +22,6 @@
 #import "PocketListCell.h"
 #import "PocketSwipeViewController.h"
 #import "PocketDetailCell.h"
+
+// Category
+#import "UIViewController+RandomPocket.h"

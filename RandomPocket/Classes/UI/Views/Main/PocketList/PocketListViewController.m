@@ -97,23 +97,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 #pragma mark - UITableViewDelegate
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.pocketList.numberOfSections;
-}
-
-- (PocketListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
-    cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.pocketList numberOfItemsInSection:section];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -124,10 +107,71 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier];
-    return [cell cellHeight:[self.pocketList objectAtIndexPath:indexPath]];
+    CGFloat height = [cell cellHeight:[self.pocketList objectAtIndexPath:indexPath]];
+    return height;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Archive";
+}
+
+#pragma mark - UITableViewDataSource
+
+- (PocketListCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier forIndexPath:indexPath];
+    cell.pocket = [self.pocketList objectAtIndexPath:indexPath];
+    cell.delegate = self;
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.pocketList numberOfItemsInSection:section];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
+    ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Archive];
+    __weak PocketListViewController *weakSelf = self;
+    [op setCompletionHandler:^(id result) {
+        [weakSelf.view makeToast:@"Arcived"];
+    }];
+    [op setErrorHandler:^(NSError *error) {
+        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
+    }];
+    [op dispatch];
+}
+
+#pragma mark - MSCMoreOptionTableViewCellDelegate
+
+- (void)tableView:(UITableView *)tableView moreOptionButtonPressedInRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
+    [actionSheet addButtonWithTitle:@"Add Tag" handler:^{}];
+    [actionSheet addButtonWithTitle:@"Favorite" handler:^{}];
+    [actionSheet addButtonWithTitle:@"Delete" handler:^{}];
+    [actionSheet addButtonWithTitle:@"Open in Browser" handler:^{
+        UINavigationController *webViewController = [self webViewControllerWithURL:pocket.url];
+        [self.navigationController presentViewController:webViewController animated:YES completion:nil];
+    }];
+    [actionSheet addButtonWithTitle:@"Cancel" handler:nil];
+    actionSheet.destructiveButtonIndex = 2;
+    actionSheet.cancelButtonIndex = 4;
+    [actionSheet showFromToolbar:self.navigationController.toolbar];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForMoreOptionButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"More";
+}
+
+-(UIColor *)tableView:(UITableView *)tableView backgroundColorForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [UIColor colorWithRed:0.18f green:0.67f blue:0.84f alpha:1.0f];
+}
 
 #pragma mark - IBAction
 

@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;
 @property (weak, nonatomic) IBOutlet UIButton *urlButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailTopSpace;
-@property (nonatomic) PBWebViewController *webViewController;
 @end
 
 @implementation PocketDetailCell
@@ -26,17 +25,11 @@
     [super awakeFromNib];
     self.bodyTextView.layoutManager.delegate = self;
     [self.titleLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkTapped:)]];
-    self.webViewController = [[PBWebViewController alloc] init];
-    self.webViewController.excludedActivityTypes = @[UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePostToWeibo];
-    self.webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop handler:^(id sender) {
-        [self.webViewController dismissViewControllerAnimated:YES completion:nil];
-    }];
 }
 
 - (void)setPocket:(UIPocket *)pocket
 {
     _pocket = pocket;
-    self.webViewController.URL = [NSURL URLWithString:_pocket.url];
     self.titleLabel.text = _pocket.title;
     [self.urlButton setTitle:_pocket.url forState:UIControlStateNormal];
     self.bodyTextView.text = _pocket.excerpt;
@@ -65,8 +58,8 @@
 }
 - (IBAction)linkTapped:(id)sender
 {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.webViewController];
-    [self.vc.navigationController presentViewController:navigationController animated:YES completion:nil];
+    UINavigationController *webViewController = [self.vc webViewControllerWithURL:_pocket.url];
+    [self.vc.navigationController presentViewController:webViewController animated:YES completion:nil];
 }
 
 - (void)layoutSubviews

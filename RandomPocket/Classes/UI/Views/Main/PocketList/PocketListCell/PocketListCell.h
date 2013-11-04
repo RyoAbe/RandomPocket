@@ -10,7 +10,7 @@
 #import "RandomPocketUI.h"
 #import "UIPocket.h"
 
-@interface PocketListCell : UITableViewCell
+@interface PocketListCell : MSCMoreOptionTableViewCell
 @property (nonatomic) UIPocket *pocket;
 - (CGFloat)cellHeight:(UIPocket*)pocket;
 @end
