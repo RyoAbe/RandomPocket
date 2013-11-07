@@ -138,22 +138,32 @@
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
+- (void)setDisplayMode:(UIPocketListMode)displayMode
+{
+    _displayMode = displayMode;
+    self.indexPaths = [NSMutableDictionary dictionary];
+}
+
 - (NSIndexPath*)generateRandomIndexPath:(NSIndexPath*)indexPath
 {
     NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];
+    NSString *indexPathKey = [self indexPathKey:indexPath];
     if(self.indexPaths.count == numberOfItemsInSection){
-        NSIndexPath *retIndexPath = self.indexPaths[[self indexPathKey:indexPath]];
+        NSIndexPath *retIndexPath = self.indexPaths[indexPathKey];
         return retIndexPath;
+    }
+    
+    if([self.indexPaths objectForKey:indexPath]){
+        return self.indexPaths[indexPathKey];
     }
 
     NSIndexPath *retIndexPath = nil;
-    srand(time(nil));
     while (YES) {
-        NSUInteger randomRow = rand() % numberOfItemsInSection;
+        NSUInteger randomRow = arc4random_uniform(numberOfItemsInSection);
         retIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
         NSAssert(retIndexPath, @"should be not nil indexPath");
-        if(![self isAddedIndexPath:retIndexPath] || !retIndexPath){
-            self.indexPaths[[self indexPathKey:indexPath]] = retIndexPath;
+        if(![self isAddedIndexPath:retIndexPath]){
+            self.indexPaths[indexPathKey] = retIndexPath;
             break;
         }
     }
@@ -167,10 +177,7 @@
 
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath
 {
-    NSIndexPath *matchIndexPath  = [self.indexPaths match:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
-        return (randomIndexPath.section == addedRandomIndexPath.section && randomIndexPath.row == addedRandomIndexPath.row);
-    }];
-    return matchIndexPath != nil;
+    return [self.indexPaths.allValues containsObject:randomIndexPath];
 }
 
 @end

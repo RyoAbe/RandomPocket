@@ -14,5 +14,6 @@
 + (UIColor*)NavigationBarTitleColor;
 + (UIColor*)BarButtonItemColor;
 + (UIColor*)ToolButtonItemColor;
-
++ (UIColor*)PocketListCellMoreButtonColor;
++ (UIColor*)PocketListCellArchiveButtonColor;
 @end

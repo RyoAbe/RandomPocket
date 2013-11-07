@@ -5,6 +5,11 @@
   Created by RyoAbe on 2013/08/27.
   Copyright (c) 2013年 RyoAbe. All rights reserved.
 */
-"FaildRequestPocketList" = "取得に失敗しました";
+"FaildRequestPocketList" = "faild request";
 "ToRandomSort" = "To random sort";
 "ToNormalSort" = "To normal sort";
+"FavoriteButtonTitle" = "Favorite";
+"DeleteButtonTitle" = "Delete";
+"ViewWebsiteButtonTitle" = "View website";
+"CellArchiveButtonTitle" = "Archive";
+"CellMoreButtonTitle" = "More";

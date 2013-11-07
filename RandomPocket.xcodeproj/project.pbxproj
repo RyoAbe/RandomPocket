@@ -23,12 +23,16 @@
 		178F268917D3081800993DF9 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 178F268717D3081800993DF9 /* HTMLParser.m */; };
 		17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 17922AAC17D3226200AF2FD3 /* UIPocketList.m */; };
 		17C09F8A1827664F001435B9 /* UIViewController+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C09F891827664F001435B9 /* UIViewController+RandomPocket.m */; };
+		17C09F8C18278EF4001435B9 /* PocketSwipeView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17C09F8B18278EF4001435B9 /* PocketSwipeView.strings */; };
+		17C09F9118279899001435B9 /* check_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C09F8D18279899001435B9 /* check_icon.png */; };
+		17C09F9218279899001435B9 /* check_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C09F8E18279899001435B9 /* check_icon@2x.png */; };
+		17C09F9318279899001435B9 /* shuffle_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C09F8F18279899001435B9 /* shuffle_icon.png */; };
+		17C09F9418279899001435B9 /* shuffle_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C09F9018279899001435B9 /* shuffle_icon@2x.png */; };
 		17CBEFA2182499B5008CF416 /* UIPocketList.m in Sources */ = {isa = PBXBuildFile; fileRef = 17922AAC17D3226200AF2FD3 /* UIPocketList.m */; };
 		17CBEFA3182499CE008CF416 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
 		17DE538A181B903600AB1E8E /* UIPocketListSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DE5389181B903600AB1E8E /* UIPocketListSpec.m */; };
 		17E552CD17D4CF45004E10BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E552CC17D4CF45004E10BE /* CoreData.framework */; };
 		17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17E552D117D4D096004E10BE /* RandomPocket.xcdatamodeld */; };
-		17E7BC3A1825DF3B00DC0B70 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E7BC391825DF3B00DC0B70 /* Reveal.framework */; };
 		17FF532117E572C300FF3098 /* ActionToPocketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FF532017E572C300FF3098 /* ActionToPocketOperation.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
@@ -95,10 +99,14 @@
 		17922AAC17D3226200AF2FD3 /* UIPocketList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketList.m; sourceTree = "<group>"; };
 		17C09F881827664F001435B9 /* UIViewController+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RandomPocket.h"; sourceTree = "<group>"; };
 		17C09F891827664F001435B9 /* UIViewController+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RandomPocket.m"; sourceTree = "<group>"; };
+		17C09F8B18278EF4001435B9 /* PocketSwipeView.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketSwipeView.strings; sourceTree = "<group>"; };
+		17C09F8D18279899001435B9 /* check_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_icon.png; sourceTree = "<group>"; };
+		17C09F8E18279899001435B9 /* check_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_icon@2x.png"; sourceTree = "<group>"; };
+		17C09F8F18279899001435B9 /* shuffle_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuffle_icon.png; sourceTree = "<group>"; };
+		17C09F9018279899001435B9 /* shuffle_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shuffle_icon@2x.png"; sourceTree = "<group>"; };
 		17DE5389181B903600AB1E8E /* UIPocketListSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocketListSpec.m; sourceTree = "<group>"; };
 		17E552CC17D4CF45004E10BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		17E552D217D4D096004E10BE /* RandomPocket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RandomPocket.xcdatamodel; sourceTree = "<group>"; };
-		17E7BC391825DF3B00DC0B70 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = "../../../../../../../Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/Reveal.framework"; sourceTree = "<group>"; };
 		17FF531F17E572C300FF3098 /* ActionToPocketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionToPocketOperation.h; sourceTree = "<group>"; };
 		17FF532017E572C300FF3098 /* ActionToPocketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionToPocketOperation.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
@@ -159,7 +167,6 @@
 				32AF668017C9E63600EF34EC /* Security.framework in Frameworks */,
 				32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */,
 				32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */,
-				17E7BC3A1825DF3B00DC0B70 /* Reveal.framework in Frameworks */,
 				32D0885D17C9DE76007C50CD /* CoreGraphics.framework in Frameworks */,
 				4E10A81F0CBD460F918B067C /* libPods.a in Frameworks */,
 			);
@@ -192,6 +199,10 @@
 		17291EC217CF9A6400B44BBE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				17C09F8D18279899001435B9 /* check_icon.png */,
+				17C09F8E18279899001435B9 /* check_icon@2x.png */,
+				17C09F8F18279899001435B9 /* shuffle_icon.png */,
+				17C09F9018279899001435B9 /* shuffle_icon@2x.png */,
 				17889F171813B46200E09CC0 /* welcome.jpg */,
 			);
 			path = Images;
@@ -204,6 +215,7 @@
 				17291EC517CF9A6400B44BBE /* PocketDetail.strings */,
 				17291EC617CF9A6400B44BBE /* PocketList.strings */,
 				17291EC717CF9A6400B44BBE /* Welcom.strings */,
+				17C09F8B18278EF4001435B9 /* PocketSwipeView.strings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -455,7 +467,6 @@
 		32D0885717C9DE76007C50CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				17E7BC391825DF3B00DC0B70 /* Reveal.framework */,
 				178290E4181AD1830093718E /* CFNetwork.framework */,
 				178290E2181AD1770093718E /* QuartzCore.framework */,
 				17E552CC17D4CF45004E10BE /* CoreData.framework */,
@@ -598,13 +609,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C09F9218279899001435B9 /* check_icon@2x.png in Resources */,
+				17C09F9418279899001435B9 /* shuffle_icon@2x.png in Resources */,
 				32D0886317C9DE76007C50CD /* InfoPlist.strings in Resources */,
 				32D0886B17C9DE76007C50CD /* Default.png in Resources */,
 				32D0886D17C9DE76007C50CD /* Default@2x.png in Resources */,
+				17C09F8C18278EF4001435B9 /* PocketSwipeView.strings in Resources */,
 				32D0886F17C9DE76007C50CD /* Default-568h@2x.png in Resources */,
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
 				3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */,
+				17C09F9118279899001435B9 /* check_icon.png in Resources */,
 				324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */,
+				17C09F9318279899001435B9 /* shuffle_icon.png in Resources */,
 				324FF02117CE1516005B08F4 /* Main.storyboard in Resources */,
 				17889F181813B46200E09CC0 /* welcome.jpg in Resources */,
 				324FF03817CE3E69005B08F4 /* PocketDetailCell.xib in Resources */,

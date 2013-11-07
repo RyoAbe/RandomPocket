@@ -10,6 +10,7 @@
 
 @interface PocketListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *randomButton;
 @property (nonatomic) UIPocketList *pocketList;
 @property (nonatomic) MBProgressHUD *HUD;
 @property (nonatomic) UIRefreshControl *refreshController;
@@ -62,16 +63,19 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^(id result) {
         if(isShowDimminingView) [weakSelf.HUD hide:YES];
+        weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
         [weakSelf.tableView reloadData];
     }];
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
         if(isShowDimminingView) [weakSelf.HUD hide:YES];
+        weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
 
     if(isShowDimminingView) [self.HUD show:YES];
+    self.randomButton.enabled = NO;
     [self.getPocketsOperation dispatch];
 }
 
@@ -112,7 +116,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @"Archive";
+    return NSLocalizedStringFromTable(@"CellArchiveButtonTitle", @"PocketList", nil);
 }
 
 #pragma mark - UITableViewDataSource
@@ -152,10 +156,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
     __weak PocketListViewController *weakSelf = self;
 
-#warning impl add tag
+    // impl add tag
 //    [actionSheet addButtonWithTitle:@"Add Tag" handler:^{}];
 
-    [actionSheet addButtonWithTitle:@"Favorite" handler:^{
+    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
             [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
@@ -165,7 +169,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         }];
         [op dispatch];
     }];
-    [actionSheet addButtonWithTitle:@"Delete" handler:^{
+    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Delete];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.view makeToast:[NSString stringWithFormat:@"delete error: %@", error]];
@@ -175,24 +179,30 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         }];
         [op dispatch];
     }];
-    [actionSheet addButtonWithTitle:@"Open " handler:^{
+    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ViewWebsiteButtonTitle", @"PocketList", nil) handler:^{
         UINavigationController *webViewController = [self webViewControllerWithURL:pocket.url];
         [self.navigationController presentViewController:webViewController animated:YES completion:nil];
     }];
-    [actionSheet addButtonWithTitle:@"Cancel" handler:nil];
+    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
 
-    actionSheet.destructiveButtonIndex = 2;
-    actionSheet.cancelButtonIndex = 4;
+    actionSheet.destructiveButtonIndex = 1;
+    actionSheet.cancelButtonIndex = 3;
     [actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForMoreOptionButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @"More";
+    return NSLocalizedStringFromTable(@"CellMoreButtonTitle", @"PocketList", nil);
 }
 
--(UIColor *)tableView:(UITableView *)tableView backgroundColorForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [UIColor colorWithRed:0.18f green:0.67f blue:0.84f alpha:1.0f];
+-(UIColor *)tableView:(UITableView *)tableView backgroundColorForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [RPColor PocketListCellArchiveButtonColor];
+}
+
+- (UIColor *)tableView:(UITableView *)tableView backgroundColorForMoreOptionButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [RPColor PocketListCellMoreButtonColor];
 }
 
 #pragma mark - IBAction
@@ -212,7 +222,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         default:
             break;
     }
-    [tabBarItem setTitle:title];
+//    [tabBarItem setTitle:title];
     [self.tableView reloadData];
 }
 

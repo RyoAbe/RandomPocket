@@ -50,19 +50,20 @@
                             <constraint firstItem="LWL-VX-Pq9" firstAttribute="leading" secondItem="reH-J0-NXW" secondAttribute="leading" id="qeJ-AT-GsD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="List" id="ESW-t4-2oY">
+                    <navigationItem key="navigationItem" title="Pocket" id="ESW-t4-2oY">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="wHS-Fj-Jbz">
                             <connections>
                                 <action selector="searchButtonTapped:" destination="nWC-KJ-AuU" id="aCl-Pi-HlX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="To random sort" style="plain" id="bRQ-zn-fN8">
+                        <barButtonItem key="rightBarButtonItem" image="shuffle_icon.png" style="plain" id="bRQ-zn-fN8">
                             <connections>
                                 <action selector="toRandomSortTapped:" destination="nWC-KJ-AuU" id="Pol-Z0-ybB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="randomButton" destination="bRQ-zn-fN8" id="0RH-A6-elX"/>
                         <outlet property="tableView" destination="LWL-VX-Pq9" id="yXl-Gn-Ml5"/>
                         <segue destination="Cq8-PV-hpG" kind="push" identifier="toPocketSwipe" id="aK2-kP-rWI"/>
                     </connections>
@@ -101,7 +102,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5a2-W4-PDO">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Mark as read" id="W7U-MN-JQH">
+                                    <barButtonItem image="check_icon.png" id="W7U-MN-JQH">
                                         <connections>
                                             <action selector="readedTapped:" destination="Cq8-PV-hpG" id="DLU-dh-h9N"/>
                                         </connections>
@@ -136,6 +137,10 @@
             <point key="canvasLocation" x="638" y="162"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="check_icon.png" width="29" height="20"/>
+        <image name="shuffle_icon.png" width="20" height="14"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
