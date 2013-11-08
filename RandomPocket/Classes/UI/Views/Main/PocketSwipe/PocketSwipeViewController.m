@@ -95,7 +95,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:ActionToPocketType_Archive];
         __weak PocketSwipeViewController *weakSelf = self;
         [op setCompletionHandler:^(id result) {
-            [weakSelf.collectionView reloadData];
+            [weakSelf.collectionView deleteItemsAtIndexPaths:@[self.currentIndexPath]];
         }];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
@@ -116,7 +116,17 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (UIPocket*)currentPocket
 {
-    return ((PocketDetailCell*) self.collectionView.visibleCells[0]).pocket;
+    return self.currentCell.pocket;
+}
+
+- (PocketDetailCell*)currentCell
+{
+    return (PocketDetailCell*) self.collectionView.visibleCells[0];
+}
+
+- (NSIndexPath*)currentIndexPath
+{
+   return [self.collectionView indexPathForCell:self.currentCell];
 }
 
 @end

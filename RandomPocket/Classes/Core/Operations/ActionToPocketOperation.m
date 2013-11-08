@@ -40,9 +40,7 @@
                                      
                                      __weak ActionToPocketOperation *weakSelf = self;
                                      [self setDispatchHandler:^id{
-                                         if(error){
-                                             return error;
-                                         }
+                                         if(error) return error;
                                          return [weakSelf saveWithResponse:response];
                                      }];
                                      [super dispatch];

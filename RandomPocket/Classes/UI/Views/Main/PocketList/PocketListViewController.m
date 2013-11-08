@@ -222,7 +222,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         default:
             break;
     }
-//    [tabBarItem setTitle:title];
     [self.tableView reloadData];
 }
 
