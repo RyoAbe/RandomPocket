@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		170E327B181BC3FF00ECE98F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E552CC17D4CF45004E10BE /* CoreData.framework */; };
+		17104F22183FC2E900B556C9 /* NSManagedObjectContext+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 17104F21183FC2E900B556C9 /* NSManagedObjectContext+Common.m */; };
 		17291EC817CF9A6400B44BBE /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC417CF9A6400B44BBE /* Common.strings */; };
 		17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC517CF9A6400B44BBE /* PocketDetail.strings */; };
 		17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC617CF9A6400B44BBE /* PocketList.strings */; };
@@ -77,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		0C6ED4897690439088DDDEE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		17104F20183FC2E900B556C9 /* NSManagedObjectContext+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Common.h"; sourceTree = "<group>"; };
+		17104F21183FC2E900B556C9 /* NSManagedObjectContext+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Common.m"; sourceTree = "<group>"; };
 		17291EC417CF9A6400B44BBE /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		17291EC517CF9A6400B44BBE /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
 		17291EC617CF9A6400B44BBE /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */,
 				1778CFAD17D8B5A900A20E4B /* NSManagedObjectContext+RandomPocket.h */,
 				1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */,
+				17104F20183FC2E900B556C9 /* NSManagedObjectContext+Common.h */,
+				17104F21183FC2E900B556C9 /* NSManagedObjectContext+Common.m */,
 				324FF00A17CD77DC005B08F4 /* Model */,
 				324FF00C17CD77DC005B08F4 /* Operations */,
 			);
@@ -738,6 +743,7 @@
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
 				32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */,
+				17104F22183FC2E900B556C9 /* NSManagedObjectContext+Common.m in Sources */,
 				17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */,
 				175264051821597D00D7FFB8 /* CPocket.m in Sources */,
 				1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */,

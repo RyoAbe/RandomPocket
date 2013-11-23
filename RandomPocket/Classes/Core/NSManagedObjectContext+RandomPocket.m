@@ -26,7 +26,6 @@
     return obj;
 }
 
-
 - (CPocket*)pocketWithItemID:(NSString*)itemID
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

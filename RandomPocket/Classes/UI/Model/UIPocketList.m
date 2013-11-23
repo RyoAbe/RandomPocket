@@ -138,6 +138,16 @@
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
+- (void)removeAtIndexPath:(NSIndexPath*)indexPathKey
+{
+    [self.indexPaths removeObjectForKey:[self indexPathKey:indexPathKey]];
+}
+
+- (void)addAtIndexPath:(NSIndexPath*)indexPath forIndexPathKey:(NSIndexPath*)indexPathKey
+{
+    self.indexPaths[[self indexPathKey:indexPath]] = indexPath;
+}
+
 - (void)setDisplayMode:(UIPocketListMode)displayMode
 {
     _displayMode = displayMode;

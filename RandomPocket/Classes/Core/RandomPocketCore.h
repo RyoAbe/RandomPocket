@@ -27,6 +27,7 @@
 
 // Core
 #import "NSManagedObjectContext+RandomPocket.h"
+#import "NSManagedObjectContext+Common.h"
 
 // Operation
 #import "GetPocketsOperation.h"

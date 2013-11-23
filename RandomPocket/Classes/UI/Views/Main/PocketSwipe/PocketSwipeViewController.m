@@ -12,6 +12,8 @@
 - (IBAction)actionButtonTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic) MBProgressHUD *HUD;
+@property (nonatomic) UIActionSheet *actionSheet;
 @end
 
 static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
@@ -31,6 +33,11 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 {
     [super viewDidLoad];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
+    self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
+	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
+	self.HUD.labelText = NSLocalizedStringFromTable(@"Archive", @"Common", nil);
+    
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
 }
 
 - (void)viewWillLayoutSubviews
@@ -90,22 +97,25 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (IBAction)readedTapped:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
-        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:self.currentPocket.objectID actionType:ActionToPocketType_Archive];
-        __weak PocketSwipeViewController *weakSelf = self;
+    __block PocketSwipeViewController *weakSelf = self;
+    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
+        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:weakSelf.currentPocket.objectID actionType:ActionToPocketType_Archive];
         [op setCompletionHandler:^(id result) {
-            [weakSelf.collectionView deleteItemsAtIndexPaths:@[self.currentIndexPath]];
+            [weakSelf.HUD hide:YES];
+            [weakSelf.pocketList removeAtIndexPath:weakSelf.currentIndexPath];
+            [weakSelf.collectionView reloadData];
         }];
         [op setErrorHandler:^(NSError *error) {
+            [weakSelf.HUD hide:YES];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
         }];
+        [weakSelf.HUD show:YES];
         [op dispatch];
     }];
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
-    actionSheet.destructiveButtonIndex = 0;
-    actionSheet.cancelButtonIndex = 1;
-    [actionSheet showFromToolbar:self.navigationController.toolbar];
+    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
+    self.actionSheet.destructiveButtonIndex = 0;
+    self.actionSheet.cancelButtonIndex = 1;
+    [self.actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
 

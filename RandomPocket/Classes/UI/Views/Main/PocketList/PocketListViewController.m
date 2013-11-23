@@ -45,21 +45,23 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     // DimmingView
     self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
 	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
-	self.HUD.labelText = NSLocalizedStringFromTable(@"Loading", @"Common", nil);
+	self.HUD.labelText = NSLocalizedStringFromTable(@"Syncing", @"Common", nil);
 
     // リクエスト
     self.getPocketsOperation = [GetPocketsOperation new];
-    [self reqestGetPockets];
 
     // PocketList
     self.pocketList = [[UIPocketList alloc] init];
     self.pocketList.delegate = self;
+    if(self.pocketList.numberOfItems == 0){
+        [self reqestGetPockets];
+    }    
 }
 
 - (void)reqestGetPockets
 {
-    BOOL isShowDimminingView = [self shouldBeShowDimminingView];
-    
+    BOOL isShowDimminingView = self.pocketList.numberOfItems == 0 ? YES : NO;
+
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^(id result) {
         if(isShowDimminingView) [weakSelf.HUD hide:YES];
@@ -77,19 +79,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     if(isShowDimminingView) [self.HUD show:YES];
     self.randomButton.enabled = NO;
     [self.getPocketsOperation dispatch];
-}
-
-- (BOOL)shouldBeShowDimminingView
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    if([defaults boolForKey:@"NotFirstLaunch"]){
-        return NO;
-    }
-
-    [defaults setBool:YES forKey:@"NotFirstLaunch"];
-    [defaults synchronize];
-    return YES;
 }
 
 #pragma mark - UIPocketListDelegate
@@ -131,7 +120,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+//    NSInteger items = [self.pocketList numberOfItemsInSection:section];
+//    return items;
     return [self.pocketList numberOfItemsInSection:section];
+//    return self.pocketList.numberOfItems;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,11 +132,14 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Archive];
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
+        [self.HUD hide:YES];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }];
     [op setErrorHandler:^(NSError *error) {
+        [self.HUD hide:YES];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
     }];
+    [self.HUD show:YES];
     [op dispatch];
 }
 
@@ -162,21 +157,27 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
+            [self.HUD hide:YES];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
         }];
         [op setErrorHandler:^(NSError *error) {
+            [self.HUD hide:YES];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"add to favorite error: %@", error]];
         }];
+        [self.HUD show:YES];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Delete];
         [op setErrorHandler:^(NSError *error) {
+            [self.HUD hide:YES];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"delete error: %@", error]];
         }];
         [op setCompletionHandler:^(id result) {
+            [self.HUD hide:YES];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         }];
+        [self.HUD show:YES];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ViewWebsiteButtonTitle", @"PocketList", nil) handler:^{
@@ -223,6 +224,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             break;
     }
     [self.tableView reloadData];
+    self.tableView.contentOffset = CGPointZero;
 }
 
 - (IBAction)searchButtonTapped:(id)sender

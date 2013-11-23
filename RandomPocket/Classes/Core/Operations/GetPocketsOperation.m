@@ -10,7 +10,6 @@
 
 @interface GetPocketsOperation()
 @property (nonatomic) NSMutableArray *response;
-@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) HTMLBodyParser *htmlParser;
 @end
 
@@ -20,7 +19,6 @@
 {
     self = [super init];
     if (self) {
-        self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
         self.htmlParser = [[HTMLBodyParser alloc] init];
     }
     return self;
@@ -30,8 +28,8 @@
 {
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-//                               arguments:@{@"detailType": @"complete", @"count": @(10)}
-                               arguments:@{@"detailType": @"complete"}
+                               arguments:@{@"detailType": @"complete", @"count": @20}
+//                               arguments:@{@"detailType": @"complete"}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      NSAssert(!error, error.localizedDescription);
                                      __weak GetPocketsOperation *weakSelf = self;
@@ -44,13 +42,14 @@
 
 - (id)saveWithResponse:(NSDictionary*)response;
 {
+    NSManagedObjectContext *moc = [NSManagedObjectContext contextForCurrentThread];
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
 
         NSString* itemID = data[@"item_id"];
-        CPocket *cPocket = [self.managedObjectContext pocketWithItemID:itemID];
+        CPocket *cPocket = [moc pocketWithItemID:itemID];
         if(!cPocket){
-            cPocket = [self.managedObjectContext createEntity:@"CPocket"];
+            cPocket = [moc createEntity:@"CPocket"];
         }
         cPocket.title = data[@"given_title"];
         cPocket.url = data[@"resolved_url"];
@@ -59,13 +58,11 @@
         cPocket.sortID = [data[@"sort_id"] integerValue];
         cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
         cPocket.favorite = [data[@"favorite"] integerValue];
-//        cPocket.body = [self.htmlParser parseBodyWithURL:cPocket.url];
         cPocket.excerpt = data[@"excerpt"];
         NSDictionary *image = data[@"image"];
         cPocket.imageUrl = image[@"src"];
-
         NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
+        if (![NSManagedObjectContext save:&error]) {
             return error;
         }
     }

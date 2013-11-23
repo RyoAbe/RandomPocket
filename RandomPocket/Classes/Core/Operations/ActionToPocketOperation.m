@@ -49,9 +49,9 @@
 
 - (id)saveWithResponse:(NSDictionary*)response
 {
-    self.cPocket.status = (int)response[@"status"];
+    self.cPocket.status = [response[@"status"] integerValue];
     NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
+    if (![NSManagedObjectContext save:&error]) {
         NSAssert(NO, error.userInfo.description);
         return error;
     }

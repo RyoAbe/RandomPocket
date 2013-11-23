@@ -50,6 +50,8 @@ typedef NS_ENUM(NSUInteger, UIPocketListMode) {
 - (NSInteger)indexForObject:(UIPocket*)uiPocket;
 - (UIPocket*)objectAtIndex:(NSUInteger)index;
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath;
+- (void)removeAtIndexPath:(NSIndexPath*)indexPathKey;
+- (void)addAtIndexPath:(NSIndexPath*)indexPath forIndexPathKey:(NSIndexPath*)indexPathKey;
 @property (nonatomic) NSMutableArray *response;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) id<UIPocketListDelegate> delegate;
