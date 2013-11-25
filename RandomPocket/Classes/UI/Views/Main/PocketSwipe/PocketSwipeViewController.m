@@ -7,6 +7,7 @@
 //
 
 #import "PocketSwipeViewController.h"
+#import "RandomPocketUI.h"
 
 @interface PocketSwipeViewController ()
 - (IBAction)actionButtonTapped:(id)sender;

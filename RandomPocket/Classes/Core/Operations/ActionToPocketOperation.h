@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "RandomPocketCore.h"
 
 typedef NS_ENUM(NSUInteger, ActionToPocketType) {

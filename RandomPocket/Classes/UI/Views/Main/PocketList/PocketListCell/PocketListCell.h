@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "RandomPocketUI.h"
-#import "UIPocket.h"
 
 @interface PocketListCell : MSCMoreOptionTableViewCell
 @property (nonatomic) UIPocket *pocket;

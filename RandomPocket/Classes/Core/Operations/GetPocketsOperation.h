@@ -9,8 +9,5 @@
 #import <Foundation/Foundation.h>
 #import "RandomPocketCore.h"
 
-@class UIPocketList;
-
 @interface GetPocketsOperation : AsyncOperation
-- (id)init;
 @end

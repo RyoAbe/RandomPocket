@@ -7,7 +7,6 @@
 //
 
 #import "UIPocket.h"
-#import "RandomPocketUI.h"
 
 static NSString* const UNKNOWN_TITLE = @"Unknown Title";
 

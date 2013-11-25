@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RandomPocketUI.h"
+#import "RandomPocketCore.h"
 
 @interface UIPocket : NSObject
 

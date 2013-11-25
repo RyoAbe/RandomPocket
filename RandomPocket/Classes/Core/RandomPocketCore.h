@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 // CocoaPods
-#import <Foundation/Foundation.h>
 #import <PocketAPI/PocketAPI.h>
 #import <BlocksKit/BlocksKit.h>
 #import "Toast+UIView.h"
