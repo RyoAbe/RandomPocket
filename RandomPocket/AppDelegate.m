@@ -25,7 +25,7 @@
     [self appirater];
     
     NSString *storyBoardName = @"Main";
-    if(![PocketAPI sharedAPI].username){
+    if(![PocketAPI sharedAPI].isLoggedIn){
         storyBoardName = @"Welcom";
     }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyBoardName bundle:nil];
