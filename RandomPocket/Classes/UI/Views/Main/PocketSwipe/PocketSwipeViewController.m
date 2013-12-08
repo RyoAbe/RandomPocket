@@ -37,13 +37,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
 	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
 	self.HUD.labelText = NSLocalizedStringFromTable(@"Archive", @"Common", nil);
-    
-    self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
-}
-
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
+    self.actionSheet = [self createActionSheet];
     self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
 }
 
@@ -98,13 +92,30 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (IBAction)readedTapped:(id)sender
 {
+    [self.actionSheet showFromToolbar:self.navigationController.toolbar];
+}
+
+- (IBAction)openInSafariTapped:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.currentPocket.url]];
+}
+
+#pragma mark - Other
+
+- (UIActionSheet*)createActionSheet
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
     __block PocketSwipeViewController *weakSelf = self;
-    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
+    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:weakSelf.currentPocket.objectID actionType:ActionToPocketType_Archive];
         [op setCompletionHandler:^(id result) {
-            [weakSelf.HUD hide:YES];
+            if(weakSelf.pocketList.numberOfItems == 0){
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                return;
+            }
             [weakSelf.pocketList removeAtIndexPath:weakSelf.currentIndexPath];
             [weakSelf.collectionView reloadData];
+            [weakSelf.HUD hide:YES];
         }];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.HUD hide:YES];
@@ -113,16 +124,11 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         [weakSelf.HUD show:YES];
         [op dispatch];
     }];
-    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
-    self.actionSheet.destructiveButtonIndex = 0;
-    self.actionSheet.cancelButtonIndex = 1;
-    [self.actionSheet showFromToolbar:self.navigationController.toolbar];
-}
-
-
-- (IBAction)openInSafariTapped:(id)sender
-{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.currentPocket.url]];
+    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
+    actionSheet.destructiveButtonIndex = 0;
+    actionSheet.cancelButtonIndex = 1;
+    
+    return actionSheet;
 }
 
 - (UIPocket*)currentPocket

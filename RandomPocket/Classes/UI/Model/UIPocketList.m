@@ -137,9 +137,33 @@
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
-- (void)removeAtIndexPath:(NSIndexPath*)indexPathKey
+- (void)removeAtIndexPath:(NSIndexPath*)removeIndexPathKey
 {
-    [self.indexPaths removeObjectForKey:[self indexPathKey:indexPathKey]];
+    if(self.displayMode == UIPocketListMode_DisplayNormal){
+        return;
+    }
+    NSString *removeKey = [self indexPathKey:removeIndexPathKey];
+    NSIndexPath *removeIndexPathValue = self.indexPaths[removeKey];
+    [self.indexPaths removeObjectForKey:removeKey];
+    
+    NSMutableDictionary *newIndexPaths = [NSMutableDictionary dictionary];
+    NSUInteger loop = self.indexPaths.count;
+    for (NSInteger row = 0; row <= loop; row++) {
+        if(row == removeIndexPathKey.row){
+            continue;
+        }
+        NSIndexPath *indexPathKey = [NSIndexPath indexPathForRow:row inSection:removeIndexPathKey.section];
+        NSString *newKey = generateKey(indexPathKey);
+        NSIndexPath *newValue = self.indexPaths[newKey];
+        if(indexPathKey.row >= removeIndexPathKey.row){
+            newKey = generateKeyFromRow(indexPathKey.row - 1, removeIndexPathKey.section);
+        }
+        if(newValue.row >= removeIndexPathValue.row){
+            newValue = [NSIndexPath indexPathForRow:newValue.row - 1 inSection:removeIndexPathValue.section];
+        }
+        newIndexPaths[newKey] = newValue;
+    }
+    self.indexPaths = newIndexPaths;
 }
 
 - (void)addAtIndexPath:(NSIndexPath*)indexPath forIndexPathKey:(NSIndexPath*)indexPathKey
@@ -177,6 +201,21 @@
         }
     }
     return retIndexPath;
+}
+
+static NSString* generateKeyFromRow(NSUInteger row, NSUInteger section)
+{
+    return generateKey([NSIndexPath indexPathForRow:row inSection:section]);
+}
+
+static NSString* generateKey(NSIndexPath* indexPath)
+{
+    return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
+}
+
+- (NSString*)indexPathKey:(NSUInteger)row section:(NSUInteger)section
+{
+    return [self indexPathKey:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
 - (NSString*)indexPathKey:(NSIndexPath*)indexPath

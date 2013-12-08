@@ -9,7 +9,5 @@
 #import <CoreData/CoreData.h>
 
 @interface NSManagedObjectContext (RandomPocket)
-- (id)createEntity:(NSString *)name;
-- (id)entityWithID:(NSManagedObjectID*)objectID;
 - (id)pocketWithItemID:(NSString*)itemID;
 @end

@@ -8,27 +8,13 @@
 
 #import "GetPocketsOperation.h"
 
-@interface GetPocketsOperation()
-@property (nonatomic) NSMutableArray *response;
-@property (nonatomic) HTMLBodyParser *htmlParser;
-@end
-
 @implementation GetPocketsOperation
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.htmlParser = [[HTMLBodyParser alloc] init];
-    }
-    return self;
-}
 
 - (void)dispatch
 {
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"detailType": @"complete", @"count": @20}
+                               arguments:@{@"detailType": @"complete", @"count": @3}
 //                               arguments:@{@"detailType": @"complete"}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      NSAssert(!error, error.localizedDescription);
@@ -61,11 +47,12 @@
         cPocket.excerpt = data[@"excerpt"];
         NSDictionary *image = data[@"image"];
         cPocket.imageUrl = image[@"src"];
-        NSError *error = nil;
-        if (![NSManagedObjectContext save:&error]) {
-            return error;
-        }
     }
+    NSError *error = nil;
+    if (![NSManagedObjectContext save:&error]) {
+        return error;
+    }
+    
     return nil;
 }
 

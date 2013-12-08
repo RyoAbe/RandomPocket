@@ -13,6 +13,41 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
 
 @implementation NSManagedObjectContext (Common)
 
+- (id)createEntity:(NSString *)name
+{
+    NSEntityDescription* entity = [NSEntityDescription entityForName:name inManagedObjectContext:self];
+    NSManagedObject *obj = [[NSManagedObject alloc]initWithEntity:entity insertIntoManagedObjectContext:self];
+    return obj;
+}
+
+- (id)entityWithID:(NSManagedObjectID*)objectID
+{
+    NSError *error;
+    NSManagedObject* obj = [self existingObjectWithID:objectID error:&error];
+    if(error){
+        NSAssert(NO, [[error userInfo] description]);
+    }
+    return obj;
+}
+
+- (id)existEntityWithName:(NSString*)entyryName fetchRequest:(NSFetchRequest*)fetchRequest
+{
+    fetchRequest.entity = [NSEntityDescription entityForName:entyryName inManagedObjectContext:self];
+    
+    NSError *error = nil;
+    NSArray *results = [self executeFetchRequest:fetchRequest error:&error];
+    if(error){
+        NSAssert(NO, error.userInfo.description);
+    }
+    
+    if(results.count > 1){
+        NSAssert(NO, @"should be result count is 0 or 1.");
+    }else if(results.count == 0){
+        return nil;
+    }
+    return results[0];
+}
+
 + (BOOL)save:(NSError **)error
 {
     NSManagedObjectContext *context = [NSManagedObjectContext contextForCurrentThread];
@@ -32,20 +67,20 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
     return result;
 }
 
-- (void)mergeChanges:(NSNotification*)notification
-{
-    NSManagedObjectContext *contextFromNotification = notification.object;
-    [contextFromNotification performSelectorOnMainThread:@selector(updateMainContext:)
-                                              withObject:notification
-                                           waitUntilDone:YES];
-//    [contextFromNotification performBlock:^{
-//        [[NSManagedObjectContext contextForMainThread] mergeChangesFromContextDidSaveNotification:notification];
-//    }];
+- (void)updateMainContext:(NSNotification *)notification {
+    
+    NSAssert([NSThread isMainThread], nil);
+
+    [[NSManagedObjectContext contextForMainThread] save:nil];
+    [[NSManagedObjectContext contextForMainThread] mergeChangesFromContextDidSaveNotification:notification];
 }
 
-- (void)updateMainContext:(NSNotification *)notification
-{
-    [[NSManagedObjectContext contextForMainThread] mergeChangesFromContextDidSaveNotification:notification];
+- (void)mergeChanges:(NSNotification *)notification {
+    
+    NSManagedObjectContext *context = [NSManagedObjectContext contextForMainThread];
+    if (notification.object != context) {
+        [self performSelectorOnMainThread:@selector(updateMainContext:) withObject:notification waitUntilDone:NO];
+    }
 }
 
 + (NSManagedObjectContext *)contextForThread:(NSThread *)thread
@@ -58,16 +93,9 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
     NSMutableDictionary *threadDictionary = [thread threadDictionary];
     NSManagedObjectContext *context = [threadDictionary objectForKey:NSManagedObjectContextThreadKey];
     if (!context) {
-        context = [[NSManagedObjectContext alloc] init];
-        [context setPersistentStoreCoordinator:[mainContext persistentStoreCoordinator]];
+        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        context.parentContext = mainContext;
         [threadDictionary setObject:context forKey:NSManagedObjectContextThreadKey];
-        
-//        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-//        context.parentContext = mainContext;
-//        //        context = [[NSManagedObjectContext alloc] init];
-//        //        [context setPersistentStoreCoordinator:[mainContext persistentStoreCoordinator]];
-//        [threadDictionary setObject:context forKey:NSManagedObjectContextThreadKey];
-        
     }
     return context;
 }
@@ -79,7 +107,7 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
 
 + (NSManagedObjectContext *)contextForMainThread
 {
-    NSAssert([NSThread isMainThread], @"This method for main thread");
+//    NSAssert([NSThread isMainThread], @"This method for main thread");
     return [NSManagedObjectContext contextForThread:[NSThread mainThread]];
 }
 

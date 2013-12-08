@@ -10,9 +10,7 @@
 #import "RandomPocketUI.h"
 
 @interface ActionToPocketOperation()
-@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) NSManagedObjectID *pocketID;
-@property (nonatomic) CPocket *cPocket;
 @property (nonatomic) ActionToPocketType actionType;
 @end
 
@@ -22,7 +20,6 @@
 {
     self = [super init];
     if (self) {
-        self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
         self.pocketID = pocketID;
         self.actionType = actionType;
     }
@@ -31,8 +28,8 @@
 
 - (void)dispatch
 {
-    self.cPocket = [self.managedObjectContext entityWithID:self.pocketID];
-    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, self.cPocket.itemID];
+    CPocket *cPocket = [[NSManagedObjectContext contextForCurrentThread] entityWithID:self.pocketID];
+    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, cPocket.itemID];
     [[PocketAPI sharedAPI] callAPIMethod:@"send"
                           withHTTPMethod:PocketAPIHTTPMethodGET
                                arguments:@{@"actions":arguments}
@@ -49,7 +46,8 @@
 
 - (id)saveWithResponse:(NSDictionary*)response
 {
-    self.cPocket.status = [response[@"status"] integerValue];
+    CPocket *cPocket = [[NSManagedObjectContext contextForCurrentThread] entityWithID:self.pocketID];
+    cPocket.status = [response[@"status"] integerValue];
     NSError *error = nil;
     if (![NSManagedObjectContext save:&error]) {
         NSAssert(NO, error.userInfo.description);

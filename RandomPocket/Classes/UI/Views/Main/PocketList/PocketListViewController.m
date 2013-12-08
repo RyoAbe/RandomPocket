@@ -120,10 +120,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSInteger items = [self.pocketList numberOfItemsInSection:section];
-//    return items;
     return [self.pocketList numberOfItemsInSection:section];
-//    return self.pocketList.numberOfItems;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
