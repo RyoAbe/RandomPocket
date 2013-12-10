@@ -26,15 +26,23 @@
     return self;
 }
 
+- (void)setCompletionHandler:(void (^)(id result))completionHandler
+{
+    [super setCompletionHandler:^(id result) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        completionHandler(result);
+    }];
+}
+
 - (void)dispatch
 {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     CPocket *cPocket = [[NSManagedObjectContext contextForCurrentThread] entityWithID:self.pocketID];
     NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, cPocket.itemID];
     [[PocketAPI sharedAPI] callAPIMethod:@"send"
                           withHTTPMethod:PocketAPIHTTPMethodGET
                                arguments:@{@"actions":arguments}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     
                                      __weak ActionToPocketOperation *weakSelf = self;
                                      [self setDispatchHandler:^id{
                                          if(error) return error;

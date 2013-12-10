@@ -86,7 +86,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (void)pocketList:(UIPocketList *)pocketList didChangeItem:(UIPocket *)uiPocket newIndexPath:(NSIndexPath *)newIndexPath oldIndexPath:(NSIndexPath *)oldIndexPath changeType:(UIPocketListChangeType)type {}
 - (void)pocketList:(UIPocketList *)pocketList didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo indexPath:(NSIndexPath *)newIndexPath changeType:(UIPocketListChangeType)type {}
 - (void)pocketListDidChange:(UIPocketList *)pocketList{}
-- (void)pocketListWillChange:(UIPocketList *)pocketList{}
+- (void)pocketListWillChange:(UIPocketList *)pocketList
+{
+    [self.tableView reloadData];
+}
 
 #pragma mark - UITableViewDelegate
 

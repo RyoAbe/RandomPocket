@@ -115,13 +115,10 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
             }
             [weakSelf.pocketList removeAtIndexPath:weakSelf.currentIndexPath];
             [weakSelf.collectionView reloadData];
-            [weakSelf.HUD hide:YES];
         }];
         [op setErrorHandler:^(NSError *error) {
-            [weakSelf.HUD hide:YES];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
         }];
-        [weakSelf.HUD show:YES];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
