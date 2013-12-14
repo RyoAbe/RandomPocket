@@ -62,8 +62,8 @@
 		32D0888217C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
 		32D0888A17C9DE76007C50CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32D0888817C9DE76007C50CD /* InfoPlist.strings */; };
 		32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */; };
-		4E10A81F0CBD460F918B067C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5141E4EB3CC44EA19F7FE6C3 /* libPods.a */; };
 		5076DD4CA3794CCAB7CBDDA2 /* libPods-RandomPocketTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0722CABE2C4784B43F43C2 /* libPods-RandomPocketTests.a */; };
+		74CC9C989D104D0780E8CFC8 /* libPods-RandomPocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7DF6AB7EAA4FCB82DDEEEC /* libPods-RandomPocket.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C6ED4897690439088DDDEE1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		17104F20183FC2E900B556C9 /* NSManagedObjectContext+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Common.h"; sourceTree = "<group>"; };
 		17104F21183FC2E900B556C9 /* NSManagedObjectContext+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Common.m"; sourceTree = "<group>"; };
 		17291EC417CF9A6400B44BBE /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
@@ -155,7 +154,9 @@
 		32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPocketsOperation.m; sourceTree = "<group>"; };
 		3E8066FFAFFF4DA9A5DFBF7A /* Pods-RandomPocketTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomPocketTests.xcconfig"; path = "Pods/Pods-RandomPocketTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		5141E4EB3CC44EA19F7FE6C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomPocket.xcconfig"; path = "Pods/Pods-RandomPocket.xcconfig"; sourceTree = "<group>"; };
 		EA0722CABE2C4784B43F43C2 /* libPods-RandomPocketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomPocketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE7DF6AB7EAA4FCB82DDEEEC /* libPods-RandomPocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomPocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +172,7 @@
 				32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */,
 				32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */,
 				32D0885D17C9DE76007C50CD /* CoreGraphics.framework in Frameworks */,
-				4E10A81F0CBD460F918B067C /* libPods.a in Frameworks */,
+				74CC9C989D104D0780E8CFC8 /* libPods-RandomPocket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,8 +456,8 @@
 				32D0888517C9DE76007C50CD /* RandomPocketTests */,
 				32D0885717C9DE76007C50CD /* Frameworks */,
 				32D0885617C9DE76007C50CD /* Products */,
-				0C6ED4897690439088DDDEE1 /* Pods.xcconfig */,
 				3E8066FFAFFF4DA9A5DFBF7A /* Pods-RandomPocketTests.xcconfig */,
+				A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -483,6 +484,7 @@
 				32D0887F17C9DE76007C50CD /* SenTestingKit.framework */,
 				5141E4EB3CC44EA19F7FE6C3 /* libPods.a */,
 				EA0722CABE2C4784B43F43C2 /* libPods-RandomPocketTests.a */,
+				FE7DF6AB7EAA4FCB82DDEEEC /* libPods-RandomPocket.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -717,7 +719,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-RandomPocket-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -850,13 +852,14 @@
 		};
 		32D0889117C9DE76007C50CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C6ED4897690439088DDDEE1 /* Pods.xcconfig */;
+			baseConfigurationReference = A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
@@ -885,13 +888,14 @@
 		};
 		32D0889217C9DE76007C50CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C6ED4897690439088DDDEE1 /* Pods.xcconfig */;
+			baseConfigurationReference = A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
