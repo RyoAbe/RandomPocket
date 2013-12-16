@@ -39,22 +39,11 @@
     if(!_pocket.imageUrl){
         return;
     }
-    
-    AsyncOperation *op = [[AsyncOperation alloc] init];
-    [op setDispatchHandler:^id{
-        return [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_pocket.imageUrl]]];
-    }];
-    [op setErrorHandler:^(NSError *error) {
-        [self makeToast:[NSString stringWithFormat:@"error: %@", error]];
-    }];
-    [op setCompletionHandler:^(id result) {
-        if(!result) return ;
+    [self.thumbnail setImageWithURL:[NSURL URLWithString:_pocket.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        if(!image) return ;
         self.thumbnailHeight.constant = 150;
         self.thumbnailTopSpace.constant = 5;
-        self.thumbnail.image = result;
     }];
-    [op dispatch];
-
 }
 - (IBAction)linkTapped:(id)sender
 {

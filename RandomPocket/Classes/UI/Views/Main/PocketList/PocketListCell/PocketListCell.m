@@ -28,19 +28,7 @@ static const CGFloat AdjustmentHeight = 1;
     if(!_pocket.imageUrl){
         return;
     }
-
-    AsyncOperation *op = [[AsyncOperation alloc] init];
-    [op setDispatchHandler:^id{
-        return [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:_pocket.imageUrl]]];
-    }];
-    [op setErrorHandler:^(NSError *error) {
-        [self makeToast:[NSString stringWithFormat:@"error: %@", error]];
-    }];
-    [op setCompletionHandler:^(id result) {
-        if(!result) return ;
-        self.thumbnail.image = result;
-    }];
-    [op dispatch];
+    [self.thumbnail setImageWithURL:[NSURL URLWithString:_pocket.imageUrl]];
 }
 
 - (CGFloat)cellHeight:(UIPocket*)pocket

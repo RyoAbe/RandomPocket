@@ -19,6 +19,7 @@
 #import <OCMock/OCMock.h>
 #import <PBWebViewController/PBWebViewController.h>
 #import <MSCMoreOptionTableViewCell/MSCMoreOptionTableViewCell.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 // Entity
 #import "CPocket.h"
