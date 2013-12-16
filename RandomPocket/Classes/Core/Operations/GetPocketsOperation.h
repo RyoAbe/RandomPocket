@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 #import "RandomPocketCore.h"
 
-@interface GetPocketsOperation : AsyncOperation
+@interface GetPocketsOperation : NetworkAsyncOperation
 @end

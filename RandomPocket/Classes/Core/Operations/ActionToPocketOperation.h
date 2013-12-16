@@ -17,6 +17,6 @@ typedef NS_ENUM(NSUInteger, ActionToPocketType) {
     ActionToPocketType_Unfavorite,
 };
 
-@interface ActionToPocketOperation : AsyncOperation
+@interface ActionToPocketOperation : NetworkAsyncOperation
 - (id)initWithPocketID:(NSManagedObjectID*)pocketID actionType:(ActionToPocketType)actionType;
 @end
