@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *randomButton;
 @property (nonatomic) UIPocketList *pocketList;
-@property (nonatomic) MBProgressHUD *HUD;
+@property (nonatomic) MRProgressOverlayView *progressView;
 @property (nonatomic) UIRefreshControl *refreshController;
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic) GetPocketsOperation *getPocketsOperation;
@@ -41,11 +41,8 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.refreshController = [UIRefreshControl new];
     [self.tableView addSubview:self.refreshController];
     [self.refreshController addTarget:self action:@selector(reqestGetPockets) forControlEvents:UIControlEventValueChanged];
-    
-    // DimmingView
-    self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
-	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
-	self.HUD.labelText = NSLocalizedStringFromTable(@"Syncing", @"Common", nil);
+
+    self.progressView = [MRProgressOverlayView createProgressView];
 
     // リクエスト
     self.getPocketsOperation = [GetPocketsOperation new];
@@ -55,7 +52,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.pocketList.delegate = self;
     if(self.pocketList.numberOfItems == 0){
         [self reqestGetPockets];
-    }    
+    }
 }
 
 - (void)reqestGetPockets
@@ -64,19 +61,21 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^(id result) {
-        if(isShowDimminingView) [weakSelf.HUD hide:YES];
+        if(isShowDimminingView) [weakSelf.progressView hide];
+        [weakSelf.progressView dismiss:YES];
         weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
         [weakSelf.tableView reloadData];
     }];
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
-        if(isShowDimminingView) [weakSelf.HUD hide:YES];
+        if(isShowDimminingView) [weakSelf.progressView hide];
+        
         weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
 
-    if(isShowDimminingView) [self.HUD show:YES];
+    [self.progressView showWithTitle:@"Loading..."];
     self.randomButton.enabled = NO;
     [self.getPocketsOperation dispatch];
 }
@@ -132,14 +131,14 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Archive];
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
-        [self.HUD hide:YES];
+        [self.progressView hide];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }];
     [op setErrorHandler:^(NSError *error) {
-        [self.HUD hide:YES];
+        [self.progressView hide];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
     }];
-    [self.HUD show:YES];
+    [self.progressView showWithTitle:@"Archiving..."];
     [op dispatch];
 }
 
@@ -157,27 +156,27 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
-            [self.HUD hide:YES];
+            [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
         }];
         [op setErrorHandler:^(NSError *error) {
-            [self.HUD hide:YES];
+            [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"add to favorite error: %@", error]];
         }];
-        [self.HUD show:YES];
+        [self.progressView showWithTitle:@"Add to Favorite..."];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Delete];
         [op setErrorHandler:^(NSError *error) {
-            [self.HUD hide:YES];
+            [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"delete error: %@", error]];
         }];
         [op setCompletionHandler:^(id result) {
-            [self.HUD hide:YES];
+            [self.progressView hide];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         }];
-        [self.HUD show:YES];
+        [self.progressView showWithTitle:@"Deleting..."];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ViewWebsiteButtonTitle", @"PocketList", nil) handler:^{

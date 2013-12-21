@@ -13,7 +13,6 @@
 - (IBAction)actionButtonTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic) MBProgressHUD *HUD;
 @property (nonatomic) UIActionSheet *actionSheet;
 @end
 
@@ -34,9 +33,6 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 {
     [super viewDidLoad];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
-    self.HUD = [[MBProgressHUD alloc] initWithView:[UIApplication sharedApplication].delegate.window];
-	[[UIApplication sharedApplication].delegate.window addSubview:self.HUD];
-	self.HUD.labelText = NSLocalizedStringFromTable(@"Archive", @"Common", nil);
     self.actionSheet = [self createActionSheet];
     self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
 }

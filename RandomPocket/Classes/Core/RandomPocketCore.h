@@ -11,7 +11,6 @@
 // CocoaPods
 #import <PocketAPI/PocketAPI.h>
 #import "Toast+UIView.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 #import <MRProgress/MRProgress.h>
 #import <iOSCommon/iOSCommon.h>
 #import <Appirater/Appirater.h>
@@ -20,6 +19,7 @@
 #import <PBWebViewController/PBWebViewController.h>
 #import <MSCMoreOptionTableViewCell/MSCMoreOptionTableViewCell.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MRProgress/MRProgress.h>
 
 // Entity
 #import "CPocket.h"

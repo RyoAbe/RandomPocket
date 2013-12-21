@@ -48,6 +48,7 @@
 		3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */; };
 		3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4D617CBA23600E3D702 /* UIPocket.m */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
+		32D07565186547620036F4BE /* MRProgressOverlayView+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
 		32D0885D17C9DE76007C50CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885C17C9DE76007C50CD /* CoreGraphics.framework */; };
@@ -133,6 +134,8 @@
 		3268E4D617CBA23600E3D702 /* UIPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPocket.m; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
+		32D07563186547620036F4BE /* MRProgressOverlayView+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRProgressOverlayView+RandomPocket.h"; sourceTree = "<group>"; };
+		32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRProgressOverlayView+RandomPocket.m"; sourceTree = "<group>"; };
 		32D0885517C9DE76007C50CD /* RandomPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D0885817C9DE76007C50CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32D0885A17C9DE76007C50CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -228,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				17291EE017CF9FFD00B44BBE /* HTMLBodyParser */,
+				32D07563186547620036F4BE /* MRProgressOverlayView+RandomPocket.h */,
+				32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -745,6 +750,7 @@
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
 				32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */,
+				32D07565186547620036F4BE /* MRProgressOverlayView+RandomPocket.m in Sources */,
 				17104F22183FC2E900B556C9 /* NSManagedObjectContext+Common.m in Sources */,
 				17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */,
 				175264051821597D00D7FFB8 /* CPocket.m in Sources */,
