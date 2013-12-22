@@ -172,13 +172,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Archive];
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
-        [self.progressView hide];
     }];
     [op setErrorHandler:^(NSError *error) {
-        [self.progressView hide];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
     }];
-    [self.progressView showWithTitle:@"Archiving..."];
     [op dispatch];
 }
 
@@ -196,27 +193,21 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
-            [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
         }];
         [op setErrorHandler:^(NSError *error) {
-            [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"add to favorite error: %@", error]];
         }];
-        [self.progressView showWithTitle:@"Add to Favorite..."];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Delete];
         [op setErrorHandler:^(NSError *error) {
-            [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"delete error: %@", error]];
         }];
         [op setCompletionHandler:^(id result) {
-            [self.progressView hide];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         }];
-        [self.progressView showWithTitle:@"Deleting..."];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ViewWebsiteButtonTitle", @"PocketList", nil) handler:^{
