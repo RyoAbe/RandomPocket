@@ -142,8 +142,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIPocket *uiPocket = [self.pocketList objectAtIndexPath:indexPath];
+    NSString *title = uiPocket.title ? uiPocket.title : uiPocket.url;
     PocketListCell *cell = [tableView dequeueReusableCellWithIdentifier:PokcetListCellIdentifier];
-    return [cell cellHeight:[self.pocketList objectAtIndexPath:indexPath]];
+    return [cell cellHeightWithTitle:title];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath

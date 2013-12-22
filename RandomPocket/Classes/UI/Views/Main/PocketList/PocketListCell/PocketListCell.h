@@ -11,5 +11,5 @@
 
 @interface PocketListCell : MSCMoreOptionTableViewCell
 @property (nonatomic) UIPocket *pocket;
-- (CGFloat)cellHeight:(UIPocket*)pocket;
+- (CGFloat)cellHeightWithTitle:(NSString*)title;
 @end
