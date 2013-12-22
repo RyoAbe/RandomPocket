@@ -10,35 +10,25 @@
 #import "RandomPocketUI.h"
 
 @interface ActionToPocketOperation()
-@property (nonatomic) NSManagedObjectID *pocketID;
 @property (nonatomic) ActionToPocketType actionType;
+@property (nonatomic) NSString *itemID;
 @end
 
 @implementation ActionToPocketOperation
 
-- (id)initWithPocketID:(NSManagedObjectID*)pocketID actionType:(ActionToPocketType)actionType
+- (id)initWithItemID:(NSString*)itemID actionType:(ActionToPocketType)actionType
 {
     self = [super init];
     if (self) {
-        self.pocketID = pocketID;
+        self.itemID = itemID;
         self.actionType = actionType;
     }
     return self;
 }
 
-- (void)setCompletionHandler:(void (^)(id result))completionHandler
-{
-    [super setCompletionHandler:^(id result) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        completionHandler(result);
-    }];
-}
-
 - (void)dispatch
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    CPocket *cPocket = [[NSManagedObjectContext contextForCurrentThread] entityWithID:self.pocketID];
-    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, cPocket.itemID];
+    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, self.itemID];
     [[PocketAPI sharedAPI] callAPIMethod:@"send"
                           withHTTPMethod:PocketAPIHTTPMethodGET
                                arguments:@{@"actions":arguments}
@@ -54,7 +44,7 @@
 
 - (id)saveWithResponse:(NSDictionary*)response
 {
-    CPocket *cPocket = [[NSManagedObjectContext contextForCurrentThread] entityWithID:self.pocketID];
+    CPocket *cPocket = [[NSManagedObjectContext contextForCurrentThread] pocketWithItemID:self.itemID];
     cPocket.status = [response[@"status"] integerValue];
     NSError *error = nil;
     if (![NSManagedObjectContext save:&error]) {

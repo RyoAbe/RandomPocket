@@ -36,6 +36,10 @@ static const CGFloat AdjustmentHeight = 1;
     if (!pocket || !pocket.title || pocket.title.length == 0){
         pocket.title = pocket.url;
     }
+
+    if(!pocket.title){
+        return self.frame.size.height;
+    }
 	NSAttributedString *attString = [[NSAttributedString alloc] initWithString:pocket.title
                                                                     attributes:@{NSFontAttributeName : self.titleLabel.font}];
     CGSize size = [attString boundingRectWithSize:CGSizeMake(self.titleLabel.frame.size.width, INT_MAX)

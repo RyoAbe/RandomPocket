@@ -67,16 +67,16 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
     return result;
 }
 
-- (void)updateMainContext:(NSNotification *)notification {
-    
+- (void)updateMainContext:(NSNotification *)notification
+{
     NSAssert([NSThread isMainThread], nil);
 
     [[NSManagedObjectContext contextForMainThread] save:nil];
     [[NSManagedObjectContext contextForMainThread] mergeChangesFromContextDidSaveNotification:notification];
 }
 
-- (void)mergeChanges:(NSNotification *)notification {
-    
+- (void)mergeChanges:(NSNotification *)notification
+{    
     NSManagedObjectContext *context = [NSManagedObjectContext contextForMainThread];
     if (notification.object != context) {
         [self performSelectorOnMainThread:@selector(updateMainContext:) withObject:notification waitUntilDone:NO];

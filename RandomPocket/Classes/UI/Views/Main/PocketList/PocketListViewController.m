@@ -62,10 +62,8 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^(id result) {
         if(isShowDimminingView) [weakSelf.progressView hide];
-        [weakSelf.progressView dismiss:YES];
         weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
-        [weakSelf.tableView reloadData];
     }];
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
         if(isShowDimminingView) [weakSelf.progressView hide];
@@ -75,19 +73,62 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
 
-    [self.progressView showWithTitle:@"Loading..."];
+    if(isShowDimminingView) [self.progressView showWithTitle:@"Loading..."];
     self.randomButton.enabled = NO;
     [self.getPocketsOperation dispatch];
 }
 
 #pragma mark - UIPocketListDelegate
 
-- (void)pocketList:(UIPocketList *)pocketList didChangeItem:(UIPocket *)uiPocket newIndexPath:(NSIndexPath *)newIndexPath oldIndexPath:(NSIndexPath *)oldIndexPath changeType:(UIPocketListChangeType)type {}
-- (void)pocketList:(UIPocketList *)pocketList didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo indexPath:(NSIndexPath *)newIndexPath changeType:(UIPocketListChangeType)type {}
-- (void)pocketListDidChange:(UIPocketList *)pocketList{}
 - (void)pocketListWillChange:(UIPocketList *)pocketList
 {
-    [self.tableView reloadData];
+    [self.tableView beginUpdates];
+}
+
+- (void)pocketList:(UIPocketList *)pocketList
+     didChangeItem:(UIPocket *)uiPocket
+      newIndexPath:(NSIndexPath *)newIndexPath
+      oldIndexPath:(NSIndexPath *)oldIndexPath
+        changeType:(UIPocketListChangeType)type
+{
+    switch (type) {
+        case UIPocketListChangeType_Insert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+            break;
+        case UIPocketListChangeType_Delete:
+            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+        case UIPocketListChangeType_Move:
+            [self.tableView moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
+            break;
+        case UIPocketListChangeType_Update:
+            [self.tableView reloadRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)pocketList:(UIPocketList *)pocketList
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+         indexPath:(NSIndexPath *)newIndexPath
+        changeType:(UIPocketListChangeType)type
+{
+    switch (type) {
+        case UIPocketListChangeType_Insert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+            break;
+        case UIPocketListChangeType_Delete:
+            [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)pocketListDidChange:(UIPocketList *)pocketList
+{
+    [self.tableView endUpdates];
 }
 
 #pragma mark - UITableViewDelegate
@@ -128,11 +169,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
-    ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Archive];
+    ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Archive];
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
         [self.progressView hide];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }];
     [op setErrorHandler:^(NSError *error) {
         [self.progressView hide];
@@ -154,7 +194,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 //    [actionSheet addButtonWithTitle:@"Add Tag" handler:^{}];
 
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
-        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Favorite];
+        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
             [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
@@ -167,7 +207,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
-        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:pocket.objectID actionType:ActionToPocketType_Delete];
+        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Delete];
         [op setErrorHandler:^(NSError *error) {
             [self.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"delete error: %@", error]];

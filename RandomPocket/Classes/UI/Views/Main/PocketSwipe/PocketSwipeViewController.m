@@ -103,7 +103,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
     __block PocketSwipeViewController *weakSelf = self;
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
-        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithPocketID:weakSelf.currentPocket.objectID actionType:ActionToPocketType_Archive];
+        ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:weakSelf.currentPocket.itemID actionType:ActionToPocketType_Archive];
         [op setCompletionHandler:^(id result) {
             if(weakSelf.pocketList.numberOfItems == 0){
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];

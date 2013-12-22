@@ -27,6 +27,7 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
         self.imageUrl = cPocket.imageUrl;
         self.cPocket = cPocket;
         self.objectID = cPocket.objectID;
+        self.itemID = cPocket.itemID;
     }
     return self;
 }

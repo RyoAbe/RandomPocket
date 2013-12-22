@@ -15,6 +15,7 @@
 - (id)initWithCPocket:(CPocket*)cPocket;
 
 @property (nonatomic) NSManagedObjectID *objectID;
+@property (nonatomic) NSString *itemID;
 @property (nonatomic) NSString *url;
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *body;
