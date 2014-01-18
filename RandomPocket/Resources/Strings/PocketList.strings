@@ -6,8 +6,6 @@
   Copyright (c) 2013年 RyoAbe. All rights reserved.
 */
 "FaildRequestPocketList" = "faild request";
-"ToRandomSort" = "To random sort";
-"ToNormalSort" = "To normal sort";
 "FavoriteButtonTitle" = "Favorite";
 "DeleteButtonTitle" = "Delete";
 "ViewWebsiteButtonTitle" = "View website";

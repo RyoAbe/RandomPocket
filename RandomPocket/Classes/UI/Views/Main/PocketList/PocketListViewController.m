@@ -242,14 +242,11 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (IBAction)toRandomSortTapped:(UITabBarItem*)tabBarItem
 {
-    NSString *title = nil;
     switch (self.pocketList.displayMode) {
         case UIPocketListMode_DisplayNormal:
-            title = NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil);
             self.pocketList.displayMode = UIPocketListMode_DisplayRandom;
             break;
         case UIPocketListMode_DisplayRandom:
-            title = NSLocalizedStringFromTable(@"ToRandomSort", @"PocketList", nil);
             self.pocketList.displayMode = UIPocketListMode_DisplayNormal;
             break;
         default:
