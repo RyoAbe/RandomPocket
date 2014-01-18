@@ -35,6 +35,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
     self.actionSheet = [self createActionSheet];
     self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
+    self.pocketList.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -96,6 +97,54 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.currentPocket.url]];
 }
 
+
+#pragma mark - UIPocketListDelegate
+
+- (void)pocketListWillChange:(UIPocketList *)pocketList {}
+
+- (void)pocketList:(UIPocketList *)pocketList
+     didChangeItem:(UIPocket *)uiPocket
+      newIndexPath:(NSIndexPath *)newIndexPath
+      oldIndexPath:(NSIndexPath *)oldIndexPath
+        changeType:(UIPocketListChangeType)type
+{
+    switch (type) {
+            case UIPocketListChangeType_Insert:
+            [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            break;
+            case UIPocketListChangeType_Delete:
+            [self.collectionView deleteItemsAtIndexPaths:@[oldIndexPath]];
+            break;
+            case UIPocketListChangeType_Move:
+            [self.collectionView moveItemAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
+            break;
+            case UIPocketListChangeType_Update:
+            [self.collectionView reloadItemsAtIndexPaths:@[oldIndexPath]];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)pocketList:(UIPocketList *)pocketList
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+         indexPath:(NSIndexPath *)newIndexPath
+        changeType:(UIPocketListChangeType)type
+{
+    switch (type) {
+            case UIPocketListChangeType_Insert:
+            [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+            break;
+            case UIPocketListChangeType_Delete:
+            [self.collectionView deleteItemsAtIndexPaths:@[newIndexPath]];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)pocketListDidChange:(UIPocketList *)pocketList {}
+
 #pragma mark - Other
 
 - (UIActionSheet*)createActionSheet
@@ -110,7 +159,6 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
                 return;
             }
             [weakSelf.pocketList removeAtIndexPath:weakSelf.currentIndexPath];
-            [weakSelf.collectionView reloadData];
         }];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];

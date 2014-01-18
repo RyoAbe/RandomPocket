@@ -7,6 +7,7 @@
 //
 
 #import "UIPocketList.h"
+#import "RandomPocketUI.h"
 
 @interface UIPocketList()
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
