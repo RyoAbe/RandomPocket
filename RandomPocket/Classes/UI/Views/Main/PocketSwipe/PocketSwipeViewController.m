@@ -103,11 +103,11 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [self.actionSheet showFromToolbar:self.navigationController.toolbar];
 }
 
-- (IBAction)openInSafariTapped:(id)sender
+- (IBAction)openInBrowseTapped:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.currentPocket.url]];
+    NSURL *url = [NSURL URLWithString:self.currentPocket.url];
+    [UIUtil openInSafariOrChrome:url];
 }
-
 
 #pragma mark - UIPocketListDelegate
 

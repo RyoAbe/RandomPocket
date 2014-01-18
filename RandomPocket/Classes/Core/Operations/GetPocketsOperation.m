@@ -14,8 +14,9 @@
 {
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"detailType": @"complete", @"count": @3}
-//                               arguments:@{@"detailType": @"complete"}
+                               arguments:@{@"detailType": @"complete"
+//                                           , @"count": @3
+                                           }
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      NSAssert(!error, error.localizedDescription);
                                      __weak GetPocketsOperation *weakSelf = self;

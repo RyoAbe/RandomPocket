@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CQB-TQ-f42">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CQB-TQ-f42">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -108,6 +108,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="lnC-He-gQa"/>
+                                    <barButtonItem image="browser_icon.png" id="bHA-5S-Kdt">
+                                        <connections>
+                                            <action selector="openInBrowseTapped:" destination="Cq8-PV-hpG" id="W1h-ia-z4X"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="Mb4-DM-dWJ"/>
                                     <barButtonItem style="plain" systemItem="action" id="GeG-c9-G40">
                                         <connections>
                                             <action selector="actionButtonTapped:" destination="Cq8-PV-hpG" id="iYh-JK-fx5"/>
@@ -138,6 +144,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="browser_icon.png" width="25" height="25"/>
         <image name="check_icon.png" width="29" height="20"/>
         <image name="shuffle_icon.png" width="20" height="14"/>
     </resources>

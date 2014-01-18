@@ -35,6 +35,9 @@
 		17E552CD17D4CF45004E10BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E552CC17D4CF45004E10BE /* CoreData.framework */; };
 		17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17E552D117D4D096004E10BE /* RandomPocket.xcdatamodeld */; };
 		17FF532117E572C300FF3098 /* ActionToPocketOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FF532017E572C300FF3098 /* ActionToPocketOperation.m */; };
+		321A8A83188A738C0077B8C2 /* browser_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 321A8A81188A738C0077B8C2 /* browser_icon.png */; };
+		321A8A84188A738C0077B8C2 /* browser_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 321A8A82188A738C0077B8C2 /* browser_icon@2x.png */; };
+		321A8A8A188A787C0077B8C2 /* UIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A8A89188A787C0077B8C2 /* UIUtil.m */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
 		324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF01717CE14EF005B08F4 /* PocketListCell.xib */; };
@@ -112,6 +115,10 @@
 		17E552D217D4D096004E10BE /* RandomPocket.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RandomPocket.xcdatamodel; sourceTree = "<group>"; };
 		17FF531F17E572C300FF3098 /* ActionToPocketOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionToPocketOperation.h; sourceTree = "<group>"; };
 		17FF532017E572C300FF3098 /* ActionToPocketOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionToPocketOperation.m; sourceTree = "<group>"; };
+		321A8A81188A738C0077B8C2 /* browser_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browser_icon.png; sourceTree = "<group>"; };
+		321A8A82188A738C0077B8C2 /* browser_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "browser_icon@2x.png"; sourceTree = "<group>"; };
+		321A8A88188A787C0077B8C2 /* UIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtil.h; sourceTree = "<group>"; };
+		321A8A89188A787C0077B8C2 /* UIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtil.m; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
 		324FEFFA17CCEB2B005B08F4 /* RPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPColor.m; sourceTree = "<group>"; };
 		324FF01517CE14EF005B08F4 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
@@ -206,6 +213,8 @@
 		17291EC217CF9A6400B44BBE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				321A8A81188A738C0077B8C2 /* browser_icon.png */,
+				321A8A82188A738C0077B8C2 /* browser_icon@2x.png */,
 				17C09F8D18279899001435B9 /* check_icon.png */,
 				17C09F8E18279899001435B9 /* check_icon@2x.png */,
 				17C09F8F18279899001435B9 /* shuffle_icon.png */,
@@ -233,6 +242,8 @@
 				17291EE017CF9FFD00B44BBE /* HTMLBodyParser */,
 				32D07563186547620036F4BE /* MRProgressOverlayView+RandomPocket.h */,
 				32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */,
+				321A8A88188A787C0077B8C2 /* UIUtil.h */,
+				321A8A89188A787C0077B8C2 /* UIUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -626,8 +637,10 @@
 				32D0886317C9DE76007C50CD /* InfoPlist.strings in Resources */,
 				32D0886B17C9DE76007C50CD /* Default.png in Resources */,
 				32D0886D17C9DE76007C50CD /* Default@2x.png in Resources */,
+				321A8A84188A738C0077B8C2 /* browser_icon@2x.png in Resources */,
 				17C09F8C18278EF4001435B9 /* PocketSwipeView.strings in Resources */,
 				32D0886F17C9DE76007C50CD /* Default-568h@2x.png in Resources */,
+				321A8A83188A738C0077B8C2 /* browser_icon.png in Resources */,
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
 				3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */,
 				17C09F9118279899001435B9 /* check_icon.png in Resources */,
@@ -737,6 +750,7 @@
 				32D0886517C9DE76007C50CD /* main.m in Sources */,
 				32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */,
 				3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */,
+				321A8A8A188A787C0077B8C2 /* UIUtil.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
 				324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */,
 				324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */,

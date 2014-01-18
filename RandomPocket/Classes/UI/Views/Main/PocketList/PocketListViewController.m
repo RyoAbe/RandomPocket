@@ -84,7 +84,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
 
-    if(isShowDimminingView) [self.progressView showWithTitle:@"Loading..."];
+    if(isShowDimminingView) [self.progressView showWithTitle:NSLocalizedStringFromTable(@"Loading", @"Common", nil)];
     self.randomButton.enabled = NO;
     [self.getPocketsOperation dispatch];
 }
