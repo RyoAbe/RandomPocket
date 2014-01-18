@@ -49,10 +49,21 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
     // PocketList
     self.pocketList = [[UIPocketList alloc] init];
-    self.pocketList.delegate = self;
     if(self.pocketList.numberOfItems == 0){
         [self reqestGetPockets];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.pocketList.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.pocketList.delegate = nil;
 }
 
 - (void)reqestGetPockets
