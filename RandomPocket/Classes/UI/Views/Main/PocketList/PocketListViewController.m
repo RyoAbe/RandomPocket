@@ -71,6 +71,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     BOOL isShowDimminingView = self.pocketList.numberOfItems == 0 ? YES : NO;
 
+    if(self.pocketList.displayMode == UIPocketListMode_DisplayRandom){
+        [self toNormalSortMode];
+    }
+    
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^(id result) {
         if(isShowDimminingView) [weakSelf.progressView hide];
@@ -257,16 +261,27 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     switch (self.pocketList.displayMode) {
         case UIPocketListMode_DisplayNormal:
-            self.pocketList.displayMode = UIPocketListMode_DisplayRandom;
+            [self toRandomSortMode];
             break;
         case UIPocketListMode_DisplayRandom:
-            self.pocketList.displayMode = UIPocketListMode_DisplayNormal;
+            [self toNormalSortMode];
             break;
         default:
             break;
     }
-    [self.tableView reloadData];
     self.tableView.contentOffset = CGPointZero;
+}
+
+- (void)toRandomSortMode
+{
+    self.pocketList.displayMode = UIPocketListMode_DisplayRandom;
+    [self.tableView reloadData];
+}
+
+- (void)toNormalSortMode
+{
+    self.pocketList.displayMode = UIPocketListMode_DisplayNormal;
+    [self.tableView reloadData];
 }
 
 - (IBAction)searchButtonTapped:(id)sender

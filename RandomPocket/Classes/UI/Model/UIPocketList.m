@@ -16,8 +16,6 @@
 
 @implementation UIPocketList
 
-#pragma mark - Fetched results controller
-
 - (id)init
 {
     self = [super init];
@@ -27,6 +25,8 @@
     }
     return self;
 }
+
+#pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -141,6 +141,8 @@
     }
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
+
+#pragma mark - Random IndexPath
 
 - (void)removeAtIndexPath:(NSIndexPath*)removeIndexPathKey
 {
