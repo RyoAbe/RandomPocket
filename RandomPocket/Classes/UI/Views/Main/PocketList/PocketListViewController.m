@@ -79,7 +79,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     }];
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
         if(isShowDimminingView) [weakSelf.progressView hide];
-        
         weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];

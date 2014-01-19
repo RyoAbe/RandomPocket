@@ -10,7 +10,7 @@
 #import "RandomPocketUI.h"
 
 @interface UIPocketList()
-@property (nonatomic) NSMutableDictionary *indexPaths;
+@property (nonatomic) NSMutableDictionary *randomIndexPaths;
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 - (NSIndexPath*)generateRandomIndexPath:(NSIndexPath*)indexPath;
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath;
@@ -29,7 +29,7 @@ describe(@"UIPocketList", ^{
         it(@"コンストラクタ", ^{
             [[_pocketList should] beNonNil];
             [[_pocketList.managedObjectContext should] beNonNil];
-            [[_pocketList.indexPaths should] beNonNil];
+            [[_pocketList.randomIndexPaths should] beNonNil];
         });
     });
 
@@ -46,13 +46,13 @@ describe(@"UIPocketList", ^{
                 NSUInteger numberOfObjects = 1;
                 [[[fetchedResultsSectionInfo stub] andReturnValue:OCMOCK_VALUE(numberOfObjects)] numberOfObjects];
                 _pocketList.fetchedResultsController = fetchedResultsController;
-                _pocketList.indexPaths = [NSMutableDictionary new];
+                _pocketList.randomIndexPaths = [NSMutableDictionary new];
                 _indexPathKey = [NSIndexPath indexPathForRow:0 inSection:0];
                 _randomIndexPath = [_pocketList generateRandomIndexPath:_indexPathKey];
             });
             it(@"indexPathsに追加されたものと生成されたrandomIndexPathが同一であること", ^{
-                [[[_pocketList.indexPaths should] have:1] items];
-                [[_pocketList.indexPaths[[_pocketList indexPathKey:_indexPathKey]] should] equal:_randomIndexPath];
+                [[[_pocketList.randomIndexPaths should] have:1] items];
+                [[_pocketList.randomIndexPaths[[_pocketList indexPathKey:_indexPathKey]] should] equal:_randomIndexPath];
             });
         });
         context(@"生成したRandomIndexPathをindexPathsに追加", ^{
@@ -70,7 +70,7 @@ describe(@"UIPocketList", ^{
                 NSUInteger numberOfObjects = 5;
                 [[[fetchedResultsSectionInfo stub] andReturnValue:OCMOCK_VALUE(numberOfObjects)] numberOfObjects];
                 _pocketList.fetchedResultsController = fetchedResultsController;
-                _pocketList.indexPaths = [NSMutableDictionary new];
+                _pocketList.randomIndexPaths = [NSMutableDictionary new];
                 
                 NSIndexPath *randomIndexPath1 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
                 NSIndexPath *randomIndexPath2 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
@@ -83,34 +83,34 @@ describe(@"UIPocketList", ^{
                 NSIndexPath *randomIndexPath9 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
                 NSIndexPath *randomIndexPath10 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
                 
-                _mathedIndesPathes1 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes1 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath1.section == addedRandomIndexPath.section && randomIndexPath1.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes2 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes2 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath2.section == addedRandomIndexPath.section && randomIndexPath2.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes3 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes3 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath3.section == addedRandomIndexPath.section && randomIndexPath3.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes4 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes4 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath4.section == addedRandomIndexPath.section && randomIndexPath4.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes5 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes5 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath5.section == addedRandomIndexPath.section && randomIndexPath5.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes6 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes6 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath6.section == addedRandomIndexPath.section && randomIndexPath6.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes7 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes7 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath7.section == addedRandomIndexPath.section && randomIndexPath7.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes8 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes8 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath8.section == addedRandomIndexPath.section && randomIndexPath8.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes9 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes9 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath9.section == addedRandomIndexPath.section && randomIndexPath9.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes10 = [_pocketList.indexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndesPathes10 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath10.section == addedRandomIndexPath.section && randomIndexPath10.row == addedRandomIndexPath.row);
                 }];
             });
@@ -131,8 +131,8 @@ describe(@"UIPocketList", ^{
     context(@"isAddedIndexPath", ^{
         context(@"falseのパターン", ^{
             beforeEach(^{
-                _pocketList.indexPaths[[NSIndexPath indexPathForRow:0 inSection:0]] = [NSIndexPath indexPathForRow:0 inSection:0];
-                _pocketList.indexPaths[[NSIndexPath indexPathForRow:0 inSection:1]] = [NSIndexPath indexPathForRow:0 inSection:1];
+                _pocketList.randomIndexPaths[[NSIndexPath indexPathForRow:0 inSection:0]] = [NSIndexPath indexPathForRow:0 inSection:0];
+                _pocketList.randomIndexPaths[[NSIndexPath indexPathForRow:0 inSection:1]] = [NSIndexPath indexPathForRow:0 inSection:1];
             });
             it(@"存在していればfalseを返す", ^{
                 [[theValue([_pocketList isAddedIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]]) should] beFalse];
@@ -141,8 +141,8 @@ describe(@"UIPocketList", ^{
         });
         context(@"trueのパターン", ^{
             beforeEach(^{
-                _pocketList.indexPaths[[NSIndexPath indexPathForRow:0 inSection:0]] = [NSIndexPath indexPathForRow:0 inSection:0];
-                _pocketList.indexPaths[[NSIndexPath indexPathForRow:0 inSection:1]] = [NSIndexPath indexPathForRow:0 inSection:1];
+                _pocketList.randomIndexPaths[[NSIndexPath indexPathForRow:0 inSection:0]] = [NSIndexPath indexPathForRow:0 inSection:0];
+                _pocketList.randomIndexPaths[[NSIndexPath indexPathForRow:0 inSection:1]] = [NSIndexPath indexPathForRow:0 inSection:1];
             });
             it(@"既に存在していればtrueを返す", ^{
                 [[theValue([_pocketList isAddedIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]) should] beTrue];
@@ -151,9 +151,9 @@ describe(@"UIPocketList", ^{
         });
         context(@"混在しているパターン", ^{
             beforeEach(^{
-                _pocketList.indexPaths[[NSIndexPath indexPathForRow:0 inSection:0]] = [NSIndexPath indexPathForRow:0 inSection:0];
-                _pocketList.indexPaths[[NSIndexPath indexPathForRow:0 inSection:1]] = [NSIndexPath indexPathForRow:0 inSection:2];
-                _pocketList.indexPaths[[NSIndexPath indexPathForRow:0 inSection:2]] = [NSIndexPath indexPathForRow:0 inSection:4];
+                _pocketList.randomIndexPaths[[NSIndexPath indexPathForRow:0 inSection:0]] = [NSIndexPath indexPathForRow:0 inSection:0];
+                _pocketList.randomIndexPaths[[NSIndexPath indexPathForRow:0 inSection:1]] = [NSIndexPath indexPathForRow:0 inSection:2];
+                _pocketList.randomIndexPaths[[NSIndexPath indexPathForRow:0 inSection:2]] = [NSIndexPath indexPathForRow:0 inSection:4];
             });
             it(@"混在していても正しいbool値を返す", ^{
                 [[theValue([_pocketList isAddedIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]) should] beTrue];

@@ -11,7 +11,7 @@
 
 @interface UIPocketList()
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic) NSMutableDictionary *indexPaths;
+@property (nonatomic) NSMutableDictionary *randomIndexPaths;
 @end
 
 @implementation UIPocketList
@@ -23,7 +23,7 @@
     self = [super init];
     if (self) {
         self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
-        self.indexPaths = [NSMutableDictionary dictionary];
+        self.randomIndexPaths = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -85,7 +85,7 @@
 {
     UIPocket *uiPocket = [[UIPocket alloc] initWithCPocket:(CPocket*)anObject];
     if(self.displayMode == UIPocketListMode_DisplayRandom){
-        indexPath = [self indexPathFromKey:[[self.indexPaths allKeysForObject:indexPath] lastObject]];
+        indexPath = [self indexPathFromKey:[[self.randomIndexPaths allKeysForObject:indexPath] lastObject]];
     }
     
     [self.delegate pocketList:self didChangeItem:uiPocket newIndexPath:newIndexPath oldIndexPath:indexPath changeType:type];
@@ -148,18 +148,18 @@
         return;
     }
     NSString *removeKey = [self indexPathKey:removeIndexPathKey];
-    NSIndexPath *removeIndexPathValue = self.indexPaths[removeKey];
-    [self.indexPaths removeObjectForKey:removeKey];
+    NSIndexPath *removeIndexPathValue = self.randomIndexPaths[removeKey];
+    [self.randomIndexPaths removeObjectForKey:removeKey];
     
     NSMutableDictionary *newIndexPaths = [NSMutableDictionary dictionary];
-    NSUInteger loop = self.indexPaths.count;
+    NSUInteger loop = self.randomIndexPaths.count;
     for (NSInteger row = 0; row <= loop; row++) {
         if(row == removeIndexPathKey.row){
             continue;
         }
         NSIndexPath *indexPathKey = [NSIndexPath indexPathForRow:row inSection:removeIndexPathKey.section];
         NSString *newKey = generateKey(indexPathKey);
-        NSIndexPath *newValue = self.indexPaths[newKey];
+        NSIndexPath *newValue = self.randomIndexPaths[newKey];
         if(indexPathKey.row >= removeIndexPathKey.row){
             newKey = generateKeyFromRow(indexPathKey.row - 1, removeIndexPathKey.section);
         }
@@ -168,31 +168,31 @@
         }
         newIndexPaths[newKey] = newValue;
     }
-    self.indexPaths = newIndexPaths;
+    self.randomIndexPaths = newIndexPaths;
 }
 
 - (void)addAtIndexPath:(NSIndexPath*)indexPath forIndexPathKey:(NSIndexPath*)indexPathKey
 {
-    self.indexPaths[[self indexPathKey:indexPath]] = indexPath;
+    self.randomIndexPaths[[self indexPathKey:indexPath]] = indexPath;
 }
 
 - (void)setDisplayMode:(UIPocketListMode)displayMode
 {
     _displayMode = displayMode;
-    self.indexPaths = [NSMutableDictionary dictionary];
+    self.randomIndexPaths = [NSMutableDictionary dictionary];
 }
 
 - (NSIndexPath*)generateRandomIndexPath:(NSIndexPath*)indexPath
 {
     NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];
     NSString *indexPathKey = [self indexPathKey:indexPath];
-    if(self.indexPaths.count >= numberOfItemsInSection){
-        NSIndexPath *retIndexPath = self.indexPaths[indexPathKey];
+    if(self.randomIndexPaths.count >= numberOfItemsInSection){
+        NSIndexPath *retIndexPath = self.randomIndexPaths[indexPathKey];
         return retIndexPath;
     }
     
-    if([self.indexPaths objectForKey:indexPath]){
-        return self.indexPaths[indexPathKey];
+    if([self.randomIndexPaths objectForKey:indexPath]){
+        return self.randomIndexPaths[indexPathKey];
     }
 
     NSIndexPath *retIndexPath = nil;
@@ -201,7 +201,7 @@
         retIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
         NSAssert(retIndexPath, @"should be not nil indexPath");
         if(![self isAddedIndexPath:retIndexPath]){
-            self.indexPaths[indexPathKey] = retIndexPath;
+            self.randomIndexPaths[indexPathKey] = retIndexPath;
             break;
         }
     }
@@ -239,7 +239,7 @@ static NSString* generateKey(NSIndexPath* indexPath)
 
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath
 {
-    return [self.indexPaths.allValues containsObject:randomIndexPath];
+    return [self.randomIndexPaths.allValues containsObject:randomIndexPath];
 }
 
 @end
