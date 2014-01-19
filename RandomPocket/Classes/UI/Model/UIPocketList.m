@@ -84,6 +84,10 @@
       newIndexPath:(NSIndexPath *)newIndexPath
 {
     UIPocket *uiPocket = [[UIPocket alloc] initWithCPocket:(CPocket*)anObject];
+    if(self.displayMode == UIPocketListMode_DisplayRandom){
+        indexPath = [self indexPathFromKey:[[self.indexPaths allKeysForObject:indexPath] lastObject]];
+    }
+    
     [self.delegate pocketList:self didChangeItem:uiPocket newIndexPath:newIndexPath oldIndexPath:indexPath changeType:type];
 }
 
@@ -182,7 +186,7 @@
 {
     NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];
     NSString *indexPathKey = [self indexPathKey:indexPath];
-    if(self.indexPaths.count == numberOfItemsInSection){
+    if(self.indexPaths.count >= numberOfItemsInSection){
         NSIndexPath *retIndexPath = self.indexPaths[indexPathKey];
         return retIndexPath;
     }
@@ -222,6 +226,15 @@ static NSString* generateKey(NSIndexPath* indexPath)
 - (NSString*)indexPathKey:(NSIndexPath*)indexPath
 {
    return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
+}
+
+- (NSIndexPath*)indexPathFromKey:(NSString*)key
+{
+    // 「[0, 0]」の両端のカッコを除去
+    NSString *tmpKey = [key substringWithRange:NSMakeRange(1, key.length - 2)];
+    NSArray *separatedArray = [tmpKey componentsSeparatedByString:@","];
+
+    return [NSIndexPath indexPathForRow:[(NSString*)separatedArray[1] integerValue] inSection:[(NSString*)separatedArray[0] integerValue]];
 }
 
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath

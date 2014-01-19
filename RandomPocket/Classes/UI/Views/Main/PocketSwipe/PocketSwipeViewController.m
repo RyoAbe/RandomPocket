@@ -124,6 +124,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
             [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
             break;
             case UIPocketListChangeType_Delete:
+            [self.pocketList removeAtIndexPath:oldIndexPath];
             [self.collectionView deleteItemsAtIndexPaths:@[oldIndexPath]];
             break;
             case UIPocketListChangeType_Move:
@@ -167,9 +168,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         [op setCompletionHandler:^(id result) {
             if(weakSelf.pocketList.numberOfItems == 0){
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-                return;
             }
-            [weakSelf.pocketList removeAtIndexPath:weakSelf.currentIndexPath];
         }];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];

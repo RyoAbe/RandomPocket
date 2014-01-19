@@ -15,6 +15,7 @@
 @property (nonatomic) MRProgressOverlayView *progressView;
 @property (nonatomic) UIRefreshControl *refreshController;
 @property (nonatomic) NSIndexPath *selectedIndexPath;
+@property (nonatomic) NSIndexPath *swipedIndexPath;
 @property (nonatomic) GetPocketsOperation *getPocketsOperation;
 @end
 
@@ -107,6 +108,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
             break;
         case UIPocketListChangeType_Delete:
+            [self.pocketList removeAtIndexPath:oldIndexPath];
             [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         case UIPocketListChangeType_Move:
@@ -181,6 +183,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.swipedIndexPath = indexPath;
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
     ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Archive];
     __weak PocketListViewController *weakSelf = self;
