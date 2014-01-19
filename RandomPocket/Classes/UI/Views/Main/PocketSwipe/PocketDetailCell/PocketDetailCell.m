@@ -31,7 +31,13 @@
 {
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
-    [self.urlButton setTitle:_pocket.url forState:UIControlStateNormal];
+
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_pocket.url];
+    [attributedString addAttribute:NSUnderlineStyleAttributeName
+                             value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]
+                             range:NSMakeRange(0, _pocket.url.length)];
+    [self.urlButton setAttributedTitle:attributedString forState:UIControlStateNormal];
+
     self.bodyTextView.text = _pocket.excerpt;
     self.thumbnail.image = nil;
     self.thumbnailHeight.constant = self.thumbnailTopSpace.constant = 0;
