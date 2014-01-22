@@ -14,6 +14,13 @@ static NSString * const kGoogleChromeCallbackScheme = @"googlechrome-x-callback:
 
 @implementation UIUtil
 
++ (void)openInEvernoteWithURL:(NSString*)url title:(NSString*)title
+{
+    NSString *clipURL = [NSString stringWithFormat:@"http://s.evernote.com/grclip?url=%@&title=%@",
+                         encodeByAddingPercentEscapes(url), encodeByAddingPercentEscapes(title)];
+    [UIUtil openInSafariOrChrome:[NSURL URLWithString:clipURL]];
+}
+
 + (void)openInSafariOrChrome:(NSURL*)url
 {
     if ([self isChromeInstalled]) {

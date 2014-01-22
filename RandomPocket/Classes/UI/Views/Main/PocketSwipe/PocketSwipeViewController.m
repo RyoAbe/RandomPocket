@@ -93,8 +93,12 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (IBAction)actionButtonTapped:(id)sender
 {
+    BlockActivity *activity = [BlockActivity activityWithType:@"Evernote" title:@"Evernote" image:[UIImage imageNamed:@"evernote_icon"] actionBlock:^{
+        [UIUtil openInEvernoteWithURL:self.currentPocket.url title:self.currentPocket.title];
+    }];
+    
     NSArray *items = @[self.currentPocket.title, self.currentPocket.url];
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:@[activity]];
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 

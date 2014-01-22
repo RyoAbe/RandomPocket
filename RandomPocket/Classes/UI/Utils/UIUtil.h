@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface UIUtil : NSObject
-
++ (void)openInEvernoteWithURL:(NSString*)url title:(NSString*)title;
 + (void)openInSafariOrChrome:(NSURL*)url;
 + (void)openInChrome:(NSURL*)url;
 @end

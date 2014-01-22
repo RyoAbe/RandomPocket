@@ -107,13 +107,13 @@
                                             <action selector="readedTapped:" destination="Cq8-PV-hpG" id="DLU-dh-h9N"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lnC-He-gQa"/>
+                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="Mb4-DM-dWJ"/>
                                     <barButtonItem image="browser_icon.png" id="bHA-5S-Kdt">
                                         <connections>
                                             <action selector="openInBrowseTapped:" destination="Cq8-PV-hpG" id="W1h-ia-z4X"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="Mb4-DM-dWJ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="lnC-He-gQa"/>
                                     <barButtonItem style="plain" systemItem="action" id="GeG-c9-G40">
                                         <connections>
                                             <action selector="actionButtonTapped:" destination="Cq8-PV-hpG" id="iYh-JK-fx5"/>

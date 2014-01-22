@@ -38,6 +38,10 @@
 		321A8A83188A738C0077B8C2 /* browser_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 321A8A81188A738C0077B8C2 /* browser_icon.png */; };
 		321A8A84188A738C0077B8C2 /* browser_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 321A8A82188A738C0077B8C2 /* browser_icon@2x.png */; };
 		321A8A8A188A787C0077B8C2 /* UIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A8A89188A787C0077B8C2 /* UIUtil.m */; };
+		324CD626188EAA91007C3552 /* BlockActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 324CD622188EAA91007C3552 /* BlockActivity.m */; };
+		324CD627188EAA91007C3552 /* UIActivity+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 324CD624188EAA91007C3552 /* UIActivity+Blocks.m */; };
+		324CD62A188EBE8F007C3552 /* evernote_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 324CD628188EBE8F007C3552 /* evernote_icon.png */; };
+		324CD62B188EBE8F007C3552 /* evernote_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 324CD629188EBE8F007C3552 /* evernote_icon@2x.png */; };
 		324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FEFFA17CCEB2B005B08F4 /* RPColor.m */; };
 		324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 324FF01617CE14EF005B08F4 /* PocketListCell.m */; };
 		324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324FF01717CE14EF005B08F4 /* PocketListCell.xib */; };
@@ -119,6 +123,12 @@
 		321A8A82188A738C0077B8C2 /* browser_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "browser_icon@2x.png"; sourceTree = "<group>"; };
 		321A8A88188A787C0077B8C2 /* UIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtil.h; sourceTree = "<group>"; };
 		321A8A89188A787C0077B8C2 /* UIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtil.m; sourceTree = "<group>"; };
+		324CD621188EAA91007C3552 /* BlockActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActivity.h; sourceTree = "<group>"; };
+		324CD622188EAA91007C3552 /* BlockActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActivity.m; sourceTree = "<group>"; };
+		324CD623188EAA91007C3552 /* UIActivity+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivity+Blocks.h"; sourceTree = "<group>"; };
+		324CD624188EAA91007C3552 /* UIActivity+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivity+Blocks.m"; sourceTree = "<group>"; };
+		324CD628188EBE8F007C3552 /* evernote_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = evernote_icon.png; sourceTree = "<group>"; };
+		324CD629188EBE8F007C3552 /* evernote_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "evernote_icon@2x.png"; sourceTree = "<group>"; };
 		324FEFF917CCEB2B005B08F4 /* RPColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPColor.h; sourceTree = "<group>"; };
 		324FEFFA17CCEB2B005B08F4 /* RPColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPColor.m; sourceTree = "<group>"; };
 		324FF01517CE14EF005B08F4 /* PocketListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketListCell.h; sourceTree = "<group>"; };
@@ -213,6 +223,8 @@
 		17291EC217CF9A6400B44BBE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				324CD628188EBE8F007C3552 /* evernote_icon.png */,
+				324CD629188EBE8F007C3552 /* evernote_icon@2x.png */,
 				321A8A81188A738C0077B8C2 /* browser_icon.png */,
 				321A8A82188A738C0077B8C2 /* browser_icon@2x.png */,
 				17C09F8D18279899001435B9 /* check_icon.png */,
@@ -239,6 +251,7 @@
 		17291EDF17CF9FFD00B44BBE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				324CD61F188EAA91007C3552 /* BlockActivity */,
 				17291EE017CF9FFD00B44BBE /* HTMLBodyParser */,
 				32D07563186547620036F4BE /* MRProgressOverlayView+RandomPocket.h */,
 				32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */,
@@ -307,6 +320,17 @@
 				175264041821597D00D7FFB8 /* CPocket.m */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		324CD61F188EAA91007C3552 /* BlockActivity */ = {
+			isa = PBXGroup;
+			children = (
+				324CD621188EAA91007C3552 /* BlockActivity.h */,
+				324CD622188EAA91007C3552 /* BlockActivity.m */,
+				324CD623188EAA91007C3552 /* UIActivity+Blocks.h */,
+				324CD624188EAA91007C3552 /* UIActivity+Blocks.m */,
+			);
+			path = BlockActivity;
 			sourceTree = "<group>";
 		};
 		324FF00917CD77DC005B08F4 /* Core */ = {
@@ -637,6 +661,7 @@
 				32D0886317C9DE76007C50CD /* InfoPlist.strings in Resources */,
 				32D0886B17C9DE76007C50CD /* Default.png in Resources */,
 				32D0886D17C9DE76007C50CD /* Default@2x.png in Resources */,
+				324CD62B188EBE8F007C3552 /* evernote_icon@2x.png in Resources */,
 				321A8A84188A738C0077B8C2 /* browser_icon@2x.png in Resources */,
 				17C09F8C18278EF4001435B9 /* PocketSwipeView.strings in Resources */,
 				32D0886F17C9DE76007C50CD /* Default-568h@2x.png in Resources */,
@@ -652,6 +677,7 @@
 				17291EC817CF9A6400B44BBE /* Common.strings in Resources */,
 				17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */,
 				17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */,
+				324CD62A188EBE8F007C3552 /* evernote_icon.png in Resources */,
 				17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -763,7 +789,9 @@
 				178F268817D3081800993DF9 /* HTMLNode.m in Sources */,
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
+				324CD626188EAA91007C3552 /* BlockActivity.m in Sources */,
 				32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */,
+				324CD627188EAA91007C3552 /* UIActivity+Blocks.m in Sources */,
 				32D07565186547620036F4BE /* MRProgressOverlayView+RandomPocket.m in Sources */,
 				17104F22183FC2E900B556C9 /* NSManagedObjectContext+Common.m in Sources */,
 				17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */,
