@@ -56,7 +56,7 @@
                                 <action selector="searchButtonTapped:" destination="nWC-KJ-AuU" id="aCl-Pi-HlX"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="shuffle_icon.png" style="plain" id="bRQ-zn-fN8">
+                        <barButtonItem key="rightBarButtonItem" image="shuffle_icon.png" id="bRQ-zn-fN8">
                             <connections>
                                 <action selector="toRandomSortTapped:" destination="nWC-KJ-AuU" id="Pol-Z0-ybB"/>
                             </connections>
