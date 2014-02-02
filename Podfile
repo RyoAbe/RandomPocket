@@ -5,11 +5,12 @@ inhibit_all_warnings!
 target :RandomPocket, :exclusive => true do
 	pod 'PocketAPI'
 	pod 'Toast', '~> 2.0'
-	pod 'MRProgress', '~> 0.2'
+	pod 'MRProgress', '~> 0.3'
 	pod 'Appirater'
 	pod 'PBWebViewController', '~> 0.0.1'
 	pod 'MSCMoreOptionTableViewCell', '~> 1.1'
 	pod 'SDWebImage'
+	pod 'NJKScrollFullScreen'
 	pod 'iOSCommon', :path => '../iOSCommon'
 #	pod 'iOSCommon', :git => 'https://github.com/RyoAbe/iOSCommon.git', :branch => 'develop'
 end

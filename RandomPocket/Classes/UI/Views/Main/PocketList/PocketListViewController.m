@@ -17,6 +17,7 @@
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic) NSIndexPath *swipedIndexPath;
 @property (nonatomic) GetPocketsOperation *getPocketsOperation;
+@property (nonatomic) NJKScrollFullScreen *scrollProxy;
 @end
 
 static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
@@ -53,11 +54,17 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     if(self.pocketList.numberOfItems == 0){
         [self reqestGetPockets];
     }
+
+    // NJKScrollFullScreen
+    self.scrollProxy = [[NJKScrollFullScreen alloc] initWithForwardTarget:self];
+    self.tableView.delegate = (id)self.scrollProxy;
+    self.scrollProxy.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.navigationController.navigationBar.translucent = YES;
     self.pocketList.delegate = self;
 }
 
@@ -153,6 +160,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selectedIndexPath = indexPath;
+    [self showNavigationBar:NO];
     [self performSegueWithIdentifier:ToPocketSwipeSegue sender:self];
 }
 
@@ -290,6 +298,39 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (IBAction)searchButtonTapped:(id)sender
 {
     [self.view makeToast:@"unimplemented"];
+}
+
+#pragma mark - NJKScrollFullscreenDelegate
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [_scrollProxy reset];
+    [self showNavigationBar:YES];
+    [self showToolbar:YES];
+}
+
+- (void)scrollFullScreen:(NJKScrollFullScreen *)proxy scrollViewDidScrollUp:(CGFloat)deltaY
+{
+    [self moveNavigtionBar:deltaY animated:YES];
+    [self moveToolbar:-deltaY animated:YES]; // move to revese direction
+}
+
+- (void)scrollFullScreen:(NJKScrollFullScreen *)proxy scrollViewDidScrollDown:(CGFloat)deltaY
+{
+    [self moveNavigtionBar:deltaY animated:YES];
+    [self moveToolbar:-deltaY animated:YES];
+}
+
+- (void)scrollFullScreenScrollViewDidEndDraggingScrollUp:(NJKScrollFullScreen *)proxy
+{
+    [self hideNavigationBar:YES];
+    [self hideToolbar:YES];
+}
+
+- (void)scrollFullScreenScrollViewDidEndDraggingScrollDown:(NJKScrollFullScreen *)proxy
+{
+    [self showNavigationBar:YES];
+    [self showToolbar:YES];
 }
 
 #pragma mark - Segue

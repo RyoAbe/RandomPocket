@@ -20,6 +20,8 @@
 #import <MSCMoreOptionTableViewCell/MSCMoreOptionTableViewCell.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MRProgress/MRProgress.h>
+#import <NJKScrollFullScreen/NJKScrollFullScreen.h>
+#import <NJKScrollFullScreen/UIViewController+NJKFullScreenSupport.h>
 
 // Entity
 #import "CPocket.h"
