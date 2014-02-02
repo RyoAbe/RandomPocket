@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic) UIActionSheet *actionSheet;
+@property (nonatomic) MRProgressOverlayView *progressView;
 @end
 
 static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
@@ -35,6 +36,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
     self.actionSheet = [self createActionSheet];
     self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
+    self.progressView = [MRProgressOverlayView createProgressView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -169,12 +171,13 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     __block PocketSwipeViewController *weakSelf = self;
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:weakSelf.currentPocket.itemID actionType:ActionToPocketType_Archive];
+        [weakSelf.progressView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
         [op setCompletionHandler:^(id result) {
-            if(weakSelf.pocketList.numberOfItems == 0){
-                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-            }
+            [weakSelf.progressView hide];
+            if(weakSelf.pocketList.numberOfItems == 0) [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }];
         [op setErrorHandler:^(NSError *error) {
+            [weakSelf.progressView hide];
             [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
         }];
         [op dispatch];

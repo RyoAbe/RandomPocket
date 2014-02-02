@@ -189,10 +189,13 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.swipedIndexPath = indexPath;
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
     ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Archive];
+    [self.progressView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
+        [weakSelf.progressView hide];
     }];
     [op setErrorHandler:^(NSError *error) {
+        [weakSelf.progressView hide];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
     }];
     [op dispatch];
