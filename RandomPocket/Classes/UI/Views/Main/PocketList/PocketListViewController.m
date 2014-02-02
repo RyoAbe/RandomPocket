@@ -41,8 +41,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.tableView registerNib:[UINib nibWithNibName:@"PocketListCell" bundle:nil] forCellReuseIdentifier:PokcetListCellIdentifier];
 
     self.refreshController = [UIRefreshControl new];
+    self.refreshController.layer.zPosition = -1;
     [self.tableView addSubview:self.refreshController];
     [self.refreshController addTarget:self action:@selector(reqestGetPockets) forControlEvents:UIControlEventValueChanged];
+    self.tableView.alwaysBounceVertical = YES;
 
     self.progressView = [MRProgressOverlayView createProgressView];
 
