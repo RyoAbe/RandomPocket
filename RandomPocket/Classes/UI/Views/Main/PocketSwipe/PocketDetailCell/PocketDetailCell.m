@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;
 @property (weak, nonatomic) IBOutlet UIButton *urlButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailTopSpace;
+@property (weak, nonatomic) IBOutlet UIImageView *favicon;
 @end
 
 @implementation PocketDetailCell
@@ -39,6 +40,8 @@
     [self.urlButton setAttributedTitle:attributedString forState:UIControlStateNormal];
 
     self.bodyTextView.text = _pocket.excerpt;
+    [self.favicon setImageWithURL:_pocket.faviconURL];
+    
     self.thumbnail.image = nil;
     self.thumbnailHeight.constant = self.thumbnailTopSpace.constant = 0;
 

@@ -139,7 +139,8 @@
             indexPath = [self generateRandomIndexPath:indexPath];
             break;
     }
-    return [self.fetchedResultsController objectAtIndexPath:indexPath];
+    CPocket *cPocket = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return [[UIPocket alloc] initWithCPocket:cPocket];
 }
 
 #pragma mark - Random IndexPath

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -27,8 +27,9 @@
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="http://google.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7V-Lw-KSH" userLabel="URL">
-                        <rect key="frame" x="13" y="65" width="222" height="20"/>
+                        <rect key="frame" x="31" y="65" width="204" height="20"/>
                         <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="204" id="1P6-Yi-bws"/>
                             <constraint firstAttribute="height" constant="20" id="Fuh-NC-cqu"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
@@ -42,6 +43,14 @@
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="cDf-Uj-OKB"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KQ2-5a-o7z" userLabel="Favicon">
+                        <rect key="frame" x="13" y="70" width="13" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="545-hX-gtC"/>
+                            <constraint firstAttribute="width" constant="13" id="5Qg-sm-vRT"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="P40-u7-l0B" firstAttribute="top" secondItem="JKL-Ay-Kdk" secondAttribute="top" constant="6" id="1BQ-F2-Jup"/>
@@ -52,12 +61,15 @@
                     <constraint firstAttribute="centerY" secondItem="P40-u7-l0B" secondAttribute="centerY" id="Sda-3F-GyS"/>
                     <constraint firstItem="oNB-tg-8nW" firstAttribute="leading" secondItem="JKL-Ay-Kdk" secondAttribute="leading" constant="13" id="W2R-AC-TwW"/>
                     <constraint firstItem="G7V-Lw-KSH" firstAttribute="top" secondItem="oNB-tg-8nW" secondAttribute="bottom" constant="5" id="Wz1-Dh-ktz"/>
-                    <constraint firstItem="G7V-Lw-KSH" firstAttribute="leading" secondItem="oNB-tg-8nW" secondAttribute="leading" id="ky1-PK-wtf"/>
+                    <constraint firstItem="G7V-Lw-KSH" firstAttribute="leading" secondItem="KQ2-5a-o7z" secondAttribute="trailing" constant="5" id="l7k-zd-aQM"/>
                     <constraint firstAttribute="bottom" secondItem="P40-u7-l0B" secondAttribute="bottom" constant="6" id="nx7-QB-hYV"/>
                     <constraint firstItem="P40-u7-l0B" firstAttribute="leading" secondItem="oNB-tg-8nW" secondAttribute="trailing" constant="5" id="qy1-9G-nbB"/>
+                    <constraint firstItem="KQ2-5a-o7z" firstAttribute="leading" secondItem="oNB-tg-8nW" secondAttribute="leading" id="sjA-IQ-pLI"/>
+                    <constraint firstItem="KQ2-5a-o7z" firstAttribute="top" secondItem="oNB-tg-8nW" secondAttribute="bottom" constant="10" id="vqP-Fl-3rJ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="favicon" destination="KQ2-5a-o7z" id="bbG-Br-ihO"/>
                 <outlet property="thumbnail" destination="P40-u7-l0B" id="PMg-vl-I7X"/>
                 <outlet property="titleLabel" destination="oNB-tg-8nW" id="I8M-O2-bN9"/>
                 <outlet property="urlLabel" destination="G7V-Lw-KSH" id="KdK-nD-b3c"/>

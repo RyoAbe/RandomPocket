@@ -23,5 +23,6 @@
 @property (nonatomic) NSString *excerpt;
 @property (nonatomic) NSString *imageUrl;
 @property (nonatomic) NSDictionary* data;
+@property (nonatomic, readonly) NSURL *faviconURL;
 
 @end

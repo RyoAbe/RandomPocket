@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -33,13 +33,13 @@
                         </constraints>
                     </view>
                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TO4-10-P7Y" userLabel="URLButton">
-                        <rect key="frame" x="10" y="55" width="300" height="30"/>
+                        <rect key="frame" x="30" y="55" width="280" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="4FK-BU-TXb"/>
-                            <constraint firstAttribute="width" constant="300" id="Q5F-JR-7ZM"/>
+                            <constraint firstAttribute="width" constant="280" id="Q5F-JR-7ZM"/>
                         </constraints>
-                        <state key="normal">
+                        <state key="normal" title="http://www.google.co.jp">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -65,25 +65,36 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JMl-Vv-lV5" userLabel="Favicon">
+                        <rect key="frame" x="10" y="64" width="13" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="13" id="dcR-bA-Ub3"/>
+                            <constraint firstAttribute="height" constant="13" id="dqs-ym-D9b"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="TO4-10-P7Y" firstAttribute="top" secondItem="236" secondAttribute="bottom" id="3oE-lR-GRk"/>
-                <constraint firstAttribute="centerX" secondItem="TO4-10-P7Y" secondAttribute="centerX" id="3xG-K4-lJJ"/>
                 <constraint firstAttribute="centerX" secondItem="234" secondAttribute="centerX" id="FXb-KT-dXv"/>
                 <constraint firstAttribute="centerX" secondItem="Nhm-FH-Njb" secondAttribute="centerX" id="GNd-YL-aXx"/>
                 <constraint firstAttribute="centerX" secondItem="233" secondAttribute="centerX" id="Irz-Zd-K4R"/>
                 <constraint firstItem="Nhm-FH-Njb" firstAttribute="top" secondItem="TO4-10-P7Y" secondAttribute="bottom" id="L5f-ld-9le"/>
+                <constraint firstItem="TO4-10-P7Y" firstAttribute="leading" secondItem="JMl-Vv-lV5" secondAttribute="trailing" constant="7" id="UYY-9V-Maf"/>
                 <constraint firstItem="236" firstAttribute="top" secondItem="233" secondAttribute="bottom" constant="3" id="VKC-1s-IH0"/>
                 <constraint firstItem="234" firstAttribute="top" secondItem="Nhm-FH-Njb" secondAttribute="bottom" constant="4" id="W41-gl-Nsx"/>
                 <constraint firstItem="233" firstAttribute="top" secondItem="164" secondAttribute="top" constant="20" id="dnZ-ZE-bgu"/>
+                <constraint firstItem="JMl-Vv-lV5" firstAttribute="leading" secondItem="164" secondAttribute="leading" constant="10" id="fZd-qS-XDX"/>
                 <constraint firstAttribute="bottom" secondItem="234" secondAttribute="bottom" constant="21" id="nl1-qO-jIW"/>
                 <constraint firstAttribute="centerX" secondItem="236" secondAttribute="centerX" id="u0A-0e-F1e"/>
+                <constraint firstItem="JMl-Vv-lV5" firstAttribute="top" secondItem="236" secondAttribute="bottom" constant="9" id="ugj-gg-7np"/>
             </constraints>
             <connections>
                 <outlet property="bodyTextView" destination="234" id="256"/>
+                <outlet property="favicon" destination="JMl-Vv-lV5" id="k3C-LG-SzM"/>
                 <outlet property="thumbnail" destination="Nhm-FH-Njb" id="ceB-eK-jKv"/>
                 <outlet property="thumbnailHeight" destination="crX-TX-Sn6" id="hb8-a7-3ac"/>
                 <outlet property="thumbnailTopSpace" destination="L5f-ld-9le" id="LHT-Hv-o7F"/>

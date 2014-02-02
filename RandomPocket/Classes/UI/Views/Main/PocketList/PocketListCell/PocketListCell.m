@@ -11,6 +11,7 @@
 @interface PocketListCell()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
+@property (weak, nonatomic) IBOutlet UIImageView *favicon;
 @property (weak, nonatomic) IBOutlet UILabel *urlLabel;
 @end
 
@@ -23,8 +24,9 @@ static const CGFloat AdjustmentHeight = 1;
     _pocket = pocket;
     self.titleLabel.text = _pocket.title;
     self.urlLabel.text = _pocket.url;
+    [self.favicon setImageWithURL:_pocket.faviconURL];
+    
     self.thumbnail.image = nil;
-
     if(!_pocket.imageUrl){
         return;
     }

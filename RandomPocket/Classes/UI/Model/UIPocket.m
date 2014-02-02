@@ -28,6 +28,7 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
         self.cPocket = cPocket;
         self.objectID = cPocket.objectID;
         self.itemID = cPocket.itemID;
+        self.url = cPocket.url;
     }
     return self;
 }
@@ -41,6 +42,11 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
         self.title = data[@"resolved_title"];
     }
     return self;
+}
+
+- (NSURL *)faviconURL
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://www.google.com/s2/favicons?domain=%@", [[NSURL URLWithString:self.url] host]]];
 }
 
 - (void)setTitle:(NSString *)title
