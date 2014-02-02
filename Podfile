@@ -11,6 +11,7 @@ target :RandomPocket, :exclusive => true do
 	pod 'MSCMoreOptionTableViewCell', '~> 1.1'
 	pod 'SDWebImage'
 	pod 'NJKScrollFullScreen'
+	pod 'JASidePanels', '~> 1.3.2'
 	pod 'iOSCommon', :path => '../iOSCommon'
 #	pod 'iOSCommon', :git => 'https://github.com/RyoAbe/iOSCommon.git', :branch => 'develop'
 end

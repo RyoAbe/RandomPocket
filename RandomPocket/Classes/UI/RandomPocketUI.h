@@ -17,7 +17,9 @@
 #import "UIPocketList.h"
 
 // Views
+#import "PocketListViewController.h"
 #import "PocketListCell.h"
+#import "LeftSidePanelViewController.h"
 #import "PocketSwipeViewController.h"
 #import "PocketDetailCell.h"
 
@@ -25,6 +27,7 @@
 #import "UIViewController+RandomPocket.h"
 #import "MRProgressOverlayView+RandomPocket.h"
 #import "UIActivity+Blocks.h"
+#import "JASidePanelController+RandomPocket.h"
 
 // Utils
 #import "UIUtil.h"

@@ -23,18 +23,15 @@
 
     // Appirater
     [self appirater];
-    
-    NSString *storyBoardName = @"Main";
-    if(![PocketAPI sharedAPI].isLoggedIn){
-        storyBoardName = @"Welcom";
-    }
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyBoardName bundle:nil];
-    UIViewController *vc = [storyboard instantiateInitialViewController];
-    self.window.rootViewController = vc;
-    
     _managedObjectContext = [self createManagedObjectContext];
     
     [self appearance];
+
+    if(![PocketAPI sharedAPI].isLoggedIn){
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Welcom" bundle:nil] instantiateInitialViewController];
+        return YES;
+    }
+    self.window.rootViewController = [JASidePanelController createSidePanelController];
 
     return YES;
 }

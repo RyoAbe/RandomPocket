@@ -22,6 +22,8 @@
 #import <MRProgress/MRProgress.h>
 #import <NJKScrollFullScreen/NJKScrollFullScreen.h>
 #import <NJKScrollFullScreen/UIViewController+NJKFullScreenSupport.h>
+#import <JASidePanels/JASidePanelController.h>
+#import <JASidePanels/UIViewController+JASidePanel.h>
 
 // Entity
 #import "CPocket.h"

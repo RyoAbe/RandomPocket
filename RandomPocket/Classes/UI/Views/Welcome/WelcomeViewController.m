@@ -37,11 +37,11 @@
             self.loginButton.enabled = YES;
             self.loginButton.alpha = 1.f;
             [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)];
+#warning RAAssertに変更
             NSAssert(NO, error.localizedDescription);
             return;
         }
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *vc = [storyboard instantiateInitialViewController];
+        JASidePanelController *vc = [JASidePanelController createSidePanelController];
         [self presentViewController:vc animated:YES completion:nil];
     }];
 }
