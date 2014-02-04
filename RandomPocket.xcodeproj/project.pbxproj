@@ -78,6 +78,8 @@
 		32D0888A17C9DE76007C50CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32D0888817C9DE76007C50CD /* InfoPlist.strings */; };
 		32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */; };
 		32FC838F189FDB17007302C0 /* LeftSidePanel.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32FC838E189FDB17007302C0 /* LeftSidePanel.strings */; };
+		32FC839218A12BBB007302C0 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FC839018A12BBB007302C0 /* menu_icon.png */; };
+		32FC839318A12BBB007302C0 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FC839118A12BBB007302C0 /* menu_icon@2x.png */; };
 		5076DD4CA3794CCAB7CBDDA2 /* libPods-RandomPocketTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0722CABE2C4784B43F43C2 /* libPods-RandomPocketTests.a */; };
 		74CC9C989D104D0780E8CFC8 /* libPods-RandomPocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7DF6AB7EAA4FCB82DDEEEC /* libPods-RandomPocket.a */; };
 /* End PBXBuildFile section */
@@ -194,6 +196,8 @@
 		32D2FB6717D4B85100BD33DF /* GetPocketsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPocketsOperation.h; sourceTree = "<group>"; };
 		32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPocketsOperation.m; sourceTree = "<group>"; };
 		32FC838E189FDB17007302C0 /* LeftSidePanel.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = LeftSidePanel.strings; sourceTree = "<group>"; };
+		32FC839018A12BBB007302C0 /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
+		32FC839118A12BBB007302C0 /* menu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon@2x.png"; sourceTree = "<group>"; };
 		3E8066FFAFFF4DA9A5DFBF7A /* Pods-RandomPocketTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomPocketTests.xcconfig"; path = "Pods/Pods-RandomPocketTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		5141E4EB3CC44EA19F7FE6C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomPocket.xcconfig"; path = "Pods/Pods-RandomPocket.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 		17291EC217CF9A6400B44BBE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				32FC839018A12BBB007302C0 /* menu_icon.png */,
+				32FC839118A12BBB007302C0 /* menu_icon@2x.png */,
 				324CD628188EBE8F007C3552 /* evernote_icon.png */,
 				324CD629188EBE8F007C3552 /* evernote_icon@2x.png */,
 				321A8A81188A738C0077B8C2 /* browser_icon.png */,
@@ -746,6 +752,7 @@
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
 				3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */,
 				17C09F9118279899001435B9 /* check_icon.png in Resources */,
+				32FC839318A12BBB007302C0 /* menu_icon@2x.png in Resources */,
 				324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */,
 				17C09F9318279899001435B9 /* shuffle_icon.png in Resources */,
 				324FF02117CE1516005B08F4 /* Main.storyboard in Resources */,
@@ -753,6 +760,7 @@
 				324FF03817CE3E69005B08F4 /* PocketDetailCell.xib in Resources */,
 				17291EC817CF9A6400B44BBE /* Common.strings in Resources */,
 				17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */,
+				32FC839218A12BBB007302C0 /* menu_icon.png in Resources */,
 				17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */,
 				324CD62A188EBE8F007C3552 /* evernote_icon.png in Resources */,
 				325FF571189F11AB008D220B /* LeftSidePanelCell.xib in Resources */,

@@ -61,7 +61,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     }else if(indexPath.row == LeftSidePanelRowTypeLicense){
         centerPanel = [storyboard instantiateViewControllerWithIdentifier:@"License"];
     }
-    self.sidePanelController.centerPanel = centerPanel;
+    self.sidePanelController.centerPanel = [JASidePanelController createCenterPanel:centerPanel];
 }
 
 #pragma mark - Table view data source
