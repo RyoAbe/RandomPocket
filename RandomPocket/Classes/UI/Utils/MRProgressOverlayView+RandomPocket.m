@@ -8,6 +8,12 @@
 
 #import "MRProgressOverlayView+RandomPocket.h"
 
+@interface MRProgressOverlayView()
+- (void)commonInit;
+- (void)unregisterFromKVO;
+- (void)unregisterFromNotificationCenter;
+@end
+
 @implementation MRProgressOverlayView (RandomPocket)
 
 + (instancetype)createProgressView
@@ -18,11 +24,19 @@
     return view;
 }
 
+- (void)prepare
+{
+    [self unregisterFromKVO];
+    [self unregisterFromNotificationCenter];
+    [self commonInit];
+}
+
 - (void)showWithTitle:(NSString*)title
 {
     if(!self.hidden){
         return;
     }
+    [self prepare];
     self.titleLabelText = title;
     [self show:YES];
 }
