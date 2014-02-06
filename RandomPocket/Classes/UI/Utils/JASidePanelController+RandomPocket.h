@@ -10,5 +10,5 @@
 
 @interface JASidePanelController (RandomPocket)
 + (JASidePanelController*)createSidePanelController;
-+ (UIViewController*)createCenterPanel:(UIViewController*)viewController;
+- (UIViewController*)createCenterPanel:(UIViewController*)viewController;
 @end
