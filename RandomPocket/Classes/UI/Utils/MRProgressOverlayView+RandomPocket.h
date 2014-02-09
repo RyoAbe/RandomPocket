@@ -9,7 +9,7 @@
 #import "RandomPocketUI.h"
 
 @interface MRProgressOverlayView (RandomPocket)
-+ (instancetype)createProgressView;
-- (void)showWithTitle:(NSString*)title;
++ (instancetype)showWithTitle:(NSString*)title;
++ (instancetype)showWithTitle:(NSString*)title mode:(MRProgressOverlayViewMode)mode;
 - (void)hide;
 @end

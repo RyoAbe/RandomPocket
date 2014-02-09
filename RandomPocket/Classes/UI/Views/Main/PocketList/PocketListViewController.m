@@ -46,8 +46,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.refreshController addTarget:self action:@selector(reqestGetPockets) forControlEvents:UIControlEventValueChanged];
     self.tableView.alwaysBounceVertical = YES;
 
-    self.progressView = [MRProgressOverlayView createProgressView];
-
     // リクエスト
     self.getPocketsOperation = [GetPocketsOperation new];
 
@@ -80,25 +78,20 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     BOOL isShowDimminingView = self.pocketList.numberOfItems == 0 ? YES : NO;
 
-    if(self.pocketList.displayMode == UIPocketListMode_DisplayRandom){
-        [self toNormalSortMode];
-    }
+    if(!self.pocketList.isDisplayModeNormal) [self changeSortMode:UIPocketListMode_DisplayNormal];
     
     __weak PocketListViewController *weakSelf = self;
     [self.getPocketsOperation setCompletionHandler:^(id result) {
         if(isShowDimminingView) [weakSelf.progressView hide];
-        weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
     }];
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
         if(isShowDimminingView) [weakSelf.progressView hide];
-        weakSelf.randomButton.enabled = YES;
         [weakSelf.refreshController endRefreshing];
         [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
     }];
 
-    if(isShowDimminingView) [self.progressView showWithTitle:NSLocalizedStringFromTable(@"Loading", @"Common", nil)];
-    self.randomButton.enabled = NO;
+    if(isShowDimminingView) self.progressView = [MRProgressOverlayView showWithTitle:NSLocalizedStringFromTable(@"Loading", @"Common", nil)];
     [self.getPocketsOperation dispatch];
 }
 
@@ -199,7 +192,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.swipedIndexPath = indexPath;
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
     ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Archive];
-    [self.progressView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
+    self.progressView = [MRProgressOverlayView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
         [weakSelf.progressView hide];
@@ -272,29 +265,39 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (IBAction)toRandomSortTapped:(UITabBarItem*)tabBarItem
 {
+    UIPocketListMode mode;
+    NSString *title = nil;
     switch (self.pocketList.displayMode) {
         case UIPocketListMode_DisplayNormal:
-            [self toRandomSortMode];
+            mode = UIPocketListMode_DisplayRandom;
+            title = NSLocalizedStringFromTable(@"ToRandomSort", @"PocketList", nil);
             break;
         case UIPocketListMode_DisplayRandom:
-            [self toNormalSortMode];
+            mode = UIPocketListMode_DisplayNormal;
+            title = NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil);
             break;
         default:
             break;
     }
-    self.tableView.contentOffset = CGPointZero;
+    self.progressView = [MRProgressOverlayView showWithTitle:title];
+    [self changeSortMode:mode completion:^{
+        [self.progressView hide];
+    }];
 }
 
-- (void)toRandomSortMode
+- (void)changeSortMode:(UIPocketListMode)mode
 {
-    self.pocketList.displayMode = UIPocketListMode_DisplayRandom;
-    [self.tableView reloadData];
+    [self changeSortMode:mode completion:nil];
 }
 
-- (void)toNormalSortMode
+- (void)changeSortMode:(UIPocketListMode)mode completion:(void (^)())completion
 {
-    self.pocketList.displayMode = UIPocketListMode_DisplayNormal;
-    [self.tableView reloadData];
+    [self performBlock:^(id sender) {
+        self.pocketList.displayMode = mode;
+        [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if(completion) completion();
+    } afterDelay:0.1];
 }
 
 - (IBAction)searchButtonTapped:(id)sender

@@ -37,7 +37,6 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
     self.actionSheet = [self createActionSheet];
     self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
-    self.progressView = [MRProgressOverlayView createProgressView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -172,7 +171,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     __block PocketSwipeViewController *weakSelf = self;
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:weakSelf.currentPocket.itemID actionType:ActionToPocketType_Archive];
-        [weakSelf.progressView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
+        weakSelf.progressView = [MRProgressOverlayView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
         [op setCompletionHandler:^(id result) {
             [weakSelf.progressView hide];
             if(weakSelf.pocketList.numberOfItems == 0) [weakSelf.navigationController popToRootViewControllerAnimated:YES];

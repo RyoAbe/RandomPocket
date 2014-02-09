@@ -185,6 +185,11 @@
     self.randomIndexPaths = [NSMutableDictionary dictionary];
 }
 
+- (BOOL)isDisplayModeNormal
+{
+    return _displayMode == UIPocketListMode_DisplayNormal;
+}
+
 - (NSIndexPath*)generateRandomIndexPath:(NSIndexPath*)indexPath
 {
     NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];

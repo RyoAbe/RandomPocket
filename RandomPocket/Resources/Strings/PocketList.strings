@@ -11,3 +11,5 @@
 "ViewWebsiteButtonTitle" = "View website";
 "CellArchiveButtonTitle" = "Archive";
 "CellMoreButtonTitle" = "More";
+"ToRandomSort" = "To Random...";
+"ToNormalSort" = "To Normal...";

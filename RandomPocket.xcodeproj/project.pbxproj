@@ -157,6 +157,7 @@
 		325FF56D189F11AB008D220B /* LeftSidePanelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftSidePanelCell.xib; sourceTree = "<group>"; };
 		325FF56E189F11AB008D220B /* LeftSidePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSidePanelViewController.h; sourceTree = "<group>"; };
 		325FF56F189F11AB008D220B /* LeftSidePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSidePanelViewController.m; sourceTree = "<group>"; };
+		326632DA18A7505B00D7FE45 /* RandomPocketConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketConstants.h; sourceTree = "<group>"; };
 		3268E4BF17CB935100E3D702 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		3268E4C017CB935100E3D702 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		3268E4CD17CB947900E3D702 /* Welcom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcom.storyboard; sourceTree = "<group>"; };
@@ -535,6 +536,7 @@
 			children = (
 				3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */,
 				32AF668717C9E9F000EF34EC /* RandomPocketUI.h */,
+				326632DA18A7505B00D7FE45 /* RandomPocketConstants.h */,
 				324FEFF917CCEB2B005B08F4 /* RPColor.h */,
 				324FEFFA17CCEB2B005B08F4 /* RPColor.m */,
 				17291EDF17CF9FFD00B44BBE /* Utils */,

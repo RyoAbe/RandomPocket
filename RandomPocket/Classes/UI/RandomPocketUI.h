@@ -8,6 +8,7 @@
 
 // Common
 #import "RandomPocketCore.h"
+#import "RandomPocketConstants.h"
 
 // Constants
 #import "RPColor.h"

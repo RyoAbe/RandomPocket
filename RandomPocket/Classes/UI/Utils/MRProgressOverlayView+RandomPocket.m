@@ -8,42 +8,31 @@
 
 #import "MRProgressOverlayView+RandomPocket.h"
 
-@interface MRProgressOverlayView()
-- (void)commonInit;
-- (void)unregisterFromKVO;
-- (void)unregisterFromNotificationCenter;
-@end
-
 @implementation MRProgressOverlayView (RandomPocket)
 
-+ (instancetype)createProgressView
++ (instancetype)showWithTitle:(NSString*)title
 {
-    MRProgressOverlayView *view = [self new];
-    view.hidden = YES;
-    [[UIApplication sharedApplication].delegate.window addSubview:view];
-    return view;
+    return [self showWithTitle:title mode:MRProgressOverlayViewModeIndeterminate];
 }
 
-- (void)prepare
++ (instancetype)showWithTitle:(NSString*)title mode:(MRProgressOverlayViewMode)mode
 {
-    [self unregisterFromKVO];
-    [self unregisterFromNotificationCenter];
-    [self commonInit];
-}
-
-- (void)showWithTitle:(NSString*)title
-{
-    if(!self.hidden){
-        return;
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    if([window viewWithTag:RandomPocketViewTag_MRProgressOverlayView]){
+        [[window viewWithTag:RandomPocketViewTag_MRProgressOverlayView] removeFromSuperview];
     }
-    [self prepare];
-    self.titleLabelText = title;
-    [self show:YES];
+    MRProgressOverlayView *view = [self new];
+    view.tag = RandomPocketViewTag_MRProgressOverlayView;
+    view.mode = mode;
+    view.titleLabelText = title;
+    [window addSubview:view];
+    [view show:YES];
+    return view;
 }
 
 - (void)hide
 {
-    [self hide:YES];
+    [self dismiss:YES];
 }
 
 @end
