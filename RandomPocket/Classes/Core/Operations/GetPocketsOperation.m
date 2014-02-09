@@ -15,12 +15,10 @@
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
                                arguments:@{@"detailType": @"complete"
+//                                           , @"count": @3
                                            }
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     if(error){
-                                         self.errorHandler(error);
-                                         return;
-                                     }
+                                     NSAssert(!error, error.localizedDescription);
                                      __weak GetPocketsOperation *weakSelf = self;
                                      [self setDispatchHandler:^id{
                                          return [weakSelf saveWithResponse:response];

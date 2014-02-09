@@ -33,10 +33,6 @@
                           withHTTPMethod:PocketAPIHTTPMethodGET
                                arguments:@{@"actions":arguments}
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     if(error){
-                                         self.errorHandler(error);
-                                         return;
-                                     }                                     
                                      __weak ActionToPocketOperation *weakSelf = self;
                                      [self setDispatchHandler:^id{
                                          if(error) return error;
