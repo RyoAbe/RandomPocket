@@ -111,4 +111,26 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
     return [NSManagedObjectContext contextForThread:[NSThread mainThread]];
 }
 
++ (void)deleteEntities
+{
+    [NSManagedObjectContext deleteEntity:@"CPocket"];
+}
+
++ (BOOL)deleteEntity:(NSString*)entityName
+{
+    NSManagedObjectContext *context = [NSManagedObjectContext contextForCurrentThread];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    if(!objects){
+        return YES;
+    }
+    for (NSManagedObject *object in objects) {
+        [context deleteObject:object];
+    }
+    [context save:&error];
+
+    return error ? NO : YES;
+}
+
 @end

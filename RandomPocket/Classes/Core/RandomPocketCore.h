@@ -35,6 +35,7 @@
 // Operation
 #import "GetPocketsOperation.h"
 #import "ActionToPocketOperation.h"
+#import "LogoutOperation.h"
 
 // Utils
 #import "HTMLBodyParser.h"

@@ -15,16 +15,17 @@
 
 typedef NS_ENUM(int, LeftSidePanelRowType) {
     LeftSidePanelRowTypePocketList = 0,
-    LeftSidePanelRowTypeSettings,
+//    LeftSidePanelRowTypeSettings,
 	LeftSidePanelRowTypeAbout,
-    LeftSidePanelRowTypeLicense,
+//    LeftSidePanelRowTypeLicense,
+    LeftSidePanelRowTypeLogout,
     LeftSidePanelRowTypeTotal,
 };
 
 static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
 
 @interface LeftSidePanelViewController ()
-
+@property (nonatomic) UIActionSheet *actionSheet;
 @end
 
 @implementation LeftSidePanelViewController
@@ -42,26 +43,45 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"LeftSidePanelCell" bundle:nil] forCellReuseIdentifier:LeftSidePanelCellIdentifier];
     self.tableView.contentInset = UIEdgeInsetsMake([UIApplication sharedApplication].statusBarFrame.size.height, 0, 0, 0);
+
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
+    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Logout", @"PocketSwipeView", nil) handler:^{
+        LogoutOperation *op = [[LogoutOperation alloc] init];
+        [op setCompletionHandler:^(id result) {
+            UIViewController *vc = [[UIStoryboard storyboardWithName:@"Welcom" bundle:nil] instantiateInitialViewController];
+            [UIApplication sharedApplication].delegate.window.rootViewController = vc;
+        }];
+        [op dispatch];
+    }];
+    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
+    self.actionSheet.destructiveButtonIndex = 0;
+    self.actionSheet.cancelButtonIndex = 1;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+- (void)logout
+{
+    [self.actionSheet showInView:self.view];
+}
+
+#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *centerPanel = [storyboard instantiateInitialViewController];
-    if(indexPath.row == LeftSidePanelRowTypeSettings){
-        centerPanel = [storyboard instantiateViewControllerWithIdentifier:@"Settings"];
-    }else if(indexPath.row == LeftSidePanelRowTypeAbout){
+    if(indexPath.row == LeftSidePanelRowTypeAbout){
         centerPanel = [storyboard instantiateViewControllerWithIdentifier:@"About"];
-    }else if(indexPath.row == LeftSidePanelRowTypeLicense){
-        centerPanel = [storyboard instantiateViewControllerWithIdentifier:@"License"];
+    }else if(indexPath.row == LeftSidePanelRowTypeLogout){
+        [self logout];
+        return;
     }
-    self.sidePanelController.centerPanel = [JASidePanelController createCenterPanel:centerPanel];
+
+    self.sidePanelController.centerPanel = [self.sidePanelController createCenterPanel:centerPanel];
 }
 
 #pragma mark - Table view data source
@@ -82,12 +102,10 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     
     if(indexPath.row == LeftSidePanelRowTypePocketList){
         cell.textLabel.text = NSLocalizedStringFromTable(@"MyPocket", @"LeftSidePanel", nil);
-    }else if(indexPath.row == LeftSidePanelRowTypeSettings){
-        cell.textLabel.text = NSLocalizedStringFromTable(@"Settings", @"LeftSidePanel", nil);
     }else if(indexPath.row == LeftSidePanelRowTypeAbout){
         cell.textLabel.text = NSLocalizedStringFromTable(@"AbountApp", @"LeftSidePanel", nil);
-    }else if(indexPath.row == LeftSidePanelRowTypeLicense){
-        cell.textLabel.text = NSLocalizedStringFromTable(@"License", @"LeftSidePanel", nil);
+    }else if(indexPath.row == LeftSidePanelRowTypeLogout){
+        cell.textLabel.text = NSLocalizedStringFromTable(@"Logout", @"LeftSidePanel", nil);
     }
 
     return cell;

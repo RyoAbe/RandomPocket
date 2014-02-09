@@ -53,6 +53,7 @@
 		325FF570189F11AB008D220B /* LeftSidePanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FF56C189F11AB008D220B /* LeftSidePanelCell.m */; };
 		325FF571189F11AB008D220B /* LeftSidePanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 325FF56D189F11AB008D220B /* LeftSidePanelCell.xib */; };
 		325FF572189F11AB008D220B /* LeftSidePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 325FF56F189F11AB008D220B /* LeftSidePanelViewController.m */; };
+		326632DD18A7567600D7FE45 /* LogoutOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 326632DC18A7567600D7FE45 /* LogoutOperation.m */; };
 		3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3268E4C017CB935100E3D702 /* WelcomeViewController.m */; };
 		3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CD17CB947900E3D702 /* Welcom.storyboard */; };
 		3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3268E4CF17CB96E600E3D702 /* InitialStoryboard.storyboard */; };
@@ -158,6 +159,8 @@
 		325FF56E189F11AB008D220B /* LeftSidePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSidePanelViewController.h; sourceTree = "<group>"; };
 		325FF56F189F11AB008D220B /* LeftSidePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSidePanelViewController.m; sourceTree = "<group>"; };
 		326632DA18A7505B00D7FE45 /* RandomPocketConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketConstants.h; sourceTree = "<group>"; };
+		326632DB18A7567600D7FE45 /* LogoutOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutOperation.h; sourceTree = "<group>"; };
+		326632DC18A7567600D7FE45 /* LogoutOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutOperation.m; sourceTree = "<group>"; };
 		3268E4BF17CB935100E3D702 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		3268E4C017CB935100E3D702 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		3268E4CD17CB947900E3D702 /* Welcom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcom.storyboard; sourceTree = "<group>"; };
@@ -395,6 +398,8 @@
 				32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */,
 				17FF531F17E572C300FF3098 /* ActionToPocketOperation.h */,
 				17FF532017E572C300FF3098 /* ActionToPocketOperation.m */,
+				326632DB18A7567600D7FE45 /* LogoutOperation.h */,
+				326632DC18A7567600D7FE45 /* LogoutOperation.m */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -867,6 +872,7 @@
 				3268E4C117CB935100E3D702 /* WelcomeViewController.m in Sources */,
 				321A8A8A188A787C0077B8C2 /* UIUtil.m in Sources */,
 				3268E4D717CBA23600E3D702 /* UIPocket.m in Sources */,
+				326632DD18A7567600D7FE45 /* LogoutOperation.m in Sources */,
 				324FEFFB17CCEB2B005B08F4 /* RPColor.m in Sources */,
 				324FF01D17CE14EF005B08F4 /* PocketListCell.m in Sources */,
 				324FF01F17CE14EF005B08F4 /* PocketListViewController.m in Sources */,
