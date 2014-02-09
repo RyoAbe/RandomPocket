@@ -182,7 +182,25 @@
 - (void)setDisplayMode:(UIPocketListMode)displayMode
 {
     _displayMode = displayMode;
+    if([self isDisplayModeNormal]){
+        return;
+    }
+    [self genrateRandomIndesPathes];
+}
+
+- (void)genrateRandomIndesPathes
+{
     self.randomIndexPaths = [NSMutableDictionary dictionary];
+    NSMutableArray *indexPathArray = [NSMutableArray array];
+    for (NSInteger i = 0; i < self.numberOfItems; i++) {
+        indexPathArray[i] = [NSIndexPath indexPathForRow:i inSection:0];
+    }
+    for (NSInteger i = 0; i < self.numberOfItems; i++) {
+        NSUInteger randomNumber = arc4random_uniform(indexPathArray.count);
+        NSString *key = generateKey([NSIndexPath indexPathForRow:i inSection:0]);
+        self.randomIndexPaths[key] = indexPathArray[randomNumber];
+        [indexPathArray removeObjectAtIndex:randomNumber];
+    }
 }
 
 - (BOOL)isDisplayModeNormal

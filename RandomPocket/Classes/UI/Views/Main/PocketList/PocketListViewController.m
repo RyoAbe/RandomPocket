@@ -279,7 +279,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         default:
             break;
     }
-    self.progressView = [MRProgressOverlayView showWithTitle:title];
+    self.progressView = [MRProgressOverlayView showWithTitle:title mode:MRProgressOverlayViewModeIndeterminateSmall];
     [self changeSortMode:mode completion:^{
         [self.progressView hide];
     }];
@@ -297,7 +297,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         [self.tableView reloadData];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         if(completion) completion();
-    } afterDelay:0.1];
+    } afterDelay:0.05];
 }
 
 - (IBAction)searchButtonTapped:(id)sender
