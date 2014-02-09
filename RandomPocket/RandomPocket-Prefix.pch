@@ -12,9 +12,3 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
-
-#ifdef DEBUG
-#define RALog(FORMAT, ...) NSLog((@"%s " FORMAT), __PRETTY_FUNCTION__, ##__VA_ARGS__);
-#else
-#define RALog(...)
-#endif
