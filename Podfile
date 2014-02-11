@@ -12,6 +12,7 @@ target :RandomPocket, :exclusive => true do
 	pod 'SDWebImage'
 	pod 'NJKScrollFullScreen'
 	pod 'JASidePanels', '~> 1.3.2'
+	pod 'CrittercismSDK', '~> 4.3.1'
 	pod 'iOSCommon', :path => '../iOSCommon'
 #	pod 'iOSCommon', :git => 'https://github.com/RyoAbe/iOSCommon.git', :branch => 'develop'
 end

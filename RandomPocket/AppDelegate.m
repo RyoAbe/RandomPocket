@@ -20,9 +20,15 @@
 {
     // Pocket
     [[PocketAPI sharedAPI] setConsumerKey:@"17789-2ae60ad9c498ad18d6cc31dd"];
-
+    
+#ifndef DEBUG
     // Appirater
     [self appirater];
+
+    // Crittercism
+    [Crittercism enableWithAppID:@"52f787ba8b2e3333c3000002"];
+#endif
+
     _managedObjectContext = [self createManagedObjectContext];
     
     [self appearance];

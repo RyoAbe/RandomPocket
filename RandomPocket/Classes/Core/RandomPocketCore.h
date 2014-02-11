@@ -24,6 +24,7 @@
 #import <NJKScrollFullScreen/UIViewController+NJKFullScreenSupport.h>
 #import <JASidePanels/JASidePanelController.h>
 #import <JASidePanels/UIViewController+JASidePanel.h>
+#import <CrittercismSDK/Crittercism.h>
 
 // Entity
 #import "CPocket.h"
