@@ -12,49 +12,56 @@
 
 - (void)dispatch
 {
+    RATime *time = [RATime start];
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
                                arguments:@{@"detailType": @"complete"
 //                                           , @"count": @3
                                            }
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
-                                     NSAssert(!error, error.localizedDescription);
+                                     [time stop];
                                      __weak GetPocketsOperation *weakSelf = self;
+
+                                     RATime *time = [RATime start];
                                      [self setDispatchHandler:^id{
+                                         [time stop];
                                          return [weakSelf saveWithResponse:response];
                                      }];
                                      [super dispatch];
                                  }];
 }
 
-- (id)saveWithResponse:(NSDictionary*)response;
+- (id)saveWithResponse:(NSDictionary*)response
 {
-    NSManagedObjectContext *moc = [NSManagedObjectContext contextForCurrentThread];
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
-
-        NSString* itemID = data[@"item_id"];
-        CPocket *cPocket = [moc pocketWithItemID:itemID];
-        if(!cPocket){
-            cPocket = [moc createEntity:@"CPocket"];
-        }
-        cPocket.title = data[@"resolved_title"] ? data[@"resolved_title"] : data[@"given_title"];
-        cPocket.url = data[@"resolved_url"] ? data[@"resolved_url"] : data[@"given_url"];
-        cPocket.itemID = data[@"item_id"];
-        cPocket.status = [data[@"status"] integerValue];
-        cPocket.sortID = [data[@"sort_id"] integerValue];
-        cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
-        cPocket.favorite = [data[@"favorite"] integerValue];
-        cPocket.excerpt = data[@"excerpt"];
-        NSDictionary *image = data[@"image"];
-        cPocket.imageUrl = image[@"src"];
+        [self saveWithData:data];
     }
     NSError *error = nil;
     if (![NSManagedObjectContext save:&error]) {
         return error;
     }
-    
     return nil;
+}
+
+- (void)saveWithData:(NSDictionary*)data
+{
+    NSManagedObjectContext *moc = [NSManagedObjectContext contextForCurrentThread];
+    NSString* itemID = data[@"item_id"];
+    CPocket *cPocket = [moc pocketWithItemID:itemID];
+    if(!cPocket){
+        cPocket = [moc createEntity:@"CPocket"];
+    }
+    cPocket.title = data[@"resolved_title"] ? data[@"resolved_title"] : data[@"given_title"];
+    cPocket.url = data[@"resolved_url"] ? data[@"resolved_url"] : data[@"given_url"];
+    cPocket.itemID = data[@"item_id"];
+    cPocket.status = [data[@"status"] integerValue];
+    cPocket.sortID = [data[@"sort_id"] integerValue];
+    cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
+    cPocket.favorite = [data[@"favorite"] integerValue];
+    cPocket.excerpt = data[@"excerpt"];
+    NSDictionary *image = data[@"image"];
+    cPocket.imageUrl = image[@"src"];
 }
 
 @end
