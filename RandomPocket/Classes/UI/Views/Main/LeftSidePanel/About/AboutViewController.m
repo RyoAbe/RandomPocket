@@ -7,6 +7,21 @@
 //
 
 #import "AboutViewController.h"
+#import "RandomPocketUI.h"
+
+typedef NS_ENUM(int, AbountViewSectionType) {
+    AbountViewSectionTypeAppInfo = 0,
+    AbountViewSectionTypeCoutactUs,
+};
+
+typedef NS_ENUM(int, AbountViewRowType) {
+    AbountViewRowTypeReviewAppStore = 0,
+//    AbountViewRowTypeReviewAppSite,
+    AbountViewRowTypeReviewTerms,
+    AbountViewRowTypeReviewLicense,
+    AbountViewRowTypeReviewTwitter = 0,
+    AbountViewRowTypeReviewDeveloperWebsite,
+};
 
 @interface AboutViewController ()
 
@@ -27,6 +42,33 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case AbountViewSectionTypeAppInfo:
+            switch (indexPath.row) {
+                case AbountViewRowTypeReviewAppStore:
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/"]];
+                    break;
+                case AbountViewRowTypeReviewTerms:
+                    break;
+                case AbountViewRowTypeReviewLicense:
+                    break;
+            }
+            break;
+        case AbountViewSectionTypeCoutactUs:
+            switch (indexPath.row) {
+                case AbountViewRowTypeReviewTwitter:
+                    [UIUtil openInSafariOrChrome:[NSURL URLWithString:@"https://twitter.com/RyoAbe/"]];
+                    break;
+                case AbountViewRowTypeReviewDeveloperWebsite:
+                    [UIUtil openInSafariOrChrome:[NSURL URLWithString:@"http://ryoabe.com/"]];
+                    break;
+            }
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning
