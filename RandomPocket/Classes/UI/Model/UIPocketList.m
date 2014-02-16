@@ -151,6 +151,11 @@
 
 #pragma mark - Random IndexPath
 
+/**
+ *  引数で受け取ったindexPathをキーとしてrandomIndexPathsの値を除去
+ *
+ *  @param removeIndexPathKey 削除対象のキーとなるindexPath
+ */
 - (void)removeAtIndexPath:(NSIndexPath*)removeIndexPathKey
 {
     if(self.displayMode == UIPocketListMode_DisplayNormal){
@@ -167,10 +172,10 @@
             continue;
         }
         NSIndexPath *indexPathKey = [NSIndexPath indexPathForRow:row inSection:removeIndexPathKey.section];
-        NSString *newKey = generateKey(indexPathKey);
+        NSString *newKey = [self indexPathKey:indexPathKey];
         NSIndexPath *newValue = self.randomIndexPaths[newKey];
         if(indexPathKey.row >= removeIndexPathKey.row){
-            newKey = generateKeyFromRow(indexPathKey.row - 1, removeIndexPathKey.section);
+            newKey = [self indexPathKey:indexPathKey.row - 1 section:removeIndexPathKey.section];
         }
         if(newValue.row >= removeIndexPathValue.row){
             newValue = [NSIndexPath indexPathForRow:newValue.row - 1 inSection:removeIndexPathValue.section];
@@ -180,20 +185,9 @@
     self.randomIndexPaths = newIndexPaths;
 }
 
-- (void)addAtIndexPath:(NSIndexPath*)indexPath forIndexPathKey:(NSIndexPath*)indexPathKey
-{
-    self.randomIndexPaths[[self indexPathKey:indexPath]] = indexPath;
-}
-
-- (void)changeDisplayMode:(UIPocketListMode)displayMode
-{
-    _displayMode = displayMode;
-    if([self isDisplayModeNormal]){
-        return;
-    }
-    [self genrateRandomIndesPathes];
-}
-
+/**
+ *  ランダムなindexPathのdictionaryを作成
+ */
 - (void)genrateRandomIndesPathes
 {
     self.randomIndexPaths = [NSMutableDictionary dictionary];
@@ -203,17 +197,19 @@
     }
     for (NSInteger i = 0; i < self.numberOfItems; i++) {
         NSUInteger randomNumber = arc4random_uniform(indexPathArray.count);
-        NSString *key = generateKey([NSIndexPath indexPathForRow:i inSection:0]);
+        NSString *key = [self indexPathKey:i section:0];
         self.randomIndexPaths[key] = indexPathArray[randomNumber];
         [indexPathArray removeObjectAtIndex:randomNumber];
     }
 }
 
-- (BOOL)isDisplayModeNormal
-{
-    return _displayMode == UIPocketListMode_DisplayNormal;
-}
-
+/**
+ *  生成済みのrandomIndexPathの中身を見ながら、ランダムなindexPathを生成
+ *
+ *  @param indexPath キーとなるindexPath
+ *
+ *  @return ランダムなindexPath
+ */
 - (NSIndexPath*)generateRandomIndexPath:(NSIndexPath*)indexPath
 {
     NSUInteger numberOfItemsInSection = [self numberOfItemsInSection:indexPath.section];
@@ -240,26 +236,38 @@
     return retIndexPath;
 }
 
-static NSString* generateKeyFromRow(NSUInteger row, NSUInteger section)
-{
-    return generateKey([NSIndexPath indexPathForRow:row inSection:section]);
-}
-
-static NSString* generateKey(NSIndexPath* indexPath)
-{
-    return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
-}
-
+/**
+ *  引数からランダムなindexPathの生成用のキーを生成
+ *
+ *  @param row     indexPathのrow
+ *  @param section indexPathのsection
+ *
+ *  @return キー("[0,0]")を返す
+ */
 - (NSString*)indexPathKey:(NSUInteger)row section:(NSUInteger)section
 {
     return [self indexPathKey:[NSIndexPath indexPathForRow:row inSection:section]];
 }
 
+/**
+ *  引数のindexPathを使ってランダムなindexPathの生成用のキーを生成
+ *
+ *  @param indexPath キー生成用のindexPath
+ *
+ *  @return キー("[0,0]")を返す
+ */
 - (NSString*)indexPathKey:(NSIndexPath*)indexPath
 {
    return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
 }
 
+/**
+ *  NSString型のキー（"[0,0]"）からNSIndexPathを生成
+ *
+ *  @param key 文字列のキー（"[0,0]"）
+ *
+ *  @return 文字列のキーから生成されたNSIndexPath
+ */
 - (NSIndexPath*)indexPathFromKey:(NSString*)key
 {
     // 「[0, 0]」の両端のカッコを除去
@@ -272,6 +280,27 @@ static NSString* generateKey(NSIndexPath* indexPath)
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath
 {
     return [self.randomIndexPaths.allValues containsObject:randomIndexPath];
+}
+
+#pragma mark -
+
+/**
+ *   ディスプレイモードを変更する
+ *
+ *  @param displayMode ディスプレイモード
+ */
+- (void)changeDisplayMode:(UIPocketListMode)displayMode
+{
+    _displayMode = displayMode;
+    if([self isDisplayModeNormal]){
+        return;
+    }
+    [self genrateRandomIndesPathes];
+}
+
+- (BOOL)isDisplayModeNormal
+{
+    return _displayMode == UIPocketListMode_DisplayNormal;
 }
 
 - (id)copyWithZone:(NSZone *)zone
