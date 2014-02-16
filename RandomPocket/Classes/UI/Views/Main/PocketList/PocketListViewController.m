@@ -68,12 +68,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.pocketList.delegate = self;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.pocketList.delegate = nil;
-}
-
 - (void)reqestGetPockets
 {
     BOOL isShowDimminingView = self.pocketList.numberOfItems == 0 ? YES : NO;
@@ -293,7 +287,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (void)changeSortMode:(UIPocketListMode)mode completion:(void (^)())completion
 {
     [self performBlock:^(id sender) {
-        self.pocketList.displayMode = mode;
+        [self.pocketList changeDisplayMode:mode];
         [self.tableView reloadData];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         if(completion) completion();
@@ -345,7 +339,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     if([segue.identifier isEqualToString:ToPocketSwipeSegue]){
         PocketSwipeViewController *vc = segue.destinationViewController;
         vc.selectedPocketIndex = self.selectedIndexPath.row;
-        vc.pocketList = self.pocketList;
+        vc.pocketList = [self.pocketList copy];
     }
 }
 

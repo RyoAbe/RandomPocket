@@ -12,18 +12,24 @@
 @interface UIPocketList()
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) NSMutableDictionary *randomIndexPaths;
+@property (nonatomic) UIPocketListMode displayMode;
 @end
 
 @implementation UIPocketList
 
-- (id)init
++ (id)allocWithZone:(struct _NSZone *)zone
 {
-    self = [super init];
-    if (self) {
-        self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
-        self.randomIndexPaths = [NSMutableDictionary dictionary];
+    id copySelf = [super allocWithZone:zone];
+    if(copySelf){
+        [copySelf initializeSettings];
     }
-    return self;
+    return copySelf;
+}
+
+- (void)initializeSettings
+{
+    self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+    self.randomIndexPaths = [NSMutableDictionary dictionary];
 }
 
 #pragma mark - Fetched results controller
@@ -179,7 +185,7 @@
     self.randomIndexPaths[[self indexPathKey:indexPath]] = indexPath;
 }
 
-- (void)setDisplayMode:(UIPocketListMode)displayMode
+- (void)changeDisplayMode:(UIPocketListMode)displayMode
 {
     _displayMode = displayMode;
     if([self isDisplayModeNormal]){
@@ -266,6 +272,14 @@ static NSString* generateKey(NSIndexPath* indexPath)
 - (BOOL)isAddedIndexPath:(NSIndexPath*)randomIndexPath
 {
     return [self.randomIndexPaths.allValues containsObject:randomIndexPath];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    UIPocketList *pocketList = [[self class] allocWithZone:zone];
+    pocketList.randomIndexPaths = self.randomIndexPaths;
+    pocketList.displayMode = self.displayMode;
+    return pocketList;
 }
 
 @end
