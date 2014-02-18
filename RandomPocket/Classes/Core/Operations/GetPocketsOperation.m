@@ -52,8 +52,18 @@
     if(!cPocket){
         cPocket = [moc createEntity:@"CPocket"];
     }
-    cPocket.title = data[@"resolved_title"] ? data[@"resolved_title"] : data[@"given_title"];
-    cPocket.url = data[@"resolved_url"] ? data[@"resolved_url"] : data[@"given_url"];
+    NSString *title = data[@"resolved_title"];
+    if(!title || title.length == 0){
+        title = data[@"given_title"];
+    }
+    cPocket.title = title;
+    
+    NSString *url = data[@"resolved_url"];
+    if(!url || url.length == 0){
+        title = data[@"given_url"];
+    }
+    cPocket.url = url;
+
     cPocket.itemID = data[@"item_id"];
     cPocket.status = [data[@"status"] integerValue];
     cPocket.sortID = [data[@"sort_id"] integerValue];
