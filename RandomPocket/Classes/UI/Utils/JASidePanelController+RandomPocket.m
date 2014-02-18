@@ -15,6 +15,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     JASidePanelController *sidePanelController = [[JASidePanelController alloc] init];
+    sidePanelController.recognizesPanGesture = NO;
     sidePanelController.leftPanel = [storyboard instantiateViewControllerWithIdentifier:@"LeftSidePanelView"];
     sidePanelController.centerPanel = [sidePanelController createCenterPanel:[storyboard instantiateInitialViewController]];
     return sidePanelController;
