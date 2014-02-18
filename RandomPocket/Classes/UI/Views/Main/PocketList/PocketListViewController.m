@@ -264,10 +264,12 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     switch (self.pocketList.displayMode) {
         case UIPocketListMode_DisplayNormal:
             mode = UIPocketListMode_DisplayRandom;
+            self.randomButton.image = [UIImage imageNamed:@"revert_icon"];
             title = NSLocalizedStringFromTable(@"ToRandomSort", @"PocketList", nil);
             break;
         case UIPocketListMode_DisplayRandom:
             mode = UIPocketListMode_DisplayNormal;
+            self.randomButton.image = [UIImage imageNamed:@"shuffle_icon"];
             title = NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil);
             break;
         default:

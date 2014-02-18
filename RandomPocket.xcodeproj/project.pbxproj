@@ -61,6 +61,8 @@
 		32935224189FB1470017D96E /* JASidePanelController+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 32935223189FB1470017D96E /* JASidePanelController+RandomPocket.m */; };
 		3293522A189FB3600017D96E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32935229189FB3600017D96E /* AboutViewController.m */; };
 		32935230189FB3830017D96E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293522F189FB3830017D96E /* SettingsViewController.m */; };
+		32A1105618B3A2CE00E46D5A /* revert_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A1105418B3A2CE00E46D5A /* revert_icon.png */; };
+		32A1105718B3A2CE00E46D5A /* revert_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A1105518B3A2CE00E46D5A /* revert_icon@2x.png */; };
 		32A4400018ABB04C006FEBC4 /* LicenseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A43FFC18ABB04C006FEBC4 /* LicenseCell.m */; };
 		32A4400118ABB04C006FEBC4 /* LicenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A43FFD18ABB04C006FEBC4 /* LicenseCell.xib */; };
 		32A4400218ABB04C006FEBC4 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A43FFF18ABB04C006FEBC4 /* LicenseViewController.m */; };
@@ -176,6 +178,8 @@
 		32935229189FB3600017D96E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		3293522E189FB3830017D96E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3293522F189FB3830017D96E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		32A1105418B3A2CE00E46D5A /* revert_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revert_icon.png; sourceTree = "<group>"; };
+		32A1105518B3A2CE00E46D5A /* revert_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "revert_icon@2x.png"; sourceTree = "<group>"; };
 		32A43FFB18ABB04C006FEBC4 /* LicenseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseCell.h; sourceTree = "<group>"; };
 		32A43FFC18ABB04C006FEBC4 /* LicenseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseCell.m; sourceTree = "<group>"; };
 		32A43FFD18ABB04C006FEBC4 /* LicenseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseCell.xib; sourceTree = "<group>"; };
@@ -269,6 +273,8 @@
 				17C09F8F18279899001435B9 /* shuffle_icon.png */,
 				17C09F9018279899001435B9 /* shuffle_icon@2x.png */,
 				17889F171813B46200E09CC0 /* welcome.jpg */,
+				32A1105418B3A2CE00E46D5A /* revert_icon.png */,
+				32A1105518B3A2CE00E46D5A /* revert_icon@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -682,6 +688,7 @@
 				32D0885217C9DE76007C50CD /* Frameworks */,
 				32D0885317C9DE76007C50CD /* Resources */,
 				F784F9E15A7B47ED85F7C3E5 /* Copy Pods Resources */,
+				322FD91D18B09D5C0033F6A6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -766,9 +773,11 @@
 				321A8A83188A738C0077B8C2 /* browser_icon.png in Resources */,
 				32A4400118ABB04C006FEBC4 /* LicenseCell.xib in Resources */,
 				3268E4CE17CB947900E3D702 /* Welcom.storyboard in Resources */,
+				32A1105618B3A2CE00E46D5A /* revert_icon.png in Resources */,
 				3268E4D017CB96E600E3D702 /* InitialStoryboard.storyboard in Resources */,
 				17C09F9118279899001435B9 /* check_icon.png in Resources */,
 				32FC839318A12BBB007302C0 /* menu_icon@2x.png in Resources */,
+				32A1105718B3A2CE00E46D5A /* revert_icon@2x.png in Resources */,
 				324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */,
 				17C09F9318279899001435B9 /* shuffle_icon.png in Resources */,
 				324FF02117CE1516005B08F4 /* Main.storyboard in Resources */,
@@ -795,6 +804,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		322FD91D18B09D5C0033F6A6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    APP_ID=\"52f787ba8b2e3333c3000002\"\n    API_KEY=\"bqegdoqkznc1harll2u5x4timyhvgwes\"\n    source ${SRCROOT}/Pods/CrittercismSDK/CrittercismSDK/dsym_upload.sh\nfi";
+		};
 		32D0887C17C9DE76007C50CD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
