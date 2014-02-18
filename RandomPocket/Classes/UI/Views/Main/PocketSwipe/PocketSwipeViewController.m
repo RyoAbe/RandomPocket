@@ -37,6 +37,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
     [self.collectionView registerNib:[UINib nibWithNibName:@"PocketDetailCell" bundle:nil] forCellWithReuseIdentifier:PocketDetailCellIdentifier];
     self.actionSheet = [self createActionSheet];
     self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * self.selectedPocketIndex, 0);
+    self.navigationController.navigationBar.topItem.title = NSLocalizedStringFromTable(@"Back", @"Common", nil);
 }
 
 - (void)viewWillAppear:(BOOL)animated
