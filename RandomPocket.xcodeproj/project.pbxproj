@@ -61,6 +61,7 @@
 		32935224189FB1470017D96E /* JASidePanelController+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 32935223189FB1470017D96E /* JASidePanelController+RandomPocket.m */; };
 		3293522A189FB3600017D96E /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32935229189FB3600017D96E /* AboutViewController.m */; };
 		32935230189FB3830017D96E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3293522F189FB3830017D96E /* SettingsViewController.m */; };
+		32A0610B18BCB5EA00860204 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A0610A18BCB5EA00860204 /* Images.xcassets */; };
 		32A1105618B3A2CE00E46D5A /* revert_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A1105418B3A2CE00E46D5A /* revert_icon.png */; };
 		32A1105718B3A2CE00E46D5A /* revert_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32A1105518B3A2CE00E46D5A /* revert_icon@2x.png */; };
 		32A4400018ABB04C006FEBC4 /* LicenseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A43FFC18ABB04C006FEBC4 /* LicenseCell.m */; };
@@ -178,6 +179,7 @@
 		32935229189FB3600017D96E /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		3293522E189FB3830017D96E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3293522F189FB3830017D96E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		32A0610A18BCB5EA00860204 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		32A1105418B3A2CE00E46D5A /* revert_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revert_icon.png; sourceTree = "<group>"; };
 		32A1105518B3A2CE00E46D5A /* revert_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "revert_icon@2x.png"; sourceTree = "<group>"; };
 		32A43FFB18ABB04C006FEBC4 /* LicenseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseCell.h; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				32D0886817C9DE76007C50CD /* AppDelegate.m */,
 				32AF668117C9E8D200EF34EC /* Classes */,
 				17291EC117CF9A6400B44BBE /* Resources */,
+				32A0610A18BCB5EA00860204 /* Images.xcassets */,
 				32D0885F17C9DE76007C50CD /* Supporting Files */,
 			);
 			path = RandomPocket;
@@ -762,6 +765,7 @@
 			files = (
 				32FC838F189FDB17007302C0 /* LeftSidePanel.strings in Resources */,
 				17C09F9218279899001435B9 /* check_icon@2x.png in Resources */,
+				32A0610B18BCB5EA00860204 /* Images.xcassets in Resources */,
 				17C09F9418279899001435B9 /* shuffle_icon@2x.png in Resources */,
 				32D0886317C9DE76007C50CD /* InfoPlist.strings in Resources */,
 				32D0886B17C9DE76007C50CD /* Default.png in Resources */,
@@ -1034,6 +1038,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1069,6 +1075,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
