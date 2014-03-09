@@ -40,6 +40,7 @@
             return;
         }
         JASidePanelController *vc = [JASidePanelController createSidePanelController];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:vc animated:YES completion:nil];
     }];
 }

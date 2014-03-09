@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="welcome.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="YkJ-DG-VfB">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="welcome.png" translatesAutoresizingMaskIntoConstraints="NO" id="YkJ-DG-VfB">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -37,20 +37,13 @@
                                     <action selector="loginButtonTapped:" destination="2" eventType="touchUpInside" id="A3L-gB-b7F"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pocket Optimizer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbI-R1-UMi">
-                                <rect key="frame" x="21" y="240" width="279" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="29"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="1Ey-B7-3So" secondAttribute="trailing" constant="20" symbolic="YES" id="II3-IG-sXN"/>
-                            <constraint firstItem="bbI-R1-UMi" firstAttribute="top" secondItem="kXO-Mm-dnt" secondAttribute="bottom" constant="220" id="WXn-Ip-jtq"/>
-                            <constraint firstAttribute="centerX" secondItem="bbI-R1-UMi" secondAttribute="centerX" id="f7i-pH-oTz"/>
                             <constraint firstItem="ik5-Sp-M8S" firstAttribute="top" secondItem="1Ey-B7-3So" secondAttribute="bottom" constant="40" id="j6T-Cc-HsJ"/>
+                            <constraint firstAttribute="centerX" secondItem="YkJ-DG-VfB" secondAttribute="centerX" id="wO4-SW-amq"/>
+                            <constraint firstAttribute="centerY" secondItem="YkJ-DG-VfB" secondAttribute="centerY" id="zzP-nb-l54"/>
                         </constraints>
                     </view>
                     <connections>
@@ -63,7 +56,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="welcome.jpg" width="2848" height="4272"/>
+        <image name="welcome.png" width="320" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
