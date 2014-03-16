@@ -73,6 +73,8 @@
 		32A4400118ABB04C006FEBC4 /* LicenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A43FFD18ABB04C006FEBC4 /* LicenseCell.xib */; };
 		32A4400218ABB04C006FEBC4 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A43FFF18ABB04C006FEBC4 /* LicenseViewController.m */; };
 		32AF668017C9E63600EF34EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32AF667F17C9E63600EF34EC /* Security.framework */; };
+		32C1CE6818D5620E0024B425 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1CE6618D5620E0024B425 /* LoginViewController.m */; };
+		32C1CE6918D5620E0024B425 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32C1CE6718D5620E0024B425 /* LoginViewController.xib */; };
 		32D07565186547620036F4BE /* MRProgressOverlayView+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */; };
 		32D0885917C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0885B17C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
@@ -196,6 +198,9 @@
 		32A43FFF18ABB04C006FEBC4 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
 		32AF667F17C9E63600EF34EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		32AF668717C9E9F000EF34EC /* RandomPocketUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomPocketUI.h; sourceTree = "<group>"; };
+		32C1CE6518D5620E0024B425 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		32C1CE6618D5620E0024B425 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		32C1CE6718D5620E0024B425 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		32D07563186547620036F4BE /* MRProgressOverlayView+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRProgressOverlayView+RandomPocket.h"; sourceTree = "<group>"; };
 		32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRProgressOverlayView+RandomPocket.m"; sourceTree = "<group>"; };
 		32D0885517C9DE76007C50CD /* RandomPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -430,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				324FF02017CE1516005B08F4 /* Main.storyboard */,
+				32C1CE6118D561980024B425 /* LoginView */,
 				325FF569189F11AB008D220B /* LeftSidePanel */,
 				324FF01217CE14EF005B08F4 /* PocketList */,
 				324FF01A17CE14EF005B08F4 /* PocketSwipe */,
@@ -601,6 +607,16 @@
 			children = (
 			);
 			path = Wizards;
+			sourceTree = "<group>";
+		};
+		32C1CE6118D561980024B425 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				32C1CE6518D5620E0024B425 /* LoginViewController.h */,
+				32C1CE6618D5620E0024B425 /* LoginViewController.m */,
+				32C1CE6718D5620E0024B425 /* LoginViewController.xib */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 		32D0884C17C9DE76007C50CD = {
@@ -777,6 +793,7 @@
 				32D0886317C9DE76007C50CD /* InfoPlist.strings in Resources */,
 				324CD62B188EBE8F007C3552 /* evernote_icon@2x.png in Resources */,
 				321A8A84188A738C0077B8C2 /* browser_icon@2x.png in Resources */,
+				32C1CE6918D5620E0024B425 /* LoginViewController.xib in Resources */,
 				17C09F8C18278EF4001435B9 /* PocketSwipeView.strings in Resources */,
 				321A8A83188A738C0077B8C2 /* browser_icon.png in Resources */,
 				32A4400118ABB04C006FEBC4 /* LicenseCell.xib in Resources */,
@@ -929,6 +946,7 @@
 				178F268817D3081800993DF9 /* HTMLNode.m in Sources */,
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
+				32C1CE6818D5620E0024B425 /* LoginViewController.m in Sources */,
 				324CD626188EAA91007C3552 /* BlockActivity.m in Sources */,
 				32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */,
 				324CD627188EAA91007C3552 /* UIActivity+Blocks.m in Sources */,

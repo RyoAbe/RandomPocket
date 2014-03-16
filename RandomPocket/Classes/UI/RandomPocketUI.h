@@ -23,6 +23,7 @@
 #import "LeftSidePanelViewController.h"
 #import "PocketSwipeViewController.h"
 #import "PocketDetailCell.h"
+#import "LoginViewController.h"
 
 // Category
 #import "UIViewController+RandomPocket.h"

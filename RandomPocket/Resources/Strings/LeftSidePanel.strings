@@ -10,4 +10,6 @@
 "Settings" = "Settings";
 "AbountApp" = "Abount App";
 "License" = "License";
+"Login" = "Login";
 "Logout" = "Logout";
+"LogoutSucceed" = "Succeed log out";

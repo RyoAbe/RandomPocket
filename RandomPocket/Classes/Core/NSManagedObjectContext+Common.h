@@ -15,5 +15,5 @@
 + (NSManagedObjectContext *)contextForCurrentThread;
 + (NSManagedObjectContext *)contextForMainThread;
 + (BOOL)save:(NSError **)error;
-+ (void)deleteEntities;
++ (NSError*)deleteEntities;
 @end

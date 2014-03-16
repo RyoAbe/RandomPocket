@@ -18,6 +18,7 @@
 @property (nonatomic) NSIndexPath *swipedIndexPath;
 @property (nonatomic) GetPocketsOperation *getPocketsOperation;
 @property (nonatomic) NJKScrollFullScreen *scrollProxy;
+@property (nonatomic) LoginViewController *loginViewController;
 @end
 
 static NSString* const PokcetListCellIdentifier = @"pokcetListCell";
@@ -51,14 +52,21 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
     // PocketList
     self.pocketList = [[UIPocketList alloc] init];
-    if(self.pocketList.numberOfItems == 0){
-        [self reqestGetPockets];
-    }
 
     // NJKScrollFullScreen
     self.scrollProxy = [[NJKScrollFullScreen alloc] initWithForwardTarget:self];
     self.tableView.delegate = (id)self.scrollProxy;
     self.scrollProxy.delegate = self;
+
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NavigationTitleLogo"]];
+
+
+    if(![PocketAPI sharedAPI].isLoggedIn){
+        [self performBlock:^(id sender){ [self presentLoginViewController]; } afterDelay:0.5f];
+
+    }else if(self.pocketList.numberOfItems == 0){
+        [self reqestGetPockets:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -68,10 +76,18 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.pocketList.delegate = self;
 }
 
-- (void)reqestGetPockets
+- (void)presentLoginViewController
 {
-    BOOL isShowDimminingView = self.pocketList.numberOfItems == 0 ? YES : NO;
+    if(!self.loginViewController){
+        self.loginViewController = [[LoginViewController alloc] initWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
+                                                                         cancelBlock:nil
+                                                                          errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)]; }];
+    }
+    [self presentViewController:self.loginViewController animated:YES completion:nil];
+}
 
+- (void)reqestGetPockets:(BOOL)isShowDimminingView
+{
     if(!self.pocketList.isDisplayModeNormal) [self changeSortMode:UIPocketListMode_DisplayNormal];
     
     __weak PocketListViewController *weakSelf = self;

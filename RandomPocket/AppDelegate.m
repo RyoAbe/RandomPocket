@@ -33,10 +33,6 @@
     
     [self appearance];
 
-    if(![PocketAPI sharedAPI].isLoggedIn){
-        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Welcom" bundle:nil] instantiateInitialViewController];
-        return YES;
-    }
     self.window.rootViewController = [JASidePanelController createSidePanelController];
 
     return YES;

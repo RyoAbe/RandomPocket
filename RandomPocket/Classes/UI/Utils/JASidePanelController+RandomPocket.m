@@ -18,6 +18,7 @@
     sidePanelController.recognizesPanGesture = NO;
     sidePanelController.leftPanel = [storyboard instantiateViewControllerWithIdentifier:@"LeftSidePanelView"];
     sidePanelController.centerPanel = [sidePanelController createCenterPanel:[storyboard instantiateInitialViewController]];
+    sidePanelController.modalPresentationStyle = UIModalPresentationCurrentContext;
     return sidePanelController;
 }
 
