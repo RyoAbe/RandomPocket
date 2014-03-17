@@ -88,6 +88,14 @@
     return _managedObjectContext;
 }
 
+- (void)recreateManagedObjectContext
+{
+    _managedObjectContext = nil;
+    _managedObjectModel = nil;
+    _persistentStoreCoordinator = nil;
+    _managedObjectContext = [self createManagedObjectContext];
+}
+
 - (NSManagedObjectModel *)managedObjectModel
 {
     if (_managedObjectModel != nil) {

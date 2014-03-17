@@ -113,30 +113,46 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
 
 + (NSError*)deleteEntities
 {
-    [NSManagedObjectContext deleteEntity:@"CPocket"];
-    
-    NSError *error = nil;
-    if (![NSManagedObjectContext save:&error]) {
-        return error;
-    }
-    return nil;
+    return [NSManagedObjectContext deleteEntity:@"CPocket"];
 }
 
-+ (BOOL)deleteEntity:(NSString*)entityName
++ (NSError*)deleteEntity:(NSString*)entityName
 {
     NSManagedObjectContext *context = [NSManagedObjectContext contextForCurrentThread];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     if(!objects){
-        return YES;
+        return nil;
     }
     for (NSManagedObject *object in objects) {
         [context deleteObject:object];
     }
     [context save:&error];
 
-    return error ? NO : YES;
+    return error;
+}
+
+- (NSError*)removeStore
+{
+    // storeのURL
+    NSURL *applicationDocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *storeURL = [applicationDocumentsDirectory URLByAppendingPathComponent:@"RandomPocket.sqlite"];
+    
+    // NSPersistentStore取得
+    NSPersistentStoreCoordinator *storeCoodinator = [[NSManagedObjectContext contextForCurrentThread] persistentStoreCoordinator];
+
+    NSPersistentStore *store = [storeCoodinator persistentStoreForURL:storeURL];
+    NSError *error = nil;
+    [storeCoodinator removePersistentStore:store error:&error];
+    
+    // 物理的に消す
+    [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
+
+    // ManagedObjectContext作り直し
+//    [delegate recreateManagedObjectContext];
+
+    return error;
 }
 
 @end

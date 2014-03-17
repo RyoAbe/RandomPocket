@@ -17,7 +17,7 @@
     if (self) {
         [self setDispatchHandler:^id{
             [[PocketAPI sharedAPI] logout];
-            return [NSManagedObjectContext deleteEntities];
+            return nil;
         }];
     }
     return self;

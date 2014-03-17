@@ -50,6 +50,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
         LogoutOperation *op = [[LogoutOperation alloc] init];
         [op setCompletionHandler:^(id result) {
             [wearkSelf.view.window makeToast:NSLocalizedStringFromTable(@"LogoutSucceed", @"LeftSidePanel", nil)];
+            [NSManagedObjectContext deleteEntities];
             [wearkSelf.tableView reloadData];
         }];
         [op dispatch];
