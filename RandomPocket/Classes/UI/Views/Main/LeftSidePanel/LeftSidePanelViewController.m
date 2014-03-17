@@ -44,13 +44,13 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"LeftSidePanelCell" bundle:nil] forCellReuseIdentifier:LeftSidePanelCellIdentifier];
     self.tableView.contentInset = UIEdgeInsetsMake([UIApplication sharedApplication].statusBarFrame.size.height, 0, 0, 0);
 
-    self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"DisconnectActionSheetTitle", @"LeftSidePanel", nil)];
     __weak LeftSidePanelViewController *wearkSelf = self;
-    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Logout", @"PocketSwipeView", nil) handler:^{
+    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Disconnect", @"LeftSidePanel", nil) handler:^{
         LogoutOperation *op = [[LogoutOperation alloc] init];
         [op setCompletionHandler:^(id result) {
-            [wearkSelf.view.window makeToast:NSLocalizedStringFromTable(@"LogoutSucceed", @"LeftSidePanel", nil)];
             [NSManagedObjectContext deleteEntities];
+            [wearkSelf.view.window makeToast:NSLocalizedStringFromTable(@"DisconnectComplete", @"LeftSidePanel", nil)];
             [wearkSelf.tableView reloadData];
         }];
         [op dispatch];
@@ -72,22 +72,9 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
 
 - (void)login
 {
-    if(![self.view.window.rootViewController isKindOfClass:[JASidePanelController class]]){
-        return;
-    }
-    JASidePanelController *sidePanelController = (JASidePanelController*)self.view.window.rootViewController;
-
-    if(![sidePanelController.centerPanel isKindOfClass:[UINavigationController class]]){
-        return;
-    }
-    UINavigationController *navigationController = (UINavigationController*)sidePanelController.centerPanel;
-
-    if(![navigationController.viewControllers[0] isKindOfClass:[PocketListViewController class]]){
-        return;
-    }
-    PocketListViewController *pocketListViewController = navigationController.viewControllers[0];
-
-    [pocketListViewController presentLoginViewController];
+    [self presentLoginViewControllerWithSucceedBlock:^{ [self.tableView reloadData]; }
+                                         cancelBlock:nil
+                                          errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ConnectFaild", @"Common", nil)]; }];
 }
 
 #pragma mark - Table view delegate
@@ -131,7 +118,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     }else if(indexPath.row == LeftSidePanelRowTypeAbout){
         cell.textLabel.text = NSLocalizedStringFromTable(@"AbountApp", @"LeftSidePanel", nil);
     }else if(indexPath.row == LeftSidePanelRowTypeLoginOrLogout){
-        NSString *key = [PocketAPI sharedAPI].isLoggedIn ? @"Logout" : @"Login";
+        NSString *key = [PocketAPI sharedAPI].isLoggedIn ? @"Disconnect" : @"Connect";
         cell.textLabel.text = NSLocalizedStringFromTable(key, @"LeftSidePanel", nil);
     }
 

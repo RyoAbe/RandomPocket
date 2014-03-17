@@ -44,7 +44,12 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.refreshController = [UIRefreshControl new];
     self.refreshController.layer.zPosition = -1;
     [self.tableView addSubview:self.refreshController];
-    [self.refreshController addTarget:self action:@selector(reqestGetPockets) forControlEvents:UIControlEventValueChanged];
+
+    __weak PocketListViewController *weakSelf = self;
+    [self.refreshController addEventHandler:^(id sender) {
+        [weakSelf reqestGetPockets:NO];
+    } forControlEvents:UIControlEventValueChanged];
+    
     self.tableView.alwaysBounceVertical = YES;
 
     // リクエスト
@@ -59,14 +64,25 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.scrollProxy.delegate = self;
 
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NavigationTitleLogo"]];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 
-    if(![PocketAPI sharedAPI].isLoggedIn){
-        [self performBlock:^(id sender){ [self presentLoginViewController]; } afterDelay:0.5f];
-
-    }else if(self.pocketList.numberOfItems == 0){
-        [self reqestGetPockets:YES];
+    if(self.pocketList.numberOfItems != 0){
+        return;
     }
+    if(![PocketAPI sharedAPI].isLoggedIn){
+        [self performBlock:^(id sender){
+            [self presentLoginViewControllerWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
+                                                 cancelBlock:nil
+                                                  errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ConnectFaild", @"Common", nil)]; }];
+            
+        } afterDelay:0.5f];
+        return;
+    }
+    [self reqestGetPockets:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -74,16 +90,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [super viewDidAppear:animated];
     self.navigationController.navigationBar.translucent = YES;
     self.pocketList.delegate = self;
-}
-
-- (void)presentLoginViewController
-{
-    if(!self.loginViewController){
-        self.loginViewController = [[LoginViewController alloc] initWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
-                                                                         cancelBlock:nil
-                                                                          errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"FaildLogin", @"Welcom", nil)]; }];
-    }
-    [self presentViewController:self.loginViewController animated:YES completion:nil];
 }
 
 - (void)reqestGetPockets:(BOOL)isShowDimminingView

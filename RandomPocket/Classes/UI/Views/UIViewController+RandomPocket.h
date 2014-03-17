@@ -10,4 +10,7 @@
 
 @interface UIViewController (RandomPocket)
 - (UINavigationController *)webViewControllerWithURL:(NSString*)url;
+- (void)presentLoginViewControllerWithSucceedBlock:(void (^)(void))succeedBlock
+                                       cancelBlock:(void (^)(void))cancelBlock
+                                        errorBlock:(void (^)(void))errorBlock;
 @end

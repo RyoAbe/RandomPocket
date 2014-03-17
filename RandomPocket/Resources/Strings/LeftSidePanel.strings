@@ -10,6 +10,7 @@
 "Settings" = "Settings";
 "AbountApp" = "Abount App";
 "License" = "License";
-"Login" = "Login";
-"Logout" = "Logout";
-"LogoutSucceed" = "Succeed log out";
+"Connect" = "Connect";
+"Disconnect" = "Disconnect";
+"DisconnectComplete" = "Disconnect complete.";
+"DisconnectActionSheetTitle" = "Are you sure you want to disconnect?";

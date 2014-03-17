@@ -12,7 +12,6 @@
 		17291EC817CF9A6400B44BBE /* Common.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC417CF9A6400B44BBE /* Common.strings */; };
 		17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC517CF9A6400B44BBE /* PocketDetail.strings */; };
 		17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC617CF9A6400B44BBE /* PocketList.strings */; };
-		17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC717CF9A6400B44BBE /* Welcom.strings */; };
 		17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17291EE217CFA01000B44BBE /* HTMLBodyParser.m */; };
 		175264051821597D00D7FFB8 /* CPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 175264041821597D00D7FFB8 /* CPocket.m */; };
 		1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */; };
@@ -110,7 +109,6 @@
 		17291EC417CF9A6400B44BBE /* Common.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Common.strings; sourceTree = "<group>"; };
 		17291EC517CF9A6400B44BBE /* PocketDetail.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketDetail.strings; sourceTree = "<group>"; };
 		17291EC617CF9A6400B44BBE /* PocketList.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = PocketList.strings; sourceTree = "<group>"; };
-		17291EC717CF9A6400B44BBE /* Welcom.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Welcom.strings; sourceTree = "<group>"; };
 		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketCore.h; sourceTree = "<group>"; };
 		17291EE117CFA01000B44BBE /* HTMLBodyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLBodyParser.h; sourceTree = "<group>"; };
 		17291EE217CFA01000B44BBE /* HTMLBodyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLBodyParser.m; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 				17291EC417CF9A6400B44BBE /* Common.strings */,
 				17291EC517CF9A6400B44BBE /* PocketDetail.strings */,
 				17291EC617CF9A6400B44BBE /* PocketList.strings */,
-				17291EC717CF9A6400B44BBE /* Welcom.strings */,
 				17C09F8B18278EF4001435B9 /* PocketSwipeView.strings */,
 				32FC838E189FDB17007302C0 /* LeftSidePanel.strings */,
 			);
@@ -818,7 +815,6 @@
 				324CD62A188EBE8F007C3552 /* evernote_icon.png in Resources */,
 				325FF571189F11AB008D220B /* LeftSidePanelCell.xib in Resources */,
 				3265E02818CCC54700A57C22 /* TitleLogo@2x.png in Resources */,
-				17291ECB17CF9A6400B44BBE /* Welcom.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

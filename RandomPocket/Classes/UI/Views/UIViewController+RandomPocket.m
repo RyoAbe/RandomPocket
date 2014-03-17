@@ -23,4 +23,14 @@
     return [[UINavigationController alloc] initWithRootViewController:webViewController];
 }
 
+- (void)presentLoginViewControllerWithSucceedBlock:(void (^)(void))succeedBlock
+                                     cancelBlock:(void (^)(void))cancelBlock
+                                      errorBlock:(void (^)(void))errorBlock
+{
+    LoginViewController *loginViewController = [[LoginViewController alloc] initWithSucceedBlock:succeedBlock
+                                                                                     cancelBlock:cancelBlock
+                                                                                      errorBlock:errorBlock];
+    [self presentViewController:loginViewController animated:YES completion:nil];
+}
+
 @end

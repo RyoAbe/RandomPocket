@@ -10,5 +10,5 @@
 #import "RandomPocketUI.h"
 
 @interface PocketListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIPocketListDelegate, MSCMoreOptionTableViewCellDelegate, NJKScrollFullscreenDelegate>
-- (void)presentLoginViewController;
+
 @end
