@@ -22,14 +22,14 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ey-B7-3So">
-                                <rect key="frame" x="175" y="490" width="125" height="38"/>
-                                <color key="backgroundColor" red="0.3230174663973634" green="0.60489555027173914" blue="0.349463987798662" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="108" y="490" width="192" height="38"/>
+                                <color key="backgroundColor" red="0.90588235294117647" green="0.21568627450980393" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="VOB-nP-Ilm"/>
-                                    <constraint firstAttribute="width" constant="125" id="jTO-vf-zlS"/>
+                                    <constraint firstAttribute="width" constant="192" id="jTO-vf-zlS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <state key="normal" title="Get Started!">
+                                <state key="normal" title="Sign in With Pocket">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
