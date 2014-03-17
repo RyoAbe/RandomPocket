@@ -52,6 +52,7 @@ typedef NS_ENUM(NSUInteger, UIPocketListMode) {
 - (UIPocket*)objectAtIndexPath:(NSIndexPath*)indexPath;
 - (void)removeAtIndexPath:(NSIndexPath*)indexPathKey;
 - (void)changeDisplayMode:(UIPocketListMode)displayMode;
+- (BOOL)isEmpty;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) id<UIPocketListDelegate> delegate;
 @property (nonatomic, readonly) UIPocketListMode displayMode;

@@ -10,6 +10,10 @@
 #import "RandomPocketCore.h"
 #import "RandomPocketUI.h"
 
+@interface AppDelegate()
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
+@end
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -93,7 +97,7 @@
     _managedObjectContext = nil;
     _managedObjectModel = nil;
     _persistentStoreCoordinator = nil;
-    _managedObjectContext = [self createManagedObjectContext];
+    self.managedObjectContext = [self createManagedObjectContext];
 }
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -111,16 +115,19 @@
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-    
-    NSURL *applicationDocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *storeURL = [applicationDocumentsDirectory URLByAppendingPathComponent:@"RandomPocket.sqlite"];
-    
+
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[self storeURL] options:nil error:&error]) {
         NSAssert(NO, error.userInfo.description);
     }
     return _persistentStoreCoordinator;
+}
+
+- (NSURL*)storeURL
+{
+    NSURL *applicationDocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [applicationDocumentsDirectory URLByAppendingPathComponent:@"RandomPocket.sqlite"];
 }
 
 - (void)saveContext

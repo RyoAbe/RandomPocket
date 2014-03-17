@@ -15,5 +15,6 @@
 @property (readonly, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong, nonatomic) UIWindow *window;
-
+- (void)recreateManagedObjectContext;
+- (NSURL*)storeURL;
 @end

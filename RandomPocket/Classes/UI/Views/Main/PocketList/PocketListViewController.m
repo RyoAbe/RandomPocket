@@ -47,7 +47,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
     __weak PocketListViewController *weakSelf = self;
     [self.refreshController addEventHandler:^(id sender) {
-        [weakSelf reqestGetPockets:NO];
+        [weakSelf reqestGetPockets:weakSelf.pocketList.isEmpty];
     } forControlEvents:UIControlEventValueChanged];
     
     self.tableView.alwaysBounceVertical = YES;
@@ -64,25 +64,19 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.scrollProxy.delegate = self;
 
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NavigationTitleLogo"]];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-    if(self.pocketList.numberOfItems != 0){
-        return;
+    
+    if(self.pocketList.isEmpty){
+        if(![PocketAPI sharedAPI].isLoggedIn){
+            [self performBlock:^(id sender){
+                [self presentLoginViewControllerWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
+                                                     cancelBlock:nil
+                                                      errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ConnectFaild", @"Common", nil)]; }];
+                
+            } afterDelay:0.5f];
+            return;
+        }
+        [self reqestGetPockets:YES];
     }
-    if(![PocketAPI sharedAPI].isLoggedIn){
-        [self performBlock:^(id sender){
-            [self presentLoginViewControllerWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
-                                                 cancelBlock:nil
-                                                  errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ConnectFaild", @"Common", nil)]; }];
-            
-        } afterDelay:0.5f];
-        return;
-    }
-    [self reqestGetPockets:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated

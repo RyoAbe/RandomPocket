@@ -28,7 +28,10 @@
 
 - (void)initializeSettings
 {
-    self.managedObjectContext = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).managedObjectContext;
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    self.managedObjectContext = delegate.managedObjectContext;
+    [delegate addObserver:self forKeyPath:@"managedObjectContext" options:NSKeyValueObservingOptionNew context:nil];
+
     self.randomIndexPaths = [NSMutableDictionary dictionary];
 }
 
@@ -107,6 +110,11 @@
 - (NSUInteger)numberOfItems
 {
     return self.fetchedResultsController.fetchedObjects.count;
+}
+
+- (BOOL)isEmpty
+{
+    return self.numberOfItems == 0;
 }
 
 - (NSInteger)numberOfItemsInSection:(NSInteger)section
@@ -309,6 +317,24 @@
     pocketList.randomIndexPaths = self.randomIndexPaths;
     pocketList.displayMode = self.displayMode;
     return pocketList;
+}
+
+#pragma - NSKeyValueObserving
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    if(object == delegate && [keyPath isEqualToString:@"managedObjectContext"]){
+        _fetchedResultsController = nil;
+        _managedObjectContext = [delegate managedObjectContext];
+        _fetchedResultsController = [self fetchedResultsController];
+    }
+}
+
+- (void)dealloc
+{
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [delegate removeObserver:self forKeyPath:@"managedObjectContext"];
 }
 
 @end

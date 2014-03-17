@@ -113,7 +113,9 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
 
 + (NSError*)deleteEntities
 {
-    return [NSManagedObjectContext deleteEntity:@"CPocket"];
+    NSError *error = [NSManagedObjectContext deleteEntity:@"CPocket"];
+    error = [NSManagedObjectContext removeStore];
+    return error;
 }
 
 + (NSError*)deleteEntity:(NSString*)entityName
@@ -133,11 +135,12 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
     return error;
 }
 
-- (NSError*)removeStore
++ (NSError*)removeStore
 {
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
     // storeのURL
-    NSURL *applicationDocumentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *storeURL = [applicationDocumentsDirectory URLByAppendingPathComponent:@"RandomPocket.sqlite"];
+    NSURL *storeURL = [delegate storeURL];
     
     // NSPersistentStore取得
     NSPersistentStoreCoordinator *storeCoodinator = [[NSManagedObjectContext contextForCurrentThread] persistentStoreCoordinator];
@@ -150,7 +153,7 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
     [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
 
     // ManagedObjectContext作り直し
-//    [delegate recreateManagedObjectContext];
+    [delegate recreateManagedObjectContext];
 
     return error;
 }

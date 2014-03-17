@@ -58,6 +58,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
     self.actionSheet.destructiveButtonIndex = 0;
     self.actionSheet.cancelButtonIndex = 1;
+    [[PocketAPI sharedAPI] addObserver:self forKeyPath:@"isLoggedIn" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,6 +124,18 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     }
 
     return cell;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if(object == [PocketAPI sharedAPI] && [keyPath isEqualToString:@"isLoggedIn"]){
+        [self.tableView reloadData];
+    }
+}
+
+- (void)dealloc
+{
+    [[PocketAPI sharedAPI] removeObserver:self forKeyPath:@"isLoggedIn"];
 }
 
 @end
