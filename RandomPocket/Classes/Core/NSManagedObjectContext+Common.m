@@ -114,7 +114,9 @@ static NSString const * NSManagedObjectContextThreadKey = @"NScontextForThreadKe
 + (NSError*)deleteEntities
 {
     NSError *error = [NSManagedObjectContext deleteEntity:@"CPocket"];
-    error = [NSManagedObjectContext removeStore];
+    if(!error){
+        error = [NSManagedObjectContext removeStore];
+    }
     return error;
 }
 

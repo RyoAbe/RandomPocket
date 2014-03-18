@@ -60,7 +60,7 @@
     
     NSString *url = data[@"resolved_url"];
     if(!url || url.length == 0){
-        title = data[@"given_url"];
+        url = data[@"given_url"];
     }
     cPocket.url = url;
 
