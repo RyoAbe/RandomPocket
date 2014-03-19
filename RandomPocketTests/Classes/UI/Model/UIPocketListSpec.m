@@ -56,16 +56,16 @@ describe(@"UIPocketList", ^{
             });
         });
         context(@"生成したRandomIndexPathをindexPathsに追加", ^{
-            __block NSDictionary *_mathedIndesPathes1;
-            __block NSDictionary *_mathedIndesPathes2;
-            __block NSDictionary *_mathedIndesPathes3;
-            __block NSDictionary *_mathedIndesPathes4;
-            __block NSDictionary *_mathedIndesPathes5;
-            __block NSDictionary *_mathedIndesPathes6;
-            __block NSDictionary *_mathedIndesPathes7;
-            __block NSDictionary *_mathedIndesPathes8;
-            __block NSDictionary *_mathedIndesPathes9;
-            __block NSDictionary *_mathedIndesPathes10;
+            __block NSDictionary *_mathedIndexPathes1;
+            __block NSDictionary *_mathedIndexPathes2;
+            __block NSDictionary *_mathedIndexPathes3;
+            __block NSDictionary *_mathedIndexPathes4;
+            __block NSDictionary *_mathedIndexPathes5;
+            __block NSDictionary *_mathedIndexPathes6;
+            __block NSDictionary *_mathedIndexPathes7;
+            __block NSDictionary *_mathedIndexPathes8;
+            __block NSDictionary *_mathedIndexPathes9;
+            __block NSDictionary *_mathedIndexPathes10;
             beforeEach(^{
                 NSUInteger numberOfObjects = 5;
                 [[[fetchedResultsSectionInfo stub] andReturnValue:OCMOCK_VALUE(numberOfObjects)] numberOfObjects];
@@ -83,48 +83,48 @@ describe(@"UIPocketList", ^{
                 NSIndexPath *randomIndexPath9 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
                 NSIndexPath *randomIndexPath10 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
                 
-                _mathedIndesPathes1 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes1 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath1.section == addedRandomIndexPath.section && randomIndexPath1.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes2 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes2 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath2.section == addedRandomIndexPath.section && randomIndexPath2.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes3 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes3 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath3.section == addedRandomIndexPath.section && randomIndexPath3.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes4 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes4 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath4.section == addedRandomIndexPath.section && randomIndexPath4.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes5 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes5 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath5.section == addedRandomIndexPath.section && randomIndexPath5.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes6 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes6 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath6.section == addedRandomIndexPath.section && randomIndexPath6.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes7 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes7 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath7.section == addedRandomIndexPath.section && randomIndexPath7.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes8 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes8 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath8.section == addedRandomIndexPath.section && randomIndexPath8.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes9 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes9 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath9.section == addedRandomIndexPath.section && randomIndexPath9.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndesPathes10 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes10 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath10.section == addedRandomIndexPath.section && randomIndexPath10.row == addedRandomIndexPath.row);
                 }];
             });
             it(@"10個indexPathsに追加して、それらが1つしか入っていないこと", ^{
-                [[theValue([_mathedIndesPathes1 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes2 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes3 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes4 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes5 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes6 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes7 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes8 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes9 count]) should] equal:theValue(1)];
-                [[theValue([_mathedIndesPathes10 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes1 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes2 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes3 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes4 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes5 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes6 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes7 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes8 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes9 count]) should] equal:theValue(1)];
+                [[theValue([_mathedIndexPathes10 count]) should] equal:theValue(1)];
             });
         });
     });

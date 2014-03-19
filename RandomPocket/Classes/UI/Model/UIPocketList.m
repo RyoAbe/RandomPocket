@@ -196,7 +196,7 @@
 /**
  *  ランダムなindexPathのdictionaryを作成
  */
-- (void)genrateRandomIndesPathes
+- (void)genrateRandomIndexPathes
 {
     self.randomIndexPaths = [NSMutableDictionary dictionary];
     NSMutableArray *indexPathArray = [NSMutableArray array];
@@ -303,7 +303,7 @@
     if([self isDisplayModeNormal]){
         return;
     }
-    [self genrateRandomIndesPathes];
+    [self genrateRandomIndexPathes];
 }
 
 - (BOOL)isDisplayModeNormal
