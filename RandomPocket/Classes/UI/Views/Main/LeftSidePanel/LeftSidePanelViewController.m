@@ -115,7 +115,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     LeftSidePanelCell *cell = [tableView dequeueReusableCellWithIdentifier:LeftSidePanelCellIdentifier forIndexPath:indexPath];
     
     if(indexPath.row == LeftSidePanelRowTypePocketList){
-        cell.textLabel.text = NSLocalizedStringFromTable(@"MyPocket", @"LeftSidePanel", nil);
+        cell.textLabel.text = NSLocalizedStringFromTable(@"Home", @"LeftSidePanel", nil);
     }else if(indexPath.row == LeftSidePanelRowTypeAbout){
         cell.textLabel.text = NSLocalizedStringFromTable(@"AbountApp", @"LeftSidePanel", nil);
     }else if(indexPath.row == LeftSidePanelRowTypeLoginOrLogout){
