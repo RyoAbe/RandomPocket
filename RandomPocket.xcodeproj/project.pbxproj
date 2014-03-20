@@ -748,6 +748,7 @@
 		32D0884D17C9DE76007C50CD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = RyoAbe;
 				TargetAttributes = {
