@@ -70,7 +70,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             [self performBlock:^(id sender){
                 [self presentLoginViewControllerWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
                                                      cancelBlock:nil
-                                                      errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)]; } ];
+                                                      errorBlock:^{ [self.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)]; } ];
                 
             } afterDelay:0.5f];
             return;
@@ -98,7 +98,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
         if(isShowDimminingView) [weakSelf.progressView hide];
         [weakSelf.refreshController endRefreshing];
-        [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
+        [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
     }];
 
     if(isShowDimminingView) self.progressView = [MRProgressOverlayView showWithTitle:NSLocalizedStringFromTable(@"Loading", @"Common", nil)];
@@ -124,7 +124,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             break;
         case UIPocketListChangeType_Delete:
             [self.pocketList removeAtIndexPath:oldIndexPath];
-            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationNone];
             break;
         case UIPocketListChangeType_Move:
             [self.tableView moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
@@ -147,7 +147,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
             break;
         case UIPocketListChangeType_Delete:
-            [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
             break;
         default:
             break;
@@ -209,7 +209,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     }];
     [op setErrorHandler:^(NSError *error) {
         [weakSelf.progressView hide];
-        [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
+        [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
     }];
     [op dispatch];
 }
@@ -228,20 +228,20 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
-            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"Favorite", @"Common", nil)];
+            [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"Favorite", @"Common", nil)];
         }];
         [op setErrorHandler:^(NSError *error) {
-            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
+            [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
         }];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Delete];
         [op setCompletionHandler:^(id result) {
-            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"Deleted", @"Common", nil)];
+            [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"Deleted", @"Common", nil)];
         }];
         [op setErrorHandler:^(NSError *error) {
-            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
+            [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
         }];
         [op dispatch];
     }];
@@ -314,7 +314,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (IBAction)searchButtonTapped:(id)sender
 {
-    [self.view makeToast:@"unimplemented"];
+    [self.tableView.window makeToast:@"unimplemented"];
 }
 
 #pragma mark - NJKScrollFullscreenDelegate

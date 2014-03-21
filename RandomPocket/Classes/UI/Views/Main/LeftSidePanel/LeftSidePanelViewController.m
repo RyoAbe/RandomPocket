@@ -51,9 +51,13 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
         LogoutOperation *op = [[LogoutOperation alloc] init];
         [op setCompletionHandler:^(id result) {
             [NSManagedObjectContext deleteEntities];
-            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
+            [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"DisconnectComplete", @"LeftSidePanel", nil)];
             [weakSelf.tableView reloadData];
         }];
+        [op setErrorHandler:^(NSError *error) {
+            [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
+        }];
+        
         [op dispatch];
     }];
     [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
@@ -76,7 +80,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
 {
     [self presentLoginViewControllerWithSucceedBlock:^{ [self.tableView reloadData]; }
                                          cancelBlock:nil
-                                          errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)]; }];
+                                          errorBlock:^{ [self.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)]; }];
 }
 
 #pragma mark - Table view delegate
