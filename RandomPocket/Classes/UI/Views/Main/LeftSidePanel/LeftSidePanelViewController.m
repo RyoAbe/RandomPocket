@@ -46,13 +46,13 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     self.tableView.separatorInset = UIEdgeInsetsZero;
 
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"DisconnectActionSheetTitle", @"LeftSidePanel", nil)];
-    __weak LeftSidePanelViewController *wearkSelf = self;
+    __weak LeftSidePanelViewController *weakSelf = self;
     [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Disconnect", @"LeftSidePanel", nil) handler:^{
         LogoutOperation *op = [[LogoutOperation alloc] init];
         [op setCompletionHandler:^(id result) {
             [NSManagedObjectContext deleteEntities];
-            [wearkSelf.view.window makeToast:NSLocalizedStringFromTable(@"DisconnectComplete", @"LeftSidePanel", nil)];
-            [wearkSelf.tableView reloadData];
+            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
+            [weakSelf.tableView reloadData];
         }];
         [op dispatch];
     }];
@@ -76,7 +76,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
 {
     [self presentLoginViewControllerWithSucceedBlock:^{ [self.tableView reloadData]; }
                                          cancelBlock:nil
-                                          errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ConnectFaild", @"Common", nil)]; }];
+                                          errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)]; }];
 }
 
 #pragma mark - Table view delegate

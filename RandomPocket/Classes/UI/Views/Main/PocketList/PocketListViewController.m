@@ -70,7 +70,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             [self performBlock:^(id sender){
                 [self presentLoginViewControllerWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
                                                      cancelBlock:nil
-                                                      errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ConnectFaild", @"Common", nil)]; }];
+                                                      errorBlock:^{ [self.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)]; } ];
                 
             } afterDelay:0.5f];
             return;
@@ -98,7 +98,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.getPocketsOperation setErrorHandler:^(NSError *error) {
         if(isShowDimminingView) [weakSelf.progressView hide];
         [weakSelf.refreshController endRefreshing];
-        [weakSelf.view makeToast:[NSString stringWithFormat:@"GetPocketsOperation error: %@", error]];
+        [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
     }];
 
     if(isShowDimminingView) self.progressView = [MRProgressOverlayView showWithTitle:NSLocalizedStringFromTable(@"Loading", @"Common", nil)];
@@ -209,7 +209,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     }];
     [op setErrorHandler:^(NSError *error) {
         [weakSelf.progressView hide];
-        [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
+        [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
     }];
     [op dispatch];
 }
@@ -231,14 +231,14 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
         }];
         [op setErrorHandler:^(NSError *error) {
-            [weakSelf.view makeToast:[NSString stringWithFormat:@"add to favorite error: %@", error]];
+            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
         }];
         [op dispatch];
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Delete];
         [op setErrorHandler:^(NSError *error) {
-            [weakSelf.view makeToast:[NSString stringWithFormat:@"delete error: %@", error]];
+            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
         }];
         [op setCompletionHandler:^(id result) {
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];

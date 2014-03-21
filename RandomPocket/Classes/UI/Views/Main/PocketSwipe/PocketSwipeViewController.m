@@ -178,7 +178,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         }];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.progressView hide];
-            [weakSelf.view makeToast:[NSString stringWithFormat:@"archive error: %@", error]];
+            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
         }];
         [op dispatch];
     }];
