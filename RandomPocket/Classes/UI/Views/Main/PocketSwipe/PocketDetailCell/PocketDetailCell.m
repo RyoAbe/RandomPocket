@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *urlButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailTopSpace;
 @property (weak, nonatomic) IBOutlet UIImageView *favicon;
+@property (weak, nonatomic) IBOutlet UILabel *timeAdded;
+@property (nonatomic) NSDateFormatter *dateFormat;
 @end
 
 @implementation PocketDetailCell
@@ -26,6 +28,11 @@
     [super awakeFromNib];
     self.bodyTextView.layoutManager.delegate = self;
     [self.titleLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(linkTapped:)]];
+
+    self.dateFormat = [[NSDateFormatter alloc] init];
+    self.dateFormat.locale = [NSLocale currentLocale];
+    self.dateFormat.dateStyle = NSDateFormatterMediumStyle;
+    self.dateFormat.timeStyle = NSDateFormatterMediumStyle;
 }
 
 - (void)setPocket:(UIPocket *)pocket
@@ -44,6 +51,8 @@
     
     self.thumbnail.image = nil;
     self.thumbnailHeight.constant = self.thumbnailTopSpace.constant = 0;
+
+    self.timeAdded.text = [self.dateFormat stringFromDate:_pocket.timeAdded];
 
     if(!_pocket.imageUrl){
         return;
