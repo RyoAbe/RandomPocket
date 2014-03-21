@@ -55,13 +55,8 @@
 - (void)appearance
 {
     [[UINavigationBar appearance] setTintColor:[RPColor NavigationBarColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                UITextAttributeTextColor:[RPColor NavigationBarTitleColor],
-                          UITextAttributeTextShadowColor:[UIColor clearColor],
-                         UITextAttributeTextShadowOffset:[NSValue valueWithUIOffset:UIOffsetZero],
-                                     UITextAttributeFont:[UIFont boldSystemFontOfSize:20],
-     
-     }];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[RPColor NavigationBarTitleColor],
+                                                           NSFontAttributeName:[UIFont boldSystemFontOfSize:20],}];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[RPColor BarButtonItemColor]];
     [[UIToolbar appearance] setTintColor:[RPColor NavigationBarColor]];
     [[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil] setTintColor:[RPColor ToolButtonItemColor]];
