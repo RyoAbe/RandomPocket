@@ -28,7 +28,7 @@
 
 - (void)dispatch
 {
-    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionStr, self.itemID];
+    NSString *arguments = [NSString stringWithFormat:@"[{\"action\":\"%@\",\"item_id\" : \"%@\"}]", self.actionTypeToString, self.itemID];
     [[PocketAPI sharedAPI] callAPIMethod:@"send"
                           withHTTPMethod:PocketAPIHTTPMethodGET
                                arguments:@{@"actions":arguments}
@@ -45,7 +45,20 @@
 - (id)saveWithResponse:(NSDictionary*)response
 {
     CPocket *cPocket = [[NSManagedObjectContext contextForCurrentThread] pocketWithItemID:self.itemID];
-    cPocket.status = [response[@"status"] integerValue];
+
+    NSInteger status = PocketStatus_Unread;
+    switch (self.actionType) {
+        case ActionToPocketType_Archive:
+            status = PocketStatus_Archived;
+            break;
+        case ActionToPocketType_Delete:
+            status = PocketStatus_Deleted;
+            break;
+        default:
+            break;
+    }
+    cPocket.status = status;
+    
     NSError *error = nil;
     if (![NSManagedObjectContext save:&error]) {
         NSAssert(NO, error.userInfo.description);
@@ -56,7 +69,7 @@
 
 #pragma mark -
 
-- (NSString*)actionStr
+- (NSString*)actionTypeToString
 {
     NSString *action = nil;
     switch (self.actionType) {
