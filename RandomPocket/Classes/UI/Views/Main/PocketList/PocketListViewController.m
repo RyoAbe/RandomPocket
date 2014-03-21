@@ -228,7 +228,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
-            [weakSelf.view makeToast:[NSString stringWithFormat:@"Favorite"]];
+            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"Favorite", @"Common", nil)];
         }];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
@@ -237,11 +237,11 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     }];
     [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Delete];
+        [op setCompletionHandler:^(id result) {
+            [weakSelf.view makeToast:NSLocalizedStringFromTable(@"Deleted", @"Common", nil)];
+        }];
         [op setErrorHandler:^(NSError *error) {
             [weakSelf.view makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)];
-        }];
-        [op setCompletionHandler:^(id result) {
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         }];
         [op dispatch];
     }];
