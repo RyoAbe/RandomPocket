@@ -11,6 +11,7 @@
 extern const NSString* TitleKey;
 extern const NSString* CopyrightKey;
 extern const NSString* DescriptionKey;
+extern const NSString* TypeKey;
 
 @interface LicenseViewController : UITableViewController
 
