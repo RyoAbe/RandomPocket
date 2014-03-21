@@ -18,14 +18,15 @@ typedef NS_ENUM(NSUInteger, PocketStatus) {
 @interface CPocket : NSManagedObject
 
 @property (nonatomic, retain) NSString * body;
+@property (nonatomic, retain) NSString * excerpt;
 @property (nonatomic) BOOL favorite;
+@property (nonatomic) BOOL hasImage;
+@property (nonatomic, retain) NSString * imageUrl;
 @property (nonatomic, retain) NSString * itemID;
 @property (nonatomic) int16_t sortID;
 @property (nonatomic) int16_t status;
-@property (nonatomic) NSDate * timeAdded;
+@property (nonatomic) NSDate *timeAdded;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSString * imageUrl;
-@property (nonatomic, retain) NSString * excerpt;
 
 @end

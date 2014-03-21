@@ -52,17 +52,20 @@
     if(!cPocket){
         cPocket = [moc createEntity:@"CPocket"];
     }
-    NSString *title = data[@"resolved_title"];
-    if(!title || title.length == 0){
-        title = data[@"given_title"];
-    }
-    cPocket.title = title;
-    
     NSString *url = data[@"resolved_url"];
     if(!url || url.length == 0){
         url = data[@"given_url"];
     }
     cPocket.url = url;
+    
+    NSString *title = data[@"resolved_title"];
+    if(!title || title.length == 0){
+        title = data[@"given_title"];
+        if(!title || title.length == 0){
+            title = cPocket.url;
+        }
+    }
+    cPocket.title = title;
 
     cPocket.itemID = data[@"item_id"];
     cPocket.status = [data[@"status"] integerValue];
@@ -70,8 +73,7 @@
     cPocket.timeAdded = [NSDate dateWithTimeIntervalSince1970:[data[@"time_added"] integerValue]];
     cPocket.favorite = [data[@"favorite"] integerValue];
     cPocket.excerpt = data[@"excerpt"];
-    NSDictionary *image = data[@"image"];
-    cPocket.imageUrl = image[@"src"];
+    cPocket.hasImage = [data[@"has_image"] integerValue];
 }
 
 @end

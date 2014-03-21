@@ -13,7 +13,6 @@
 		17291EC917CF9A6400B44BBE /* PocketDetail.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC517CF9A6400B44BBE /* PocketDetail.strings */; };
 		17291ECA17CF9A6400B44BBE /* PocketList.strings in Resources */ = {isa = PBXBuildFile; fileRef = 17291EC617CF9A6400B44BBE /* PocketList.strings */; };
 		17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 17291EE217CFA01000B44BBE /* HTMLBodyParser.m */; };
-		175264051821597D00D7FFB8 /* CPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 175264041821597D00D7FFB8 /* CPocket.m */; };
 		1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */; };
 		178290E3181AD1770093718E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178290E2181AD1770093718E /* QuartzCore.framework */; };
 		178290E5181AD1830093718E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178290E4181AD1830093718E /* CFNetwork.framework */; };
@@ -92,6 +91,7 @@
 		32D0888217C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
 		32D0888A17C9DE76007C50CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32D0888817C9DE76007C50CD /* InfoPlist.strings */; };
 		32D2FB6917D4B85100BD33DF /* GetPocketsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */; };
+		32D99BC018DCAD14003C5FC3 /* CPocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D99BBF18DCAD14003C5FC3 /* CPocket.m */; };
 		32FC838F189FDB17007302C0 /* LeftSidePanel.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32FC838E189FDB17007302C0 /* LeftSidePanel.strings */; };
 		32FC839218A12BBB007302C0 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FC839018A12BBB007302C0 /* menu_icon.png */; };
 		32FC839318A12BBB007302C0 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FC839118A12BBB007302C0 /* menu_icon@2x.png */; };
@@ -118,8 +118,6 @@
 		17291ECC17CF9B2D00B44BBE /* RandomPocketCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomPocketCore.h; sourceTree = "<group>"; };
 		17291EE117CFA01000B44BBE /* HTMLBodyParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLBodyParser.h; sourceTree = "<group>"; };
 		17291EE217CFA01000B44BBE /* HTMLBodyParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLBodyParser.m; sourceTree = "<group>"; };
-		175264031821597D00D7FFB8 /* CPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPocket.h; sourceTree = "<group>"; };
-		175264041821597D00D7FFB8 /* CPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPocket.m; sourceTree = "<group>"; };
 		1778CFAD17D8B5A900A20E4B /* NSManagedObjectContext+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+RandomPocket.h"; sourceTree = "<group>"; };
 		1778CFAE17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+RandomPocket.m"; sourceTree = "<group>"; };
 		178290E2181AD1770093718E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -229,6 +227,8 @@
 		32D0888917C9DE76007C50CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32D2FB6717D4B85100BD33DF /* GetPocketsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPocketsOperation.h; sourceTree = "<group>"; };
 		32D2FB6817D4B85100BD33DF /* GetPocketsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetPocketsOperation.m; sourceTree = "<group>"; };
+		32D99BBE18DCAD14003C5FC3 /* CPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPocket.h; sourceTree = "<group>"; };
+		32D99BBF18DCAD14003C5FC3 /* CPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPocket.m; sourceTree = "<group>"; };
 		32FC838E189FDB17007302C0 /* LeftSidePanel.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = LeftSidePanel.strings; sourceTree = "<group>"; };
 		32FC839018A12BBB007302C0 /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
 		32FC839118A12BBB007302C0 /* menu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon@2x.png"; sourceTree = "<group>"; };
@@ -393,8 +393,8 @@
 		17E552D417D4D0A4004E10BE /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				175264031821597D00D7FFB8 /* CPocket.h */,
-				175264041821597D00D7FFB8 /* CPocket.m */,
+				32D99BBE18DCAD14003C5FC3 /* CPocket.h */,
+				32D99BBF18DCAD14003C5FC3 /* CPocket.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -961,6 +961,7 @@
 				32A4400018ABB04C006FEBC4 /* LicenseCell.m in Sources */,
 				3293522A189FB3600017D96E /* AboutViewController.m in Sources */,
 				17FF532117E572C300FF3098 /* ActionToPocketOperation.m in Sources */,
+				32D99BC018DCAD14003C5FC3 /* CPocket.m in Sources */,
 				324FF03717CE3E69005B08F4 /* PocketDetailCell.m in Sources */,
 				17291EE317CFA01000B44BBE /* HTMLBodyParser.m in Sources */,
 				17C09F8A1827664F001435B9 /* UIViewController+RandomPocket.m in Sources */,
@@ -975,7 +976,6 @@
 				17104F22183FC2E900B556C9 /* NSManagedObjectContext+Common.m in Sources */,
 				325FF572189F11AB008D220B /* LeftSidePanelViewController.m in Sources */,
 				17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */,
-				175264051821597D00D7FFB8 /* CPocket.m in Sources */,
 				32935230189FB3830017D96E /* SettingsViewController.m in Sources */,
 				325FF570189F11AB008D220B /* LeftSidePanelCell.m in Sources */,
 				1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */,
@@ -1162,8 +1162,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "9623E360-B299-4C32-86DC-D273734A2F29";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9623E360-B299-4C32-86DC-D273734A2F29";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

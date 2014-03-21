@@ -11,7 +11,6 @@
 
 @interface UIPocket : NSObject
 
-- (id)initWithData:(NSDictionary*)data;
 - (id)initWithCPocket:(CPocket*)cPocket;
 
 @property (nonatomic) NSManagedObjectID *objectID;

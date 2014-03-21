@@ -8,8 +8,6 @@
 
 #import "UIPocket.h"
 
-static NSString* const UNKNOWN_TITLE = @"Unknown Title";
-
 @interface UIPocket()
 @property (nonatomic) CPocket *cPocket;
 @end
@@ -20,6 +18,7 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
 {
     self = [super init];
     if (self) {
+        self.url = cPocket.url;
         self.title = cPocket.title;
         self.body = cPocket.body;
         self.timeAdded = cPocket.timeAdded;
@@ -28,18 +27,6 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
         self.cPocket = cPocket;
         self.objectID = cPocket.objectID;
         self.itemID = cPocket.itemID;
-        self.url = cPocket.url;
-    }
-    return self;
-}
-
-- (id)initWithData:(NSDictionary*)data
-{
-    self = [super init];
-    if (self) {
-        self.data = data;
-        self.url = data[@"resolved_url"];
-        self.title = data[@"resolved_title"];
     }
     return self;
 }
@@ -51,11 +38,8 @@ static NSString* const UNKNOWN_TITLE = @"Unknown Title";
 
 - (void)setTitle:(NSString *)title
 {
-    if(title.length == 0){
-        title = self.data[@"given_title"];
-    }
-    if(title.length == 0){
-        title = UNKNOWN_TITLE;
+    if(!title || title.length == 0){
+        title = self.url;
     }
     _title = title;
 }
