@@ -43,6 +43,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"LeftSidePanelCell" bundle:nil] forCellReuseIdentifier:LeftSidePanelCellIdentifier];
     self.tableView.contentInset = UIEdgeInsetsMake([UIApplication sharedApplication].statusBarFrame.size.height, 0, 0, 0);
+    self.tableView.separatorInset = UIEdgeInsetsZero;
 
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"DisconnectActionSheetTitle", @"LeftSidePanel", nil)];
     __weak LeftSidePanelViewController *wearkSelf = self;
@@ -114,14 +115,21 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
 {
     LeftSidePanelCell *cell = [tableView dequeueReusableCellWithIdentifier:LeftSidePanelCellIdentifier forIndexPath:indexPath];
     
+    NSString *text = nil;
+    NSString *imageName = nil;
     if(indexPath.row == LeftSidePanelRowTypePocketList){
-        cell.textLabel.text = NSLocalizedStringFromTable(@"Home", @"LeftSidePanel", nil);
+        text = NSLocalizedStringFromTable(@"Home", @"LeftSidePanel", nil);
+        imageName = @"home_icon";
     }else if(indexPath.row == LeftSidePanelRowTypeAbout){
-        cell.textLabel.text = NSLocalizedStringFromTable(@"AbountApp", @"LeftSidePanel", nil);
+        text = NSLocalizedStringFromTable(@"AbountApp", @"LeftSidePanel", nil);
+        imageName = @"about_icon";
     }else if(indexPath.row == LeftSidePanelRowTypeLoginOrLogout){
         NSString *key = [PocketAPI sharedAPI].isLoggedIn ? @"Disconnect" : @"Connect";
-        cell.textLabel.text = NSLocalizedStringFromTable(key, @"LeftSidePanel", nil);
+        text = NSLocalizedStringFromTable(key, @"LeftSidePanel", nil);
+        imageName = @"connect_icon";
     }
+    cell.textLabel.text = text;
+    cell.imageView.image = [UIImage imageNamed:imageName];
 
     return cell;
 }
