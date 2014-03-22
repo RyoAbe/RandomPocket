@@ -20,6 +20,7 @@
 @dynamic sortID;
 @dynamic status;
 @dynamic timeAdded;
+@dynamic updateDate;
 @dynamic title;
 @dynamic url;
 

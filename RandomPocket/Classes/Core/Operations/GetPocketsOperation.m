@@ -8,6 +8,10 @@
 
 #import "GetPocketsOperation.h"
 
+@interface GetPocketsOperation()
+@property (nonatomic) NSDate *updateDate;
+@end
+
 @implementation GetPocketsOperation
 
 - (void)dispatch
@@ -15,7 +19,10 @@
     RATime *time = [RATime start];
     [[PocketAPI sharedAPI] callAPIMethod:@"get"
                           withHTTPMethod:PocketAPIHTTPMethodPOST
-                               arguments:@{@"detailType": @"complete"
+                               arguments:@{
+                                           @"detailType": @"simple"
+//                                           @"detailType": @"complete"
+//                                           , @"status": @"all"
 //                                           , @"count": @3
                                            }
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
@@ -24,8 +31,9 @@
 
                                      RATime *time = [RATime start];
                                      [self setDispatchHandler:^id{
+                                         id ret = [weakSelf saveWithResponse:response];
                                          [time stop];
-                                         return [weakSelf saveWithResponse:response];
+                                         return ret;
                                      }];
                                      [super dispatch];
                                  }];
@@ -33,15 +41,34 @@
 
 - (id)saveWithResponse:(NSDictionary*)response
 {
+    self.updateDate = [NSDate date];
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
         [self saveWithData:data];
     }
     NSError *error = nil;
+    // updateDateが更新されていないものをアーカイブ化
+    [self toArchiveNoUpdatePocket:&error];
+
     if (![NSManagedObjectContext save:&error]) {
         return error;
     }
     return nil;
+}
+
+- (void)toArchiveNoUpdatePocket:(NSError**)error
+{
+    NSManagedObjectContext *moc = [NSManagedObjectContext contextForCurrentThread];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CPocket"];
+
+    // updateDateが更新されていないものをアーカイブ or 削除されているとする
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"updateDate != %@", self.updateDate];
+
+    NSArray *deletedPockets = [moc executeFetchRequest:fetchRequest error:nil];
+    for (CPocket *pocket in deletedPockets) {
+        // 削除されている可能性もあるが、全件取得はレスポンスに時間がかかるためここではアーカイブのステータスとする
+        pocket.status = PocketStatus_Archived;
+    }
 }
 
 - (void)saveWithData:(NSDictionary*)data
@@ -74,6 +101,7 @@
     cPocket.favorite = [data[@"favorite"] integerValue];
     cPocket.excerpt = data[@"excerpt"];
     cPocket.hasImage = [data[@"has_image"] integerValue];
+    cPocket.updateDate = self.updateDate;
 }
 
 @end

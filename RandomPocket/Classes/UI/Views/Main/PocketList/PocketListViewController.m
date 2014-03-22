@@ -124,7 +124,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             break;
         case UIPocketListChangeType_Delete:
             [self.pocketList removeAtIndexPath:oldIndexPath];
-            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView deleteRowsAtIndexPaths:@[oldIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         case UIPocketListChangeType_Move:
             [self.tableView moveRowAtIndexPath:oldIndexPath toIndexPath:newIndexPath];
@@ -147,7 +147,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
             break;
         case UIPocketListChangeType_Delete:
-            [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView deleteRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         default:
             break;
@@ -206,6 +206,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     __weak PocketListViewController *weakSelf = self;
     [op setCompletionHandler:^(id result) {
         [weakSelf.progressView hide];
+        [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"Archived", @"Common", nil)];
     }];
     [op setErrorHandler:^(NSError *error) {
         [weakSelf.progressView hide];

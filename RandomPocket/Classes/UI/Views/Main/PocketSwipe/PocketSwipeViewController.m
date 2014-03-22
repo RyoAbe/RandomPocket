@@ -174,6 +174,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         weakSelf.progressView = [MRProgressOverlayView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
         [op setCompletionHandler:^(id result) {
             [weakSelf.progressView hide];
+            [weakSelf.collectionView.window makeToast:NSLocalizedStringFromTable(@"Archived", @"Common", nil)];
             if(weakSelf.pocketList.numberOfItems == 0) [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }];
         [op setErrorHandler:^(NSError *error) {

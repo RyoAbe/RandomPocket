@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, PocketStatus) {
 @property (nonatomic) int16_t sortID;
 @property (nonatomic) int16_t status;
 @property (nonatomic) NSDate *timeAdded;
+@property (nonatomic) NSDate *updateDate;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
 
