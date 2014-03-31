@@ -737,9 +737,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		32D0885417C9DE76007C50CD /* RandomPocket */ = {
+		32D0885417C9DE76007C50CD /* randompocket */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 32D0889017C9DE76007C50CD /* Build configuration list for PBXNativeTarget "RandomPocket" */;
+			buildConfigurationList = 32D0889017C9DE76007C50CD /* Build configuration list for PBXNativeTarget "randompocket" */;
 			buildPhases = (
 				37BE4F85317A4D38AC1A05A1 /* Check Pods Manifest.lock */,
 				32D0885117C9DE76007C50CD /* Sources */,
@@ -752,7 +752,7 @@
 			);
 			dependencies = (
 			);
-			name = RandomPocket;
+			name = randompocket;
 			productName = RandomPocket;
 			productReference = 32D0885517C9DE76007C50CD /* RandomPocket.app */;
 			productType = "com.apple.product-type.application";
@@ -808,7 +808,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				32D0885417C9DE76007C50CD /* RandomPocket */,
+				32D0885417C9DE76007C50CD /* randompocket */,
 				32D0887D17C9DE76007C50CD /* RandomPocketTests */,
 			);
 		};
@@ -1018,7 +1018,7 @@
 /* Begin PBXTargetDependency section */
 		32D0888417C9DE76007C50CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 32D0885417C9DE76007C50CD /* RandomPocket */;
+			target = 32D0885417C9DE76007C50CD /* randompocket */;
 			targetProxy = 32D0888317C9DE76007C50CD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1182,8 +1182,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "9623E360-B299-4C32-86DC-D273734A2F29";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9623E360-B299-4C32-86DC-D273734A2F29";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1237,7 +1237,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		32D0889017C9DE76007C50CD /* Build configuration list for PBXNativeTarget "RandomPocket" */ = {
+		32D0889017C9DE76007C50CD /* Build configuration list for PBXNativeTarget "randompocket" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32D0889117C9DE76007C50CD /* Debug */,
