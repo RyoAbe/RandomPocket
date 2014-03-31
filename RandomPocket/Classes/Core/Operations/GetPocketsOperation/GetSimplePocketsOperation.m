@@ -1,18 +1,19 @@
 //
-//  UIGetPocketsOperation.m
+//  GetSimplePocketsOperation.m
 //  RandomPocket
 //
 //  Created by RyoAbe on 2013/08/29.
 //  Copyright (c) 2013年 RyoAbe. All rights reserved.
 //
 
-#import "GetPocketsOperation.h"
+#import "GetSimplePocketsOperation.h"
+#import "RandomPocketCore.h"
 
-@interface GetPocketsOperation()
+@interface GetSimplePocketsOperation()
 @property (nonatomic) NSDate *updateDate;
 @end
 
-@implementation GetPocketsOperation
+@implementation GetSimplePocketsOperation
 
 - (void)dispatch
 {
@@ -21,13 +22,11 @@
                           withHTTPMethod:PocketAPIHTTPMethodPOST
                                arguments:@{
                                            @"detailType": @"simple"
-//                                           @"detailType": @"complete"
-//                                           , @"status": @"all"
 //                                           , @"count": @3
                                            }
                                  handler:^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error) {
                                      [time stop];
-                                     __weak GetPocketsOperation *weakSelf = self;
+                                     __weak GetSimplePocketsOperation *weakSelf = self;
 
                                      RATime *time = [RATime start];
                                      [self setDispatchHandler:^id{
@@ -37,6 +36,16 @@
                                      }];
                                      [super dispatch];
                                  }];
+}
+
+- (void)setCompletionHandler:(void (^)(id result))completionHandler
+{
+    // GetSimplePocketsOperationが終わったら全情報取りに行く
+    [super setCompletionHandler:^(id result) {
+        GetCompletePocketsOperation *op = [[GetCompletePocketsOperation alloc] init];
+        [op dispatch];
+        completionHandler(result);
+    }];
 }
 
 - (id)saveWithResponse:(NSDictionary*)response
@@ -102,6 +111,8 @@
     cPocket.excerpt = data[@"excerpt"];
     cPocket.hasImage = [data[@"has_image"] integerValue];
     cPocket.updateDate = self.updateDate;
+//    NSDictionary *image = data[@"image"];
+//    cPocket.imageUrl = image[@"src"];
 }
 
 @end

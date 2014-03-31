@@ -34,7 +34,8 @@
 #import "NSManagedObjectContext+Common.h"
 
 // Operation
-#import "GetPocketsOperation.h"
+#import "GetSimplePocketsOperation.h"
+#import "GetCompletePocketsOperation.h"
 #import "ActionToPocketOperation.h"
 #import "LogoutOperation.h"
 

@@ -16,7 +16,7 @@
 @property (nonatomic) UIRefreshControl *refreshController;
 @property (nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic) NSIndexPath *swipedIndexPath;
-@property (nonatomic) GetPocketsOperation *getPocketsOperation;
+@property (nonatomic) GetSimplePocketsOperation *getPocketsOperation;
 @property (nonatomic) NJKScrollFullScreen *scrollProxy;
 @property (nonatomic) LoginViewController *loginViewController;
 @end
@@ -53,7 +53,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     self.tableView.alwaysBounceVertical = YES;
 
     // リクエスト
-    self.getPocketsOperation = [GetPocketsOperation new];
+    self.getPocketsOperation = [GetSimplePocketsOperation new];
 
     // PocketList
     self.pocketList = [[UIPocketList alloc] init];
