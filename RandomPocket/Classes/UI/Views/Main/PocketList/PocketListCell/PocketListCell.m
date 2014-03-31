@@ -35,6 +35,10 @@ static const CGFloat AdjustmentHeight = 1;
 
 - (CGFloat)cellHeightWithTitle:(NSString*)title
 {
+    if(!title){
+        return self.frame.size.height;
+    }
+    
     NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title
                                                                     attributes:@{NSFontAttributeName : self.titleLabel.font}];
     CGSize size = [attString boundingRectWithSize:CGSizeMake(self.titleLabel.frame.size.width, INT_MAX)
