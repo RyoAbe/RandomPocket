@@ -51,7 +51,8 @@ typedef NS_ENUM(int, AbountViewRowType) {
         case AbountViewSectionTypeAppInfo:
             switch (indexPath.row) {
                 case AbountViewRowTypeReviewAppStore:
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/"]];
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/app/id443904275"]];
+                    
                     break;
                 case AbountViewRowTypeReviewTerms:
                     break;
