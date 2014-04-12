@@ -219,7 +219,7 @@
 		32C1CE6718D5620E0024B425 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		32D07563186547620036F4BE /* MRProgressOverlayView+RandomPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRProgressOverlayView+RandomPocket.h"; sourceTree = "<group>"; };
 		32D07564186547620036F4BE /* MRProgressOverlayView+RandomPocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRProgressOverlayView+RandomPocket.m"; sourceTree = "<group>"; };
-		32D0885517C9DE76007C50CD /* RandomPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32D0885517C9DE76007C50CD /* randompocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = randompocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D0885817C9DE76007C50CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32D0885A17C9DE76007C50CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32D0885C17C9DE76007C50CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -667,7 +667,7 @@
 		32D0885617C9DE76007C50CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				32D0885517C9DE76007C50CD /* RandomPocket.app */,
+				32D0885517C9DE76007C50CD /* randompocket.app */,
 				32D0887E17C9DE76007C50CD /* RandomPocketTests.octest */,
 			);
 			name = Products;
@@ -754,7 +754,7 @@
 			);
 			name = randompocket;
 			productName = RandomPocket;
-			productReference = 32D0885517C9DE76007C50CD /* RandomPocket.app */;
+			productReference = 32D0885517C9DE76007C50CD /* randompocket.app */;
 			productType = "com.apple.product-type.application";
 		};
 		32D0887D17C9DE76007C50CD /* RandomPocketTests */ = {
