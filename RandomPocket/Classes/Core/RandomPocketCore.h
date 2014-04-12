@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 
 // CocoaPods
-#import <PocketAPI/PocketAPI.h>
+//#import <PocketAPI/PocketAPI.h>
+#import "PocketAPI.h"
 #import "Toast+UIView.h"
 #import <MRProgress/MRProgress.h>
 #import <iOSCommon/iOSCommon.h>

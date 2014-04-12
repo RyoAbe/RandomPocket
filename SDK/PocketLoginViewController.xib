@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PocketLoginViewController">
+            <connections>
+                <outlet property="view" destination="1" id="3"/>
+                <outlet property="webView" destination="Lq1-H9-cZ5" id="Qnp-cV-LS7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRo-L5-MD2">
+                    <rect key="frame" x="0.0" y="17" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="U26-G4-bXG"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Login to Pocket" id="rab-OU-fa5">
+                            <barButtonItem key="leftBarButtonItem" title="Cancel" id="4hi-cZ-kh4">
+                                <connections>
+                                    <action selector="cancelClicked:" destination="-1" id="Xth-7X-ZLK"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lq1-H9-cZ5">
+                    <rect key="frame" x="0.0" y="61" width="320" height="507"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Lq1-H9-cZ5" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="IzB-nf-8nO"/>
+                <constraint firstItem="RRo-L5-MD2" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Vb7-Ab-8MB"/>
+                <constraint firstAttribute="trailing" secondItem="RRo-L5-MD2" secondAttribute="trailing" id="fKD-v2-fJV"/>
+                <constraint firstAttribute="trailing" secondItem="Lq1-H9-cZ5" secondAttribute="trailing" id="ffM-AJ-4aB"/>
+                <constraint firstAttribute="bottom" secondItem="Lq1-H9-cZ5" secondAttribute="bottom" id="gqH-sT-PrN"/>
+                <constraint firstItem="RRo-L5-MD2" firstAttribute="top" secondItem="1" secondAttribute="top" constant="17" id="nJ8-lo-C0t"/>
+                <constraint firstItem="Lq1-H9-cZ5" firstAttribute="top" secondItem="RRo-L5-MD2" secondAttribute="bottom" id="s5C-uN-Dor"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>
