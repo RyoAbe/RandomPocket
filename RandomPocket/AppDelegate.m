@@ -44,7 +44,7 @@
 
 - (void)appirater
 {
-    [Appirater setAppId:@"yourAppleId"];
+    [Appirater setAppId:@"852282288"];
     [Appirater appLaunched:YES];
     [Appirater setDaysUntilPrompt:30];
     [Appirater setUsesUntilPrompt:20];
