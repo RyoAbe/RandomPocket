@@ -266,7 +266,7 @@
  */
 - (NSString*)indexPathKey:(NSIndexPath*)indexPath
 {
-   return [NSString stringWithFormat:@"[%ld,%ld]", indexPath.section, indexPath.row];
+   return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
 }
 
 /**

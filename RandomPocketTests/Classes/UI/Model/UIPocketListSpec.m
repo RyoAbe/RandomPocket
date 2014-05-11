@@ -83,34 +83,34 @@ describe(@"UIPocketList", ^{
                 NSIndexPath *randomIndexPath9 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
                 NSIndexPath *randomIndexPath10 = [_pocketList generateRandomIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
                 
-                _mathedIndexPathes1 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes1 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath1.section == addedRandomIndexPath.section && randomIndexPath1.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes2 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes2 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath2.section == addedRandomIndexPath.section && randomIndexPath2.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes3 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes3 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath3.section == addedRandomIndexPath.section && randomIndexPath3.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes4 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes4 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath4.section == addedRandomIndexPath.section && randomIndexPath4.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes5 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes5 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath5.section == addedRandomIndexPath.section && randomIndexPath5.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes6 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes6 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath6.section == addedRandomIndexPath.section && randomIndexPath6.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes7 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes7 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath7.section == addedRandomIndexPath.section && randomIndexPath7.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes8 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes8 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath8.section == addedRandomIndexPath.section && randomIndexPath8.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes9 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes9 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath9.section == addedRandomIndexPath.section && randomIndexPath9.row == addedRandomIndexPath.row);
                 }];
-                _mathedIndexPathes10 = [_pocketList.randomIndexPaths select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
+                _mathedIndexPathes10 = [_pocketList.randomIndexPaths bk_select:^BOOL(NSIndexPath *normalIndexPath, NSIndexPath *addedRandomIndexPath) {
                     return (randomIndexPath10.section == addedRandomIndexPath.section && randomIndexPath10.row == addedRandomIndexPath.row);
                 }];
             });
