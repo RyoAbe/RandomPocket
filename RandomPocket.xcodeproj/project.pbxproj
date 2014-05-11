@@ -48,6 +48,9 @@
 		32399E7518F94C9100D5EC92 /* PocketLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32399E6E18F94C9100D5EC92 /* PocketLoginViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		32399E7618F94C9100D5EC92 /* PocketLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32399E6F18F94C9100D5EC92 /* PocketLoginViewController.xib */; };
 		32399E7718F94C9100D5EC92 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 32399E7118F94C9100D5EC92 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		32399E8118F98B2300D5EC92 /* AddNewItemFromClipboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32399E8018F98B2300D5EC92 /* AddNewItemFromClipboardController.m */; };
+		32399E8618F98C9100D5EC92 /* AddNewItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32399E8518F98C9100D5EC92 /* AddNewItemView.m */; };
+		32399E8818F98CA600D5EC92 /* AddNewItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32399E8718F98CA600D5EC92 /* AddNewItemView.xib */; };
 		324CD626188EAA91007C3552 /* BlockActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 324CD622188EAA91007C3552 /* BlockActivity.m */; };
 		324CD627188EAA91007C3552 /* UIActivity+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 324CD624188EAA91007C3552 /* UIActivity+Blocks.m */; };
 		324CD62A188EBE8F007C3552 /* evernote_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 324CD628188EBE8F007C3552 /* evernote_icon.png */; };
@@ -95,7 +98,6 @@
 		32D0886317C9DE76007C50CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32D0886117C9DE76007C50CD /* InfoPlist.strings */; };
 		32D0886517C9DE76007C50CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D0886417C9DE76007C50CD /* main.m */; };
 		32D0886917C9DE76007C50CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D0886817C9DE76007C50CD /* AppDelegate.m */; };
-		32D0888017C9DE76007C50CD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0887F17C9DE76007C50CD /* SenTestingKit.framework */; };
 		32D0888117C9DE76007C50CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885817C9DE76007C50CD /* UIKit.framework */; };
 		32D0888217C9DE76007C50CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D0885A17C9DE76007C50CD /* Foundation.framework */; };
 		32D0888A17C9DE76007C50CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32D0888817C9DE76007C50CD /* InfoPlist.strings */; };
@@ -104,6 +106,7 @@
 		32FC839218A12BBB007302C0 /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FC839018A12BBB007302C0 /* menu_icon.png */; };
 		32FC839318A12BBB007302C0 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FC839118A12BBB007302C0 /* menu_icon@2x.png */; };
 		7F38F3CFBD6240298FBB0547 /* libPods-randompocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7F0C6B37814BE791C7EC8C /* libPods-randompocket.a */; };
+		B530F045E8C64D2885094358 /* libPods-RandomPocketTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C022B8FA22814C55B068CAE8 /* libPods-RandomPocketTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +177,11 @@
 		32399E6F18F94C9100D5EC92 /* PocketLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PocketLoginViewController.xib; sourceTree = "<group>"; };
 		32399E7018F94C9100D5EC92 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		32399E7118F94C9100D5EC92 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		32399E7F18F98B2300D5EC92 /* AddNewItemFromClipboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewItemFromClipboardController.h; sourceTree = "<group>"; };
+		32399E8018F98B2300D5EC92 /* AddNewItemFromClipboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewItemFromClipboardController.m; sourceTree = "<group>"; };
+		32399E8418F98C9100D5EC92 /* AddNewItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewItemView.h; sourceTree = "<group>"; };
+		32399E8518F98C9100D5EC92 /* AddNewItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewItemView.m; sourceTree = "<group>"; };
+		32399E8718F98CA600D5EC92 /* AddNewItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewItemView.xib; sourceTree = "<group>"; };
 		324CD621188EAA91007C3552 /* BlockActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActivity.h; sourceTree = "<group>"; };
 		324CD622188EAA91007C3552 /* BlockActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActivity.m; sourceTree = "<group>"; };
 		324CD623188EAA91007C3552 /* UIActivity+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivity+Blocks.h"; sourceTree = "<group>"; };
@@ -247,8 +255,7 @@
 		32D0886617C9DE76007C50CD /* RandomPocket-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RandomPocket-Prefix.pch"; sourceTree = "<group>"; };
 		32D0886717C9DE76007C50CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		32D0886817C9DE76007C50CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		32D0887E17C9DE76007C50CD /* RandomPocketTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomPocketTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32D0887F17C9DE76007C50CD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		32D0887E17C9DE76007C50CD /* RandomPocketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RandomPocketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D0888717C9DE76007C50CD /* RandomPocketTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RandomPocketTests-Info.plist"; sourceTree = "<group>"; };
 		32D0888917C9DE76007C50CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32D99BBE18DCAD14003C5FC3 /* CPocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPocket.h; sourceTree = "<group>"; };
@@ -260,6 +267,7 @@
 		5141E4EB3CC44EA19F7FE6C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6253DF076244F8C9253F8D6 /* Pods-RandomPocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RandomPocket.xcconfig"; path = "Pods/Pods-RandomPocket.xcconfig"; sourceTree = "<group>"; };
 		AB7F0C6B37814BE791C7EC8C /* libPods-randompocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-randompocket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C022B8FA22814C55B068CAE8 /* libPods-RandomPocketTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RandomPocketTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED41470C9B64576A6A284FB /* Pods-randompocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-randompocket.xcconfig"; path = "Pods/Pods-randompocket.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -285,9 +293,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				170E327B181BC3FF00ECE98F /* CoreData.framework in Frameworks */,
-				32D0888017C9DE76007C50CD /* SenTestingKit.framework in Frameworks */,
 				32D0888117C9DE76007C50CD /* UIKit.framework in Frameworks */,
 				32D0888217C9DE76007C50CD /* Foundation.framework in Frameworks */,
+				B530F045E8C64D2885094358 /* libPods-RandomPocketTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +461,18 @@
 				32399E7118F94C9100D5EC92 /* SFHFKeychainUtils.m */,
 			);
 			path = SDK;
+			sourceTree = "<group>";
+		};
+		32399E7E18F98B2300D5EC92 /* AddNewItemFromClipboardController */ = {
+			isa = PBXGroup;
+			children = (
+				32399E7F18F98B2300D5EC92 /* AddNewItemFromClipboardController.h */,
+				32399E8018F98B2300D5EC92 /* AddNewItemFromClipboardController.m */,
+				32399E8418F98C9100D5EC92 /* AddNewItemView.h */,
+				32399E8518F98C9100D5EC92 /* AddNewItemView.m */,
+				32399E8718F98CA600D5EC92 /* AddNewItemView.xib */,
+			);
+			path = AddNewItemFromClipboardController;
 			sourceTree = "<group>";
 		};
 		324CD61F188EAA91007C3552 /* BlockActivity */ = {
@@ -657,6 +677,7 @@
 		32AF668817C9EF9600EF34EC /* Parts */ = {
 			isa = PBXGroup;
 			children = (
+				32399E7E18F98B2300D5EC92 /* AddNewItemFromClipboardController */,
 			);
 			path = Parts;
 			sourceTree = "<group>";
@@ -706,7 +727,7 @@
 			isa = PBXGroup;
 			children = (
 				32D0885517C9DE76007C50CD /* randompocket.app */,
-				32D0887E17C9DE76007C50CD /* RandomPocketTests.octest */,
+				32D0887E17C9DE76007C50CD /* RandomPocketTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -723,9 +744,9 @@
 				32D0885817C9DE76007C50CD /* UIKit.framework */,
 				32D0885A17C9DE76007C50CD /* Foundation.framework */,
 				32D0885C17C9DE76007C50CD /* CoreGraphics.framework */,
-				32D0887F17C9DE76007C50CD /* SenTestingKit.framework */,
 				5141E4EB3CC44EA19F7FE6C3 /* libPods.a */,
 				AB7F0C6B37814BE791C7EC8C /* libPods-randompocket.a */,
+				C022B8FA22814C55B068CAE8 /* libPods-RandomPocketTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -813,8 +834,8 @@
 			);
 			name = RandomPocketTests;
 			productName = RandomPocketTests;
-			productReference = 32D0887E17C9DE76007C50CD /* RandomPocketTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 32D0887E17C9DE76007C50CD /* RandomPocketTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -823,7 +844,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = RyoAbe;
 				TargetAttributes = {
 					32D0885417C9DE76007C50CD = {
@@ -880,6 +901,7 @@
 				322471DB18DAC109007211A8 /* home_icon.png in Resources */,
 				32FC839318A12BBB007302C0 /* menu_icon@2x.png in Resources */,
 				32A1105718B3A2CE00E46D5A /* revert_icon@2x.png in Resources */,
+				32399E8818F98CA600D5EC92 /* AddNewItemView.xib in Resources */,
 				324FF01E17CE14EF005B08F4 /* PocketListCell.xib in Resources */,
 				3265E02718CCC54700A57C22 /* TitleLogo.png in Resources */,
 				17C09F9318279899001435B9 /* shuffle_icon.png in Resources */,
@@ -1032,6 +1054,7 @@
 				178F268917D3081800993DF9 /* HTMLParser.m in Sources */,
 				17922AAD17D3226200AF2FD3 /* UIPocketList.m in Sources */,
 				32C1CE6818D5620E0024B425 /* LoginViewController.m in Sources */,
+				32399E8118F98B2300D5EC92 /* AddNewItemFromClipboardController.m in Sources */,
 				32399E7418F94C9100D5EC92 /* PocketAPIOperation.m in Sources */,
 				322EEDFF18DD879900B091C2 /* GetCompletePocketsOperation.m in Sources */,
 				324CD626188EAA91007C3552 /* BlockActivity.m in Sources */,
@@ -1041,6 +1064,7 @@
 				325FF572189F11AB008D220B /* LeftSidePanelViewController.m in Sources */,
 				17E552D317D4D096004E10BE /* RandomPocket.xcdatamodeld in Sources */,
 				32935230189FB3830017D96E /* SettingsViewController.m in Sources */,
+				32399E8618F98C9100D5EC92 /* AddNewItemView.m in Sources */,
 				325FF570189F11AB008D220B /* LeftSidePanelCell.m in Sources */,
 				1778CFAF17D8B5AA00A20E4B /* NSManagedObjectContext+RandomPocket.m in Sources */,
 				32A4400218ABB04C006FEBC4 /* LicenseViewController.m in Sources */,
@@ -1149,13 +1173,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DED41470C9B64576A6A284FB /* Pods-randompocket.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					Standard,
-					architectures,
-					"(arm7,",
-					"arm7s)",
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1193,13 +1210,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DED41470C9B64576A6A284FB /* Pods-randompocket.xcconfig */;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					Standard,
-					architectures,
-					"(arm7,",
-					"arm7s)",
-				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1241,13 +1251,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
 				INFOPLIST_FILE = "RandomPocketTests/RandomPocketTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1259,13 +1269,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RandomPocket/RandomPocket-Prefix.pch";
 				INFOPLIST_FILE = "RandomPocketTests/RandomPocketTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
