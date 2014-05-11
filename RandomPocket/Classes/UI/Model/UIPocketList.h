@@ -12,17 +12,20 @@
 @class UIPocketList;
 @class UIPocket;
 
-typedef enum UIPocketListChangeType_ {
+enum {
     UIPocketListChangeType_Insert = 1,
     UIPocketListChangeType_Delete = 2,
     UIPocketListChangeType_Move = 3,
     UIPocketListChangeType_Update = 4,
-} UIPocketListChangeType;
+};
+typedef NSUInteger UIPocketListChangeType;
 
-typedef NS_ENUM(NSUInteger, UIPocketListMode) {
+enum {
     UIPocketListMode_DisplayNormal = 0,
     UIPocketListMode_DisplayRandom,
 };
+typedef NSUInteger UIPocketListMode;
+
 
 @protocol UIPocketListDelegate <NSObject>
 -(void)pocketListWillChange:(UIPocketList*)pocketList;

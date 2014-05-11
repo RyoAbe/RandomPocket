@@ -132,7 +132,7 @@
 - (NSInteger)indexForObject:(UIPocket*)uiPocket
 {
     __block NSUInteger i = 0;
-    [self.fetchedResultsController.fetchedObjects match:^BOOL(CPocket *cPocket) {
+    [self.fetchedResultsController.fetchedObjects bk_match:^BOOL(CPocket *cPocket) {
         return [cPocket.objectID isEqual:uiPocket.objectID] ? YES : i++; NO;
     }];
     return i;
@@ -204,7 +204,7 @@
         indexPathArray[i] = [NSIndexPath indexPathForRow:i inSection:0];
     }
     for (NSInteger i = 0; i < self.numberOfItems; i++) {
-        NSUInteger randomNumber = arc4random_uniform(indexPathArray.count);
+        NSUInteger randomNumber = arc4random_uniform((int)indexPathArray.count);
         NSString *key = [self indexPathKey:i section:0];
         self.randomIndexPaths[key] = indexPathArray[randomNumber];
         [indexPathArray removeObjectAtIndex:randomNumber];
@@ -233,7 +233,7 @@
 
     NSIndexPath *retIndexPath = nil;
     while (YES) {
-        NSUInteger randomRow = arc4random_uniform(numberOfItemsInSection);
+        NSUInteger randomRow = arc4random_uniform((int)numberOfItemsInSection);
         retIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
         NSAssert(retIndexPath, @"should be not nil indexPath");
         if(![self isAddedIndexPath:retIndexPath]){
@@ -266,7 +266,7 @@
  */
 - (NSString*)indexPathKey:(NSIndexPath*)indexPath
 {
-   return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
+   return [NSString stringWithFormat:@"[%ld,%ld]", indexPath.section, indexPath.row];
 }
 
 /**

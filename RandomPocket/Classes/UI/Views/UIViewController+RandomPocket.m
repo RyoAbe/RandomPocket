@@ -16,7 +16,7 @@
     PBWebViewController *webViewController = [[PBWebViewController alloc] init];
     webViewController.URL = [NSURL URLWithString:url];
     webViewController.excludedActivityTypes = @[UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePostToWeibo];
-    webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop handler:^(id sender) {
+    webViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] bk_initWithBarButtonSystemItem:UIBarButtonSystemItemStop handler:^(id sender) {
         [webViewController dismissViewControllerAnimated:YES completion:nil];
     }];
 

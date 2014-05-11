@@ -45,9 +45,9 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
     self.tableView.contentInset = UIEdgeInsetsMake([UIApplication sharedApplication].statusBarFrame.size.height, 0, 0, 0);
     self.tableView.separatorInset = UIEdgeInsetsZero;
 
-    self.actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedStringFromTable(@"DisconnectActionSheetTitle", @"LeftSidePanel", nil)];
+    self.actionSheet = [[UIActionSheet alloc] bk_initWithTitle:NSLocalizedStringFromTable(@"DisconnectActionSheetTitle", @"LeftSidePanel", nil)];
     __weak LeftSidePanelViewController *weakSelf = self;
-    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Disconnect", @"LeftSidePanel", nil) handler:^{
+    [self.actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"Disconnect", @"LeftSidePanel", nil) handler:^{
         LogoutOperation *op = [[LogoutOperation alloc] init];
         [op setCompletionHandler:^(id result) {
             [NSManagedObjectContext deleteEntities];
@@ -60,7 +60,7 @@ static NSString* const LeftSidePanelCellIdentifier = @"leftSidePanelCell";
         
         [op dispatch];
     }];
-    [self.actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
+    [self.actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
     self.actionSheet.destructiveButtonIndex = 0;
     self.actionSheet.cancelButtonIndex = 1;
     [[PocketAPI sharedAPI] addObserver:self forKeyPath:@"isLoggedIn" options:NSKeyValueObservingOptionNew context:nil];

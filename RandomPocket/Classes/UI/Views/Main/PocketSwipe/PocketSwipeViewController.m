@@ -167,9 +167,9 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
 
 - (UIActionSheet*)createActionSheet
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] bk_initWithTitle:nil];
     __block PocketSwipeViewController *weakSelf = self;
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
+    [actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"ArchiveButtonTitle", @"PocketSwipeView", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:weakSelf.currentPocket.itemID actionType:ActionToPocketType_Archive];
         weakSelf.progressView = [MRProgressOverlayView showWithTitle:NSLocalizedStringFromTable(@"Archive", @"Common", nil)];
         [op setCompletionHandler:^(id result) {
@@ -183,7 +183,7 @@ static NSString* const PocketDetailCellIdentifier = @"PocketDetailCell";
         }];
         [op dispatch];
     }];
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
+    [actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
     actionSheet.destructiveButtonIndex = 0;
     actionSheet.cancelButtonIndex = 1;
     

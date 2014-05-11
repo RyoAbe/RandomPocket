@@ -46,7 +46,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self.tableView addSubview:self.refreshController];
 
     __weak PocketListViewController *weakSelf = self;
-    [self.refreshController addEventHandler:^(id sender) {
+    [self.refreshController bk_addEventHandler:^(id sender) {
         [weakSelf reqestGetPockets:weakSelf.pocketList.isEmpty];
     } forControlEvents:UIControlEventValueChanged];
     
@@ -67,7 +67,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     
     if(self.pocketList.isEmpty){
         if(![PocketAPI sharedAPI].isLoggedIn){
-            [self performBlock:^(id sender){
+            [self bk_performBlock:^(id sender){
                 [self presentLoginViewControllerWithSucceedBlock:^{ [self reqestGetPockets:YES]; }
                                                      cancelBlock:nil
                                                       errorBlock:^{ [self.tableView.window makeToast:NSLocalizedStringFromTable(@"ErrorOccured", @"Common", nil)]; } ];
@@ -220,13 +220,13 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 - (void)tableView:(UITableView *)tableView moreOptionButtonPressedInRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIPocket *pocket = [self.pocketList objectAtIndexPath:indexPath];
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] bk_initWithTitle:nil];
     __weak PocketListViewController *weakSelf = self;
 
     // impl add tag
 //    [actionSheet addButtonWithTitle:@"Add Tag" handler:^{}];
 
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
+    [actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"FavoriteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Favorite];
         [op setCompletionHandler:^(id result) {
             [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"Favorite", @"Common", nil)];
@@ -236,7 +236,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         }];
         [op dispatch];
     }];
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
+    [actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"DeleteButtonTitle", @"PocketList", nil) handler:^{
         ActionToPocketOperation *op = [[ActionToPocketOperation alloc] initWithItemID:pocket.itemID actionType:ActionToPocketType_Delete];
         [op setCompletionHandler:^(id result) {
             [weakSelf.tableView.window makeToast:NSLocalizedStringFromTable(@"Deleted", @"Common", nil)];
@@ -246,11 +246,11 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
         }];
         [op dispatch];
     }];
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"ViewWebsiteButtonTitle", @"PocketList", nil) handler:^{
+    [actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"ViewWebsiteButtonTitle", @"PocketList", nil) handler:^{
         UINavigationController *webViewController = [self webViewControllerWithURL:pocket.url];
         [self.navigationController presentViewController:webViewController animated:YES completion:nil];
     }];
-    [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
+    [actionSheet bk_addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"Common", nil) handler:nil];
 
     actionSheet.destructiveButtonIndex = 1;
     actionSheet.cancelButtonIndex = 3;
@@ -276,7 +276,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (IBAction)toRandomSortTapped:(UITabBarItem*)tabBarItem
 {
-    UIPocketListMode mode;
+    UIPocketListMode mode = 0;
     NSString *title = nil;
     switch (self.pocketList.displayMode) {
         case UIPocketListMode_DisplayNormal:
@@ -288,8 +288,6 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
             mode = UIPocketListMode_DisplayNormal;
             self.randomButton.image = [UIImage imageNamed:@"shuffle_icon"];
             title = NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil);
-            break;
-        default:
             break;
     }
     self.progressView = [MRProgressOverlayView showWithTitle:title mode:MRProgressOverlayViewModeIndeterminateSmall];
@@ -305,7 +303,7 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 
 - (void)changeSortMode:(UIPocketListMode)mode completion:(void (^)())completion
 {
-    [self performBlock:^(id sender) {
+    [self bk_performBlock:^(id sender) {
         [self.pocketList changeDisplayMode:mode];
         [self.tableView reloadData];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
