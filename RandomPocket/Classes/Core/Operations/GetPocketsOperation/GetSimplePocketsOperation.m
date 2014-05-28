@@ -43,8 +43,10 @@
     // GetSimplePocketsOperationが終わったら全情報取りに行く
     [super setCompletionHandler:^(id result) {
         GetCompletePocketsOperation *op = [[GetCompletePocketsOperation alloc] init];
+        [op setCompletionHandler:^(id result) {
+            completionHandler(result);
+        }];
         [op dispatch];
-        completionHandler(result);
     }];
 }
 
