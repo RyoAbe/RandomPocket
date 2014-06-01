@@ -117,7 +117,7 @@
     return self.numberOfItems == 0;
 }
 
-- (NSInteger)numberOfItemsInSection:(NSInteger)section
+- (NSUInteger)numberOfItemsInSection:(NSInteger)section
 {
     id<NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
     return [sectionInfo numberOfObjects];
@@ -204,7 +204,7 @@
         indexPathArray[i] = [NSIndexPath indexPathForRow:i inSection:0];
     }
     for (NSInteger i = 0; i < self.numberOfItems; i++) {
-        NSUInteger randomNumber = arc4random_uniform((int)indexPathArray.count);
+        NSUInteger randomNumber = arc4random_uniform((uint32_t)indexPathArray.count);
         NSString *key = [self indexPathKey:i section:0];
         self.randomIndexPaths[key] = indexPathArray[randomNumber];
         [indexPathArray removeObjectAtIndex:randomNumber];
@@ -233,7 +233,7 @@
 
     NSIndexPath *retIndexPath = nil;
     while (YES) {
-        NSUInteger randomRow = arc4random_uniform((int)numberOfItemsInSection);
+        NSUInteger randomRow = arc4random_uniform((uint32_t)numberOfItemsInSection);
         retIndexPath = [NSIndexPath indexPathForRow:randomRow inSection:indexPath.section];
         NSAssert(retIndexPath, @"should be not nil indexPath");
         if(![self isAddedIndexPath:retIndexPath]){
@@ -266,7 +266,7 @@
  */
 - (NSString*)indexPathKey:(NSIndexPath*)indexPath
 {
-   return [NSString stringWithFormat:@"[%d,%d]", indexPath.section, indexPath.row];
+   return [NSString stringWithFormat:@"[%ld,%ld]", (long)indexPath.section, (long)indexPath.row];
 }
 
 /**

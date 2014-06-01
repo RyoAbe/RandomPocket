@@ -47,7 +47,7 @@ typedef NSUInteger UIPocketListMode;
 @interface UIPocketList : NSObject<NSFetchedResultsControllerDelegate, NSCopying>
 
 - (NSInteger)numberOfSections;
-- (NSInteger)numberOfItemsInSection:(NSInteger)section;
+- (NSUInteger)numberOfItemsInSection:(NSInteger)section;
 - (NSUInteger)numberOfItems;
 - (NSIndexPath*)indexPathForObject:(UIPocket*)uiPocket;
 - (NSInteger)indexForObject:(UIPocket*)uiPocket;
