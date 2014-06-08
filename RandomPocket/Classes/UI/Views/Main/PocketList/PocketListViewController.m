@@ -281,12 +281,10 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     switch (self.pocketList.displayMode) {
         case UIPocketListMode_DisplayNormal:
             mode = UIPocketListMode_DisplayRandom;
-            self.randomButton.image = [UIImage imageNamed:@"revert_icon"];
             title = NSLocalizedStringFromTable(@"ToRandomSort", @"PocketList", nil);
             break;
         case UIPocketListMode_DisplayRandom:
             mode = UIPocketListMode_DisplayNormal;
-            self.randomButton.image = [UIImage imageNamed:@"shuffle_icon"];
             title = NSLocalizedStringFromTable(@"ToNormalSort", @"PocketList", nil);
             break;
     }
@@ -294,6 +292,18 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
     [self changeSortMode:mode completion:^{
         [self.progressView hide];
     }];
+}
+
+- (void)changeRightBarButtonItem
+{
+    switch (self.pocketList.displayMode) {
+        case UIPocketListMode_DisplayNormal:
+            self.randomButton.image = [UIImage imageNamed:@"shuffle_icon"];
+            break;
+        case UIPocketListMode_DisplayRandom:
+            self.randomButton.image = [UIImage imageNamed:@"revert_icon"];
+            break;
+    }
 }
 
 - (void)changeSortMode:(UIPocketListMode)mode
@@ -305,9 +315,13 @@ static NSString* const ToPocketSwipeSegue = @"toPocketSwipe";
 {
     [self bk_performBlock:^(id sender) {
         [self.pocketList changeDisplayMode:mode];
+        [self changeRightBarButtonItem];
         [self.tableView reloadData];
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
         if(completion) completion();
+        if(self.pocketList.numberOfItems > 0){
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                  atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
     } afterDelay:0.05];
 }
 

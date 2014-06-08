@@ -169,27 +169,68 @@
     if(self.displayMode == UIPocketListMode_DisplayNormal){
         return;
     }
+
+    /**
+     * 1. 消す前（消すのは[0,1]のキー）
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+     * |  key  | value  |
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐|
+     * | [0,0] | [0, 3] |
+     * | [0,1] | [0, 0] |
+     * | [0,2] | [0, 2] |
+     * | [0,3] | [0, 1] |
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+     */
+
     NSString *removeKey = [self indexPathKey:removeIndexPathKey];
     NSIndexPath *removeIndexPathValue = self.randomIndexPaths[removeKey];
+
+    /**
+     * 2. 消す
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+     * |  key  | value  |
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐|
+     * | [0,0] | [0, 3] |
+     * | [0,2] | [0, 2] |
+     * | [0,3] | [0, 1] |
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+     */
     [self.randomIndexPaths removeObjectForKey:removeKey];
     
     NSMutableDictionary *newIndexPaths = [NSMutableDictionary dictionary];
     NSUInteger loop = self.randomIndexPaths.count;
     for (NSInteger row = 0; row <= loop; row++) {
+        
+        // 同じだったらスルー
         if(row == removeIndexPathKey.row){
             continue;
         }
         NSIndexPath *indexPathKey = [NSIndexPath indexPathForRow:row inSection:removeIndexPathKey.section];
         NSString *newKey = [self indexPathKey:indexPathKey];
         NSIndexPath *newValue = self.randomIndexPaths[newKey];
+
+        // ループ中のキーが削除対象のキーより大きい場合は-1する
         if(indexPathKey.row >= removeIndexPathKey.row){
             newKey = [self indexPathKey:indexPathKey.row - 1 section:removeIndexPathKey.section];
         }
+
+        // ループ中のindexPathが削除対象のindexPathより大きい場合は-1する
         if(newValue.row >= removeIndexPathValue.row){
             newValue = [NSIndexPath indexPathForRow:newValue.row - 1 inSection:removeIndexPathValue.section];
         }
         newIndexPaths[newKey] = newValue;
     }
+
+    /**
+     * 3. 消した対象を基準に各keyとvalueを-1した
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+     * |  key  | value  |
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐|
+     * | [0,0] | [0, 2] |
+     * | [0,1] | [0, 1] |
+     * | [0,2] | [0, 0] |
+     * ‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+     */
     self.randomIndexPaths = newIndexPaths;
 }
 
@@ -314,7 +355,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
     UIPocketList *pocketList = [[self class] allocWithZone:zone];
-    pocketList.randomIndexPaths = self.randomIndexPaths;
+    pocketList.randomIndexPaths = [[NSMutableDictionary alloc] initWithDictionary:[self.randomIndexPaths copy]];
     pocketList.displayMode = self.displayMode;
     return pocketList;
 }
