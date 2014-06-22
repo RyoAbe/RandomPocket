@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CQB-TQ-f42">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CQB-TQ-f42">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -184,8 +184,8 @@
                                     <color key="textColor" white="0.29999999999999999" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="TitleLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="P6g-Kl-28F">
-                                    <rect key="frame" x="62" y="59" width="196" height="28"/>
+                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="NavigationTitleLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="P6g-Kl-28F">
+                                    <rect key="frame" x="62" y="43" width="196" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </imageView>
                             </subviews>
@@ -446,7 +446,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TitleLogo.png" width="196" height="28"/>
+        <image name="NavigationTitleLogo.png" width="70" height="24"/>
         <image name="browser_icon.png" width="20" height="20"/>
         <image name="check_icon.png" width="29" height="20"/>
         <image name="shuffle_icon.png" width="20" height="14"/>
