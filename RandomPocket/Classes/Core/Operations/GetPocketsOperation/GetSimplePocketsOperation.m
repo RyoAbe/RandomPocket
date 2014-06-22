@@ -53,6 +53,12 @@
 - (id)saveWithResponse:(NSDictionary*)response
 {
     self.updateDate = [NSDate date];
+
+    if([response[@"list"] isKindOfClass:[NSDictionary class]]){
+        NSUInteger badgeNumber = [(NSDictionary*)response[@"list"] count];
+        [UIApplication sharedApplication].applicationIconBadgeNumber = badgeNumber;
+    }
+
     for (NSString *key in response[@"list"]) {
         NSDictionary *data = response[@"list"][key];
         [self saveWithData:data];
