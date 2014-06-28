@@ -65,7 +65,7 @@
     }
     NSError *error = nil;
     // updateDateが更新されていないものをアーカイブ化
-    [self toArchiveNoUpdatePocket:&error];
+    [self toArchiveNoUpdatePocket];
 
     if (![NSManagedObjectContext save:&error]) {
         return error;
@@ -73,7 +73,7 @@
     return nil;
 }
 
-- (void)toArchiveNoUpdatePocket:(NSError**)error
+- (void)toArchiveNoUpdatePocket
 {
     NSManagedObjectContext *moc = [NSManagedObjectContext contextForCurrentThread];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CPocket"];
